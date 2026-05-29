@@ -1,6 +1,11 @@
-import api from "../api/api";
+import api from "./api"
 
-export const listarClientes = async () => {
-    const response = await api.get("/clientes");
-    return response.data;
-};
+const clienteService = {
+
+  listar() {
+    return api.get("/clientes")
+  }
+
+}
+
+export default clienteService
