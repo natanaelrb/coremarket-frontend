@@ -1,31 +1,61 @@
+import {
+  LayoutDashboard,
+  Users,
+  Wallet,
+  Package,
+  BarChart3,
+} from "lucide-react";
+
 function Layout({ children }) {
   return (
-    <div className="min-h-screen bg-zinc-950 text-white">
+    <div className="min-h-screen bg-[#F5F6FA]">
       <div className="flex">
-        
-        <aside className="w-64 h-screen bg-zinc-900 border-r border-zinc-800 p-4">
-          <h1 className="text-2xl font-bold text-green-500">
+
+        {/* Sidebar */}
+        <aside className="w-64 h-screen bg-[#0D1029] text-white p-5 fixed">
+
+          <h1 className="text-3xl font-bold mb-10">
             CoreMarket
           </h1>
 
-          <nav className="mt-8 flex flex-col gap-2">
-            <button className="text-left p-3 rounded-lg hover:bg-zinc-800 transition">
+          <nav className="space-y-2">
+
+            <button className="flex items-center gap-3 w-full p-3 rounded-xl bg-purple-600">
+              <LayoutDashboard size={20} />
+              Dashboard
+            </button>
+
+            <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-white/10 transition">
+              <Users size={20} />
               Clientes
             </button>
 
-            <button className="text-left p-3 rounded-lg hover:bg-zinc-800 transition">
-              Dashboard
+            <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-white/10 transition">
+              <Wallet size={20} />
+              Fiado
             </button>
+
+            <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-white/10 transition">
+              <Package size={20} />
+              Estoque
+            </button>
+
+            <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-white/10 transition">
+              <BarChart3 size={20} />
+              Relatórios
+            </button>
+
           </nav>
         </aside>
 
-        <main className="flex-1 p-6">
+        {/* Conteúdo */}
+        <main className="ml-64 flex-1 p-8">
           {children}
         </main>
 
       </div>
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
