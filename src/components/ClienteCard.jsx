@@ -7,9 +7,13 @@ function ClienteCard({ cliente }) {
         border
         border-zinc-800
         rounded-xl
-        p-4
+        p-5
         hover:border-green-500
-        transition
+        hover:-translate-y-1
+        hover:shadow-lg
+        hover:shadow-green-500/10
+        transition-all
+        duration-300
         cursor-pointer
       "
     >
@@ -17,19 +21,39 @@ function ClienteCard({ cliente }) {
       <div className="flex items-center justify-between">
 
         <div>
-          <h2 className="text-xl font-semibold">
-            {cliente.nome}
-          </h2>
+          <div className="flex items-center gap-2 mb-2"></div>
+            <h2 className="text-xl font-semibold  text-white">
+              {cliente.nome}
+            </h2>
 
-          <p className="text-zinc-400 text-sm">
+            <span
+              className="
+                bg-green-500/20
+                text-green-400
+                text-xs
+                px-2
+                py-1
+                rounded-full
+                border
+                border-green-500/20
+              "
+            > 
+              Ativo
+            </span>
+<p className="text-zinc-400 text-sm">
+            Telefone: {cliente.telefone || "Não informado"}
+          </p>
+
+          <p className="text-zinc-500 text-xs mt-1">
             ID: {cliente.id}
           </p>
+
         </div>
 
         <div
           className="
-            w-12
-            h-12
+            w-14
+            h-14
             rounded-full
             bg-green-500
             flex
@@ -37,9 +61,12 @@ function ClienteCard({ cliente }) {
             justify-center
             font-bold
             text-lg
+            text-black
+            shadow-lg
+            shadow-green-500/30
           "
         >
-          {cliente.nome.charAt(0)}
+          {cliente.nome.charAt(0).toUpperCase()}
         </div>
 
       </div>

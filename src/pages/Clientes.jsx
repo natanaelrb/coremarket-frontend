@@ -1,13 +1,30 @@
 import { useEffect, useState } from "react"
 import clienteService from "../services/clienteService"
+import ClienteCard from "../components/ClienteCard"
+import NovoClienteModal from "../components/NovoClienteModal"
+import Toast from "../components/Toast"
 
 function Clientes() {
 
   const [clientes, setClientes] = useState([])
+  const [modalAberto, setModalAberto] = useState(false)
+  const [toast, setToast] = useState(null)
 
   useEffect(() => {
     buscarClientes()
   }, [])
+
+  useEffect(() => {
+
+  if (toast) {
+
+    setTimeout(() => {
+      setToast(null)
+    }, 3000)
+
+  }
+
+}, [toast])
 
   async function buscarClientes() {
     try {
@@ -28,7 +45,10 @@ function Clientes() {
           Clientes
         </h1>
 
-        <button className="bg-green-500 hover:bg-green-600 transition px-4 py-2 rounded-lg font-medium">
+        <button
+          onClick={() => setModalAberto(true)}
+          className="bg-green-500 hover:bg-green-600 transition px-4 py-2 rounded-lg font-medium"
+        >
           Novo Cliente
         </button>
       </div>
@@ -37,20 +57,27 @@ function Clientes() {
 
         {clientes.map(cliente => (
 
-          <div
+          <ClienteCard
             key={cliente.id}
-            className="bg-zinc-900 border border-zinc-800 rounded-xl p-4 hover:border-green-500 transition"
-          >
-
-            <h2 className="text-xl font-semibold">
-              {cliente.nome}
-            </h2>
-
-          </div>
-
+            cliente={cliente}
+          />
+          
         ))}
 
       </div>
+        <NovoClienteModal
+          aberto={modalAberto}
+          fechar={() => setModalAberto(false)}
+          atualizarClientes={buscarClientes}
+          setToast={setToast}
+        />
+
+      {toast && (
+        <Toast
+          mensagem={toast.mensagem}
+          tipo={toast.tipo}
+      />
+)}
 
     </div>
   )
