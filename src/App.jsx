@@ -1,28 +1,27 @@
-// import Clientes from "./pages/Clientes";
-// import Layout from "./layouts/Layout"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-
-// function App() {
-
-//   return (
-//     <Layout>
-//       <Clientes />
-//     </Layout>
-
-//   )
-
-// }
-
-// export default App
+import Layout from "./layouts/Layout";
 
 import Dashboard from "./pages/Dashboard";
-import Layout from "./layouts/Layout";
+import Clientes from "./pages/Clientes";
+import Fiado from "./pages/Fiado";
+import Estoque from "./pages/Estoque";
+import Relatorios from "./pages/Relatorios";
 
 function App() {
   return (
-    <Layout>
-      <Dashboard />
-    </Layout>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/clientes" element={<Clientes />} />
+          <Route path="/fiado" element={<Fiado />} />
+          <Route path="/estoque" element={<Estoque />} />
+          <Route path="/relatorios" element={<Relatorios />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 }
 

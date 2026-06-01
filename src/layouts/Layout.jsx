@@ -1,3 +1,5 @@
+import Sidebar from "../components/Sidebar";
+
 import {
   LayoutDashboard,
   Users,
@@ -13,6 +15,7 @@ function Layout({ children }) {
 
         {/* Sidebar */}
         <aside className="w-64 h-screen bg-[#0D1029] text-white p-5 fixed">
+          <Sidebar />
 
           <h1 className="text-3xl font-bold mb-10">
             CoreMarket

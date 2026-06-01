@@ -6,41 +6,71 @@ import {
   BarChart3
 } from "lucide-react";
 
+import { Link, useLocation } from "react-router-dom";
+
 export default function Sidebar() {
+
+  const location = useLocation();
+
+  const menuItems = [
+    {
+      name: "Dashboard",
+      path: "/dashboard",
+      icon: <LayoutDashboard size={20} />
+    },
+    {
+      name: "Clientes",
+      path: "/clientes",
+      icon: <Users size={20} />
+    },
+    {
+      name: "Fiado",
+      path: "/fiado",
+      icon: <Wallet size={20} />
+    },
+    {
+      name: "Estoque",
+      path: "/estoque",
+      icon: <Package size={20} />
+    },
+    {
+      name: "Relatórios",
+      path: "/relatorios",
+      icon: <BarChart3 size={20} />
+    }
+  ];
+
   return (
     <aside className="w-64 bg-[#0D1029] text-white h-screen p-5">
+
       <h1 className="text-2xl font-bold mb-10">
         CoreMarket
       </h1>
 
       <nav className="space-y-2">
 
-        <button className="flex items-center gap-3 w-full p-3 rounded-xl bg-purple-600">
-          <LayoutDashboard size={20} />
-          Dashboard
-        </button>
+        {menuItems.map((item) => (
 
-        <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-white/10">
-          <Users size={20} />
-          Clientes
-        </button>
+          <Link
+            key={item.path}
+            to={item.path}
+            className={`
+              flex items-center gap-3 w-full p-3 rounded-xl transition
+              ${
+                location.pathname === item.path
+                  ? "bg-purple-600"
+                  : "hover:bg-white/10"
+              }
+            `}
+          >
+            {item.icon}
+            {item.name}
+          </Link>
 
-        <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-white/10">
-          <Wallet size={20} />
-          Fiado
-        </button>
-
-        <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-white/10">
-          <Package size={20} />
-          Estoque
-        </button>
-
-        <button className="flex items-center gap-3 w-full p-3 rounded-xl hover:bg-white/10">
-          <BarChart3 size={20} />
-          Relatórios
-        </button>
+        ))}
 
       </nav>
+
     </aside>
   );
 }
