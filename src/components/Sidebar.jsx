@@ -1,3 +1,4 @@
+
 import {
   LayoutDashboard,
   Users,
@@ -24,8 +25,8 @@ export default function Sidebar() {
       icon: <Users size={20} />
     },
     {
-      name: "Fiado",
-      path: "/fiado",
+      name: "Contas a Receber",
+      path: "/contas-receber",
       icon: <Wallet size={20} />
     },
     {
