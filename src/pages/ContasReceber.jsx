@@ -1,8 +1,8 @@
-export default function Relatorios() {
+export default function ContasReceber() {
   return (
     <div>
       <h1 className="text-3xl font-bold">
-        Relatórios
+        Contas a Receber
       </h1>
     </div>
   );

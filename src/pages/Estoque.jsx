@@ -1,7 +1,9 @@
 export default function Estoque() {
   return (
-    <h1 className="text-3xl font-bold text-gray-800">
-      Estoque
-    </h1>
+    <div>
+      <h1 className="text-3xl font-bold">
+        Estoque
+      </h1>
+    </div>
   );
 }
