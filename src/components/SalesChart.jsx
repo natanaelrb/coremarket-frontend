@@ -23,8 +23,8 @@ export default function SalesChart() {
         Vendas Mensais
       </h2>
 
-      <div className="h-80">
-        <ResponsiveContainer width="100%" height="100%">
+      <div className="h-80 min-w-0">
+        <ResponsiveContainer width={800} height={320}>
           <BarChart data={data}>
             <XAxis dataKey="mes" />
             <YAxis />
