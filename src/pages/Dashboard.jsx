@@ -1,6 +1,8 @@
 import Header from "../components/Header";
 import StatsCard from "../components/StatsCard";
 import SalesChart from "../components/SalesChart";
+import { useEffect, useState } from "react";
+import { buscarResumoDashboard } from "../services/dashboardService";
 
 import {
   Users,
@@ -10,6 +12,35 @@ import {
 } from "lucide-react";
 
 export default function Dashboard() {
+
+  const [dados, setDados] = useState({
+    totalClientes: 0,
+    totalCompras: 0,
+    totalReceber: 0,
+    totalProdutos: 0
+  });
+
+  useEffect(() => {
+
+    async function carregarDados() {
+
+      try {
+
+        const resposta = await buscarResumoDashboard();
+        setDados(resposta);
+
+      } catch (erro) {
+
+        console.error("Erro ao carregar dashboard:", erro);
+
+      }
+
+    }
+
+    carregarDados();
+
+  }, []);
+
   return (
     <div>
       <Header />
@@ -19,28 +50,28 @@ export default function Dashboard() {
 
         <StatsCard
           title="Clientes"
-          value="145"
+          value={dados.totalClientes}
           change="+12% este mês"
           icon={<Users className="text-purple-600" />}
         />
 
         <StatsCard
-          title="Fiado"
-          value="R$ 3.420"
+          title="Receber"
+          value={dados.totalReceber}
           change="-5% esta semana"
           icon={<Wallet className="text-purple-600" />}
         />
 
         <StatsCard
-          title="Vendas"
-          value="R$ 1.890"
+          title="Compras"
+          value={dados.totalCompras}
           change="+8% hoje"
           icon={<ShoppingCart className="text-purple-600" />}
         />
 
         <StatsCard
           title="Produtos"
-          value="284"
+          value={dados.totalProdutos}
           change="+15 novos"
           icon={<Package className="text-purple-600" />}
         />
