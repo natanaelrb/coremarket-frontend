@@ -25,7 +25,6 @@ export default function ContasReceber() {
 
   async function salvarPagamento() {
     try {
-
       await registrarPagamento({
         compraId: compraSelecionada.id,
         clienteId: 1,
@@ -40,16 +39,12 @@ export default function ContasReceber() {
 
       setModalAberto(false);
       setValorPagamento("");
-
     } catch (erro) {
-
       console.error(erro);
 
       alert("Erro ao registrar pagamento");
-
     }
   }
-
 
   const totalDevedor = compras.reduce(
     (total, compra) => total + Number(compra.saldoDevedor),

@@ -1,50 +1,43 @@
-import { useState } from "react"
-import clienteService from "../services/clienteService"
+import { useState } from "react";
+import clienteService from "../services/clienteService";
 
-function NovoClienteModal({ 
-    aberto, 
-    fechar, 
-    atualizarClientes, 
-    setToast }) {
-
-  const [nome, setNome] = useState("")
-  const [telefone, setTelefone] = useState("")
-  const [loading, setLoading] = useState(false)
+function NovoClienteModal({ aberto, fechar, atualizarClientes, setToast }) {
+  const [nome, setNome] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [loading, setLoading] = useState(false);
 
   async function salvarCliente(e) {
-    e.preventDefault()
-    setLoading(true)
+    e.preventDefault();
+    setLoading(true);
 
     try {
-
       await clienteService.criar({
         nome,
-        telefone
-      })
+        telefone,
+      });
 
-      atualizarClientes()
-      fechar()
+      atualizarClientes();
+      fechar();
 
-      setNome("")
-      setTelefone("")
+      setNome("");
+      setTelefone("");
 
       setToast({
         mensagem: "Cliente criado com sucesso!",
-        tipo: "sucesso"
-    })
-
+        tipo: "sucesso",
+      });
     } catch (error) {
-      console.log(error)
-      setToast({ 
-        mensagem: "Erro ao criar cliente", 
-        tipo: "erro" })
-        
+      console.log(error);
+      setToast({
+        mensagem: "Erro ao criar cliente",
+        tipo: "erro",
+      });
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
-  if (!aberto) return null
+  if (!aberto) return null;
 
   return (
     <div
@@ -57,7 +50,6 @@ function NovoClienteModal({
         justify-center
       "
     >
-
       <div
         className="
           bg-zinc-900
@@ -69,16 +61,9 @@ function NovoClienteModal({
           border-zinc-800
         "
       >
+        <h2 className="text-2xl font-bold mb-6">Novo Cliente</h2>
 
-        <h2 className="text-2xl font-bold mb-6">
-          Novo Cliente
-        </h2>
-
-        <form
-          onSubmit={salvarCliente}
-          className="flex flex-col gap-4"
-        >
-
+        <form onSubmit={salvarCliente} className="flex flex-col gap-4">
           <input
             type="text"
             placeholder="Nome do cliente"
@@ -112,7 +97,6 @@ function NovoClienteModal({
           />
 
           <div className="flex gap-3 mt-2">
-
             <button
               type="button"
               onClick={fechar}
@@ -129,9 +113,9 @@ function NovoClienteModal({
             </button>
 
             <button
-                onClick={salvarCliente}
-                disabled={loading}
-                className="
+              onClick={salvarCliente}
+              disabled={loading}
+              className="
                 px-4
                 py-2
                 rounded-lg
@@ -141,19 +125,13 @@ function NovoClienteModal({
                 disabled:opacity-50
                 "
             >
-              
-            
               {loading ? "Salvando..." : "Salvar"}
             </button>
-
           </div>
-
         </form>
-
       </div>
-
     </div>
-  )
+  );
 }
 
-export default NovoClienteModal
+export default NovoClienteModal;

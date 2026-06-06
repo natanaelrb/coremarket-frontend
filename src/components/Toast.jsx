@@ -1,7 +1,5 @@
 function Toast({ mensagem, tipo }) {
-
   return (
-
     <div
       className={`
         fixed
@@ -16,16 +14,12 @@ function Toast({ mensagem, tipo }) {
         z-50
         animate-pulse
 
-        ${tipo === "sucesso"
-          ? "bg-green-500"
-          : "bg-red-500"}
+        ${tipo === "sucesso" ? "bg-green-500" : "bg-red-500"}
       `}
     >
       {mensagem}
     </div>
-
-  )
-
+  );
 }
 
-export default Toast
+export default Toast;

@@ -1,5 +1,4 @@
 function ClienteCard({ cliente }) {
-
   return (
     <div
       className="
@@ -17,17 +16,13 @@ function ClienteCard({ cliente }) {
         cursor-pointer
       "
     >
-
       <div className="flex items-center justify-between">
-
         <div>
           <div className="flex items-center gap-2 mb-2"></div>
-            <h2 className="text-xl font-semibold  text-white">
-              {cliente.nome}
-            </h2>
+          <h2 className="text-xl font-semibold  text-white">{cliente.nome}</h2>
 
-            <span
-              className="
+          <span
+            className="
                 bg-green-500/20
                 text-green-400
                 text-xs
@@ -37,17 +32,14 @@ function ClienteCard({ cliente }) {
                 border
                 border-green-500/20
               "
-            > 
-              Ativo
-            </span>
-<p className="text-zinc-400 text-sm">
+          >
+            Ativo
+          </span>
+          <p className="text-zinc-400 text-sm">
             Telefone: {cliente.telefone || "Não informado"}
           </p>
 
-          <p className="text-zinc-500 text-xs mt-1">
-            ID: {cliente.id}
-          </p>
-
+          <p className="text-zinc-500 text-xs mt-1">ID: {cliente.id}</p>
         </div>
 
         <div
@@ -68,11 +60,9 @@ function ClienteCard({ cliente }) {
         >
           {cliente.nome.charAt(0).toUpperCase()}
         </div>
-
       </div>
-
     </div>
-  )
+  );
 }
 
-export default ClienteCard
+export default ClienteCard;

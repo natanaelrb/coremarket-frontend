@@ -29,11 +29,7 @@ export default function SalesChart() {
             <XAxis dataKey="mes" />
             <YAxis />
             <Tooltip />
-            <Bar
-              dataKey="vendas"
-              fill="#8B5CF6"
-              radius={[8, 8, 0, 0]}
-            />
+            <Bar dataKey="vendas" fill="#8B5CF6" radius={[8, 8, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>
