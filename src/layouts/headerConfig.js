@@ -23,6 +23,7 @@ const headerConfig = {
     icon: LayoutDashboard,
     breadcrumb: ["Home", "Dashboard"],
     action: null,
+    showSearch: false,
   },
 
   "/clientes": {
@@ -30,6 +31,7 @@ const headerConfig = {
     icon: Users,
     breadcrumb: ["Home", "Clientes"],
     action: "cliente",
+    showSearch: true,
   },
 
   "/produtos": {
@@ -37,6 +39,7 @@ const headerConfig = {
     icon: Package,
     breadcrumb: ["Home", "Produtos"],
     action: "produto",
+    showSearch: true,
   },
 
   "/fornecedores": {
@@ -44,6 +47,7 @@ const headerConfig = {
     icon: Truck,
     breadcrumb: ["Home", "Fornecedores"],
     action: "fornecedor",
+    showSearch: true,
   },
 
   "/compras": {
@@ -51,6 +55,7 @@ const headerConfig = {
     icon: ShoppingCart,
     breadcrumb: ["Home", "Compras"],
     action: "compra",
+    showSearch: true,
   },
 
   "/vendas": {
@@ -58,6 +63,7 @@ const headerConfig = {
     icon: Receipt,
     breadcrumb: ["Home", "Vendas"],
     action: "venda",
+    showSearch: true,
   },
 
   "/pagamentos": {
@@ -65,6 +71,7 @@ const headerConfig = {
     icon: CreditCard,
     breadcrumb: ["Home", "Pagamentos"],
     action: "pagamento",
+    showSearch: true,
   },
 
   "/estoque": {
@@ -72,6 +79,7 @@ const headerConfig = {
     icon: ClipboardList,
     breadcrumb: ["Home", "Estoque"],
     action: null,
+    showSearch: true,
   },
 
   "/movimentacoes": {
@@ -79,6 +87,7 @@ const headerConfig = {
     icon: RefreshCw,
     breadcrumb: ["Home", "Movimentações"],
     action: null,
+    showSearch: true,
   },
 
   "/contas-receber": {
@@ -86,6 +95,7 @@ const headerConfig = {
     icon: Wallet,
     breadcrumb: ["Home", "Financeiro"],
     action: null,
+    showSearch: true,
   },
 
   "/contas-pagar": {
@@ -93,6 +103,7 @@ const headerConfig = {
     icon: Banknote,
     breadcrumb: ["Home", "Financeiro"],
     action: null,
+    showSearch: true,
   },
 
   "/fluxo-caixa": {
@@ -100,6 +111,7 @@ const headerConfig = {
     icon: TrendingUp,
     breadcrumb: ["Home", "Financeiro"],
     action: null,
+    showSearch: true,
   },
 
   "/despesas": {
@@ -107,6 +119,7 @@ const headerConfig = {
     icon: TrendingDown,
     breadcrumb: ["Home", "Financeiro"],
     action: null,
+    showSearch: true,
   },
 
   "/relatorios": {
@@ -114,6 +127,7 @@ const headerConfig = {
     icon: BarChart3,
     breadcrumb: ["Home", "Relatórios"],
     action: null,
+    showSearch: true,
   },
 
   "/usuarios": {
@@ -121,6 +135,7 @@ const headerConfig = {
     icon: UserCog,
     breadcrumb: ["Home", "Administração"],
     action: null,
+    showSearch: true,
   },
 
   "/configuracoes": {
@@ -128,6 +143,7 @@ const headerConfig = {
     icon: Settings,
     breadcrumb: ["Home", "Administração"],
     action: null,
+    showSearch: true,
   },
 };
 

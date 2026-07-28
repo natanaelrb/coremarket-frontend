@@ -67,18 +67,38 @@ export default function Topbar() {
   }
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200 dark:border-white/10 bg-[var(--bg-app)] backdrop-blur">
-      <div className="px-8 py-5">
+    <header className="sticky top-2 z-40 border-b border-slate-200 dark:border-white/10 bg-[var(--bg-app)] backdrop-blur">
+      <div className="px-8 py-2">
 
         {/* Linha superior */}
         <div className="flex justify-between items-center">
+            <div className="flex items-center gap-4">
 
+    {Icon && (
+      <div className="w-12 h-12 rounded-2xl bg-violet-600 flex items-center justify-center text-white">
+        <Icon size={22} />
+      </div>
+    )}
+
+    <div>
+      <h1 className="text-2xl font-bold">
+        {page.title}
+      </h1>
+
+      <div className="flex gap-2 mt-1 text-sm text-slate-500">
+        {page.breadcrumb.map((item, index) => (
+          <span key={item}>
+            {index > 0 && "› "}
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
           <div className="relative">
 
           </div>
-
+          </div>
           <div className="flex items-center gap-3">
-
             <IconButton
               icon={isDark ? Sun : Moon}
               onClick={alternarTema}
@@ -91,7 +111,7 @@ export default function Topbar() {
                 3
               </span>
             </button>
-
+{/* usuario */}
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-violet-600 flex items-center justify-center text-white font-semibold">
                 AD
@@ -115,36 +135,9 @@ export default function Topbar() {
         {/* Linha inferior */}
 
        <div className="mt-6 flex items-center justify-between">
-
-  {/* Esquerda */}
-  <div className="flex items-center gap-4">
-
-    {Icon && (
-      <div className="w-12 h-12 rounded-2xl bg-violet-600 flex items-center justify-center text-white">
-        <Icon size={22} />
-      </div>
-    )}
-
-    <div>
-      <h1 className="text-3xl font-bold">
-        {page.title}
-      </h1>
-
-      <div className="flex gap-2 mt-1 text-sm text-slate-500">
-        {page.breadcrumb.map((item, index) => (
-          <span key={item}>
-            {index > 0 && "› "}
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-
-  </div>
-
   {/* Direita */}
-  <div className="flex items-center gap-3">
-
+{/* <div className="flex items-center justify-end gap-3 w-full">
+{  page.showSearch && (
     <div className="relative">
 
       <Search
@@ -172,10 +165,10 @@ export default function Topbar() {
       />
 
     </div>
-
+)}
     {renderAction()}
 
-  </div>
+  </div> */}
 
 </div>
 
