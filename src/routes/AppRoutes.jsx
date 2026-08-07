@@ -7,6 +7,7 @@ import ContasReceber from "../pages/ContasReceber";
 import Relatorios from "../pages/Relatorios";
 import EmConstrucao from "../pages/EmConstrucao";
 import Clientes from "../pages/Clientes";
+import Fornecedores from "../pages/Fornecedores";
 
 export default function AppRoutes() {
   return (
@@ -22,7 +23,7 @@ export default function AppRoutes() {
       <Route path="/relatorios" element={<Relatorios />} />
 
       {/* Ainda sem backend — placeholders */}
-      <Route path="/fornecedores"   element={<EmConstrucao titulo="Fornecedores" />} />
+      <Route path="/fornecedores"   element={<Fornecedores titulo="Fornecedores" />} />
       <Route path="/estoque"        element={<EmConstrucao titulo="Estoque" />} />
       <Route path="/movimentacoes"  element={<EmConstrucao titulo="Movimentações" />} />
       <Route path="/vendas"         element={<EmConstrucao titulo="Vendas" />} />
