@@ -30,24 +30,24 @@ const headerConfig = {
     title: "Clientes",
     icon: Users,
     breadcrumb: ["Home", "Clientes"],
-    action: "cliente",
-    showSearch: true,
+    action: "null",
+    showSearch: false,
   },
 
   "/produtos": {
     title: "Produtos",
     icon: Package,
     breadcrumb: ["Home", "Produtos"],
-    action: "produto",
-    showSearch: true,
+    action: "null",
+    showSearch: false,
   },
 
   "/fornecedores": {
     title: "Fornecedores",
     icon: Truck,
     breadcrumb: ["Home", "Fornecedores"],
-    action: "fornecedor",
-    showSearch: true,
+    action: "null",
+    showSearch: false,
   },
 
   "/compras": {
