@@ -14,6 +14,8 @@ import usePagination from "../features/clientes/hooks/usePagination";
 import useRowSelection from "../features/clientes/hooks/useRowSelection";
 import useColumnVisibility from "../features/clientes/hooks/useColumnVisibility";
 import useSimulatedLoading from "../features/clientes/hooks/useSimulatedLoading";
+import PageHeader from "../shared/components/PageHeader";
+import TopbarSearch from "../layouts/topbars/components/TopbarSearch";
 
 import {
   StatsGrid,
@@ -92,20 +94,28 @@ export default function ClientesPage() {
   return (
     <div className={isDark ? "dark" : ""}>
       <div className="space-y-5">
-        {/* <PageHeader
+       <PageHeader
           icon={Users}
           title="Clientes"
-          breadcrumb={["Home", "Clientes"]}
+          subtitle="Gerencie sua base de clientes"
           onToggleTheme={alternarTema}
-          action={
-            <PrimaryButton
+          >
+            <div className="flex items-center gap-3">
+              <TopbarSearch
+                value={search}
+                onChange={setSearch}
+                placeholder="Pesquisar clientes..."
+              />
+          
+          <PrimaryButton
               icon={Plus}
               onClick={() => setModalOpen(true)}
             >
               Novo cliente
             </PrimaryButton>
-          }
-        /> */}
+          </div>
+        </PageHeader>
+        
 
         <StatsGrid stats={stats} />
 
