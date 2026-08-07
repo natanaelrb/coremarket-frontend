@@ -4,3 +4,7 @@ export { default as Toast } from "./Toast";
 export { default as IconButton } from "./IconButton";
 export { default as PrimaryButton } from "./PrimaryButton";
 export { default as SecondaryButton } from "./SecondaryButton";
+export { SlideOver, SlideOverCloseButton } from './ui/SlideOver';
+export { Checkbox } from './Checkbox';
+export { Select } from './ui/Select';
+export { Badge } from './ui/Badge';
