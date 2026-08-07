@@ -1,9 +1,12 @@
+import { ChartNoAxesCombined } from "lucide-react";
+
 import { useState, useEffect } from "react";
 import { AlertCircle, LayoutGrid, Sparkles } from "lucide-react";
 import { buscarResumoDashboard } from "../services/dashboardService";
 import PeriodoFiltro from "../components/dashboard/PeriodoFiltro";
 import DashboardV1 from "./dashboard/DashboardV1";
 import DashboardV2 from "./dashboard/DashboardV2";
+import PageHeader from "../shared/components/PageHeader";
 
 const ABAS = [
   { key: "v1", label: "Visão Geral", icon: LayoutGrid },
@@ -38,18 +41,15 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-5">
+      
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-        <div>
-          <h1 className="text-xl font-semibold text-slate-800 dark:text-[var(--sidebar-text)]">
-            Visão geral
-          </h1>
-          <p className="text-xs text-slate-400 dark:text-[var(--sidebar-text)]/40 mt-0.5">
-            Resumo completo do seu negócio
-          </p>
-        </div>
+      <PageHeader
+        icon={ChartNoAxesCombined}
+        title="Visão Geral"
+        subtitle="Resumo completo do seu negócio"
+      >
         <PeriodoFiltro />
-      </div>
+      </PageHeader>
 
       {/* Erro de conexão */}
       {erro && (
