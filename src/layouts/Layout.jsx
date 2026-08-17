@@ -1,15 +1,26 @@
-import Sidebar from "../components/Sidebar";
+import Sidebar from "./Sidebar";
+import Topbar from "./Topbar";
 
-function Layout({ children }) {
+export default function Layout({ children }) {
   return (
-    <div className="min-h-screen bg-[#F5F6FA]">
-      <div className="flex">
-        <Sidebar />
+    <div
+      className="
+        flex
+        h-screen
+        overflow-hidden
+        bg-[var(--bg-app)]
+        text-[var(--text-primary)]
+      "
+    >
+      <Sidebar />
 
-        <main className="flex-1 p-8 min-w-0">{children}</main>
+      <div className="flex flex-1 flex-col overflow-hidden">
+        <Topbar />
+
+        <main className="flex-1 overflow-y-auto px-8 py-8">
+          {children}
+        </main>
       </div>
     </div>
   );
 }
-
-export default Layout;
