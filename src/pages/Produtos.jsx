@@ -1,279 +1,117 @@
-import { useEffect, useState } from "react";
+// Página de Produtos.
+// Responsabilidade única deste arquivo: orquestrar hooks e RENDERIZAR componentes.
+// Nenhuma regra de negócio, formatação ou estilo vive aqui — tudo fica nas camadas
+// hooks/ utils/ constants/ mocks/ e nos componentes de components/.
+import { PageHeader } from '../features/produtos/components/Toolbar';
+import { KpiCards } from '../features/produtos/components/KpiCards';
+import { FilterBar } from '../features/produtos/components/FilterBar';
+import { ProductsTable } from '../features/produtos/components/ProductsTable';
+import { ProductDetailPanel } from '../features/produtos/components/ProductDetailPanel';
+import { WidgetsSection } from '../features/produtos/components/Widgets';
+import { ToastContainer } from "../shared/components/Toast/ToastContainer";
 
-import {
-  listarProdutos,
-  cadastrarProduto,
-  excluirProduto,
-  atualizarProduto,
-} from "../services/produtoService";
+import { useProdutos } from '../features/produtos/hooks/useProdutos';
+import { useProdutoFilters } from '../features/produtos/hooks/useProdutoFilters';
+import { useSortableData } from '../features/produtos/hooks/useSortableData';
+import { usePagination } from '../features/produtos/hooks/usePagination';
+import { useProdutoSelection } from '../features/produtos/hooks/useProdutoSelection';
+import { useProdutoDetail } from '../features/produtos/hooks/useProdutoDetail';
+import { useProdutoKpis } from '../features/produtos/hooks/useProdutoKpis';
+import { useWidgetsData } from '../features/produtos/hooks/useWidgetsData';
+import { useColumnVisibility } from '../features/produtos/hooks/useColumnVisibility';
+import { useBulkActions } from '../features/produtos/hooks/useBulkActions';
+import { useToast } from '../features/produtos/hooks/useToast';
 
 export default function Produtos() {
-  const [produtos, setProdutos] = useState([]);
+  const { produtos, isLoading, refetch } = useProdutos();
+  const kpis = useProdutoKpis(produtos);
+  const widgetsData = useWidgetsData(produtos, kpis);
+  const { toasts, showToast, dismissToast } = useToast();
 
-  const [produtoEditando, setProdutoEditando] = useState(null);
+  const {
+    filters,
+    setFilter,
+    clearFilters,
+    activeFiltersCount,
+    filteredProdutos,
+    isAdvancedOpen,
+    setIsAdvancedOpen,
+  } = useProdutoFilters(produtos);
 
-  const [mostrarFormulario, setMostrarFormulario] = useState(false);
+  const { sortedItems, sortConfig, requestSort } = useSortableData(filteredProdutos, 'codigo');
+  const pagination = usePagination(sortedItems);
+  const selection = useProdutoSelection(pagination.paginatedItems);
+  const columnVisibility = useColumnVisibility();
+  const detail = useProdutoDetail();
 
-  const [novoProduto, setNovoProduto] = useState({
-    nome: "",
-    descricao: "",
-    preco: "",
-    quantidadeEstoque: "",
+  const bulkActions = useBulkActions({
+    selectedIds: selection.selectedIds,
+    clearSelection: selection.clearSelection,
+    onCompleted: (action, ids) => showToast(`Ação "${action}" aplicada a ${ids.length} produto(s).`, 'success'),
   });
 
-  async function carregarProdutos() {
-    try {
-      const dados = await listarProdutos();
-      setProdutos(dados);
-    } catch (erro) {
-      console.error("Erro ao carregar produtos:", erro);
-    }
-  }
-
-  useEffect(() => {
-    carregarProdutos();
-  }, []);
-
-  async function salvarProduto() {
-    try {
-      const dadosProduto = {
-        ...novoProduto,
-        preco: Number(novoProduto.preco),
-        quantidadeEstoque: Number(novoProduto.quantidadeEstoque),
-      };
-
-      if (produtoEditando) {
-        await atualizarProduto(produtoEditando.id, dadosProduto);
-      } else {
-        await cadastrarProduto(dadosProduto);
-      }
-
-      setNovoProduto({
-        nome: "",
-        descricao: "",
-        preco: "",
-        quantidadeEstoque: "",
-      });
-
-      setProdutoEditando(null);
-
-      setMostrarFormulario(false);
-
-      carregarProdutos();
-    } catch (erro) {
-      console.error("Erro ao salvar produto:", erro);
-    }
-  }
-
-  async function removerProduto(id) {
-    const confirmar = window.confirm("Deseja realmente excluir este produto?");
-
-    if (!confirmar) {
-      return;
-    }
-
-    try {
-      await excluirProduto(id);
-
-      carregarProdutos();
-    } catch (erro) {
-      console.error("Erro ao excluir produto:", erro);
-    }
-  }
-
-  function editarProduto(produto) {
-    setProdutoEditando(produto);
-
-    setNovoProduto({
-      nome: produto.nome,
-      descricao: produto.descricao,
-      preco: produto.preco,
-      quantidadeEstoque: produto.quantidadeEstoque,
-    });
-
-    setMostrarFormulario(true);
-  }
+  const rowActions = {
+    onEdit: (p) => showToast(`Editar ${p.nome} (conectar ao formulário real).`, 'info'),
+    onDuplicate: (p) => showToast(`${p.nome} duplicado.`, 'success'),
+    onGenerateBarcode: (p) => showToast(`Código de barras gerado para ${p.nome}.`, 'success'),
+    onPrintLabel: (p) => showToast(`Etiqueta enviada para impressão: ${p.nome}.`, 'success'),
+    onDelete: (p) => showToast(`${p.nome} removido.`, 'error'),
+  };
 
   return (
-    <div>
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-800">Produtos</h1>
+    <div className="flex flex-col gap-5">
+      <PageHeader
+        onImport={() => showToast('Importação de produtos iniciada.', 'info')}
+        onExport={() => showToast('Exportando produtos...', 'info')}
+        onPrint={() => window.print()}
+        onRefresh={refetch}
+        onNovoProduto={() => showToast('Abrir formulário de novo produto.', 'info')}
+        isRefreshing={isLoading}
+      />
 
-          <p className="text-gray-500 mt-1">Gerencie seu estoque</p>
-        </div>
+      <KpiCards kpis={kpis} />
 
-        <button
-          onClick={() => setMostrarFormulario(!mostrarFormulario)}
-          className="
-            bg-purple-600
-            hover:bg-purple-700
-            text-white
-            px-5
-            py-3
-            rounded-xl
-            font-medium
-          "
-        >
-          Novo Produto
-        </button>
-      </div>
+      <FilterBar
+        filters={filters}
+        setFilter={setFilter}
+        clearFilters={clearFilters}
+        activeFiltersCount={activeFiltersCount}
+        isAdvancedOpen={isAdvancedOpen}
+        setIsAdvancedOpen={setIsAdvancedOpen}
+      />
 
-      {mostrarFormulario && (
-        <div
-          className="
-            bg-white
-            p-6
-            rounded-3xl
-            shadow-sm
-            mb-8
-          "
-        >
-          <h2 className="text-xl font-bold mb-4">
-            {produtoEditando ? "Editar Produto" : "Cadastrar Produto"}
-          </h2>
+      <ProductsTable
+        isLoading={isLoading}
+        paginatedProdutos={pagination.paginatedItems}
+        totalFiltered={sortedItems.length}
+        selection={selection}
+        columnVisibility={columnVisibility}
+        sorting={{ sortConfig, requestSort }}
+        pagination={pagination}
+        onOpenDetail={detail.openDetail}
+        onRunBulkAction={bulkActions.runAction}
+        onToggleMoreFilters={() => setIsAdvancedOpen(!isAdvancedOpen)}
+        rowActions={rowActions}
+        onClearFilters={clearFilters}
+      />
 
-          <div className="grid gap-4">
-            <input
-              type="text"
-              placeholder="Nome"
-              value={novoProduto.nome}
-              onChange={(e) =>
-                setNovoProduto({
-                  ...novoProduto,
-                  nome: e.target.value,
-                })
-              }
-              className="border p-3 rounded-xl"
-            />
+      <WidgetsSection
+        widgetsData={widgetsData}
+        onVerTodosVencimento={() => showToast('Abrir relatório completo de vencimentos.', 'info')}
+        onVerTodosVencidos={() => showToast('Abrir relatório completo de lotes vencidos.', 'info')}
+        onVerRelatorioEstoque={() => showToast('Abrir relatório completo de estoque.', 'info')}
+      />
 
-            <input
-              type="text"
-              placeholder="Descrição"
-              value={novoProduto.descricao}
-              onChange={(e) =>
-                setNovoProduto({
-                  ...novoProduto,
-                  descricao: e.target.value,
-                })
-              }
-              className="border p-3 rounded-xl"
-            />
+      <ProductDetailPanel
+        isOpen={detail.isOpen}
+        produto={detail.produtoSelecionado}
+        activeTab={detail.activeTab}
+        setActiveTab={detail.setActiveTab}
+        onClose={detail.closeDetail}
+        onQuickAction={(action) => showToast(`Ação rápida: ${action}`, 'info')}
+      />
 
-            <input
-              type="number"
-              placeholder="Preço"
-              value={novoProduto.preco}
-              onChange={(e) =>
-                setNovoProduto({
-                  ...novoProduto,
-                  preco: e.target.value,
-                })
-              }
-              className="border p-3 rounded-xl"
-            />
-
-            <input
-              type="number"
-              placeholder="Quantidade em estoque"
-              value={novoProduto.quantidadeEstoque}
-              onChange={(e) =>
-                setNovoProduto({
-                  ...novoProduto,
-                  quantidadeEstoque: e.target.value,
-                })
-              }
-              className="border p-3 rounded-xl"
-            />
-
-            <button
-              onClick={salvarProduto}
-              className="
-                bg-green-600
-                hover:bg-green-700
-                text-white
-                p-3
-                rounded-xl
-              "
-            >
-              {produtoEditando ? "Atualizar Produto" : "Salvar Produto"}
-            </button>
-          </div>
-        </div>
-      )}
-
-      <div
-        className="
-          grid
-          grid-cols-1
-          md:grid-cols-2
-          xl:grid-cols-3
-          gap-6
-        "
-      >
-        {produtos.map((produto) => (
-          <div
-            key={produto.id}
-            className="
-              bg-white
-              rounded-3xl
-              p-6
-              shadow-sm
-              border
-              border-gray-100
-            "
-          >
-            <h3 className="text-xl font-bold text-gray-800">{produto.nome}</h3>
-
-            <p className="text-gray-500 mt-2">{produto.descricao}</p>
-
-            <div className="mt-4">
-              <p className="text-sm text-gray-500">Preço</p>
-
-              <p className="text-2xl font-bold text-green-600">
-                R$ {produto.preco}
-              </p>
-            </div>
-
-            <div className="mt-4">
-              <p className="text-sm text-gray-500">Estoque</p>
-
-              <p className="font-semibold">{produto.quantidadeEstoque}</p>
-            </div>
-
-            <div className="mt-6">
-              <button
-                onClick={() => editarProduto(produto)}
-                className="
-                    w-full
-                    bg-blue-600
-                    hover:bg-blue-700
-                    text-white
-                    py-2
-                    rounded-xl
-                    mb-2
-                    "
-              >
-                Editar
-              </button>
-
-              <button
-                onClick={() => removerProduto(produto.id)}
-                className="
-                    w-full
-                    bg-red-600
-                    hover:bg-red-700
-                    text-white
-                    py-2
-                    rounded-xl
-                    "
-              >
-                Excluir
-              </button>
-            </div>
-          </div>
-        ))}
-      </div>
+      <ToastContainer toasts={toasts} onDismiss={dismissToast} />
     </div>
   );
 }
