@@ -1,0 +1,39 @@
+/* Animações compartilhadas — importar uma única vez na raiz da aplicação */
+
+@keyframes cmFadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes cmPop {
+  from { opacity: 0; transform: scale(0.96) translateY(-4px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes cmModal {
+  from { opacity: 0; transform: scale(0.95) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes cmBackdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes cmToast {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes cmRow {
+  from { opacity: 0; transform: translateX(-6px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes cmFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.cm-fade-up { animation: cmFadeUp .5s cubic-bezier(.16,1,.3,1) both; }
+.cm-pop { animation: cmPop .16s cubic-bezier(.16,1,.3,1) both; }
+.cm-modal { animation: cmModal .22s cubic-bezier(.16,1,.3,1) both; }
+.cm-backdrop { animation: cmBackdrop .18s ease both; }
+.cm-toast { animation: cmToast .25s cubic-bezier(.16,1,.3,1) both; }
+.cm-row { animation: cmRow .35s cubic-bezier(.16,1,.3,1) both; }
+.cm-float { animation: cmFloat 3s ease-in-out infinite; }
+.cm-panel { display: grid; transition: grid-template-rows .28s cubic-bezier(.16,1,.3,1); }

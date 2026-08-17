@@ -1,0 +1,53 @@
+:root {
+  /* Fundo */
+  --bg-app: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+
+  /* Texto */
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+
+  /* Borda */
+  --border-color: #e2e8f0;
+
+  /* Sidebar */
+  --sidebar-bg: #ffffff;
+  --sidebar-text: #334155;
+}
+
+.dark {
+  /* Fundo */
+  --bg-app: #0A0D1F;
+  --bg-surface: #12162C;
+  --bg-card: #181C34;
+
+  /* Texto */
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+
+  /* Borda */
+  --border-color: rgba(255,255,255,.08);
+
+  /* Sidebar */
+  --sidebar-bg: #12162C;
+  --sidebar-text: rgba(255,255,255,.85);
+}
+
+:root {
+
+  --sidebar-bg: #ffffff;
+  --sidebar-text: #334155;
+  --sidebar-text-muted: #64748b;
+  --sidebar-hover: #f1f5f9;
+  --sidebar-border: #e2e8f0;
+}
+
+.dark {
+    
+  --sidebar-bg: #12162C;
+  --sidebar-text: rgba(255,255,255,.90);
+  --sidebar-text-muted: rgba(255,255,255,.45);
+  --sidebar-hover: rgba(255,255,255,.06);
+  --sidebar-border: rgba(255,255,255,.08);
+}
