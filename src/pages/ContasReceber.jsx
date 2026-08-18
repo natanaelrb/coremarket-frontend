@@ -1,225 +1,283 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import {
+  Wallet,
+  AlertTriangle,
+  Clock,
+  Search,
+  RefreshCw,
+  CheckCircle2,
+  TrendingDown,
+} from "lucide-react";
 import { buscarComprasPendentes } from "../services/compraService";
-import { registrarPagamento } from "../services/pagamentoService";
+import ContasTable from "../components/contas/ContasTable";
+import PagamentoModal from "../components/contas/PagamentoModal";
+import StatsCard from "../components/dashboard/StatsCard";
+import Toast from "../components/ui/Toast";
+import Button from "../components/ui/Button";
+import Input from "../components/ui/Input";
 
-import { Wallet, AlertCircle, Clock3 } from "lucide-react";
+function formatMoeda(valor) {
+  return Number(valor || 0).toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+}
+
+function isVencida(dataVencimento) {
+  if (!dataVencimento) return false;
+  return new Date(dataVencimento) < new Date();
+}
+
+const FILTROS = [
+  { key: "todos", label: "Todas" },
+  { key: "PENDENTE", label: "Pendentes" },
+  { key: "PARCIAL", label: "Parciais" },
+  { key: "vencidas", label: "Vencidas" },
+];
 
 export default function ContasReceber() {
   const [compras, setCompras] = useState([]);
-  const [modalAberto, setModalAberto] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [pesquisa, setPesquisa] = useState("");
+  const [filtro, setFiltro] = useState("todos");
   const [compraSelecionada, setCompraSelecionada] = useState(null);
-  const [valorPagamento, setValorPagamento] = useState("");
+  const [toast, setToast] = useState(null);
+  const [toastTimer, setToastTimer] = useState(null);
 
-  async function carregarPendencias() {
+  function showToast(mensagem, tipo = "sucesso") {
+    if (toastTimer) clearTimeout(toastTimer);
+    setToast({ mensagem, tipo });
+    const t = setTimeout(() => setToast(null), 3500);
+    setToastTimer(t);
+  }
+
+  const carregarPendencias = useCallback(async () => {
+    setLoading(true);
     try {
       const dados = await buscarComprasPendentes();
-      setCompras(dados);
-    } catch (erro) {
-      console.error("Erro ao carregar pendências:", erro);
+      setCompras(Array.isArray(dados) ? dados : []);
+    } catch {
+      showToast("Erro ao carregar contas a receber.", "erro");
+    } finally {
+      setLoading(false);
     }
-  }
+  }, []);
 
   useEffect(() => {
     carregarPendencias();
-  }, []);
-
-  async function salvarPagamento() {
-    try {
-      await registrarPagamento({
-        compraId: compraSelecionada.id,
-        clienteId: 1,
-        empresaId: 1,
-        valorPago: Number(valorPagamento),
-        observacao: "Pagamento realizado pelo sistema",
-      });
-
-      await carregarPendencias();
-
-      alert("Pagamento registrado!");
-
-      setModalAberto(false);
-      setValorPagamento("");
-    } catch (erro) {
-      console.error(erro);
-
-      alert("Erro ao registrar pagamento");
-    }
-  }
+  }, [carregarPendencias]);
 
   const totalDevedor = compras.reduce(
-    (total, compra) => total + Number(compra.saldoDevedor),
+    (acc, c) => acc + Number(c.saldoDevedor || 0),
     0,
   );
-
   const totalPendentes = compras.filter(
-    (compra) => compra.statusPagamento === "PENDENTE",
+    (c) => c.statusPagamento === "PENDENTE",
   ).length;
-
   const totalParciais = compras.filter(
-    (compra) => compra.statusPagamento === "PARCIAL",
+    (c) => c.statusPagamento === "PARCIAL",
   ).length;
+  const vencidas = compras.filter((c) => isVencida(c.dataVencimento));
 
-  const formatarMoeda = (valor) => {
-    return Number(valor).toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
+  const maiorDevedor = compras.reduce(
+    (max, c) =>
+      Number(c.saldoDevedor || 0) > Number(max?.saldoDevedor || 0) ? c : max,
+    null,
+  );
+
+  const contasFiltradas = compras
+    .filter((c) => {
+      const nome = c.nomeCliente || c.cliente?.nome || "";
+      return nome.toLowerCase().includes(pesquisa.toLowerCase());
+    })
+    .filter((c) => {
+      if (filtro === "PENDENTE") return c.statusPagamento === "PENDENTE";
+      if (filtro === "PARCIAL") return c.statusPagamento === "PARCIAL";
+      if (filtro === "vencidas") return isVencida(c.dataVencimento);
+      return true;
     });
-  };
-
-  const formatarData = (data) => {
-    return new Date(data).toLocaleDateString("pt-BR");
-  };
-
-  function abrirModal(compra) {
-    setCompraSelecionada(compra);
-    setModalAberto(true);
-  }
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-gray-800">Contas a Receber</h1>
-
-      <p className="text-gray-500 mt-1 mb-8">
-        Gerencie os clientes com pagamentos pendentes
-      </p>
-
-      {/* Cards Resumo */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-        <div className="bg-white rounded-2xl p-6 shadow-sm">
-          <div className="flex justify-between items-center">
-            <div>
-              <h3 className="text-gray-500 text-sm">Total Devedor</h3>
-
-              <p className="text-3xl font-bold text-red-600 mt-2">
-                {formatarMoeda(totalDevedor)}
-              </p>
-            </div>
-
-            <Wallet size={40} className="text-red-500" />
+    <div className="space-y-5">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 bg-violet-50 dark:bg-violet-500/15 rounded-xl flex items-center justify-center">
+            <Wallet
+              size={18}
+              className="text-violet-600 dark:text-violet-400"
+            />
+          </div>
+          <div>
+            <h1 className="text-xl font-semibold text-slate-800 dark:text-[var(--sidebar-text)]">
+              Contas a Receber
+            </h1>
+            <p className="text-xs text-slate-400 dark:text-[var(--sidebar-text)]/40">
+              {loading
+                ? "Carregando..."
+                : `${compras.length} conta${compras.length !== 1 ? "s" : ""} em aberto`}
+            </p>
           </div>
         </div>
-
-        <div className="bg-white rounded-2xl p-6 shadow-sm">
-          <div className="flex justify-between items-center">
-            <div>
-              <h3 className="text-gray-500 text-sm">Pendentes</h3>
-
-              <p className="text-3xl font-bold text-red-600 mt-2">
-                {totalPendentes}
-              </p>
-            </div>
-
-            <AlertCircle size={40} className="text-red-500" />
-          </div>
-        </div>
-
-        <div className="bg-white rounded-2xl p-6 shadow-sm">
-          <div className="flex justify-between items-center">
-            <div>
-              <h3 className="text-gray-500 text-sm">Parciais</h3>
-
-              <p className="text-3xl font-bold text-yellow-500 mt-2">
-                {totalParciais}
-              </p>
-            </div>
-
-            <Clock3 size={40} className="text-yellow-500" />
-          </div>
+        <div className="flex items-center gap-2">
+          <Input
+            placeholder="Buscar cliente..."
+            value={pesquisa}
+            onChange={(e) => setPesquisa(e.target.value)}
+            leftIcon={<Search size={14} />}
+            className="w-52"
+          />
+          <Button
+            variant="outline"
+            onClick={carregarPendencias}
+            disabled={loading}
+          >
+            <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
+          </Button>
         </div>
       </div>
 
-      {/* Lista de Devedores */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {compras.map((compra) => (
-          <div
-            key={compra.id}
-            className="bg-white rounded-3xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
-          >
-            <div className="flex justify-between items-start mb-4">
-              <div>
-                <h3 className="text-lg font-bold text-gray-800">
-                  {compra.nomeCliente}
-                </h3>
+      <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
+        <StatsCard
+          title="Total a receber"
+          value={formatMoeda(totalDevedor)}
+          change="saldo devedor total"
+          trend={totalDevedor > 0 ? "down" : "up"}
+          color="red"
+          icon={<TrendingDown size={16} />}
+        />
+        <StatsCard
+          title="Pendentes"
+          value={totalPendentes}
+          change="aguardando pagamento"
+          trend={totalPendentes > 0 ? "down" : "up"}
+          color="amber"
+          icon={<AlertTriangle size={16} />}
+        />
+        <StatsCard
+          title="Parciais"
+          value={totalParciais}
+          change="pagamento incompleto"
+          trend={totalParciais > 0 ? "neutral" : "up"}
+          color="blue"
+          icon={<Clock size={16} />}
+        />
+        <StatsCard
+          title="Vencidas"
+          value={vencidas.length}
+          change={vencidas.length > 0 ? "requer atenção" : "nenhuma vencida"}
+          trend={vencidas.length > 0 ? "down" : "up"}
+          color={vencidas.length > 0 ? "red" : "green"}
+          icon={<CheckCircle2 size={16} />}
+        />
+      </div>
 
-                <p className="text-sm text-gray-500">
-                  Cliente com débito ativo
-                </p>
-              </div>
-
-              <span
-                className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                  compra.statusPagamento === "PARCIAL"
-                    ? "bg-yellow-100 text-yellow-700"
-                    : "bg-red-100 text-red-700"
-                }`}
+      {vencidas.length > 0 && !loading && (
+        <div className="bg-white dark:bg-surface-dark rounded-xl border border-slate-100 dark:border-white/8 p-4 space-y-3">
+          <p className="text-xs font-semibold text-slate-500 dark:text-[var(--sidebar-text)]/45 uppercase tracking-wide flex items-center gap-1.5">
+            <AlertTriangle size={13} className="text-red-500" />
+            Contas vencidas — requerem atenção imediata
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            {vencidas.map((c) => (
+              <div
+                key={c.id}
+                className="flex items-center justify-between px-3 py-2 bg-red-50 dark:bg-red-500/10 border border-red-100 dark:border-red-500/20 rounded-lg"
               >
-                {compra.statusPagamento}
-              </span>
-            </div>
-
-            <div className="space-y-4">
-              <div>
-                <p className="text-sm text-gray-500">Saldo Devedor</p>
-
-                <p className="text-3xl font-bold text-red-600">
-                  {formatarMoeda(compra.saldoDevedor)}
-                </p>
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                  <span className="text-sm text-red-800 dark:text-red-300 font-medium">
+                    {c.nomeCliente || c.cliente?.nome}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-red-600 dark:text-red-400 font-semibold">
+                    {formatMoeda(c.saldoDevedor)}
+                  </span>
+                  <button
+                    onClick={() => setCompraSelecionada(c)}
+                    className="text-[11px] px-2 py-0.5 bg-red-600 text-[var(--sidebar-text)] rounded-md hover:bg-red-700 transition"
+                  >
+                    Pagar
+                  </button>
+                </div>
               </div>
-
-              <div>
-                <p className="text-sm text-gray-500">Vencimento</p>
-
-                <p className="font-medium text-gray-800">
-                  {formatarData(compra.dataVencimento)}
-                </p>
-              </div>
-            </div>
-
-            <button
-              onClick={() => abrirModal(compra)}
-              className="w-full mt-6 bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-medium transition"
-            >
-              Registrar Pagamento
-            </button>
+            ))}
           </div>
+        </div>
+      )}
+
+      {maiorDevedor && !loading && compras.length > 1 && (
+        <div className="flex items-center justify-between bg-amber-50 dark:bg-amber-500/10 border border-amber-100 dark:border-amber-500/20 rounded-xl px-5 py-3.5">
+          <div className="flex items-center gap-2.5">
+            <AlertTriangle
+              size={15}
+              className="text-amber-600 dark:text-amber-400 flex-shrink-0"
+            />
+            <p className="text-sm text-amber-800 dark:text-amber-300">
+              Maior devedor:{" "}
+              <strong>
+                {maiorDevedor.nomeCliente || maiorDevedor.cliente?.nome}
+              </strong>
+              {" — "}
+              {formatMoeda(maiorDevedor.saldoDevedor)}
+            </p>
+          </div>
+          <button
+            onClick={() => setCompraSelecionada(maiorDevedor)}
+            className="text-xs font-medium text-amber-700 dark:text-amber-400 underline hover:text-amber-900 dark:hover:text-amber-200 transition flex-shrink-0"
+          >
+            Registrar pagamento
+          </button>
+        </div>
+      )}
+
+      <div className="flex items-center gap-2 flex-wrap">
+        {FILTROS.map((f) => (
+          <button
+            key={f.key}
+            onClick={() => setFiltro(f.key)}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition ${
+              filtro === f.key
+                ? "bg-violet-600 text-[var(--sidebar-text)] border-violet-600"
+                : "bg-white dark:bg-white/5 text-slate-500 dark:text-[var(--sidebar-text)]/45 border-slate-200 dark:border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20"
+            }`}
+          >
+            {f.label}
+            {f.key === "vencidas" && vencidas.length > 0 && (
+              <span className="ml-1.5 bg-red-500/20 text-red-700 dark:text-red-300 px-1 rounded">
+                {vencidas.length}
+              </span>
+            )}
+            {f.key === "PENDENTE" && totalPendentes > 0 && (
+              <span className="ml-1.5 bg-amber-500/20 text-amber-700 dark:text-amber-300 px-1 rounded">
+                {totalPendentes}
+              </span>
+            )}
+          </button>
         ))}
       </div>
 
-      {modalAberto && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-6 w-96">
-            <h2 className="text-xl font-bold mb-4">Registrar Pagamento</h2>
+      <div className="overflow-x-auto">
+        <ContasTable
+          compras={contasFiltradas}
+          onPagar={(c) => setCompraSelecionada(c)}
+          loading={loading}
+        />
+      </div>
 
-            <p className="mb-2">
-              Cliente:
-              <strong> {compraSelecionada?.nomeCliente}</strong>
-            </p>
+      <PagamentoModal
+        compra={compraSelecionada}
+        fechar={() => setCompraSelecionada(null)}
+        atualizarLista={carregarPendencias}
+        setToast={({ mensagem, tipo }) => showToast(mensagem, tipo)}
+      />
 
-            <input
-              type="number"
-              placeholder="Valor pago"
-              value={valorPagamento}
-              onChange={(e) => setValorPagamento(e.target.value)}
-              className="w-full border rounded-xl p-3 mb-4"
-            />
-
-            <div className="flex gap-3">
-              <button
-                onClick={() => setModalAberto(false)}
-                className="flex-1 bg-gray-200 py-2 rounded-xl"
-              >
-                Cancelar
-              </button>
-
-              <button
-                onClick={salvarPagamento}
-                className="flex-1 bg-purple-600 text-white py-2 rounded-xl"
-              >
-                Salvar
-              </button>
-            </div>
-          </div>
-        </div>
+      {toast && (
+        <Toast
+          mensagem={toast.mensagem}
+          tipo={toast.tipo}
+          onClose={() => setToast(null)}
+        />
       )}
     </div>
   );
