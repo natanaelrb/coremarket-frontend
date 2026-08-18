@@ -1,9 +1,17 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:8080";
-
 export async function buscarResumoDashboard() {
-  const resposta = await axios.get(`${API_URL}/dashboard/resumo`);
+  return {
+    faturamentoTotal: 125000,
+    totalClientes: 84,
+    totalProdutos: 312,
+    totalVendas: 587,
 
-  return resposta.data;
+    vendasPorMes: [
+      { mes: "Jan", valor: 12000 },
+      { mes: "Fev", valor: 15000 },
+      { mes: "Mar", valor: 18000 },
+      { mes: "Abr", valor: 22000 },
+      { mes: "Mai", valor: 28000 },
+      { mes: "Jun", valor: 30000 }
+    ]
+  };
 }

@@ -1,28 +1,42 @@
-import axios from "axios";
-
-const API_URL = "http://localhost:8080/produtos";
+const produtos = [
+  {
+    id: 1,
+    nome: "Arroz 5kg",
+    categoria: "Alimentos",
+    estoque: 50,
+    precoVenda: 32.90
+  },
+  {
+    id: 2,
+    nome: "Feijão 1kg",
+    categoria: "Alimentos",
+    estoque: 80,
+    precoVenda: 8.50
+  },
+  {
+    id: 3,
+    nome: "Refrigerante 2L",
+    categoria: "Bebidas",
+    estoque: 40,
+    precoVenda: 9.99
+  }
+];
 
 export async function listarProdutos() {
-  const resposta = await axios.get(API_URL);
-  return resposta.data;
-}
-
-export async function buscarProduto(id) {
-  const resposta = await axios.get(`${API_URL}/${id}`);
-  return resposta.data;
+  return produtos;
 }
 
 export async function cadastrarProduto(produto) {
-  const resposta = await axios.post(API_URL, produto);
-  return resposta.data;
+  console.log("Produto cadastrado:", produto);
+  return produto;
 }
 
 export async function atualizarProduto(id, produto) {
-  const resposta = await axios.put(`${API_URL}/${id}`, produto);
-
-  return resposta.data;
+  console.log("Produto atualizado:", id, produto);
+  return produto;
 }
 
 export async function excluirProduto(id) {
-  await axios.delete(`${API_URL}/${id}`);
+  console.log("Produto removido:", id);
+  return true;
 }

@@ -1,9 +1,11 @@
-import axios from "axios";
+export async function registrarPagamento(idCompra, valor) {
+  console.log("Pagamento registrado:", {
+    idCompra,
+    valor
+  });
 
-const API_URL = "http://localhost:8080";
-
-export async function registrarPagamento(dados) {
-  const response = await axios.post(`${API_URL}/pagamentos`, dados);
-
-  return response.data;
+  return {
+    sucesso: true,
+    mensagem: "Pagamento registrado com sucesso"
+  };
 }
