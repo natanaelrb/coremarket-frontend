@@ -1,12 +1,14 @@
 // Menu "Ordenar": atalho para ordenar rapidamente por colunas comuns.
-import { ArrowUpDown, ChevronDown } from 'lucide-react';
-import Dropdown, { DropdownItem } from "../../../../shared/components/Dropdown";
+import { ArrowUpDown, ChevronDown } from "lucide-react";
+import Dropdown, {
+  DropdownItem,
+} from "../../../../shared/components/ui/Dropdown";
 
 const SORT_SHORTCUTS = [
-  { key: 'nome', label: 'Nome (A-Z)' },
-  { key: 'precoVenda', label: 'Preço (menor-maior)' },
-  { key: 'estoque', label: 'Estoque (menor-maior)' },
-  { key: 'validade', label: 'Validade (mais próxima)' },
+  { key: "nome", label: "Nome (A-Z)" },
+  { key: "precoVenda", label: "Preço (menor-maior)" },
+  { key: "estoque", label: "Estoque (menor-maior)" },
+  { key: "validade", label: "Validade (mais próxima)" },
 ];
 
 export function SortMenu({ requestSort }) {
