@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { Columns3 } from "lucide-react";
 import useClickOutside from "../../../../shared/hooks/useClickOutside";
-import SecondaryButton from "../../../../shared/components/SecondaryButton";
+import SecondaryButton from "../../../../shared/components/actions/SecondaryButton";
 import { COLUMN_DEFS } from "../../constants/columns";
 
 export default function ColumnsMenu({ visibleCols, onToggleColumn }) {

@@ -1,15 +1,10 @@
 import { Eye, Pencil, Trash2 } from "lucide-react";
-import IconButton from "../../../../shared/components/IconButton";
+import IconButton from "../../../../shared/components/actions/IconButton";
 
-export default function RowActions({
-  cliente,
-  onView,
-  onEdit,
-  onDelete,
-}) {
+export default function RowActions({ cliente, onView, onEdit, onDelete }) {
   return (
     <div
-  className="
+      className="
     flex
     items-center
     justify-end
@@ -24,7 +19,7 @@ export default function RowActions({
     transition-all
     duration-300
   "
->
+    >
       <IconButton
         icon={Eye}
         title="Visualizar"
@@ -45,7 +40,6 @@ export default function RowActions({
         color="red"
         onClick={() => onDelete(cliente)}
       />
-
     </div>
   );
 }

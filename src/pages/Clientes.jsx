@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 import { Users, Plus } from "lucide-react";
-import PrimaryButton from "../shared/components/PrimaryButton";
+import PrimaryButton from "../shared/components/actions/PrimaryButton";
 
-import { useTheme } from "../contexts/ThemeContext";
+import { useTheme } from "../shared/contexts/ThemeContext";
 import useToast from "../shared/hooks/useToast";
-import Toast from "../shared/components/Toast";
+import Toast from "../shared/components/feedback/Toast";
 
 import useClientes from "../features/clientes/hooks/useClientes";
 import useClientesFilters from "../features/clientes/hooks/useClientesFilters";
@@ -14,7 +14,7 @@ import usePagination from "../features/clientes/hooks/usePagination";
 import useRowSelection from "../features/clientes/hooks/useRowSelection";
 import useColumnVisibility from "../features/clientes/hooks/useColumnVisibility";
 import useSimulatedLoading from "../features/clientes/hooks/useSimulatedLoading";
-import PageHeader from "../shared/components/PageHeader";
+import PageHeader from "../shared/components/layout/PageHeader";
 import TopbarSearch from "../layouts/topbars/components/TopbarSearch";
 
 import {
@@ -29,7 +29,7 @@ import "../shared/styles/animations.css";
 export default function ClientesPage() {
   const { tema, alternarTema } = useTheme();
   const isDark = tema === "dark";
-  
+
   const { toast, showToast } = useToast();
   const loading = useSimulatedLoading();
 
@@ -94,28 +94,24 @@ export default function ClientesPage() {
   return (
     <div className={isDark ? "dark" : ""}>
       <div className="space-y-5">
-       <PageHeader
+        <PageHeader
           icon={Users}
           title="Clientes"
           subtitle="Gerencie sua base de clientes"
           onToggleTheme={alternarTema}
-          >
-            <div className="flex items-center gap-3">
-              <TopbarSearch
-                value={search}
-                onChange={setSearch}
-                placeholder="Pesquisar clientes..."
-              />
-          
-          <PrimaryButton
-              icon={Plus}
-              onClick={() => setModalOpen(true)}
-            >
+        >
+          <div className="flex items-center gap-3">
+            <TopbarSearch
+              value={search}
+              onChange={setSearch}
+              placeholder="Pesquisar clientes..."
+            />
+
+            <PrimaryButton icon={Plus} onClick={() => setModalOpen(true)}>
               Novo cliente
             </PrimaryButton>
           </div>
         </PageHeader>
-        
 
         <StatsGrid stats={stats} />
 
