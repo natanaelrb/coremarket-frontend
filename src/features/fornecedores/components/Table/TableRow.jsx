@@ -1,8 +1,12 @@
-import { MessageCircle } from 'lucide-react'
-import InitialsAvatar from '../../../../shared/components/InitialsAvatar.jsx'
-import StatusBadge from './StatusBadge.jsx'
-import RowActionsMenu from './RowActionsMenu.jsx'
-import { formatCurrency, formatDate, formatRelativeDays } from '../../../../shared/utils/formatters.js'
+import { MessageCircle } from "lucide-react";
+import InitialsAvatar from "../../../../shared/components/data-display/InitialsAvatar.jsx";
+import StatusBadge from "./StatusBadge.jsx";
+import RowActionsMenu from "./RowActionsMenu.jsx";
+import {
+  formatCurrency,
+  formatDate,
+  formatRelativeDays,
+} from "../../../../shared/utils/formatters.js";
 
 export default function TableRow({
   fornecedor,
@@ -17,8 +21,8 @@ export default function TableRow({
       onClick={onClick}
       className={`row-hover animate-fade-in-up stagger-${Math.min(delayIndex + 1, 6)} cursor-pointer border-b border-gray-50 last:border-0 dark:border-[#181c3a] ${
         isActive
-          ? 'bg-violet-50/70 dark:bg-violet-500/10'
-          : 'hover:bg-gray-50 dark:hover:bg-[#181c3a]'
+          ? "bg-violet-50/70 dark:bg-violet-500/10"
+          : "hover:bg-gray-50 dark:hover:bg-[#181c3a]"
       }`}
     >
       <td className="py-3 pl-4" onClick={(e) => e.stopPropagation()}>
@@ -55,7 +59,9 @@ export default function TableRow({
       <td className="whitespace-nowrap px-3 py-3 text-sm text-gray-600 dark:text-gray-300">
         <span className="flex items-center gap-1.5">
           {fornecedor.telefone}
-          {fornecedor.whatsapp && <MessageCircle size={14} className="text-emerald-500" />}
+          {fornecedor.whatsapp && (
+            <MessageCircle size={14} className="text-emerald-500" />
+          )}
         </span>
       </td>
 
@@ -64,8 +70,12 @@ export default function TableRow({
       </td>
 
       <td className="whitespace-nowrap px-3 py-3">
-        <p className="text-sm text-gray-600 dark:text-gray-300">{formatDate(fornecedor.ultimaCompra)}</p>
-        <p className="text-xs text-gray-400 dark:text-gray-500">{formatRelativeDays(fornecedor.ultimaCompra)}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-300">
+          {formatDate(fornecedor.ultimaCompra)}
+        </p>
+        <p className="text-xs text-gray-400 dark:text-gray-500">
+          {formatRelativeDays(fornecedor.ultimaCompra)}
+        </p>
       </td>
 
       <td className="whitespace-nowrap px-3 py-3 text-sm font-semibold text-gray-800 dark:text-gray-100">
@@ -80,5 +90,5 @@ export default function TableRow({
         <RowActionsMenu fornecedor={fornecedor} />
       </td>
     </tr>
-  )
+  );
 }
