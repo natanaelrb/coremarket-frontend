@@ -3,10 +3,10 @@ import { ChartNoAxesCombined } from "lucide-react";
 import { useState, useEffect } from "react";
 import { AlertCircle, LayoutGrid, Sparkles } from "lucide-react";
 import { buscarResumoDashboard } from "../services/dashboardService";
-import PeriodoFiltro from "../components/dashboard/PeriodoFiltro";
-import DashboardV1 from "./dashboard/DashboardV1";
-import DashboardV2 from "./dashboard/DashboardV2";
-import PageHeader from "../shared/components/PageHeader";
+import PeriodoFiltro from "../features/dashboard/visao-geral/filters/PeriodoFiltro";
+import DashboardV1 from "../features/dashboard/versions/DashboardV1";
+import DashboardV2 from "../features/dashboard/versions/DashboardV2";
+import PageHeader from "../shared/components/layout/PageHeader";
 
 const ABAS = [
   { key: "v1", label: "Visão Geral", icon: LayoutGrid },
@@ -41,7 +41,6 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-5">
-      
       {/* Header */}
       <PageHeader
         icon={ChartNoAxesCombined}
