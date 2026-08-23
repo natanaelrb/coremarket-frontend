@@ -1,5 +1,5 @@
 import { Plus } from "lucide-react";
-import PrimaryButton from "../../../shared/components/PrimaryButton";
+import PrimaryButton from "../../../shared/components/actions/PrimaryButton";
 
 export default function TopbarActions({ action }) {
   switch (action) {
