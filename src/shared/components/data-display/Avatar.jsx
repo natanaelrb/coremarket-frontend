@@ -1,4 +1,3 @@
-import React from "react";
 
 const COLORS = [
   "bg-violet-600",

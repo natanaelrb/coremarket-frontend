@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { ChevronDown } from "lucide-react";
-import useClickOutside from "../hooks/useClickOutside";
+import useClickOutside from "../../hooks/useClickOutside";
 
 export default function Dropdown({ label, value, options, onChange }) {
   const [open, setOpen] = useState(false);
@@ -102,17 +102,22 @@ export default function Dropdown({ label, value, options, onChange }) {
   );
 }
 
-export function DropdownItem({ children, onClick, icon: Icon, danger = false }) {
+export function DropdownItem({
+  children,
+  onClick,
+  icon: Icon,
+  danger = false,
+}) {
   return (
     <button
       type="button"
       onClick={onClick}
       className={[
-        'flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm transition-colors duration-100',
+        "flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm transition-colors duration-100",
         danger
-          ? 'text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-500/10'
-          : 'text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-white/5',
-      ].join(' ')}
+          ? "text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-500/10"
+          : "text-gray-700 hover:bg-gray-50 dark:text-gray-200 dark:hover:bg-white/5",
+      ].join(" ")}
     >
       {Icon && <Icon size={14} />}
       {children}
