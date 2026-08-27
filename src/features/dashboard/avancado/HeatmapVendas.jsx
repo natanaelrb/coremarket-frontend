@@ -1,11 +1,11 @@
-import ChartCard from "../../../components/dashboard/ChartCard";
-import { fmt, heatColor } from "../../../components/dashboard/dashboardUtils";
-import { useChartTheme } from "../../../components/dashboard/chartTheme";
+import ChartCard from "../visao-geral/cards/ChartCard";
+import { fmt, heatColor } from "../visao-geral/utils/dashboardUtils";
+import { useChartTheme } from "../visao-geral/config/chartTheme";
 import {
   heatmapData,
   DIAS_SEMANA,
   HEAT_MAX,
-} from "../../../components/dashboard/dashboardData";
+} from "../visao-geral/data/dashboardData";
 
 export default function HeatmapVendas() {
   const { dark } = useChartTheme();

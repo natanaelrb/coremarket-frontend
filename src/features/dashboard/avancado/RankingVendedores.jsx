@@ -1,6 +1,6 @@
-import ChartCard from "../../../components/dashboard/ChartCard";
-import { fmt } from "../../../components/dashboard/dashboardUtils";
-import { rankingVendedores } from "../../../components/dashboard/dashboardData";
+import ChartCard from "../visao-geral/cards/ChartCard";
+import { fmt } from "../visao-geral/utils/dashboardUtils";
+import { rankingVendedores } from "../visao-geral/data/dashboardData";
 
 export default function RankingVendedores() {
   const maxTotal = rankingVendedores[0]?.total || 1;

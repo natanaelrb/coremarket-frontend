@@ -8,10 +8,10 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
-import ChartCard from "../../../components/dashboard/ChartCard";
-import { useChartTheme } from "../../../components/dashboard/chartTheme";
-import { fmtK } from "../../../components/dashboard/dashboardUtils";
-import { faturamentoPorCategoria } from "../../../components/dashboard/dashboardData";
+import ChartCard from "../visao-geral/cards/ChartCard";
+import { useChartTheme } from "../visao-geral/config/chartTheme";
+import { fmtK } from "../visao-geral/utils/dashboardUtils";
+import { faturamentoPorCategoria } from "../visao-geral/data/dashboardData";
 
 const CORES = ["#7C3AED", "#2563EB", "#0EA5E9", "#F59E0B", "#64748B"];
 

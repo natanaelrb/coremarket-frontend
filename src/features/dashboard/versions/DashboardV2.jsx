@@ -1,11 +1,11 @@
-import VendasPorCategoriaChart from "../../components/dashboard/VendasPorCategoriaChart";
-import FaturamentoPorCategoriaChart from "./v2/FaturamentoPorCategoriaChart";
-import ProdutosMaisLucrativos from "./v2/ProdutosMaisLucrativos";
-import ProdutosMenosVendidos from "./v2/ProdutosMenosVendidos";
-import TicketMedioCard from "./v2/TicketMedioCard";
-import RankingVendedores from "./v2/RankingVendedores";
-import PrevisaoEstoque from "./v2/PrevisaoEstoque";
-import HeatmapVendas from "./v2/HeatmapVendas";
+import VendasPorCategoriaChart from "../visao-geral/charts/VendasPorCategoriaChart";
+import FaturamentoPorCategoriaChart from "../avancado/FaturamentoPorCategoriaChart";
+import ProdutosMaisLucrativos from "../avancado/ProdutosMaisLucrativos";
+import ProdutosMenosVendidos from "../avancado/ProdutosMenosVendidos";
+import TicketMedioCard from "../avancado/TicketMedioCard";
+import RankingVendedores from "../avancado/RankingVendedores";
+import PrevisaoEstoque from "../avancado/PrevisaoEstoque";
+import HeatmapVendas from "../avancado/HeatmapVendas";
 
 export default function DashboardV2() {
   return (

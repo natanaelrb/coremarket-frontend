@@ -1,9 +1,9 @@
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import ChartCard from "./ChartCard";
+import ChartCard from "../cards/ChartCard";
 import ChartTooltip from "./ChartTooltip";
-import { useChartTheme } from "./chartTheme";
-import { fmtK } from "./dashboardUtils";
-import { vendasPorDia } from "./dashboardData";
+import { useChartTheme } from "../config/chartTheme";
+import { fmtK } from "../utils/dashboardUtils";
+import { vendasPorDia } from "../data/dashboardData";
 
 const maxVendas = Math.max(...vendasPorDia.map((d) => d.vendas));
 

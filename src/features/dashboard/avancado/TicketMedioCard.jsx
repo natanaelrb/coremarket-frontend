@@ -1,7 +1,7 @@
 import { TrendingUp, Receipt } from "lucide-react";
-import ChartCard from "../../../components/dashboard/ChartCard";
-import { fmt } from "../../../components/dashboard/dashboardUtils";
-import { ticketMedio } from "../../../components/dashboard/dashboardData";
+import ChartCard from "../visao-geral/cards/ChartCard";
+import { fmt } from "../visao-geral/utils/dashboardUtils";
+import { ticketMedio } from "../visao-geral/data/dashboardData";
 
 export default function TicketMedioCard() {
   return (

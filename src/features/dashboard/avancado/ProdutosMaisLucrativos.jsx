@@ -1,6 +1,6 @@
-import ChartCard from "../../../components/dashboard/ChartCard";
-import { fmt } from "../../../components/dashboard/dashboardUtils";
-import { produtosMaisLucrativos } from "../../../components/dashboard/dashboardData";
+import ChartCard from "../visao-geral/cards/ChartCard";
+import { fmt } from "../visao-geral/utils/dashboardUtils";
+import { produtosMaisLucrativos } from "../visao-geral/data/dashboardData";
 
 export default function ProdutosMaisLucrativos() {
   const maxMargem = Math.max(...produtosMaisLucrativos.map((p) => p.margem));

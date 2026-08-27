@@ -1,6 +1,6 @@
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
-import ChartCard from "./ChartCard";
-import { statusPagamentos } from "./dashboardData";
+import ChartCard from "../cards/ChartCard";
+import { statusPagamentos } from "../data/dashboardData";
 
 const total = statusPagamentos.reduce((acc, s) => acc + s.qtd, 0);
 

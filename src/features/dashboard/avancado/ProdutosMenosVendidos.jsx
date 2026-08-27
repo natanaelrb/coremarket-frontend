@@ -1,6 +1,6 @@
 import { TrendingDown } from "lucide-react";
-import ChartCard from "../../../components/dashboard/ChartCard";
-import { produtosMenosVendidos } from "../../../components/dashboard/dashboardData";
+import ChartCard from "../visao-geral/cards/ChartCard";
+import { produtosMenosVendidos } from "../visao-geral/data/dashboardData";
 
 export default function ProdutosMenosVendidos() {
   return (

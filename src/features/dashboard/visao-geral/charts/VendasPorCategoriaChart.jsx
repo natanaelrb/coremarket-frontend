@@ -1,6 +1,6 @@
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
-import ChartCard from "./ChartCard";
-import { vendasPorCategoria } from "./dashboardData";
+import ChartCard from "../cards/ChartCard";
+import { vendasPorCategoria } from "../data/dashboardData";
 
 export default function VendasPorCategoriaChart() {
   return (

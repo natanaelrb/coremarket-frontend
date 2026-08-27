@@ -1,6 +1,6 @@
-import ChartCard from "./ChartCard";
-import { fmt } from "./dashboardUtils";
-import { produtosMaisVendidos } from "./dashboardData";
+import ChartCard from "../cards/ChartCard";
+import { fmt } from "../utils/dashboardUtils";
+import { produtosMaisVendidos } from "../data/dashboardData";
 
 export default function ProdutosMaisVendidosTable() {
   return (

@@ -1,6 +1,6 @@
-import ChartCard from "./ChartCard";
-import { fmt } from "./dashboardUtils";
-import { resumoFinanceiro } from "./dashboardData";
+import ChartCard from "../cards/ChartCard";
+import { fmt } from "../utils/dashboardUtils";
+import { resumoFinanceiro } from "../data/dashboardData";
 
 export default function ResumoFinanceiro() {
   const itens = [

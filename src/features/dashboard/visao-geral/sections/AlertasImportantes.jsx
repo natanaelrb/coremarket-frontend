@@ -1,6 +1,6 @@
 import { AlertTriangle, AlertOctagon } from "lucide-react";
-import ChartCard from "./ChartCard";
-import { alertasImportantes } from "./dashboardData";
+import ChartCard from "../cards/ChartCard";
+import { alertasImportantes } from "../data/dashboardData";
 
 const NIVEL_STYLE = {
   amber: {

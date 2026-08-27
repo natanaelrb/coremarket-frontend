@@ -1,6 +1,6 @@
-import ChartCard from "./ChartCard";
-import { fmt } from "./dashboardUtils";
-import { topClientes } from "./dashboardData";
+import ChartCard from "../cards/ChartCard";
+import { fmt } from "../utils/dashboardUtils";
+import { topClientes } from "../data/dashboardData";
 
 export default function TopClientesTable() {
   return (

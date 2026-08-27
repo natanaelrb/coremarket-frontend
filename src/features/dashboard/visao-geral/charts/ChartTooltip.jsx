@@ -1,5 +1,5 @@
-import { useChartTheme } from "./chartTheme";
-import { fmt } from "./dashboardUtils";
+import { useChartTheme } from "../config/chartTheme";
+import { fmt } from "../utils/dashboardUtils";
 
 export default function ChartTooltip({ active, payload, label }) {
   const ct = useChartTheme();

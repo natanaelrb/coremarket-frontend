@@ -1,6 +1,6 @@
 import { AlertTriangle } from "lucide-react";
-import ChartCard from "./ChartCard";
-import { estoqueCritico } from "./dashboardData";
+import ChartCard from "../cards/ChartCard";
+import { estoqueCritico } from "../data/dashboardData";
 
 function getCores(qtd) {
   if (qtd <= 3)

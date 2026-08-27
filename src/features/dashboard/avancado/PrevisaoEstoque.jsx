@@ -1,6 +1,6 @@
 import { Clock } from "lucide-react";
-import ChartCard from "../../../components/dashboard/ChartCard";
-import { previsaoEstoque } from "../../../components/dashboard/dashboardData";
+import ChartCard from "../visao-geral/cards/ChartCard";
+import { previsaoEstoque } from "../visao-geral/data/dashboardData";
 
 function getCor(dias) {
   if (dias <= 2) return "text-red-500 dark:text-red-400";

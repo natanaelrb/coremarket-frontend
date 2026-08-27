@@ -5,19 +5,23 @@ import {
   ShoppingBag,
   Camera,
 } from "lucide-react";
-import StatsCard from "../../components/dashboard/StatsCard";
-import FaturamentoMensalChart from "../../components/dashboard/FaturamentoMensalChart";
-import VendasPorCategoriaChart from "../../components/dashboard/VendasPorCategoriaChart";
-import StatusPagamentosChart from "../../components/dashboard/StatusPagamentosChart";
-import ProdutosMaisVendidosTable from "../../components/dashboard/ProdutosMaisVendidosTable";
-import TopClientesTable from "../../components/dashboard/TopClientesTable";
-import AlertasImportantes from "../../components/dashboard/AlertasImportantes";
-import ComprasVsVendasChart from "../../components/dashboard/ComprasVsVendasChart";
-import ResumoFinanceiro from "../../components/dashboard/ResumoFinanceiro";
-import MetaMensalCard from "../../components/dashboard/MetaMensalCard";
-import VendasPorDiaChart from "../../components/dashboard/VendasPorDiaChart";
-import EstoqueCritico from "../../components/dashboard/EstoqueCritico";
-import { fmt } from "../../components/dashboard/dashboardUtils";
+import StatsCard from "../visao-geral/cards/StatsCard";
+import MetaMensalCard from "../visao-geral/cards/MetaMensalCard";
+
+import FaturamentoMensalChart from "../visao-geral/charts/FaturamentoMensalChart";
+import VendasPorCategoriaChart from "../visao-geral/charts/VendasPorCategoriaChart";
+import StatusPagamentosChart from "../visao-geral/charts/StatusPagamentosChart";
+import ComprasVsVendasChart from "../visao-geral/charts/ComprasVsVendasChart";
+import VendasPorDiaChart from "../visao-geral/charts/VendasPorDiaChart";
+
+import ProdutosMaisVendidosTable from "../visao-geral/tables/ProdutosMaisVendidosTable";
+import TopClientesTable from "../visao-geral/tables/TopClientesTable";
+
+import AlertasImportantes from "../visao-geral/sections/AlertasImportantes";
+import ResumoFinanceiro from "../visao-geral/sections/ResumoFinanceiro";
+import EstoqueCritico from "../visao-geral/sections/EstoqueCritico";
+
+import { fmt } from "../visao-geral/utils/dashboardUtils";
 
 export default function DashboardV1({ metricas }) {
   return (

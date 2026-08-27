@@ -2,11 +2,11 @@ import {
   ComposedChart, Bar, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
-import ChartCard from "./ChartCard";
+import ChartCard from "../cards/ChartCard";
 import ChartTooltip from "./ChartTooltip";
-import { useChartTheme } from "./chartTheme";
-import { fmtK } from "./dashboardUtils";
-import { faturamentoMensal } from "./dashboardData";
+import { useChartTheme } from "../config/chartTheme";
+import { fmtK } from "../utils/dashboardUtils";
+import { faturamentoMensal } from "../data/dashboardData";
 
 export default function FaturamentoMensalChart() {
   const ct = useChartTheme();

@@ -1,7 +1,7 @@
-import ChartCard from "./ChartCard";
-import { fmt } from "./dashboardUtils";
-import { useChartTheme } from "./chartTheme";
-import { META_MENSAL, ATUAL_MES } from "./dashboardData";
+import ChartCard from "../cards/ChartCard";
+import { fmt } from "../utils/dashboardUtils";
+import { useChartTheme } from "../config/chartTheme";
+import { META_MENSAL, ATUAL_MES } from "../data/dashboardData";
 
 export default function MetaMensalCard() {
   const ct = useChartTheme();
