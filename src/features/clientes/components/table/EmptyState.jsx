@@ -1,5 +1,5 @@
 import { Inbox } from "lucide-react";
-import PrimaryButton from "../../../../shared/components/PrimaryButton";
+import PrimaryButton from "../../../../shared/components/actions/PrimaryButton";
 import { Plus } from "lucide-react";
 
 export default function EmptyState({ onNovoCliente }) {
@@ -16,10 +16,7 @@ export default function EmptyState({ onNovoCliente }) {
           <p className="text-[13px] text-slate-400 mt-1 mb-5">
             Tente ajustar os filtros ou cadastre um novo cliente.
           </p>
-          <PrimaryButton
-            icon={Plus}
-            onClick={onNovoCliente}
-          >
+          <PrimaryButton icon={Plus} onClick={onNovoCliente}>
             Novo cliente
           </PrimaryButton>
         </div>

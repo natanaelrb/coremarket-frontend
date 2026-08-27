@@ -1,4 +1,4 @@
-import Sparkline from "../../../../shared/components/Sparkline";
+import Sparkline from "../../../../shared/components/data-display/Sparkline";
 
 export default function StatCard({
   icon: Icon,

@@ -1,4 +1,4 @@
-import Dropdown from "../../../../shared/components/Dropdown";
+import Dropdown from "../../../../shared/components/ui/Dropdown";
 import { SORT_OPTIONS } from "../../constants/filterOptions";
 
 function sortToLabel(sort) {
@@ -22,15 +22,15 @@ export default function SortMenu({ sort, onSortChange }) {
     <div className="flex items-center gap-2 text-sm text-slate-500 font-bold">
       <span className="text-slate-400 ">Ordenar por</span>
       <div className="w-44">
-      <Dropdown
-        value={sortToLabel(sort)}
-        options={SORT_OPTIONS}
-        onChange={(label) => {
-          const next = labelToSort(label);
-          if (next) onSortChange(next);
-        }}
-      />
-    </div>
+        <Dropdown
+          value={sortToLabel(sort)}
+          options={SORT_OPTIONS}
+          onChange={(label) => {
+            const next = labelToSort(label);
+            if (next) onSortChange(next);
+          }}
+        />
+      </div>
     </div>
   );
 }

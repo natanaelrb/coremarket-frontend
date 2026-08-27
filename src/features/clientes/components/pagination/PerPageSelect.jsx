@@ -1,5 +1,4 @@
-import React from "react";
-import Dropdown from "../../../../shared/components/Dropdown";
+import Dropdown from "../../../../shared/components/ui/Dropdown";
 import { PER_PAGE_OPTIONS } from "../../constants/filterOptions";
 
 export default function PerPageSelect({ perPage, onChange }) {

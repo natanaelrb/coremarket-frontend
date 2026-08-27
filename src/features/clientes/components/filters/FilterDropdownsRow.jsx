@@ -1,6 +1,6 @@
-import Dropdown from "../../../../shared/components/Dropdown";
+import Dropdown from "../../../../shared/components/ui/Dropdown";
 import { SlidersHorizontal } from "lucide-react";
-import SecondaryButton from "../../../../shared/components/SecondaryButton";
+import SecondaryButton from "../../../../shared/components/actions/SecondaryButton";
 
 import {
   STATUS_OPTIONS,
