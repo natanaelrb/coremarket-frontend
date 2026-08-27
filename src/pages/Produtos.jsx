@@ -8,7 +8,7 @@ import { FilterBar } from '../features/produtos/components/FilterBar';
 import { ProductsTable } from '../features/produtos/components/ProductsTable';
 import { ProductDetailPanel } from '../features/produtos/components/ProductDetailPanel';
 import { WidgetsSection } from '../features/produtos/components/Widgets';
-import { ToastContainer } from "../shared/components/Toast/ToastContainer";
+import { ToastContainer } from "../shared/components/feedback/ToastContainer";
 
 import { useProdutos } from '../features/produtos/hooks/useProdutos';
 import { useProdutoFilters } from '../features/produtos/hooks/useProdutoFilters';

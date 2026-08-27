@@ -1,13 +1,15 @@
 // Barra de ações em massa exibida acima da tabela quando há linhas selecionadas.
-import { ChevronDown } from 'lucide-react';
-import Dropdown, { DropdownItem } from "../../../../shared/components/Dropdown";
-import { BULK_ACTIONS } from '../../constants/filterOptions';
+import { ChevronDown } from "lucide-react";
+import Dropdown, {
+  DropdownItem,
+} from "../../../../shared/components/ui/Dropdown";
+import { BULK_ACTIONS } from "../../constants/filterOptions";
 
 export function BulkActionsBar({ selectedCount, onRunAction }) {
   return (
     <div className="flex items-center gap-2">
       <span className="text-sm text-gray-600 dark:text-gray-300">
-        {selectedCount} selecionado{selectedCount !== 1 ? 's' : ''}
+        {selectedCount} selecionado{selectedCount !== 1 ? "s" : ""}
       </span>
 
       <Dropdown
@@ -22,7 +24,11 @@ export function BulkActionsBar({ selectedCount, onRunAction }) {
         }
       >
         {BULK_ACTIONS.map((action) => (
-          <DropdownItem key={action.value} danger={action.danger} onClick={() => onRunAction(action.value)}>
+          <DropdownItem
+            key={action.value}
+            danger={action.danger}
+            onClick={() => onRunAction(action.value)}
+          >
             {action.label}
           </DropdownItem>
         ))}
