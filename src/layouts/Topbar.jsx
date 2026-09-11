@@ -1,124 +1,127 @@
-// import { useLocation } from "react-router-dom";
-
-// import DashboardTopbar from "./topbars/DashboardTopbar";
-// import ClientesTopbar from "./topbars/ClientesTopbar";
-// // import ProdutosTopbar from "./topbars/ProdutosTopbar";
-// // import FornecedoresTopbar from "./topbars/FornecedoresTopbar";
-// // import EstoqueTopbar from "./topbars/EstoqueTopbar";
-// // import MovimentacoesTopbar from "./topbars/MovimentacoesTopbar";
-// // import ComprasTopbar from "./topbars/ComprasTopbar";
-// // import VendasTopbar from "./topbars/VendasTopbar";
-// // import PagamentosTopbar from "./topbars/PagamentosTopbar";
-// // import ContasReceberTopbar from "./topbars/ContasReceberTopbar";
-// // import ContasPagarTopbar from "./topbars/ContasPagarTopbar";
-// // import FluxoCaixaTopbar from "./topbars/FluxoCaixaTopbar";
-// // import DespesasTopbar from "./topbars/DespesasTopbar";
-// // import RelatoriosTopbar from "./topbars/RelatoriosTopbar";
-// // import UsuariosTopbar from "./topbars/UsuariosTopbar";
-// // import ConfiguracoesTopbar from "./topbars/ConfiguracoesTopbar";
-
-// export default function Topbar() {
-//   const { pathname } = useLocation();
-
-//   switch (pathname) {
-//     case "/dashboard":
-//       return <DashboardTopbar />;
-
-//     case "/clientes":
-//       return <ClientesTopbar />;
-
-//     // case "/fornecedores":
-//     //   return <FornecedoresTopbar />;
-
-//     // case "/produtos":
-//     //   return <ProdutosTopbar />;
-
-//     // case "/estoque":
-//     //   return <EstoqueTopbar />;
-
-//     // case "/movimentacoes":
-//     //   return <MovimentacoesTopbar />;
-
-//     // case "/compras":
-//     //   return <ComprasTopbar />;
-
-//     // case "/vendas":
-//     //   return <VendasTopbar />;
-
-//     // case "/pagamentos":
-//     //   return <PagamentosTopbar />;
-
-//     // case "/contas-receber":
-//     //   return <ContasReceberTopbar />;
-
-//     // case "/contas-pagar":
-//     //   return <ContasPagarTopbar />;
-
-//     // case "/fluxo-caixa":
-//     //   return <FluxoCaixaTopbar />;
-
-//     // case "/despesas":
-//     //   return <DespesasTopbar />;
-
-//     // case "/relatorios":
-//     //   return <RelatoriosTopbar />;
-
-//     // case "/usuarios":
-//     //   return <UsuariosTopbar />;
-
-//     // case "/configuracoes":
-//     //   return <ConfiguracoesTopbar />;
-
-//     // default:
-//     //   return <DashboardTopbar />;
-//   }
-// }
-
 import { useLocation } from "react-router-dom";
+import {
+  Search,
+  Moon,
+  Bell,
+  CircleHelp,
+  Menu,
+  ChevronDown,
+} from "lucide-react";
 
-import headerConfig from "./config/topbarConfig";
-
-import TopbarPageInfo from "./topbars/components/TopbarPageInfo";
-import TopbarSearch from "./topbars/components/TopbarSearch";
 import TopbarThemeButton from "./topbars/components/TopbarThemeButton";
 import TopbarNotifications from "./topbars/components/TopbarNotifications";
 import TopbarUser from "./topbars/components/TopbarUser";
-import TopbarActions from "./topbars/components/TopbarActions";
 
 export default function Topbar() {
   const location = useLocation();
 
-  const page = headerConfig[location.pathname] ?? {
-    title: "CoreMarket",
-    icon: null,
-    breadcrumb: [],
-    action: null,
-    showSearch: false,
-  };
-
   return (
-    <header className="sticky top-2 z-40 border-b border-slate-200 dark:border-white/10 bg-[var(--bg-app)] backdrop-blur">
-      <div className="px-8 py-2">
-        {/* Linha superior */}
-        <div className="flex items-center justify-between">
-          <TopbarPageInfo
-            icon={page.icon}
-            title={page.title}
-            breadcrumb={page.breadcrumb}
-          />
+    <header
+      className="
+        sticky top-0 z-40
+        h-12
+        border-b border-slate-200/80
+        bg-[var(--bg-app)]
+        dark:border-white/[0.06]
+      "
+    >
+      <div className="flex h-full items-center justify-between px-5">
 
-          <div className="flex items-center gap-3">
-            <TopbarThemeButton />
-            <TopbarNotifications />
-            <TopbarUser />
+        {/* ESQUERDA */}
+        <div className="flex items-center gap-4">
+
+          {/* Botão menu */}
+          <button
+            className="
+              flex h-7 w-7 items-center justify-center
+              rounded-md
+              border border-slate-200
+              text-slate-500
+              hover:bg-slate-100
+              dark:border-white/10
+              dark:text-slate-400
+              dark:hover:bg-white/5
+            "
+          >
+            <Menu size={16} />
+          </button>
+
+          {/* Busca */}
+          <div className="relative hidden md:block">
+            <Search
+              size={14}
+              className="
+                absolute left-3 top-1/2
+                -translate-y-1/2
+                text-slate-400
+              "
+            />
+
+            <input
+              type="text"
+              placeholder="Buscar por produto, SKU, código, usuário ou nº da operação..."
+              className="
+                h-8 w-[440px]
+                rounded-md
+                border border-slate-200
+                bg-slate-50
+                pl-9 pr-16
+                text-[11px]
+                outline-none
+                transition-all
+                placeholder:text-slate-400
+                focus:border-emerald-500/50
+                focus:ring-2
+                focus:ring-emerald-500/10
+                dark:border-white/[0.08]
+                dark:bg-white/[0.03]
+                dark:text-white
+              "
+            />
+
+            <span
+              className="
+                absolute right-2 top-1/2
+                -translate-y-1/2
+                rounded
+                bg-slate-200
+                px-1.5 py-0.5
+                text-[9px]
+                text-slate-500
+                dark:bg-white/[0.06]
+                dark:text-slate-500
+              "
+            >
+              Ctrl + K
+            </span>
           </div>
         </div>
 
-        {/* Linha inferior */}
-        <div className="mt-6 flex justify-end items-center gap-3">
-          {page.showSearch && <TopbarSearch />}
+        {/* DIREITA */}
+        <div className="flex items-center gap-1">
 
-          <TopbarActions action={page.action} />
+          <TopbarNotifications />
+
+          <TopbarThemeButton />
+
+          <button
+            className="
+              flex h-8 w-8 items-center justify-center
+              rounded-md
+              text-slate-500
+              hover:bg-slate-100
+              dark:text-slate-400
+              dark:hover:bg-white/5
+            "
+          >
+            <CircleHelp size={16} />
+          </button>
+
+          {/* Separador */}
+          <div className="mx-2 h-6 w-px bg-slate-200 dark:bg-white/10" />
+
+          <TopbarUser />
+
         </div>
       </div>
     </header>
