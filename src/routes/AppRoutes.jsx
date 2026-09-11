@@ -11,6 +11,7 @@ import Fornecedores from "../pages/Fornecedores";
 import Estoque from "../pages/Estoque";
 import Movimentacoes from "../pages/Movimentacoes";
 import Vendas from "../pages/Vendas";
+import Pagamentos from "../pages/Pagamentos";
 
 export default function AppRoutes() {
   return (
@@ -27,11 +28,11 @@ export default function AppRoutes() {
       <Route path="/estoque" element={<Estoque />} />
       <Route path="/movimentacoes" element={<Movimentacoes />} />
       <Route path="/vendas" element={<Vendas />} />
+      <Route path="/pagamentos" element={<Pagamentos />} />
 
       {/* Ainda sem backend — placeholders */}
       <Route path="/fornecedores"   element={<Fornecedores titulo="Fornecedores" />} />
       {/* <Route path="/vendas"         element={<EmConstrucao titulo="Vendas" />} /> */}
-      <Route path="/pagamentos"     element={<EmConstrucao titulo="Pagamentos" />} />
       <Route path="/contas-pagar"   element={<EmConstrucao titulo="Contas a Pagar" />} />
       <Route path="/fluxo-caixa"    element={<EmConstrucao titulo="Fluxo de Caixa" />} />
       <Route path="/despesas"       element={<EmConstrucao titulo="Despesas" />} />
