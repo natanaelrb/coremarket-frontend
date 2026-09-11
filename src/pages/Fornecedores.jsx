@@ -1,6 +1,5 @@
 import { useState, useMemo } from 'react'
 
-
 import FornecedoresHeader from "../features/fornecedores/components/Header/FornecedoresHeader.jsx";
 import StatsCardsGrid from "../features/fornecedores/components/StatsCards/StatsCardsGrid.jsx";
 import FiltersBar from "../features/fornecedores/components/Filters/FiltersBar.jsx";
@@ -78,31 +77,29 @@ export default function FornecedoresPage() {
         produtos={[]}
       />
 
-      <div className="grid gap-5 xl:grid-cols-[1fr_380px]">
-        <FornecedoresTable
-          isLoading={isLoading}
-          fornecedores={pagination.paginatedItems}
-          selectedFornecedorId={selectedFornecedor?.id}
-          onSelectFornecedor={selectFornecedor}
-          selection={selection}
-          sortKey={sortKey}
-          sortDirection={sortDirection}
-          onToggleSort={toggleSort}
-          pagination={pagination}
+      <FornecedoresTable
+        isLoading={isLoading}
+        fornecedores={pagination.paginatedItems}
+        selectedFornecedorId={selectedFornecedor?.id}
+        onSelectFornecedor={selectFornecedor}
+        selection={selection}
+        sortKey={sortKey}
+        sortDirection={sortDirection}
+        onToggleSort={toggleSort}
+        pagination={pagination}
+      />
+
+      {isPanelOpen && (
+        <DetailPanel
+          fornecedor={selectedFornecedor}
+          detalhe={detalhe}
+          activeTab={activeTab}
+          onChangeTab={setActiveTab}
+          onClose={closePanel}
         />
+      )}
 
-        {isPanelOpen && (
-          <DetailPanel
-            fornecedor={selectedFornecedor}
-            detalhe={detalhe}
-            activeTab={activeTab}
-            onChangeTab={setActiveTab}
-            onClose={closePanel}
-          />
-        )}
-      </div>
-
-      <div className="grid gap-5 xl:grid-cols-[1fr_380px]">
+      <div className="grid gap-8 xl:grid-cols-[1fr_380px]">
         <TimelineSection
           activeSidePanel={activeSidePanel}
           onChangeSidePanel={setActiveSidePanel}
