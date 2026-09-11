@@ -4,13 +4,13 @@ export default function SidebarNavItem({ item, isActive }) {
   const Icon = item.icon;
 
   const baseClasses =
-    "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-150";
+    "group relative flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200";
 
   const activeClasses =
-    "bg-violet-500/15 text-violet-600 shadow-sm dark:bg-violet-500/20 dark:text-violet-300";
+    "bg-emerald-500/20 text-emerald-300 shadow-sm";
 
   const inactiveClasses =
-    "text-[var(--sidebar-text)] hover:bg-[var(--sidebar-hover)]";
+    "text-[var(--sidebar-text)] hover:bg-white/[0.05] hover:text-white";
 
   return (
     <Link
@@ -19,7 +19,19 @@ export default function SidebarNavItem({ item, isActive }) {
         isActive ? activeClasses : inactiveClasses
       }`}
     >
-      <Icon size={16} className="flex-shrink-0" />
+      {/* Barra lateral verde */}
+      {isActive && (
+        <span className="absolute left-0 h-6 w-[3px] rounded-r-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.6)]" />
+      )}
+
+      <Icon
+        size={17}
+        className={`flex-shrink-0 transition-colors ${
+          isActive
+            ? "text-emerald-400"
+            : "text-[var(--sidebar-text-muted)] group-hover:text-white"
+        }`}
+      />
 
       <span className="flex-1 truncate">
         {item.name}
