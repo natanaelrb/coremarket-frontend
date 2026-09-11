@@ -1,60 +1,48 @@
-/**
- * Botão quadrado apenas com ícone.
- *
- * variant:
- * - outline: usado no header
- * - ghost: usado nas ações de linha
- */
 export default function IconButton({
   icon: Icon,
-  children,
   onClick,
+  badge,
+  className = "",
   title,
-  variant = 'outline',
-  tone = 'default',
-  size = 16,
-  className = '',
-  disabled = false,
 }) {
-  const base = `
-    inline-flex
-    items-center
-    justify-center
-    cursor-pointer
-    transition-all
-    duration-200
-    hover:scale-110
-    active:scale-95
-    focus:outline-none
-    focus:ring-2
-    focus:ring-violet-500/40
-    disabled:cursor-not-allowed
-    disabled:opacity-50
-    disabled:hover:scale-100
-  `;
-
-  const variants = {
-    outline:
-      'w-10 h-10 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-[#12162C] text-slate-500 dark:text-slate-300 shadow-sm hover:shadow-md hover:border-violet-300 dark:hover:border-violet-500/50',
-
-    ghost:
-      'w-8 h-8 rounded-md text-slate-400 hover:bg-slate-100 dark:hover:bg-white/5',
-  };
-
-  const tones = {
-    default: 'hover:text-violet-600',
-    danger: 'hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10',
-  };
-
   return (
     <button
-      type="button"
       onClick={onClick}
       title={title}
-      disabled={disabled}
-      className={`${base} ${variants[variant]} ${tones[tone]} ${className}`}
+      className={`
+        relative
+        flex h-8 w-8
+        items-center justify-center
+        rounded-md
+        text-slate-500
+        transition-all duration-150
+        hover:bg-slate-100
+        hover:text-slate-700
+        dark:text-slate-400
+        dark:hover:bg-white/[0.06]
+        dark:hover:text-white
+        ${className}
+      `}
     >
-      {Icon ? <Icon size={size} /> : children}
+      <Icon size={16} strokeWidth={1.8} />
+
+      {badge && (
+        <span
+          className="
+            absolute -right-0.5 -top-0.5
+            flex h-3.5 min-w-3.5
+            items-center justify-center
+            rounded-full
+            bg-red-500
+            px-1
+            text-[8px]
+            font-bold
+            text-white
+          "
+        >
+          {badge}
+        </span>
+      )}
     </button>
   );
 }

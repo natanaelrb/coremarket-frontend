@@ -12,22 +12,38 @@
   --text-primary: #0f172a;
   --text-secondary: #64748b;
 
+  /* Bordas modernas e sutis */
+  --border-subtle: rgba(15, 23, 42, 0.06);
+  --border-medium: rgba(15, 23, 42, 0.10);
+
   /* Borda */
   --border-color: #e2e8f0;
 
-  /* Sidebar */
-  --sidebar-bg: #ffffff;
-  --sidebar-text: #334155;
-  --sidebar-text-muted: #64748b;
-  --sidebar-hover: #f1f5f9;
-  --sidebar-border: #e2e8f0;
+  /* Sidebar — Dark Navy */
+  --sidebar-bg: #0b121d;
+  --sidebar-text: #d7dee8;
+  --sidebar-text-muted: #7f8a99;
+  --sidebar-hover: #151f2d;
+  --sidebar-border: #1c2938;
 
-  /* Brand */
+  /* Item ativo */
+  --sidebar-active: #1d4936;
+  --sidebar-active-text: #e8fff2;
+  --sidebar-active-icon: #65d98a;
+  --sidebar-accent: #4ade80;
+
+  /* Brand — CoreMarket Green */
+  --color-brand-primary: #42c878;
+  --color-brand-primary-dark: #248f52;
+  --color-brand-primary-light: #79e6a0;
+
+/* Legado — manter temporariamente */
   --color-brand-violet: #7c3aed;
   --color-brand-violet-dark: #6d28d9;
   --color-brand-violet-light: #a78bfa;
-  --color-brand-sidebar: #0d1029;
-  --color-brand-sidebar-hover: #171b3d;
+
+  --color-brand-sidebar: #111827;
+  --color-brand-sidebar-hover: #1f2937;
 
   /* Semantic */
   --color-success: #16a34a;
@@ -62,17 +78,17 @@
   /* Radius */
   --radius-card: 0.875rem;
 
-  /* Shadows */
+  /* Shadows — moderno e suave */
   --shadow-card:
-    0 1px 2px 0 rgb(15 23 42 / 0.04),
-    0 1px 3px 0 rgb(15 23 42 / 0.06);
+    0 1px 2px rgba(15, 23, 42, 0.02),
+    0 4px 12px rgba(15, 23, 42, 0.04);
 
   --shadow-card-hover:
-    0 4px 12px -2px rgb(15 23 42 / 0.08),
-    0 2px 6px -2px rgb(15 23 42 / 0.06);
+    0 8px 24px rgba(15, 23, 42, 0.08),
+    0 2px 8px rgba(15, 23, 42, 0.04);
 
-  --shadow-panel:
-    -8px 0 24px -8px rgb(15 23 42 / 0.12);
+  --shadow-card-dark:
+    0 4px 20px rgba(0, 0, 0, 0.18);
 
   /* Animações */
   --animate-fade-in: fade-in 0.35s ease-out both;
@@ -85,24 +101,38 @@
 }
 
 .dark {
-  /* Fundo */
-  --bg-app: #0a0d1f;
-  --bg-surface: #12162c;
-  --bg-card: #181c34;
+  /* Fundo principal */
+  --bg-app: #0b121d;
+  --bg-surface: #0b121d;
+  --bg-card: #18181b;
 
-  /* Texto */
-  --text-primary: #ffffff;
-  --text-secondary: #94a3b8;
+  /* Textos */
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
 
-  /* Borda */
+  /* Bordas modernas no dark */
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-medium: rgba(255, 255, 255, 0.10);
+
+  /* Bordas */
   --border-color: rgba(255, 255, 255, 0.08);
 
   /* Sidebar */
-  --sidebar-bg: #12162c;
-  --sidebar-text: rgba(255, 255, 255, 0.9);
-  --sidebar-text-muted: rgba(255, 255, 255, 0.45);
-  --sidebar-hover: rgba(255, 255, 255, 0.06);
-  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-bg: #0b121d;
+  --sidebar-text: #d7dee8;
+  --sidebar-text-muted: #7f8a99;
+  --sidebar-hover: #151f2d;
+  --sidebar-border: #1c2938;
+
+  --sidebar-active: #1d4936;
+  --sidebar-active-text: #e8fff2;
+  --sidebar-active-icon: #65d98a;
+  --sidebar-accent: #4ade80;
+
+  /* Brand verde */
+  --color-brand-primary: #10b981;
+  --color-brand-primary-dark: #059669;
+  --color-brand-primary-light: #34d399;
 }
 
 /* Animações */
@@ -214,25 +244,42 @@
 
 @layer utilities {
   .card-surface {
-    @apply bg-white border border-slate-200/80 shadow-[var(--shadow-card)] transition-shadow duration-200 dark:bg-slate-900 dark:border-slate-800;
+    @apply rounded-2xl transition-all duration-300;
+
+    background: var(--bg-card);
+
+    border: 1px solid rgba(15, 23, 42, 0.035);
+
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.02),
+      0 8px 24px rgba(15, 23, 42, 0.035);
   }
 
   .card-surface:hover {
-    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 4px 8px rgba(15, 23, 42, 0.03),
+      0 14px 32px rgba(15, 23, 42, 0.06);
   }
 
-  .skeleton {
-    @apply relative overflow-hidden bg-slate-200 dark:bg-slate-800 rounded-md;
+  /* DARK MODE */
+  .dark .card-surface {
+    background: #18181b;
 
-    background-image: linear-gradient(
-      90deg,
-      transparent,
-      rgb(255 255 255 / 0.35),
-      transparent
-    );
+    border-color: rgba(255, 255, 255, 0.035);
 
-    background-size: 400px 100%;
-    background-repeat: no-repeat;
-    animation: var(--animate-shimmer);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.12),
+      0 10px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .dark .card-surface:hover {
+    border-color: rgba(16, 185, 129, 0.12);
+
+    box-shadow:
+      0 8px 16px rgba(0, 0, 0, 0.18),
+      0 16px 40px rgba(0, 0, 0, 0.18),
+      0 0 20px rgba(16, 185, 129, 0.025);
   }
 }
