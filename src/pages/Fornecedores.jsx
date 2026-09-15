@@ -56,7 +56,7 @@ export default function FornecedoresPage() {
 
   return (
   <>
-    <div className="space-y-5">
+    <div className="space-y-5 -mt-4">
       <FornecedoresHeader
         searchTerm={searchTerm}
         onSearchChange={setSearchTerm}
