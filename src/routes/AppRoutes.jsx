@@ -12,6 +12,7 @@ import Estoque from "../pages/Estoque";
 import Movimentacoes from "../pages/Movimentacoes";
 import Vendas from "../pages/Vendas";
 import Pagamentos from "../pages/Pagamentos";
+import ClienteDetalhe from "../pages/ClienteDetalhe";
 
 export default function AppRoutes() {
   return (
@@ -29,6 +30,7 @@ export default function AppRoutes() {
       <Route path="/movimentacoes" element={<Movimentacoes />} />
       <Route path="/vendas" element={<Vendas />} />
       <Route path="/pagamentos" element={<Pagamentos />} />
+      <Route path="/clientes/:id" element={<ClienteDetalhe />} />
 
       {/* Ainda sem backend — placeholders */}
       <Route path="/fornecedores"   element={<Fornecedores titulo="Fornecedores" />} />
