@@ -1,172 +1,136 @@
-import { useState } from "react";
+import { ClientesHeader } from '../features/clientes/components/ClientesHeader/index.js'
+import { KPICardsGrid } from '../features/clientes/components/KPICards/index.js'
+import { AlertsBanner } from '../features/clientes/components/AlertsBanner/index.js'
+import { FiltersToolbar } from '../features/clientes/components/FiltersToolbar/index.js'
+import { ClientesTable } from '../features/clientes/components/ClientesTable/index.js'
+import { NovoClienteModal } from '../features/clientes/components/modals/NovoClienteModal/index.js'
+import { RegistrarPagamentoModal } from '../features/clientes/components/modals/RegistrarPagamentoModal/index.js'
+import { ImportarClientesModal } from '../features/clientes/components/modals/ImportarClientesModal/index.js'
+import { SegmentacaoModal } from '../features/clientes/components/modals/SegmentacaoModal/index.js'
 
-import { Users, Plus } from "lucide-react";
-import PrimaryButton from "../shared/components/actions/PrimaryButton";
+import { useClientesList } from '../features/clientes/hooks/useClientesList.js'
+import { useClientesFilters } from '../features/clientes/hooks/useClientesFilters.js'
+import { useClienteSelection } from '../features/clientes/hooks/useClienteSelection.js'
+import { usePagination } from '../features/clientes/hooks/usePagination.js'
+import { useClientesModals } from '../features/clientes/hooks/useClientesModals.js'
+import { useExportacao } from '../features/clientes/hooks/useExportacao.js'
 
-import { useTheme } from "../shared/contexts/ThemeContext";
-import useToast from "../shared/hooks/useToast";
-import Toast from "../shared/components/feedback/Toast";
+import { MOCK_KPIS, MOCK_ALERTAS } from '../features/clientes/data/mockClientes.js'
 
-import useClientes from "../features/clientes/hooks/useClientes";
-import useClientesFilters from "../features/clientes/hooks/useClientesFilters";
-import useSortableData from "../features/clientes/hooks/useSortableData";
-import usePagination from "../features/clientes/hooks/usePagination";
-import useRowSelection from "../features/clientes/hooks/useRowSelection";
-import useColumnVisibility from "../features/clientes/hooks/useColumnVisibility";
-import useSimulatedLoading from "../features/clientes/hooks/useSimulatedLoading";
-import PageHeader from "../shared/components/layout/PageHeader";
-import TopbarSearch from "../layouts/topbars/components/TopbarSearch";
+/**
+ * Clientes (Clients) page. Pure composition: every piece of state and every
+ * side effect lives in a hook; this component only wires props together.
+ */
+export default function Clientes({ onOpenDetalhe }) {
+  const { clientes, addCliente, updateCliente } = useClientesList()
+  const { searchTerm, setSearchTerm, quickFilter, setQuickFilter, filtered } = useClientesFilters(clientes)
+  const { page, totalPages, pageItems, goToPage, resetPage } = usePagination(filtered, 20)
+  const selection = useClienteSelection()
+  const modals = useClientesModals()
+  const { exportando, exportar } = useExportacao()
 
-import {
-  StatsGrid,
-  SearchFiltersPanel,
-  ClientesTableCard,
-  NovoClienteModal,
-} from "../features/clientes/components";
-
-import "../shared/styles/animations.css";
-
-export default function ClientesPage() {
-  const { tema, alternarTema } = useTheme();
-  const isDark = tema === "dark";
-
-  const { toast, showToast } = useToast();
-  const loading = useSimulatedLoading();
-
-  const { clients, stats, addCliente, deleteCliente, deleteClientes } =
-    useClientes();
-
-  const {
-    search,
-    setSearch,
-    filters,
-    setFilter,
-    advanced,
-    setAdvancedField,
-    clearAdvanced,
-    showMoreFilters,
-    setShowMoreFilters,
-    filtered,
-  } = useClientesFilters(clients);
-
-  const { sorted, sort, setSort, toggleSort } = useSortableData(filtered, {
-    key: "ultimaCompra",
-    dir: "desc",
-  });
-
-  const resetKey = JSON.stringify({ search, filters, advanced });
-  const { page, perPage, totalPages, paginated, setPerPage, goPrev, goNext } =
-    usePagination(sorted, 10, resetKey);
-
-  const {
-    selected,
-    selectedCount,
-    isSelected,
-    toggleOne,
-    toggleAllVisible,
-    removeMany,
-    clear,
-  } = useRowSelection();
-
-  const { visibleCols, toggleColumn } = useColumnVisibility();
-
-  const [modalOpen, setModalOpen] = useState(false);
-
-  function handleSaveCliente(form) {
-    addCliente(form);
-    setModalOpen(false);
-    showToast("Cliente cadastrado com sucesso");
+  function handleSearch(value) {
+    setSearchTerm(value)
+    resetPage()
   }
 
-  function handleDeleteOne(cliente) {
-    deleteCliente(cliente.id);
-    removeMany([cliente.id]);
-    showToast("Cliente excluído com sucesso");
+  function handleQuickFilter(id) {
+    setQuickFilter(id)
+    resetPage()
   }
 
-  function handleBulkDelete() {
-    const ids = Array.from(selected);
-    deleteClientes(ids);
-    showToast(`${ids.length} cliente(s) excluído(s)`);
-    clear();
+  function handleExcluir(cliente) {
+    // TODO(api): DELETE /api/clientes/{id}
+    console.info('Excluir cliente', cliente.id)
   }
 
   return (
-    <div className={isDark ? "dark" : ""}>
-      <div className="space-y-5">
-        <PageHeader
-          icon={Users}
-          title="Clientes"
-          subtitle="Gerencie sua base de clientes"
-          onToggleTheme={alternarTema}
-        >
-          <div className="flex items-center gap-3">
-            <TopbarSearch
-              value={search}
-              onChange={setSearch}
-              placeholder="Pesquisar clientes..."
-            />
+    <div className="space-y-5 max-w-[1400px] mx-auto">
+      <ClientesHeader searchTerm={searchTerm} onSearchChange={handleSearch} onNovoCliente={modals.abrirNovo} />
 
-            <PrimaryButton icon={Plus} onClick={() => setModalOpen(true)}>
-              Novo cliente
-            </PrimaryButton>
-          </div>
-        </PageHeader>
+      <KPICardsGrid kpis={MOCK_KPIS} />
 
-        <StatsGrid stats={stats} />
+      <AlertsBanner alertas={MOCK_ALERTAS} />
 
-        <SearchFiltersPanel
-          search={search}
-          onSearchChange={setSearch}
-          filters={filters}
-          onFilterChange={setFilter}
-          showMoreFilters={showMoreFilters}
-          onToggleMoreFilters={() => setShowMoreFilters((s) => !s)}
-          advanced={advanced}
-          onAdvancedChange={setAdvancedField}
-          onClearAdvanced={clearAdvanced}
-        />
+      <FiltersToolbar
+        searchTerm={searchTerm}
+        onSearchChange={handleSearch}
+        quickFilter={quickFilter}
+        onQuickFilterChange={handleQuickFilter}
+        onMaisFiltros={() => {}}
+        onExportar={exportar}
+        exportando={exportando}
+        onNovoCliente={modals.abrirNovo}
+        onImportar={modals.abrirImportar}
+        onSegmentar={modals.abrirSegmentar}
+      />
 
-        <ClientesTableCard
-          visibleCols={visibleCols}
-          onToggleColumn={toggleColumn}
-          selectedCount={selectedCount}
-          onBulkEmail={() => showToast(`${selectedCount} e-mail(s) enviado(s)`)}
-          onBulkExport={() => showToast("Exportação gerada com sucesso")}
-          onBulkDelete={handleBulkDelete}
-          sort={sort}
-          onSortChange={setSort}
-          onToggleSort={toggleSort}
-          loading={loading}
-          clientes={paginated}
-          allSelected={
-            paginated.length > 0 && paginated.every((c) => isSelected(c.id))
+      <ClientesTable
+        clientes={pageItems}
+        selectedIds={selection.selectedIds}
+        onToggleSelect={selection.toggle}
+        onToggleAll={selection.toggleAll}
+        onView={(cliente) => onOpenDetalhe(cliente)}
+        onEdit={modals.abrirEditar}
+        onRegistrarPagamento={modals.abrirPagamento}
+        onExcluir={handleExcluir}
+        page={page}
+        totalPages={totalPages}
+        totalItems={filtered.length}
+        pageSize={20}
+        onPageChange={goToPage}
+        onPageSizeChange={() => {}}
+      />
+
+      <NovoClienteModal
+        open={modals.modal === 'novo' || modals.modal === 'editar'}
+        onClose={modals.fechar}
+        clienteParaEditar={modals.modal === 'editar' ? modals.clienteAlvo : null}
+        onSaved={(form) => {
+          if (modals.modal === 'editar') {
+            updateCliente(modals.clienteAlvo.id, { nome: form.nomeCompleto })
+          } else {
+            addCliente({
+              id: `CLI-${Math.floor(Math.random() * 900000 + 100000)}`,
+              nome: form.nomeCompleto,
+              telefone: form.telefone,
+              documento: form.documento,
+              email: form.email,
+              status: form.status,
+              totalComprado: 0,
+              emAberto: 0,
+              emAtraso: 0,
+              limiteCredito: Number(form.limiteCredito) || 0,
+              limiteUtilizado: 0,
+              quantidadeCompras: 0,
+              ticketMedio: 0,
+              clienteDesde: new Date().toISOString().slice(0, 10),
+              ultimaCompra: null,
+              observacoes: form.observacoes,
+            })
           }
-          onToggleSelectAll={() => toggleAllVisible(paginated.map((c) => c.id))}
-          isSelected={isSelected}
-          onToggleSelect={toggleOne}
-          onView={(c) => showToast(`Visualizando ${c.nome}`)}
-          onEdit={(c) => showToast(`Editando ${c.nome}`)}
-          onDelete={handleDeleteOne}
-          onNovoCliente={() => setModalOpen(true)}
-          shownCount={paginated.length}
-          totalCount={sorted.length}
-          page={page}
-          totalPages={totalPages}
-          onPrev={goPrev}
-          onNext={goNext}
-          perPage={perPage}
-          onPerPageChange={setPerPage}
-        />
-      </div>
+        }}
+      />
 
-      {modalOpen && (
-        <NovoClienteModal
-          onClose={() => setModalOpen(false)}
-          onSaved={handleSaveCliente}
-        />
-      )}
-      <Toast toast={toast} />
+      <RegistrarPagamentoModal
+        open={modals.modal === 'pagamento'}
+        onClose={modals.fechar}
+        cliente={modals.clienteAlvo}
+        contasEmAberto={
+          modals.clienteAlvo
+            ? [{ id: '#VEN-1020', vencimento: '2026-09-15', saldo: modals.clienteAlvo.emAberto }]
+            : []
+        }
+        onConfirmado={(payload) => {
+          updateCliente(modals.clienteAlvo.id, {
+            emAberto: Math.max(0, modals.clienteAlvo.emAberto - Number(payload.valor)),
+          })
+        }}
+      />
+
+      <ImportarClientesModal open={modals.modal === 'importar'} onClose={modals.fechar} onImportado={() => {}} />
+
+      <SegmentacaoModal open={modals.modal === 'segmentar'} onClose={modals.fechar} />
     </div>
-  );
+  )
 }

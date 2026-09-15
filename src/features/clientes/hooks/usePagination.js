@@ -1,29 +1,18 @@
-import { useState, useEffect } from "react";
+import { useMemo, useState } from 'react'
 
-/**
- * Pagina `data`. `resetKey` faz a página voltar para 1 sempre que mudar
- * (usado para resetar a paginação quando busca/filtros mudam).
- */
-export default function usePagination(data, initialPerPage, resetKey) {
-  const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(initialPerPage);
+/** Simple client-side pagination hook over an array of items. */
+export function usePagination(items, pageSize = 20) {
+  const [page, setPage] = useState(1)
 
-  useEffect(() => {
-    setPage(1);
-  }, [resetKey, perPage]);
+  const totalPages = Math.max(1, Math.ceil(items.length / pageSize))
+  const pageItems = useMemo(() => {
+    const start = (page - 1) * pageSize
+    return items.slice(start, start + pageSize)
+  }, [items, page, pageSize])
 
-  const totalPages = Math.max(1, Math.ceil(data.length / perPage));
-  const currentPage = Math.min(page, totalPages);
-  const paginated = data.slice((currentPage - 1) * perPage, currentPage * perPage);
+  function goToPage(p) {
+    setPage(Math.min(Math.max(1, p), totalPages))
+  }
 
-  return {
-    page: currentPage,
-    perPage,
-    totalPages,
-    paginated,
-    setPage,
-    setPerPage,
-    goPrev: () => setPage((p) => Math.max(1, p - 1)),
-    goNext: () => setPage((p) => Math.min(totalPages, p + 1)),
-  };
+  return { page, totalPages, pageItems, goToPage, resetPage: () => setPage(1) }
 }
