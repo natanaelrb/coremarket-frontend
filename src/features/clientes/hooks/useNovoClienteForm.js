@@ -1,58 +1,74 @@
-import { useState } from "react";
-import { maskCPF, maskPhone } from "../utils/masks";
-import { CIDADES } from "../mocks/cidadesMock";
+import { useState } from 'react'
+import { validateNovoCliente } from '../utils/validators.js'
 
 const INITIAL_FORM = {
-  nome: "",
-  tipo: "Pessoa Física",
-  cpf: "",
-  telefone: "",
-  email: "",
-  cidade: CIDADES[0],
-};
+  nomeCompleto: '',
+  dataNascimento: '',
+  genero: '',
+  documento: '',
+  telefone: '',
+  whatsapp: '',
+  email: '',
+  cep: '',
+  rua: '',
+  numero: '',
+  complemento: '',
+  bairro: '',
+  estado: '',
+  limiteCredito: '',
+  prazoPagamento: '',
+  status: 'ATIVO',
+  observacoes: '',
+}
 
 /**
- * Estado + validação + submit do formulário "Novo cliente".
- * >>> Em produção, `submit` deve chamar clienteService.criar(form).
+ * Owns the "Novo cliente" / edit-cliente form state and validation.
+ * @param {import('../types/cliente.types.js').Cliente|null} clienteParaEditar
  */
-export default function useNovoClienteForm(onSaved) {
-  const [form, setForm] = useState(INITIAL_FORM);
-  const [errors, setErrors] = useState({});
-  const [saving, setSaving] = useState(false);
+export function useNovoClienteForm(clienteParaEditar, onSubmit) {
+  const [form, setForm] = useState(() =>
+    clienteParaEditar
+      ? {
+          nomeCompleto: clienteParaEditar.nome,
+          dataNascimento: clienteParaEditar.dataNascimento,
+          genero: clienteParaEditar.genero,
+          documento: clienteParaEditar.documento,
+          telefone: clienteParaEditar.telefone,
+          whatsapp: clienteParaEditar.whatsapp,
+          email: clienteParaEditar.email,
+          cep: clienteParaEditar.endereco?.cep ?? '',
+          rua: clienteParaEditar.endereco?.rua ?? '',
+          numero: clienteParaEditar.endereco?.numero ?? '',
+          complemento: clienteParaEditar.endereco?.complemento ?? '',
+          bairro: clienteParaEditar.endereco?.bairro ?? '',
+          estado: clienteParaEditar.endereco?.estado ?? '',
+          limiteCredito: String(clienteParaEditar.limiteCredito ?? ''),
+          prazoPagamento: clienteParaEditar.prazoPagamento ?? '',
+          status: clienteParaEditar.status,
+          observacoes: clienteParaEditar.observacoes ?? '',
+        }
+      : INITIAL_FORM,
+  )
+  const [errors, setErrors] = useState({})
+  const [submitting, setSubmitting] = useState(false)
 
   function setField(field, value) {
-    setForm((f) => ({ ...f, [field]: value }));
-    setErrors((e) => ({ ...e, [field]: null }));
+    setForm((prev) => ({ ...prev, [field]: value }))
+    setErrors((prev) => ({ ...prev, [field]: undefined }))
   }
 
-  function setCpf(value) {
-    setField("cpf", maskCPF(value));
+  // TODO(api): POST /api/clientes (novo) ou PUT /api/clientes/{id} (edição)
+  async function submit() {
+    const validation = validateNovoCliente(form)
+    setErrors(validation)
+    if (Object.keys(validation).length > 0) return false
+
+    setSubmitting(true)
+    await new Promise((r) => setTimeout(r, 500))
+    setSubmitting(false)
+    onSubmit?.(form)
+    return true
   }
 
-  function setTelefone(value) {
-    setField("telefone", maskPhone(value));
-  }
-
-  function validate() {
-    const e = {};
-    if (!form.nome.trim()) e.nome = "Informe o nome do cliente";
-    if (form.cpf.replace(/\D/g, "").length < 11) e.cpf = "CPF incompleto";
-    if (form.telefone.replace(/\D/g, "").length < 10) e.telefone = "Telefone incompleto";
-    if (form.email && !/^\S+@\S+\.\S+$/.test(form.email)) e.email = "E-mail inválido";
-    setErrors(e);
-    return Object.keys(e).length === 0;
-  }
-
-  function submit() {
-    if (!validate()) return;
-    setSaving(true);
-    // >>> Substituir por chamada real: clienteService.criar(form)
-    setTimeout(() => {
-      setSaving(false);
-      onSaved(form);
-      setForm(INITIAL_FORM);
-    }, 700);
-  }
-
-  return { form, errors, saving, setField, setCpf, setTelefone, submit };
+  return { form, setField, errors, submitting, submit }
 }
