@@ -25,7 +25,7 @@ export default function FornecedoresHeader({
           <Breadcrumb items={["Principal", "Fornecedores"]} />
 
           <div className="mt-3 flex items-center gap-4">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-100 text-violet-600 dark:bg-violet-500/10 dark:text-violet-400">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-100 text-green-600 dark:bg-green-500/10 dark:text-green-400">
               <Truck size={22} strokeWidth={2} />
             </div>
 
@@ -79,7 +79,7 @@ export default function FornecedoresHeader({
           {/* Novo fornecedor */}
           <button
             onClick={onNewFornecedor}
-            className="flex h-10 items-center gap-2 rounded-xl bg-violet-600 px-4 text-sm font-semibold text-white shadow-sm shadow-violet-200 transition-all hover:bg-violet-700 hover:shadow-md hover:shadow-violet-300 active:scale-[0.98] dark:shadow-none"
+            className="flex h-10 items-center gap-2 rounded-xl bg-green-600 px-4 text-sm font-semibold text-white shadow-sm shadow-violet-200 transition-all hover:bg-green-700 hover:shadow-md hover:shadow-violet-300 active:scale-[0.98] dark:shadow-none"
           >
             <Plus size={16} />
             Novo Fornecedor
