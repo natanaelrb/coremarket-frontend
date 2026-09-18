@@ -10,10 +10,18 @@ import { useRegistrarPagamentoForm } from '../../../hooks/useRegistrarPagamentoF
  * "Registrar pagamento" modal. `contasEmAberto` is the client's open
  * receivable list (see useContasReceber in the detail feature).
  */
-export function RegistrarPagamentoModal({ open, onClose, cliente, contasEmAberto, onConfirmado }) {
+export function RegistrarPagamentoModal({
+  open,
+  onClose,
+  cliente,
+  contasEmAberto,
+  contaSelecionada,
+  onConfirmado,
+}) {
   const { form, setField, errors, submitting, confirmar } = useRegistrarPagamentoForm(
     cliente,
     contasEmAberto,
+    contaSelecionada,
     (payload) => {
       onConfirmado(payload)
       onClose()

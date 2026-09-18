@@ -1,39 +1,75 @@
-import { Check } from 'lucide-react'
+import { Check } from "lucide-react";
 import { cn } from "../../../../../shared/utils/classNames.js";
 
-const LABELS = ['Selecionar arquivo', 'Mapear colunas', 'Validar dados', 'Confirmar']
+const LABELS = [
+  "Selecionar arquivo",
+  "Mapear colunas",
+  "Validar dados",
+  "Confirmar",
+];
 
 /** 4-step progress indicator for the import wizard. */
 export function StepIndicator({ stepIndex }) {
   return (
-    <div className="flex items-center mb-6">
+    <div className="mb-6 flex items-center">
       {LABELS.map((label, i) => (
-        <div key={label} className="flex items-center flex-1 last:flex-none">
+        <div
+          key={label}
+          className="flex flex-1 items-center last:flex-none"
+        >
           <div className="flex items-center gap-2">
             <div
               className={cn(
-                'w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-semibold shrink-0 transition-colors',
-                i < stepIndex && 'bg-cm-green text-white',
-                i === stepIndex && 'bg-cm-violet text-white',
-                i > stepIndex && 'bg-white/10 text-slate-400 light:bg-black/10',
+                `
+                  flex h-6 w-6 shrink-0
+                  items-center justify-center
+                  rounded-full
+                  text-[11px]
+                  font-semibold
+                  transition-colors
+                `,
+                i < stepIndex &&
+                  "bg-[#16a34a] text-white",
+
+                i === stepIndex &&
+                  "bg-[#22c55e] text-white shadow-sm",
+
+                i > stepIndex &&
+                  `
+                    bg-slate-100
+                    text-slate-500
+                    dark:bg-white/10
+                    dark:text-slate-400
+                  `,
               )}
             >
               {i < stepIndex ? <Check size={13} /> : i + 1}
             </div>
+
             <span
               className={cn(
-                'text-xs whitespace-nowrap hidden sm:inline',
-                i === stepIndex ? 'text-white light:text-slate-900 font-medium' : 'text-slate-500',
+                "hidden whitespace-nowrap text-xs sm:inline",
+                i === stepIndex
+                  ? "font-medium text-[#0f172a] dark:text-white"
+                  : "text-slate-500 dark:text-slate-400",
               )}
             >
               {label}
             </span>
           </div>
+
           {i < LABELS.length - 1 && (
-            <div className={cn('h-px flex-1 mx-3', i < stepIndex ? 'bg-cm-green' : 'bg-cm-border-dark light:bg-cm-border-light')} />
+            <div
+              className={cn(
+                "mx-3 h-px flex-1",
+                i < stepIndex
+                  ? "bg-[#22c55e]"
+                  : "bg-slate-200 dark:bg-white/10",
+              )}
+            />
           )}
         </div>
       ))}
     </div>
-  )
+  );
 }

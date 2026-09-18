@@ -4,7 +4,7 @@ import { FormField, TextInput } from "../../../../../shared/components/forms/For
 export function EnderecoSection({ form, setField, errors }) {
   return (
     <fieldset className="space-y-4">
-      <legend className="text-sm font-semibold text-white light:text-slate-900 mb-1">Endereço</legend>
+      <legend className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Endereço</legend>
       <div className="grid grid-cols-2 gap-4">
         <FormField label="CEP">
           <TextInput value={form.cep} onChange={(e) => setField('cep', e.target.value)} placeholder="00000-000" />

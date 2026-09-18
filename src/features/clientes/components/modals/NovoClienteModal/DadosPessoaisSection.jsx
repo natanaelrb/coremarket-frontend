@@ -12,7 +12,7 @@ const GENERO_LABELS = {
 export function DadosPessoaisSection({ form, setField, errors }) {
   return (
     <fieldset className="space-y-4">
-      <legend className="text-sm font-semibold text-white light:text-slate-900 mb-1">Dados pessoais</legend>
+      <legend className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Dados pessoais</legend>
       <FormField label="Nome completo" required error={errors.nomeCompleto}>
         <TextInput
           value={form.nomeCompleto}

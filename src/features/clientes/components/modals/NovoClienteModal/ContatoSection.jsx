@@ -4,7 +4,7 @@ import { FormField, TextInput } from "../../../../../shared/components/forms/For
 export function ContatoSection({ form, setField, errors }) {
   return (
     <fieldset className="space-y-4">
-      <legend className="text-sm font-semibold text-white light:text-slate-900 mb-1">Contato</legend>
+      <legend className="text-sm font-semibold text-slate-900 dark:text-white mb-1">Contato</legend>
       <div className="grid grid-cols-2 gap-4">
         <FormField label="Telefone" required error={errors.telefone}>
           <TextInput

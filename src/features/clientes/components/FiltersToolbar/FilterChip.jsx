@@ -6,13 +6,36 @@ export function FilterChip({ label, active, onClick }) {
     <button
       onClick={onClick}
       className={cn(
-        'rounded-full px-3.5 py-1.5 text-xs font-medium whitespace-nowrap transition-colors',
+        `
+          rounded-full
+          px-3.5 py-1.5
+          text-xs font-medium
+          whitespace-nowrap
+          border
+          transition-all duration-200
+        `,
         active
-          ? 'bg-cm-violet text-white'
-          : 'bg-white/5 text-slate-300 hover:bg-white/10 light:bg-black/5 light:text-slate-600 light:hover:bg-black/10',
+          ? `
+              bg-[#1d4936]
+              text-[#e8fff2]
+              border-[#1d4936]
+              shadow-sm
+            `
+          : `
+              bg-white
+              text-slate-600
+              border-slate-200
+              hover:border-[#42c878]/40
+              hover:bg-[#f0fdf4]
+              hover:text-[#248f52]
+              dark:bg-white/5
+              dark:text-slate-300
+              dark:border-white/10
+              dark:hover:bg-white/10
+            `
       )}
     >
       {label}
     </button>
-  )
+  );
 }

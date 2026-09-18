@@ -17,6 +17,7 @@ export function KPICardsGrid({ kpis }) {
         caption={`+${kpis.variacaoPeriodo}% no período`}
         delay={0}
       />
+
       <KPICard
         icon={<UserCheck size={18} />}
         tone="green"
@@ -25,6 +26,7 @@ export function KPICardsGrid({ kpis }) {
         caption={`${kpis.percentualAtivos}% da base`}
         delay={60}
       />
+
       <KPICard
         icon={<Wallet size={18} />}
         tone="blue"
@@ -32,6 +34,7 @@ export function KPICardsGrid({ kpis }) {
         label="Total a receber"
         delay={120}
       />
+
       <KPICard
         icon={<AlertTriangle size={18} />}
         tone="red"
@@ -40,6 +43,7 @@ export function KPICardsGrid({ kpis }) {
         caption={`${formatCurrency(kpis.valorEmAtrasoTotal)} em atraso`}
         delay={180}
       />
+
       <KPICard
         icon={<Clock size={18} />}
         tone="amber"

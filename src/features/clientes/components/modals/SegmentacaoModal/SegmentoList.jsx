@@ -1,5 +1,5 @@
 import { cn } from "../../../../../shared/utils/classNames.js";
-import { SEGMENTOS_CONFIG } from '../../../constants/segmentosConfig.js'
+import { SEGMENTOS_CONFIG } from "../../../constants/segmentosConfig.js";
 
 /** Left-side list of client segments with their counts. */
 export function SegmentoList({ segmentoAtivo, onSelect, contagens }) {
@@ -10,17 +10,38 @@ export function SegmentoList({ segmentoAtivo, onSelect, contagens }) {
           <button
             onClick={() => onSelect(seg.id)}
             className={cn(
-              'w-full flex items-center justify-between rounded-lg px-3 py-2 text-sm transition-colors',
+              `
+                flex w-full
+                items-center justify-between
+                rounded-lg
+                px-3 py-2
+                text-sm
+                transition-colors
+              `,
               seg.id === segmentoAtivo
-                ? 'bg-cm-violet-dim text-cm-violet-soft font-medium'
-                : 'text-slate-300 light:text-slate-600 hover:bg-white/5 light:hover:bg-black/5',
+                ? `
+                    bg-[#ede9fe]
+                    font-medium
+                    text-[#7c3aed]
+                    dark:bg-purple-950/30
+                    dark:text-purple-400
+                  `
+                : `
+                    text-slate-600
+                    hover:bg-slate-100
+                    dark:text-slate-300
+                    dark:hover:bg-white/5
+                  `,
             )}
           >
             {seg.label}
-            <span className="text-xs text-slate-500">{contagens[seg.id]?.toLocaleString('pt-BR')}</span>
+
+            <span className="text-xs text-slate-500 dark:text-slate-400">
+              {contagens[seg.id]?.toLocaleString("pt-BR")}
+            </span>
           </button>
         </li>
       ))}
     </ul>
-  )
+  );
 }

@@ -1,53 +1,123 @@
 import Avatar from "../../../../shared/components/data-display/Avatar.jsx";
 import { Badge } from "../../../../shared/components/ui/Badge.jsx";
-import { TableActionsCell } from './TableActionsCell.jsx'
+import { TableActionsCell } from "./TableActionsCell.jsx";
 import { formatCurrency } from "../../../../shared/utils/formatCurrency.js";
 import { formatDate } from "../../../../shared/utils/formatDate.js";
 import { formatPhone } from "../../../../shared/utils/formatPhone.js";
-import { getStatusConfig } from '../../utils/clienteStatusHelpers.js'
+import { getStatusConfig } from "../../utils/clienteStatusHelpers.js";
 import { cn } from "../../../../shared/utils/classNames.js";
 
 /**
  * Single row in the clients table.
  * @param {{cliente: import('../../types/cliente.types.js').Cliente}} props
  */
-export function ClienteRow({ cliente, selected, onToggleSelect, onView, onEdit, onRegistrarPagamento, onExcluir }) {
-  const status = getStatusConfig(cliente.status)
+export function ClienteRow({
+  cliente,
+  selected,
+  onToggleSelect,
+  onView,
+  onEdit,
+  onRegistrarPagamento,
+  onExcluir,
+}) {
+  const status = getStatusConfig(cliente.status);
 
   return (
     <tr
       className={cn(
-        'border-b border-cm-border-dark/60 light:border-cm-border-light text-sm transition-colors hover:bg-white/[0.03] light:hover:bg-black/[0.02]',
-        selected && 'bg-cm-violet-dim/40',
+        `
+          border-b border-slate-100
+          text-sm
+          transition-colors duration-150
+          hover:bg-slate-50/80
+          dark:border-white/5
+          dark:hover:bg-white/[0.025]
+        `,
+        selected &&
+          "bg-[#f0fdf4] hover:bg-[#f0fdf4] dark:bg-emerald-950/20 dark:hover:bg-emerald-950/20"
       )}
     >
-      <td className="py-3 pl-4 pr-2">
+      {/* Seleção */}
+      <td className="py-3.5 pl-4 pr-2">
         <input
           type="checkbox"
           checked={selected}
           onChange={onToggleSelect}
-          className="rounded border-cm-border-dark accent-cm-violet"
+          className="
+            h-3.5 w-3.5
+            cursor-pointer
+            rounded
+            border-slate-300
+            accent-[#42c878]
+            dark:border-slate-600
+          "
         />
       </td>
-      <td className="py-3 px-3">
-        <button onClick={onView} className="flex items-center gap-3 text-left group">
+
+      {/* Cliente */}
+      <td className="px-3 py-3.5">
+        <button
+          onClick={onView}
+          className="group flex items-center gap-3 text-left"
+        >
           <Avatar name={cliente.nome} size="sm" />
-          <span>
-            <span className="block font-medium text-white light:text-slate-900 group-hover:text-cm-violet-soft transition-colors">
+
+          <span className="min-w-0">
+            <span
+              className="
+                block truncate
+                font-medium
+                text-slate-900
+                transition-colors duration-150
+                group-hover:text-[#248f52]
+                dark:text-white
+                dark:group-hover:text-[#65d98a]
+              "
+            >
               {cliente.nome}
             </span>
-            <span className="block text-xs text-slate-500">{cliente.id}</span>
+
+            <span className="block text-xs text-slate-400 dark:text-slate-500">
+              {cliente.id}
+            </span>
           </span>
         </button>
       </td>
-      <td className="py-3 px-3 text-slate-300 light:text-slate-600">{formatPhone(cliente.telefone)}</td>
-      <td className="py-3 px-3 text-slate-300 light:text-slate-600">{formatDate(cliente.ultimaCompra)}</td>
-      <td className="py-3 px-3 font-medium text-white light:text-slate-900">{formatCurrency(cliente.totalComprado)}</td>
-      <td className="py-3 px-3 text-slate-300 light:text-slate-600">{formatCurrency(cliente.emAberto)}</td>
-      <td className="py-3 px-3">
+
+      {/* Telefone */}
+      <td className="px-3 py-3.5 text-slate-600 dark:text-slate-300">
+        {formatPhone(cliente.telefone)}
+      </td>
+
+      {/* Última compra */}
+      <td className="px-3 py-3.5 text-slate-600 dark:text-slate-300">
+        {formatDate(cliente.ultimaCompra)}
+      </td>
+
+      {/* Total comprado */}
+      <td className="px-3 py-3.5 font-medium text-slate-900 dark:text-white">
+        {formatCurrency(cliente.totalComprado)}
+      </td>
+
+      {/* Em aberto */}
+      <td
+        className={cn(
+          "px-3 py-3.5 font-medium",
+          cliente.emAberto > 0
+            ? "text-[#dc2626]"
+            : "text-slate-600 dark:text-slate-300"
+        )}
+      >
+        {formatCurrency(cliente.emAberto)}
+      </td>
+
+      {/* Status */}
+      <td className="px-3 py-3.5">
         <Badge tone={status.tone}>{status.label}</Badge>
       </td>
-      <td className="py-3 px-3">
+
+      {/* Ações */}
+      <td className="px-3 py-3.5">
         <TableActionsCell
           onView={onView}
           onEdit={onEdit}
@@ -56,5 +126,5 @@ export function ClienteRow({ cliente, selected, onToggleSelect, onView, onEdit, 
         />
       </td>
     </tr>
-  )
+  );
 }
