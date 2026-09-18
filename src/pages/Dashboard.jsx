@@ -42,7 +42,7 @@ export default function Dashboard() {
     PERIOD_OPTIONS.find((p) => p.id === periodId)?.label ?? 'Período';
 
   return (
-    <div className="w-full-12 pb-6 pt-6 -mt-8">
+    <div className="w-full-12 pb-6 pt-6 -mt-10 -ml-2 max-w-[1400px]">
       <DashboardHeader
         activeTab={activeTab}
         onTabChange={setActiveTab}
