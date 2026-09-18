@@ -25,12 +25,17 @@ export function HistoricoRow({ venda, onVisualizar }) {
       </td>
       <td className="py-3 pr-2">
         <div className="flex items-center justify-end gap-1">
-          <IconButton size="sm" label="Visualizar venda" onClick={onVisualizar}>
-            <Eye className="h-4 w-4" />
-          </IconButton>
-          <IconButton size="sm" label="Imprimir venda" onClick={() => window.print()}>
-            <Printer className="h-4 w-4" />
-          </IconButton>
+          <IconButton
+            icon={Eye}
+            title="Visualizar venda"
+            onClick={onVisualizar}
+          />
+
+          <IconButton
+            icon={Printer}
+            title="Imprimir venda"
+            onClick={() => window.print()}
+          />
         </div>
       </td>
     </tr>
