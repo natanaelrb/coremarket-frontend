@@ -4,7 +4,7 @@ import { cn } from "../../utils/classNames.js";
 export function FormField({ label, required, error, className, children }) {
   return (
     <label className={cn('block', className)}>
-      <span className="block text-xs font-medium text-slate-300 light:text-slate-600 mb-1.5">
+      <span className="block text-xs font-medium text-slate-600 dark:text-slate-300 mb-1.5">
         {label} {required && <span className="text-cm-red">*</span>}
       </span>
       {children}
@@ -14,8 +14,8 @@ export function FormField({ label, required, error, className, children }) {
 }
 
 const baseInputClasses =
-  'w-full rounded-lg bg-white/5 light:bg-black/5 border border-cm-border-dark light:border-cm-border-light ' +
-  'px-3 py-2 text-sm text-white light:text-slate-900 placeholder:text-slate-500 ' +
+  'w-full rounded-lg bg-white/5 dark:bg-white/5 border border-cm-border-light dark:border-cm-border-dark ' +
+  'px-3 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-500 ' +
   'focus:outline-none focus:ring-2 focus:ring-cm-violet/50 transition-shadow'
 
 /** Plain text/number/date input styled to match FormField. */

@@ -10,8 +10,8 @@ export function SearchInput({ value, onChange, placeholder = 'Buscar...', classN
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-lg bg-white/5 light:bg-black/5 border border-cm-border-dark light:border-cm-border-light
-                   pl-9 pr-3 py-2 text-sm text-white light:text-slate-900 placeholder:text-slate-500
+        className="w-full rounded-lg bg-white/5 dark:bg-white/5 border border-cm-border-light dark:border-cm-border-dark
+                   pl-9 pr-3 py-2 text-sm text-slate-900 dark:text-white placeholder:text-slate-500
                    focus:outline-none focus:ring-2 focus:ring-cm-violet/50 transition-shadow"
       />
     </div>

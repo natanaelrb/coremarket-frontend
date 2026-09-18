@@ -10,7 +10,7 @@ export function Pagination({ page, totalPages, onPageChange }) {
       <button
         disabled={page <= 1}
         onClick={() => onPageChange(page - 1)}
-        className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-white/10 light:text-slate-500 light:hover:bg-black/5 disabled:opacity-30 disabled:pointer-events-none"
+        className="p-1.5 rounded-md text-slate-500 hover:text-slate-900 hover:bg-black/5 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/5 disabled:opacity-30 disabled:pointer-events-none"
         aria-label="Página anterior"
       >
         <ChevronLeft size={16} />
@@ -29,7 +29,7 @@ export function Pagination({ page, totalPages, onPageChange }) {
               'w-8 h-8 rounded-md text-sm font-medium transition-colors',
               p === page
                 ? 'bg-cm-violet text-white'
-                : 'text-slate-300 hover:bg-white/10 light:text-slate-600 light:hover:bg-black/5',
+                : 'text-slate-600 hover:bg-black/5 dark:text-slate-300 dark:hover:bg-white/5',
             )}
           >
             {p}
@@ -40,7 +40,7 @@ export function Pagination({ page, totalPages, onPageChange }) {
       <button
         disabled={page >= totalPages}
         onClick={() => onPageChange(page + 1)}
-        className="p-1.5 rounded-md text-slate-400 hover:text-white hover:bg-white/10 light:text-slate-500 light:hover:bg-black/5 disabled:opacity-30 disabled:pointer-events-none"
+        className="p-1.5 rounded-md text-slate-500 hover:text-slate-900 hover:bg-black/5 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/5 disabled:opacity-30 disabled:pointer-events-none"
         aria-label="Próxima página"
       >
         <ChevronRight size={16} />

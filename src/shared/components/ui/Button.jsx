@@ -1,36 +1,36 @@
 const VARIANTS = {
   primary:
-    'bg-violet-600 text-white hover:bg-violet-700 shadow-sm shadow-violet-600/20',
+    "bg-[#22c55e] text-white shadow-sm shadow-[#22c55e]/20 hover:bg-[#16a34a]",
 
   secondary:
-    'bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 dark:bg-[#151936] dark:text-gray-200 dark:border-gray-700 dark:hover:bg-white/5',
+    "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 dark:border-white/10 dark:bg-[#151936] dark:text-slate-200 dark:hover:bg-white/5",
 
   ghost:
-    'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5',
+    "text-slate-600 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5",
 
   danger:
-    'bg-red-600 text-white hover:bg-red-700 shadow-sm shadow-red-600/20',
+    "bg-[#ef4444] text-white shadow-sm shadow-[#ef4444]/20 hover:bg-[#dc2626]",
 
   success:
-    'bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm shadow-emerald-600/20',
+    "bg-[#22c55e] text-white shadow-sm shadow-[#22c55e]/20 hover:bg-[#16a34a]",
 };
 
 const SIZES = {
-  sm: 'px-2.5 py-1.5 text-xs',
-  md: 'px-3.5 py-2 text-sm',
-  lg: 'px-5 py-3 text-base',
+  sm: "px-2.5 py-1.5 text-xs",
+  md: "px-3.5 py-2 text-sm",
+  lg: "px-5 py-3 text-base",
 };
 
 export function Button({
   children,
   icon: Icon,
-  variant = 'secondary',
-  size = 'md',
+  variant = "secondary",
+  size = "md",
   fullWidth = false,
   loading = false,
   onClick,
-  className = '',
-  type = 'button',
+  className = "",
+  type = "button",
   disabled = false,
 }) {
   return (
@@ -39,20 +39,27 @@ export function Button({
       onClick={onClick}
       disabled={disabled || loading}
       className={[
-        'inline-flex items-center justify-center gap-1.5 rounded-lg font-medium transition-all duration-150',
-        'active:scale-[0.97]',
-        'disabled:cursor-not-allowed disabled:opacity-50',
+        "inline-flex items-center justify-center gap-1.5 rounded-lg font-medium transition-all duration-150",
+        "active:scale-[0.97]",
+        "disabled:cursor-not-allowed disabled:opacity-50",
         SIZES[size] ?? SIZES.md,
         VARIANTS[variant] ?? VARIANTS.secondary,
-        fullWidth ? 'w-full' : '',
+        fullWidth ? "w-full" : "",
         className,
       ]
         .filter(Boolean)
-        .join(' ')}
+        .join(" ")}
     >
       {loading ? (
         <span
-          className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white"
+          className="
+            h-4 w-4
+            animate-spin
+            rounded-full
+            border-2
+            border-white/30
+            border-t-white
+          "
           aria-hidden="true"
         />
       ) : (
