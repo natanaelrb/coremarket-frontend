@@ -1,46 +1,120 @@
-import { Wallet } from 'lucide-react'
-import { StatusContaBadge } from './StatusContaBadge.jsx'
+import { Wallet } from "lucide-react";
+
+import { StatusContaBadge } from "./StatusContaBadge.jsx";
 import IconButton from "../../../../../shared/components/actions/IconButton.jsx";
 import { formatCurrency } from "../../../../../shared/utils/formatCurrency.js";
 import { formatDate } from "../../../../../shared/utils/formatDate.js";
 import { STATUS_CONTA_RECEBER } from "../../../../../shared/constants/enums.js";
 
 /** "Contas a receber" table: vencimento, valor, pago, saldo, status, ações. */
-export function ContasReceberTable({ contas, onRegistrarPagamento }) {
+export function ContasReceberTable({
+  contas = [],
+  onRegistrarPagamento,
+}) {
   return (
-    <div className="rounded-xl border border-cm-border-dark light:border-cm-border-light bg-cm-panel-dark light:bg-cm-panel-light overflow-hidden">
-      <table className="w-full text-sm">
-        <thead>
-          <tr className="text-left text-xs text-slate-400 light:text-slate-500 border-b border-cm-border-dark light:border-cm-border-light">
-            <th className="px-4 py-3 font-medium">Venda</th>
-            <th className="px-4 py-3 font-medium">Vencimento</th>
-            <th className="px-4 py-3 font-medium">Valor</th>
-            <th className="px-4 py-3 font-medium">Pago</th>
-            <th className="px-4 py-3 font-medium">Saldo</th>
-            <th className="px-4 py-3 font-medium">Status</th>
-            <th className="px-4 py-3 font-medium">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {contas.map((c) => (
-            <tr key={c.id} className="border-b border-cm-border-dark/60 light:border-cm-border-light">
-              <td className="px-4 py-3 font-medium text-white light:text-slate-900">{c.id}</td>
-              <td className="px-4 py-3 text-slate-300 light:text-slate-600">{formatDate(c.vencimento)}</td>
-              <td className="px-4 py-3 text-slate-300 light:text-slate-600">{formatCurrency(c.valor)}</td>
-              <td className="px-4 py-3 text-slate-300 light:text-slate-600">{formatCurrency(c.pago)}</td>
-              <td className="px-4 py-3 font-medium text-white light:text-slate-900">{formatCurrency(c.saldo)}</td>
-              <td className="px-4 py-3">
-                <StatusContaBadge status={c.status} />
-              </td>
-              <td className="px-4 py-3">
-                {c.status !== STATUS_CONTA_RECEBER.PAGO && (
-                  <IconButton icon={Wallet} label="Registrar pagamento" onClick={() => onRegistrarPagamento(c)} />
-                )}
-              </td>
+    <div
+      className="
+        overflow-hidden
+        rounded-xl
+        border border-slate-200
+        bg-white
+        shadow-[0_1px_2px_rgba(15,23,42,0.02)]
+        dark:border-white/10
+        dark:bg-zinc-900
+      "
+    >
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[900px] text-sm">
+          <thead>
+            <tr
+              className="
+                border-b
+                border-slate-200
+                bg-slate-50/70
+                dark:border-white/10
+                dark:bg-white/[0.02]
+              "
+            >
+              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Venda
+              </th>
+
+              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Vencimento
+              </th>
+
+              <th className="px-4 py-3 text-right text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Valor
+              </th>
+
+              <th className="px-4 py-3 text-right text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Pago
+              </th>
+
+              <th className="px-4 py-3 text-right text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Saldo
+              </th>
+
+              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Status
+              </th>
+
+              <th className="px-4 py-3 text-center text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Ações
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+            {contas.map((c) => (
+              <tr
+                key={c.id}
+                className="
+                  transition-colors
+                  hover:bg-slate-50/80
+                  dark:hover:bg-white/[0.02]
+                "
+              >
+                <td className="px-4 py-3 font-medium text-[#0f172a] dark:text-white">
+                  {c.id}
+                </td>
+
+                <td className="px-4 py-3 text-[#64748b] dark:text-slate-300">
+                  {formatDate(c.vencimento)}
+                </td>
+
+                <td className="px-4 py-3 text-right text-[#64748b] dark:text-slate-300">
+                  {formatCurrency(c.valor)}
+                </td>
+
+                <td className="px-4 py-3 text-right text-[#64748b] dark:text-slate-300">
+                  {formatCurrency(c.pago)}
+                </td>
+
+                <td className="px-4 py-3 text-right font-semibold text-[#0f172a] dark:text-white">
+                  {formatCurrency(c.saldo)}
+                </td>
+
+                <td className="px-4 py-3">
+                  <StatusContaBadge status={c.status} />
+                </td>
+
+                <td className="px-4 py-3 text-center">
+                  {c.status !== STATUS_CONTA_RECEBER.PAGO && (
+                    <div className="flex justify-center">
+                      <IconButton
+                        icon={Wallet}
+                        label="Registrar pagamento"
+                        onClick={() => onRegistrarPagamento(c)}
+                      />
+                    </div>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-  )
+  );
 }

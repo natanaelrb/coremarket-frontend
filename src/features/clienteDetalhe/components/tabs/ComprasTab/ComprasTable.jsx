@@ -3,33 +3,80 @@ import { formatDate } from "../../../../../shared/utils/formatDate.js";
 import { FORMA_PAGAMENTO_CONFIG } from "../../../../clientes/constants/formaPagamentoConfig.js";
 
 /** Full purchase-history table for the "Compras" tab. */
-export function ComprasTable({ compras }) {
+export function ComprasTable({ compras = [] }) {
   return (
-    <div className="rounded-xl border border-cm-border-dark light:border-cm-border-light bg-cm-panel-dark light:bg-cm-panel-light overflow-hidden">
-      <table className="w-full text-sm">
-        <thead>
-          <tr className="text-left text-xs text-slate-400 light:text-slate-500 border-b border-cm-border-dark light:border-cm-border-light">
-            <th className="px-4 py-3 font-medium">Venda</th>
-            <th className="px-4 py-3 font-medium">Data</th>
-            <th className="px-4 py-3 font-medium">Itens</th>
-            <th className="px-4 py-3 font-medium">Forma de pagamento</th>
-            <th className="px-4 py-3 font-medium">Valor</th>
-          </tr>
-        </thead>
-        <tbody>
-          {compras.map((c) => (
-            <tr key={c.venda} className="border-b border-cm-border-dark/60 light:border-cm-border-light">
-              <td className="px-4 py-3 font-medium text-white light:text-slate-900">{c.venda}</td>
-              <td className="px-4 py-3 text-slate-300 light:text-slate-600">{formatDate(c.data)}</td>
-              <td className="px-4 py-3 text-slate-300 light:text-slate-600">{c.itens}</td>
-              <td className="px-4 py-3 text-slate-300 light:text-slate-600">
-                {FORMA_PAGAMENTO_CONFIG[c.formaPagamento]?.label ?? c.formaPagamento}
-              </td>
-              <td className="px-4 py-3 font-medium text-white light:text-slate-900">{formatCurrency(c.valor)}</td>
+    <div
+      className="
+        overflow-hidden
+        rounded-xl
+        border border-slate-200
+        bg-white
+        shadow-[0_1px_2px_rgba(15,23,42,0.02)]
+        dark:border-white/10
+        dark:bg-zinc-900
+      "
+    >
+      <div className="overflow-x-auto">
+        <table className="w-full min-w-[760px] text-sm">
+          <thead>
+            <tr className="border-b border-slate-200 bg-slate-50/70 dark:border-white/10 dark:bg-white/[0.02]">
+              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Venda
+              </th>
+
+              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Data
+              </th>
+
+              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Itens
+              </th>
+
+              <th className="px-4 py-3 text-left text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Forma de pagamento
+              </th>
+
+              <th className="px-4 py-3 text-right text-xs font-semibold text-slate-500 dark:text-slate-400">
+                Valor
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody className="divide-y divide-slate-100 dark:divide-white/5">
+            {compras.map((c) => (
+              <tr
+                key={c.venda}
+                className="
+                  transition-colors
+                  hover:bg-slate-50/80
+                  dark:hover:bg-white/[0.02]
+                "
+              >
+                <td className="px-4 py-3 font-medium text-[#0f172a] dark:text-white">
+                  {c.venda}
+                </td>
+
+                <td className="px-4 py-3 text-[#64748b] dark:text-slate-300">
+                  {formatDate(c.data)}
+                </td>
+
+                <td className="px-4 py-3 text-[#64748b] dark:text-slate-300">
+                  {c.itens}
+                </td>
+
+                <td className="px-4 py-3 text-[#64748b] dark:text-slate-300">
+                  {FORMA_PAGAMENTO_CONFIG[c.formaPagamento]?.label ??
+                    c.formaPagamento}
+                </td>
+
+                <td className="px-4 py-3 text-right font-semibold text-[#0f172a] dark:text-white">
+                  {formatCurrency(c.valor)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-  )
+  );
 }
