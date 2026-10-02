@@ -1,4 +1,4 @@
-import { SlidersHorizontal, ChevronDown } from "lucide-react";
+import { LayoutDashboard } from "lucide-react";
 import DashboardBreadcrumb from "./DashboardBreadcrumb";
 import DashboardTabs from "./DashboardTabs";
 import PeriodPicker from "./PeriodPicker";
@@ -12,21 +12,18 @@ export default function DashboardHeader({
   isPeriodPickerOpen,
   onTogglePeriodPicker,
   onSelectPeriod,
-  onOpenFilters,
-  activeFilterCount = 0,
 }) {
-  const isAdvanced = activeTab === DASHBOARD_TABS.ADVANCED;
-
-  // Configuração dinâmica da aba atual
   const headerContent = {
     [DASHBOARD_TABS.OVERVIEW]: {
-      breadcrumb: "Visão Geral",
-      description: "Acompanhe o desempenho do seu negócio",
+      breadcrumb: "Dashboard",
+      title: "Visão Geral",
+      description: "Acompanhe o desempenho do seu negócio.",
     },
 
     [DASHBOARD_TABS.ADVANCED]: {
-      breadcrumb: "Avançado",
-      description: "Análise profunda dos dados do seu negócio",
+      breadcrumb: "Dashboard",
+      title: "Avançado",
+      description: "Análise profunda dos dados do seu negócio.",
     },
   };
 
@@ -34,27 +31,67 @@ export default function DashboardHeader({
 
   return (
     <header className="mb-6">
-      <div className="flex flex-wrap items-start justify-between gap-4">
-
+      <div className="flex flex-wrap items-end justify-between gap-5">
         {/* Informações do Dashboard */}
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight text-[var(--text-primary)]">
-            Dashboard
-          </h1>
-
-          <div className="mt-1">
+        <div className="min-w-0">
+          {/* Breadcrumb */}
+          <div className="mb-2.5">
             <DashboardBreadcrumb
               activeLabel={currentHeader.breadcrumb}
             />
           </div>
 
-          {/* Descrição dinâmica */}
-          <p className="mt-2 text-sm font-semibold text-[var(--text-secondary)]">
+          {/* Título */}
+          <div className="flex items-center gap-2.5">
+            <div
+              className="
+                flex
+                h-9
+                w-9
+                shrink-0
+                items-center
+                justify-center
+                rounded-lg
+                bg-emerald-50
+                text-emerald-600
+                ring-1
+                ring-emerald-100
+              "
+            >
+              <LayoutDashboard
+                size={18}
+                strokeWidth={2.2}
+              />
+            </div>
+
+            <h1
+              className="
+                truncate
+                text-2xl
+                font-bold
+                tracking-tight
+                text-[var(--text-primary)]
+              "
+            >
+              {currentHeader.title}
+            </h1>
+          </div>
+
+          {/* Descrição */}
+          <p
+            className="
+              mt-2
+              max-w-2xl
+              text-sm
+              leading-5
+              text-[var(--text-secondary)]
+            "
+          >
             {currentHeader.description}
           </p>
         </div>
 
-        {/* Ações */}
+        {/* Seletor de período */}
         <div className="flex items-center gap-2">
           <PeriodPicker
             periodId={periodId}
@@ -63,37 +100,6 @@ export default function DashboardHeader({
             onToggle={onTogglePeriodPicker}
             onSelect={onSelectPeriod}
           />
-
-          {isAdvanced && (
-            <button
-              type="button"
-              onClick={onOpenFilters}
-              className="
-                flex items-center gap-2 rounded-xl
-                border border-emerald-200
-                bg-emerald-50
-                px-3.5 py-2
-                text-sm font-medium text-emerald-700
-                transition-all duration-200
-                hover:bg-emerald-100
-                hover:border-emerald-300
-              "
-            >
-              <SlidersHorizontal
-                className="h-4 w-4 text-emerald-600"
-              />
-
-              Filtros
-
-              {activeFilterCount > 0 && (
-                <span className="rounded-full bg-emerald-600 px-1.5 py-0.5 text-[10px] font-semibold text-white">
-                  {activeFilterCount}
-                </span>
-              )}
-
-              <ChevronDown className="h-3.5 w-3.5 text-emerald-600" />
-            </button>
-          )}
         </div>
       </div>
 
