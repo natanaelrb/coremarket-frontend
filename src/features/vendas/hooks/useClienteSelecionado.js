@@ -5,9 +5,9 @@ import { MOCK_CLIENTES } from '../data/mockClientes.js';
  * Gerencia a busca e seleção do cliente vinculado à venda atual.
  * TODO(api): trocar filtro local por GET /api/clientes/buscar?termo={termo}
  */
-export function useClienteSelecionado() {
+export function useClienteSelecionado(clienteInicial = null) {
   const [termoBusca, setTermoBusca] = useState('');
-  const [cliente, setCliente] = useState(null);
+  const [cliente, setCliente] = useState(clienteInicial);
   const inputRef = useRef(null);
 
   const sugestoes = useMemo(() => {

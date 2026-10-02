@@ -1,3 +1,6 @@
+import { useSearchParams } from "react-router-dom";
+import { MOCK_CLIENTES } from "../features/vendas/data/mockClientes.js";
+
 import { VendasHeader } from "../features/vendas/components/Header/VendasHeader.jsx";
 import { ActionButtons } from "../features/vendas/components/Actions/ActionButtons.jsx";
 import { KPICardsRow } from "../features/vendas/components/KPIs/KPICardsRow.jsx";
@@ -30,8 +33,18 @@ import { useToast } from "../shared/contexts/ToastContext.jsx";
 export function Vendas() {
   const { notify } = useToast();
 
+  const [searchParams] = useSearchParams();
+  const clienteId = searchParams.get("clienteId");
+
+  const clienteInicial = clienteId
+    ? MOCK_CLIENTES.find(
+        (cliente) => String(cliente.id) === String(clienteId)
+      ) ?? null
+    : null;
+
   const produtoSearch = useProdutoSearch();
-  const vendaAtual = useVendaAtual();
+  const vendaAtual = useVendaAtual(clienteInicial);
+  
   const { kpis, carregando: carregandoKpis, caixa, operador } = useKPIsVendas();
   const historico = useHistoricoVendas();
   const { vendaSelecionada, visualizarVenda } = useVendaDetalhe();

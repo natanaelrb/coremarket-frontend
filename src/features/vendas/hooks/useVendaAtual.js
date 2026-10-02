@@ -9,9 +9,9 @@ import { useResumoVenda } from './useResumoVenda.js';
  * em andamento em uma única API consumida pela VendasPage.
  * Mantém a página de vendas como uma camada pura de composição.
  */
-export function useVendaAtual() {
+export function useVendaAtual(clienteInicial = null) {
   const carrinho = useItensVenda();
-  const clienteState = useClienteSelecionado();
+  const clienteState = useClienteSelecionado(clienteInicial);
   const tipoVendaState = useTipoVenda();
   const descontosState = useDescontos();
 
