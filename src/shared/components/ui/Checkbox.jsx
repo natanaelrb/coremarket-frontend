@@ -19,12 +19,17 @@ export function Checkbox({ checked, indeterminate = false, onChange, ariaLabel }
       className={[
         'flex h-4 w-4 items-center justify-center rounded border transition-colors duration-150',
         checked || indeterminate
-          ? 'border-violet-600 bg-violet-600'
-          : 'border-gray-300 bg-white hover:border-violet-400 dark:border-gray-600 dark:bg-transparent',
+          ? 'border-[#22c55e] bg-[#22c55e]'
+          : 'border-gray-300 bg-white hover:border-[#22c55e] dark:border-gray-600 dark:bg-transparent',
       ].join(' ')}
     >
-      {checked && !indeterminate && <Check size={11} strokeWidth={3} className="text-white" />}
-      {indeterminate && <Minus size={11} strokeWidth={3} className="text-white" />}
+      {checked && !indeterminate && (
+        <Check size={11} strokeWidth={3} className="text-white" />
+      )}
+
+      {indeterminate && (
+        <Minus size={11} strokeWidth={3} className="text-white" />
+      )}
     </button>
   );
 }
