@@ -1,7 +1,9 @@
 import { MessageCircle } from "lucide-react";
+
 import InitialsAvatar from "../../../../shared/components/data-display/InitialsAvatar.jsx";
 import StatusBadge from "./StatusBadge.jsx";
 import RowActionsMenu from "./RowActionsMenu.jsx";
+
 import {
   formatCurrency,
   formatDate,
@@ -19,74 +21,125 @@ export default function TableRow({
   return (
     <tr
       onClick={onClick}
-      className={`row-hover animate-fade-in-up stagger-${Math.min(delayIndex + 1, 6)} cursor-pointer border-b border-gray-50 last:border-0 dark:border-[#181c3a] ${
-        isActive
-          ? "bg-violet-50/70 dark:bg-violet-500/10"
-          : "hover:bg-gray-50 dark:hover:bg-[#181c3a]"
-      }`}
+      className={`
+        row-hover
+        animate-fade-in-up
+        stagger-${Math.min(delayIndex + 1, 6)}
+        cursor-pointer
+        border-b border-slate-100
+        last:border-0
+        transition-colors
+        dark:border-[#1c2044]
+        ${
+          isActive
+            ? "bg-emerald-50/70 dark:bg-emerald-500/[0.08]"
+            : "hover:bg-slate-50 dark:hover:bg-[#181d3b]"
+        }
+      `}
     >
-      <td className="py-3 pl-4" onClick={(e) => e.stopPropagation()}>
+      {/* Checkbox */}
+      <td
+        className="py-3 pl-4"
+        onClick={(event) => event.stopPropagation()}
+      >
         <input
           type="checkbox"
           checked={isSelected}
           onChange={onToggleSelect}
-          className="h-4 w-4 cursor-pointer rounded border-gray-300 text-violet-600 focus:ring-violet-400 dark:border-[#3a3f6b] dark:bg-[#0f1230]"
+          aria-label={`Selecionar ${fornecedor.nomeFantasia}`}
+          className="
+            h-4 w-4
+            cursor-pointer
+            rounded
+            border-slate-300
+            text-emerald-600
+            accent-emerald-600
+            focus:outline-none
+            focus:ring-2
+            focus:ring-emerald-500/30
+            dark:border-[#3a4168]
+            dark:bg-[#0f1230]
+          "
         />
       </td>
 
+      {/* Fornecedor */}
       <td className="px-3 py-3">
         <div className="flex items-center gap-3">
-          <InitialsAvatar name={fornecedor.nomeFantasia} size="sm" />
+          <InitialsAvatar
+            name={fornecedor.nomeFantasia}
+            size="sm"
+          />
+
           <div className="min-w-0">
-            <p className="truncate text-sm font-semibold text-gray-800 dark:text-gray-100">
+            <p className="truncate text-sm font-semibold text-slate-800 dark:text-slate-100">
               {fornecedor.nomeFantasia}
             </p>
-            <p className="truncate text-xs text-gray-400 dark:text-gray-500">
+
+            <p className="truncate text-xs text-slate-400 dark:text-slate-500">
               {fornecedor.razaoSocial}
             </p>
           </div>
         </div>
       </td>
 
-      <td className="whitespace-nowrap px-3 py-3 text-sm text-gray-500 dark:text-gray-400">
+      {/* Documento */}
+      <td className="whitespace-nowrap px-3 py-3 text-sm text-slate-500 dark:text-slate-400">
         {fornecedor.documento}
       </td>
 
-      <td className="whitespace-nowrap px-3 py-3 text-sm text-gray-600 dark:text-gray-300">
+      {/* Localização */}
+      <td className="whitespace-nowrap px-3 py-3 text-sm text-slate-600 dark:text-slate-300">
         {fornecedor.cidade} - {fornecedor.estado}
       </td>
 
-      <td className="whitespace-nowrap px-3 py-3 text-sm text-gray-600 dark:text-gray-300">
+      {/* Telefone */}
+      <td className="whitespace-nowrap px-3 py-3 text-sm text-slate-600 dark:text-slate-300">
         <span className="flex items-center gap-1.5">
           {fornecedor.telefone}
+
           {fornecedor.whatsapp && (
-            <MessageCircle size={14} className="text-emerald-500" />
+            <MessageCircle
+              size={14}
+              strokeWidth={2}
+              className="text-emerald-500 dark:text-emerald-400"
+              aria-label="Possui WhatsApp"
+            />
           )}
         </span>
       </td>
 
-      <td className="whitespace-nowrap px-3 py-3 text-sm text-gray-600 dark:text-gray-300">
+      {/* Produtos */}
+      <td className="whitespace-nowrap px-3 py-3 text-sm text-slate-600 dark:text-slate-300">
         {fornecedor.produtos}
       </td>
 
+      {/* Última compra */}
       <td className="whitespace-nowrap px-3 py-3">
-        <p className="text-sm text-gray-600 dark:text-gray-300">
+        <p className="text-sm text-slate-600 dark:text-slate-300">
           {formatDate(fornecedor.ultimaCompra)}
         </p>
-        <p className="text-xs text-gray-400 dark:text-gray-500">
+
+        <p className="text-xs text-slate-400 dark:text-slate-500">
           {formatRelativeDays(fornecedor.ultimaCompra)}
         </p>
       </td>
 
-      <td className="whitespace-nowrap px-3 py-3 text-sm font-semibold text-gray-800 dark:text-gray-100">
+      {/* Total comprado */}
+      <td className="whitespace-nowrap px-3 py-3 text-sm font-semibold text-slate-800 dark:text-slate-100">
         {formatCurrency(fornecedor.totalComprado)}
       </td>
 
+      {/* Status */}
       <td className="whitespace-nowrap px-3 py-3">
         <StatusBadge status={fornecedor.status} />
       </td>
 
-      <td className="px-3 py-3" onClick={(e) => e.stopPropagation()}>
+      {/* Ações */}
+      <td
+        className="px-3 py-3"
+        onClick={(event) => event.stopPropagation()}
+      >
         <RowActionsMenu fornecedor={fornecedor} />
       </td>
     </tr>

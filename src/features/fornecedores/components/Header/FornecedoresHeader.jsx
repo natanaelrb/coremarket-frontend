@@ -17,72 +17,238 @@ export default function FornecedoresHeader({
 }) {
   return (
     <header className="animate-fade-in-up">
-      {/* Área superior */}
       <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
 
         {/* Informações da página */}
-        <div>
-          <Breadcrumb items={["Principal", "Fornecedores"]} />
+        <div className="min-w-0">
 
-          <div className="mt-3 flex items-center gap-4">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-green-100 text-green-600 dark:bg-green-500/10 dark:text-green-400">
-              <Truck size={22} strokeWidth={2} />
-            </div>
-
-            <div>
-              <h1 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Fornecedores
-              </h1>
-
-              <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
-                Gerencie e acompanhe seus fornecedores.
-              </p>
-            </div>
+          {/* Breadcrumb */}
+          <div className="mb-2.5">
+            <Breadcrumb items={["Home", "Fornecedores"]} />
           </div>
+
+          {/* Título */}
+          <div className="flex items-center gap-2.5">
+            <div
+              className="
+                flex
+                h-9
+                w-9
+                shrink-0
+                items-center
+                justify-center
+                rounded-lg
+                bg-emerald-50
+                text-emerald-600
+                ring-1
+                ring-emerald-100
+              "
+              aria-hidden="true"
+            >
+              <Truck
+                size={18}
+                strokeWidth={2.2}
+              />
+            </div>
+
+            <h1
+              className="
+                truncate
+                text-2xl
+                font-bold
+                tracking-tight
+                text-slate-900
+              "
+            >
+              Gestão de Fornecedores
+            </h1>
+          </div>
+
+          {/* Descrição */}
+          <p
+            className="
+              mt-2
+              max-w-2xl
+              text-base
+              leading-5
+              text-slate-500
+            "
+          >
+            Gerencie e acompanhe seus fornecedores.
+          </p>
         </div>
 
         {/* Ações */}
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2.5">
 
           {/* Busca */}
-          <div className="relative">
+          <div className="relative w-full sm:w-64 lg:w-60 xl:w-72">
             <Search
               size={17}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"
+              strokeWidth={2}
+              className="
+                pointer-events-none
+                absolute
+                left-3
+                top-1/2
+                -translate-y-1/2
+                text-slate-400
+              "
+              aria-hidden="true"
             />
 
+            <label
+              htmlFor="fornecedores-search"
+              className="sr-only"
+            >
+              Pesquisar fornecedor
+            </label>
+
             <input
-              type="text"
+              id="fornecedores-search"
+              type="search"
               value={searchTerm}
-              onChange={(e) => onSearchChange(e.target.value)}
+              onChange={(event) => onSearchChange(event.target.value)}
               placeholder="Pesquisar fornecedor..."
-              className="h-10 w-64 rounded-xl border border-gray-200 bg-white pl-9 pr-3 text-sm text-gray-700 outline-none transition-all placeholder:text-gray-400 focus:border-violet-400 focus:ring-4 focus:ring-violet-100 dark:border-[#252a4a] dark:bg-[#141833] dark:text-gray-200 dark:focus:ring-violet-500/20"
+              autoComplete="off"
+              className="
+                h-10
+                w-full
+                rounded-xl
+                border
+                border-slate-200
+                bg-white
+                pl-9
+                pr-3
+                text-sm
+                text-slate-700
+                outline-none
+                transition-all
+                placeholder:text-slate-400
+                focus:border-emerald-500
+                focus:ring-4
+                focus:ring-emerald-500/10
+              "
             />
           </div>
 
           {/* Filtros */}
           <button
+            type="button"
             onClick={onToggleFilters}
-            className="flex h-10 items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 text-sm font-medium text-gray-600 transition-all hover:bg-gray-50 active:scale-[0.98] dark:border-[#252a4a] dark:bg-[#141833] dark:text-gray-300 dark:hover:bg-[#1a1e3d]"
+            aria-label="Abrir filtros de fornecedores"
+            className="
+              flex
+              h-10
+              items-center
+              justify-center
+              gap-2
+              rounded-xl
+              border
+              border-slate-200
+              bg-white
+              px-3.5
+              text-sm
+              font-medium
+              text-slate-600
+              transition-all
+              hover:border-slate-300
+              hover:bg-slate-50
+              active:scale-[0.98]
+              focus-visible:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-emerald-500/50
+            "
           >
-            <SlidersHorizontal size={16} />
+            <SlidersHorizontal
+              size={16}
+              strokeWidth={2}
+              aria-hidden="true"
+            />
+
             Filtros
           </button>
 
           {/* Exportar */}
-          <button className="flex h-10 items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 text-sm font-medium text-gray-600 transition-all hover:bg-gray-50 active:scale-[0.98] dark:border-[#252a4a] dark:bg-[#141833] dark:text-gray-300 dark:hover:bg-[#1a1e3d]">
-            <Download size={16} />
-            Exportar
-            <ChevronDown size={14} />
+          <button
+            type="button"
+            aria-label="Exportar fornecedores"
+            title="Exportação ainda não implementada"
+            className="
+              flex
+              h-10
+              items-center
+              justify-center
+              gap-2
+              rounded-xl
+              border
+              border-slate-200
+              bg-white
+              px-3.5
+              text-sm
+              font-medium
+              text-slate-600
+              transition-all
+              hover:border-slate-300
+              hover:bg-slate-50
+              active:scale-[0.98]
+              focus-visible:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-emerald-500/50
+            "
+          >
+            <Download
+              size={16}
+              strokeWidth={2}
+              aria-hidden="true"
+            />
+
+            <span>Exportar</span>
+
+            <ChevronDown
+              size={14}
+              strokeWidth={2}
+              aria-hidden="true"
+            />
           </button>
 
           {/* Novo fornecedor */}
           <button
+            type="button"
             onClick={onNewFornecedor}
-            className="flex h-10 items-center gap-2 rounded-xl bg-green-600 px-4 text-sm font-semibold text-white shadow-sm shadow-violet-200 transition-all hover:bg-green-700 hover:shadow-md hover:shadow-violet-300 active:scale-[0.98] dark:shadow-none"
+            className="
+              flex
+              h-10
+              items-center
+              justify-center
+              gap-2
+              rounded-xl
+              bg-emerald-600
+              px-4
+              text-sm
+              font-semibold
+              text-white
+              shadow-sm
+              shadow-emerald-200/60
+              transition-all
+              hover:-translate-y-0.5
+              hover:bg-emerald-700
+              hover:shadow-md
+              hover:shadow-emerald-200
+              active:scale-[0.98]
+              focus-visible:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-emerald-500/50
+              focus-visible:ring-offset-2
+            "
           >
-            <Plus size={16} />
-            Novo Fornecedor
+            <Plus
+              size={16}
+              strokeWidth={2.2}
+              aria-hidden="true"
+            />
+
+            Novo fornecedor
           </button>
         </div>
       </div>

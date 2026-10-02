@@ -1,30 +1,68 @@
-import { TIMELINE_DOT_COLORS } from '../../constants/tableConfig.js'
-import { formatDate } from '../../../../shared/utils/formatters.js'
+import { TIMELINE_DOT_COLORS } from "../../constants/tableConfig.js";
+import { formatDate } from "../../../../shared/utils/formatters.js";
 
-export default function TimelineList({ items }) {
-  if (!items || items.length === 0) {
-    return <p className="py-8 text-center text-sm text-gray-400 dark:text-gray-500">Sem eventos registrados.</p>
+export default function TimelineList({ items = [] }) {
+  if (items.length === 0) {
+    return (
+      <div className="flex min-h-32 items-center justify-center rounded-lg border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center dark:border-[#3a4168] dark:bg-[#0f1230]">
+        <p className="text-sm text-slate-500 dark:text-slate-400">
+          Sem eventos registrados.
+        </p>
+      </div>
+    );
   }
 
   return (
-    <ul className="space-y-0">
-      {items.map((item, index) => (
-        <li key={index} className="animate-fade-in-up relative flex gap-3 pb-5 last:pb-0">
-          {index < items.length - 1 && (
-            <span className="absolute left-[5px] top-3 h-full w-px bg-gray-100 dark:bg-[#1c2044]" />
-          )}
-          <span
-            className={`relative z-10 mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${
-              TIMELINE_DOT_COLORS[item.tipo] ?? 'bg-gray-400'
-            }`}
-          />
-          <div className="min-w-0 flex-1">
-            <p className="text-xs text-gray-400 dark:text-gray-500">{formatDate(item.data)}</p>
-            <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">{item.titulo}</p>
-            <p className="text-xs text-gray-400 dark:text-gray-500">{item.detalhe}</p>
-          </div>
-        </li>
-      ))}
-    </ul>
-  )
+    <ol className="space-y-0" aria-label="Histórico de eventos do fornecedor">
+      {items.map((item, index) => {
+        const dotColor =
+          TIMELINE_DOT_COLORS[item.tipo] ??
+          "bg-slate-400 dark:bg-slate-500";
+
+        const isLastItem = index === items.length - 1;
+
+        return (
+          <li
+            key={item.id ?? `${item.tipo}-${item.data}-${index}`}
+            className="animate-fade-in-up relative flex gap-3 pb-5 last:pb-0"
+          >
+            {!isLastItem && (
+              <span
+                className="absolute left-[5px] top-3 h-full w-px bg-slate-200 dark:bg-[#3a4168]"
+                aria-hidden="true"
+              />
+            )}
+
+            <span
+              className={`
+                relative z-10 mt-1 h-3 w-3 flex-shrink-0 rounded-full
+                ring-4 ring-white dark:ring-[#141833]
+                ${dotColor}
+              `}
+              aria-hidden="true"
+            />
+
+            <div className="min-w-0 flex-1">
+              <time
+                dateTime={item.data ?? undefined}
+                className="text-xs font-medium text-slate-500 dark:text-slate-400"
+              >
+                {item.data ? formatDate(item.data) : "Data não informada"}
+              </time>
+
+              <p className="mt-1 text-sm font-semibold text-slate-700 dark:text-slate-200">
+                {item.titulo ?? "Evento sem título"}
+              </p>
+
+              {item.detalhe && (
+                <p className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+                  {item.detalhe}
+                </p>
+              )}
+            </div>
+          </li>
+        );
+      })}
+    </ol>
+  );
 }
