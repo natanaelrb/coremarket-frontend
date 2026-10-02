@@ -1,4 +1,4 @@
-// Hook responsável exclusivamente por derivar as "Informações inteligentes" do produto
+﻿// Hook responsável exclusivamente por derivar as "Informações inteligentes" do produto
 // selecionado (lucro médio, giro de estoque, dias sem vender, etc.).
 // Endpoint real sugerido: GET /api/produtos/{id}/indicadores
 import { useMemo } from 'react';
@@ -32,3 +32,5 @@ export function useProdutoSmartInfo(produto) {
     };
   }, [produto]);
 }
+
+

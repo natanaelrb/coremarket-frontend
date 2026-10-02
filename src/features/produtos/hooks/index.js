@@ -1,4 +1,4 @@
-// Barrel file dos hooks da feature Produtos.
+﻿// Barrel file dos hooks da feature Produtos.
 export { useProdutos } from './useProdutos';
 export { useProdutoFilters } from './useProdutoFilters';
 export { usePagination } from './usePagination';
@@ -11,3 +11,5 @@ export { useProdutoSmartInfo } from './useProdutoSmartInfo';
 export { useColumnVisibility } from './useColumnVisibility';
 export { useBulkActions } from './useBulkActions';
 export { useToast } from './useToast';
+
+

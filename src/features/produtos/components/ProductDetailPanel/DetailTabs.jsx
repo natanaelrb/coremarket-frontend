@@ -1,24 +1,90 @@
-// Navegação por abas do painel de detalhes (Geral, Estoque, Lotes, Compras, Vendas, Financeiro, Histórico).
-import { DETAIL_TABS } from '../../constants/detailTabs';
+﻿import { cn } from "../../../../shared/utils/classNames.js";
 
-export function DetailTabs({ activeTab, setActiveTab }) {
+const tabs = [
+  {
+    id: "geral",
+    label: "Geral",
+  },
+  {
+    id: "estoque",
+    label: "Estoque",
+  },
+  {
+    id: "lotes",
+    label: "Lotes",
+  },
+  {
+    id: "compras",
+    label: "Compras",
+  },
+  {
+    id: "vendas",
+    label: "Vendas",
+  },
+  {
+    id: "financeiro",
+    label: "Financeiro",
+  },
+  {
+    id: "historico",
+    label: "Histórico",
+  },
+];
+
+export function DetailTabs({
+  activeTab,
+  setActiveTab,
+  onChange,
+}) {
+  const handleChange = onChange || setActiveTab;
+
   return (
-    <div className="flex gap-1 overflow-x-auto border-b border-gray-100 px-5 dark:border-gray-800">
-      {DETAIL_TABS.map((tab) => (
+    <div
+      className="
+        flex
+        gap-1
+        overflow-x-auto
+        border-b
+        border-slate-200
+        dark:border-white/10
+      "
+    >
+      {tabs.map((tab) => (
         <button
-          key={tab.key}
-          onClick={() => setActiveTab(tab.key)}
-          className={[
-            'relative shrink-0 px-2.5 py-3 text-sm font-medium transition-colors duration-150',
-            activeTab === tab.key
-              ? 'text-violet-600 dark:text-violet-400'
-              : 'text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300',
-          ].join(' ')}
+          key={tab.id}
+          type="button"
+          onClick={() => handleChange?.(tab.id)}
+          className={cn(
+            `
+              whitespace-nowrap
+              border-b-2
+              -mb-px
+              px-4
+              py-2.5
+              text-sm
+              font-medium
+              transition-all
+              duration-200
+            `,
+            activeTab === tab.id
+              ? `
+                  border-[#22c55e]
+                  text-[#16a34a]
+                  dark:border-[#4ade80]
+                  dark:text-[#4ade80]
+                `
+              : `
+                  border-transparent
+                  text-[#64748b]
+                  hover:border-[#bbf7d0]
+                  hover:text-[#16a34a]
+                  dark:text-slate-400
+                  dark:hover:border-emerald-900
+                  dark:hover:text-[#4ade80]
+                `,
+          )}
         >
           {tab.label}
-          {activeTab === tab.key && (
-            <span className="absolute inset-x-0 -bottom-px h-0.5 rounded-full bg-violet-600 dark:bg-violet-400" />
-          )}
         </button>
       ))}
     </div>

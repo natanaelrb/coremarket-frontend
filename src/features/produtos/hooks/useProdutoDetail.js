@@ -1,4 +1,4 @@
-// Hook responsável exclusivamente pelo painel lateral de detalhes (produto aberto + aba ativa).
+﻿// Hook responsável exclusivamente pelo painel lateral de detalhes (produto aberto + aba ativa).
 import { useState, useCallback } from 'react';
 import { DEFAULT_DETAIL_TAB } from '../constants/detailTabs';
 
@@ -19,3 +19,5 @@ export function useProdutoDetail() {
 
   return { produtoSelecionado, isOpen, activeTab, setActiveTab, openDetail, closeDetail };
 }
+
+
