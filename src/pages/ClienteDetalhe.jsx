@@ -80,16 +80,13 @@ export default function ClienteDetalhe() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[1400px] space-y-5">
+    <div className="mx-auto -mt-4 w-full max-w-[1400px] space-y-5">
       <DetalheHeader
         cliente={cliente}
         onVoltar={() => navigate("/clientes")}
         onEditar={modals.abrirEditar}
         onNovaVenda={() =>
-          console.info(
-            "Ir para PDV com cliente pré-selecionado",
-            cliente.id
-          )
+          navigate(`/vendas?clienteId=${cliente.id}`)
         }
       />
 

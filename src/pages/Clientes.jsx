@@ -70,46 +70,71 @@ export default function Clientes() {
     <div className="mx-auto w-full -mt-4 -ml-2 max-w-[1400px] space-y-5">
 
       {/* Cabeçalho */}
-      <ClientesHeader
-        onNovoCliente={modals.abrirNovo}
-      />
+      <div
+        className="animate-stagger"
+        style={{ "--delay": "0ms" }}
+      >
+        <ClientesHeader
+          onNovoCliente={modals.abrirNovo}
+        />
+      </div>
 
       {/* Indicadores */}
-      <KPICardsGrid kpis={MOCK_KPIS} />
+      <div
+        className="animate-stagger"
+        style={{ "--delay": "80ms" }}
+      >
+        <KPICardsGrid kpis={MOCK_KPIS} />
+      </div>
 
       {/* Alertas contextuais */}
-      <AlertsBanner alertas={MOCK_ALERTAS} />
+      <div
+        className="animate-stagger"
+        style={{ "--delay": "160ms" }}
+      >
+        <AlertsBanner alertas={MOCK_ALERTAS} />
+      </div>
 
       {/* Busca + filtros + ações */}
-      <FiltersToolbar
-        searchTerm={searchTerm}
-        onSearchChange={handleSearch}
-        quickFilter={quickFilter}
-        onQuickFilterChange={handleQuickFilter}
-        onMaisFiltros={() => {}}
-        onExportar={exportar}
-        exportando={exportando}
-        onImportar={modals.abrirImportar}
-        onSegmentar={modals.abrirSegmentar}
-      />
+      <div
+        className="animate-stagger"
+        style={{ "--delay": "240ms" }}
+      >
+        <FiltersToolbar
+          searchTerm={searchTerm}
+          onSearchChange={handleSearch}
+          quickFilter={quickFilter}
+          onQuickFilterChange={handleQuickFilter}
+          onMaisFiltros={() => {}}
+          onExportar={exportar}
+          exportando={exportando}
+          onImportar={modals.abrirImportar}
+          onSegmentar={modals.abrirSegmentar}
+        />
+      </div>
 
       {/* Tabela */}
-      <ClientesTable
-        clientes={pageItems}
-        selectedIds={selection.selectedIds}
-        onToggleSelect={selection.toggle}
-        onToggleAll={selection.toggleAll}
-        onView={(cliente) => navigate(`/clientes/${cliente.id}`)}
-        onEdit={modals.abrirEditar}
-        onRegistrarPagamento={modals.abrirPagamento}
-        onExcluir={handleExcluir}
-        page={page}
-        totalPages={totalPages}
-        totalItems={filtered.length}
-        pageSize={20}
-        onPageChange={goToPage}
-        onPageSizeChange={() => {}}
-      />
+      <div
+        className="animate-stagger"
+        style={{ "--delay": "320ms" }}
+      >
+        <ClientesTable
+          clientes={pageItems}
+          selectedIds={selection.selectedIds}
+          onToggleSelect={selection.toggle}
+          onToggleAll={selection.toggleAll}
+          onView={(cliente) => navigate(`/clientes/${cliente.id}`)}
+          onEdit={modals.abrirEditar}
+          onRegistrarPagamento={modals.abrirPagamento}
+          onExcluir={handleExcluir}
+          page={page}
+          totalPages={totalPages}
+          totalItems={filtered.length}
+          pageSize={20}
+          onPageChange={goToPage}
+          onPageSizeChange={() => {}}
+        />
+      </div>
 
       {/* Modais */}
       <NovoClienteModal

@@ -25,16 +25,21 @@ export function NovoClienteModal({ open, onClose, clienteParaEditar, onSaved }) 
       open={open}
       onClose={onClose}
       title={clienteParaEditar ? 'Editar cliente' : 'Novo cliente'}
-      size="lg"
+      size="full"
       footer={
         <>
           <Button variant="secondary" onClick={onClose}>
             Cancelar
           </Button>
-          <Button onClick={handleSubmit} loading={submitting}>
+
+          <Button
+            variant="primary"
+            onClick={handleSubmit}
+            loading={submitting}
+          >
             {clienteParaEditar ? 'Salvar alterações' : 'Cadastrar cliente'}
           </Button>
-        </>
+      </>
       }
     >
       <div className="space-y-6">

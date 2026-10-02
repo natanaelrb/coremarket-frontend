@@ -32,6 +32,7 @@ export function KPICardsGrid({ kpis }) {
         tone="blue"
         value={formatCurrency(kpis.totalAReceber)}
         label="Total a receber"
+        caption="Contas a receber"
         delay={120}
       />
 

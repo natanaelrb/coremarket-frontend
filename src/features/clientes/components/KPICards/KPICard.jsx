@@ -1,15 +1,34 @@
 import { cn } from "../../../../shared/utils/classNames.js";
 
 const TONES = {
-  green: "bg-[#dcfce7] text-[#16a34a]",
-  blue: "bg-[#dbeafe] text-[#2563eb]",
-  red: "bg-[#fee2e2] text-[#dc2626]",
-  amber: "bg-[#fef3c7] text-[#d97706]",
-  violet: "bg-[#ede9fe] text-[#7c3aed]",
+  green: {
+    icon: "bg-[#dcfce7] text-[#16a34a]",
+    accent: "text-[#16a34a]",
+  },
+  blue: {
+    icon: "bg-[#dbeafe] text-[#2563eb]",
+    accent: "text-[#2563eb]",
+  },
+  red: {
+    icon: "bg-[#fee2e2] text-[#dc2626]",
+    accent: "text-[#dc2626]",
+  },
+  amber: {
+    icon: "bg-[#fef3c7] text-[#d97706]",
+    accent: "text-[#d97706]",
+  },
+  violet: {
+    icon: "bg-[#ede9fe] text-[#7c3aed]",
+    accent: "text-[#7c3aed]",
+  },
 };
 
 /**
- * Single KPI card: icon chip, headline value, and a supporting caption.
+ * Single KPI card.
+ * Hierarquia:
+ * 1. Label
+ * 2. Valor principal
+ * 3. Informação complementar colorida
  */
 export function KPICard({
   icon,
@@ -19,52 +38,72 @@ export function KPICard({
   caption,
   delay = 0,
 }) {
+  const toneConfig = TONES[tone] ?? TONES.green;
+
   return (
     <div
       className="
         group
-        flex items-start gap-3
+        flex
+        min-w-0
+        items-start
+        gap-3
         rounded-xl
-        border border-slate-200
+        border
+        border-[var(--border-subtle)]
         bg-white
         p-4
-        animate-slide-up
-        transition-all duration-200
-        hover:border-[#42c878]/40
+        transition-all
+        duration-200
+        hover:-translate-y-0.5
+        hover:border-slate-300
         hover:shadow-[0_8px_24px_rgba(15,23,42,0.06)]
       "
       style={{
-        animationDelay: `${delay}ms`,
-        animationFillMode: "backwards",
+        "--delay": `${delay}ms`,
       }}
     >
+      {/* Ícone */}
       <div
         className={cn(
           `
+            flex
+            h-10
+            w-10
             shrink-0
-            w-10 h-10
+            items-center
+            justify-center
             rounded-lg
-            flex items-center justify-center
-            transition-transform duration-200
+            transition-transform
+            duration-200
             group-hover:scale-105
           `,
-          TONES[tone] ?? TONES.green
+          toneConfig.icon
         )}
       >
         {icon}
       </div>
 
-      <div className="min-w-0 pt-0.5">
-        <p className="text-lg font-semibold text-slate-900 leading-tight truncate">
-          {value}
-        </p>
-
-        <p className="text-xs text-slate-500 mt-1">
+      {/* Conteúdo */}
+      <div className="min-w-0 flex-1">
+        {/* Nome do indicador */}
+        <p className="truncate text-xs font-medium text-slate-500">
           {label}
         </p>
 
+        {/* Número principal */}
+        <p className="mt-1 text-2xl font-bold leading-none tracking-tight text-slate-900">
+          {value}
+        </p>
+
+        {/* Informação complementar */}
         {caption && (
-          <p className="text-[11px] text-slate-500 mt-0.5">
+          <p
+            className={cn(
+              "mt-2 truncate text-[11px] font-semibold",
+              toneConfig.accent
+            )}
+          >
             {caption}
           </p>
         )}
