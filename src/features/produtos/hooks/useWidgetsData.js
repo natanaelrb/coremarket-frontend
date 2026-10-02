@@ -1,4 +1,4 @@
-// Hook responsável exclusivamente por carregar os dados dos widgets do rodapé
+﻿// Hook responsável exclusivamente por carregar os dados dos widgets do rodapé
 // (próximos do vencimento, lotes vencidos, valor em risco, resumo do estoque).
 import { useMemo } from 'react';
 import {
@@ -30,3 +30,5 @@ export function useWidgetsData(produtos, kpis) {
     resumoEstoque,
   };
 }
+
+

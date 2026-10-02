@@ -1,4 +1,4 @@
-// Hook responsável exclusivamente pelo estado e aplicação dos filtros da página de Produtos.
+﻿// Hook responsável exclusivamente pelo estado e aplicação dos filtros da página de Produtos.
 import { useMemo, useState, useCallback } from 'react';
 
 const INITIAL_FILTERS = {
@@ -67,3 +67,5 @@ export function useProdutoFilters(produtos) {
     setIsAdvancedOpen,
   };
 }
+
+

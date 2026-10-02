@@ -1,4 +1,4 @@
-// Mock: categorias de produto.
+﻿// Mock: categorias de produto.
 // Endpoint real sugerido: GET /api/categorias
 
 export const CATEGORIAS_MOCK = [
@@ -11,3 +11,5 @@ export const CATEGORIAS_MOCK = [
   { id: 'padaria', nome: 'Padaria' },
   { id: 'hortifruti', nome: 'Hortifruti' },
 ];
+
+

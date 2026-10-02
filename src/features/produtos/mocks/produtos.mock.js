@@ -1,4 +1,4 @@
-// Mock: lista de produtos.
+﻿// Mock: lista de produtos.
 // Endpoint real sugerido: GET /api/produtos (paginado, com filtros por query params)
 // Endpoint real sugerido (detalhe): GET /api/produtos/{id}
 //
@@ -243,3 +243,5 @@ export const PRODUTOS_MOCK = [
 
 export const TOTAL_PRODUTOS_CADASTRADOS = TOTAL_PRODUTOS_SIMULADO;
 export const TOTAL_PRODUTOS_INATIVOS = TOTAL_INATIVOS_SIMULADO;
+
+

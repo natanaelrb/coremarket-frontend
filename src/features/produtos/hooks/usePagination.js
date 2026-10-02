@@ -1,4 +1,4 @@
-// Hook genérico de paginação client-side (independente de domínio).
+﻿// Hook genérico de paginação client-side (independente de domínio).
 import { useMemo, useState, useEffect, useCallback } from 'react';
 import { DEFAULT_ITEMS_PER_PAGE } from '../constants/tableColumns';
 
@@ -41,3 +41,5 @@ export function usePagination(items, itemsPerPageInicial = DEFAULT_ITEMS_PER_PAG
     totalItems: items.length,
   };
 }
+
+

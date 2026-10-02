@@ -1,4 +1,4 @@
-// Célula de validade: data formatada + texto auxiliar de dias (colorido conforme urgência).
+﻿// Célula de validade: data formatada + texto auxiliar de dias (colorido conforme urgência).
 import { formatDate } from '../../utils/formatters';
 import { getDaysUntil, getValidadeHelperText } from '../../utils/validadeUtils';
 
@@ -20,3 +20,5 @@ export function ValidadeCell({ validade }) {
     </div>
   );
 }
+
+

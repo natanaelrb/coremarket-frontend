@@ -1,4 +1,4 @@
-// Hook responsável exclusivamente pela seleção de linhas da tabela (checkboxes).
+﻿// Hook responsável exclusivamente pela seleção de linhas da tabela (checkboxes).
 import { useState, useCallback, useMemo, useEffect } from 'react';
 
 export function useProdutoSelection(visibleItems) {
@@ -41,3 +41,5 @@ export function useProdutoSelection(visibleItems) {
     [selectedIds, toggleOne, toggleAll, allSelected, someSelected, clearSelection, selectedCount]
   );
 }
+
+

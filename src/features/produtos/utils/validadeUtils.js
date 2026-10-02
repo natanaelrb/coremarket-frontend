@@ -1,4 +1,4 @@
-// Regras de negócio relacionadas à validade e situação de estoque dos produtos.
+﻿// Regras de negócio relacionadas à validade e situação de estoque dos produtos.
 import { PRODUCT_STATUS } from '../constants/statusConfig';
 
 const MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -36,3 +36,5 @@ export function getValidadeHelperText(dias) {
   if (dias === 0) return '0 dias';
   return `${dias} dias`;
 }
+
+

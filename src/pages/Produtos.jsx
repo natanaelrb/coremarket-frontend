@@ -2,20 +2,21 @@
 // Responsabilidade única deste arquivo: orquestrar hooks e RENDERIZAR componentes.
 // Nenhuma regra de negócio, formatação ou estilo vive aqui — tudo fica nas camadas
 // hooks/ utils/ constants/ mocks/ e nos componentes de components/.
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { PageHeader } from '../features/produtos/components/Toolbar';
 import { KpiCards } from '../features/produtos/components/KpiCards';
 import { FilterBar } from '../features/produtos/components/FilterBar';
 import { ProductsTable } from '../features/produtos/components/ProductsTable';
-import { ProductDetailPanel } from '../features/produtos/components/ProductDetailPanel';
 import { WidgetsSection } from '../features/produtos/components/Widgets';
 import { ToastContainer } from "../shared/components/feedback/ToastContainer";
+import { NovoProdutoModal } from "../features/produtos/components/Modal/NovoProdutoModal";
 
 import { useProdutos } from '../features/produtos/hooks/useProdutos';
 import { useProdutoFilters } from '../features/produtos/hooks/useProdutoFilters';
 import { useSortableData } from '../features/produtos/hooks/useSortableData';
 import { usePagination } from '../features/produtos/hooks/usePagination';
 import { useProdutoSelection } from '../features/produtos/hooks/useProdutoSelection';
-import { useProdutoDetail } from '../features/produtos/hooks/useProdutoDetail';
 import { useProdutoKpis } from '../features/produtos/hooks/useProdutoKpis';
 import { useWidgetsData } from '../features/produtos/hooks/useWidgetsData';
 import { useColumnVisibility } from '../features/produtos/hooks/useColumnVisibility';
@@ -23,7 +24,13 @@ import { useBulkActions } from '../features/produtos/hooks/useBulkActions';
 import { useToast } from '../features/produtos/hooks/useToast';
 
 export default function Produtos() {
-  const { produtos, isLoading, refetch } = useProdutos();
+  const navigate = useNavigate();
+  const {
+    produtos,
+    isLoading,
+    refetch,
+    addProduto,
+  } = useProdutos();
   const kpis = useProdutoKpis(produtos);
   const widgetsData = useWidgetsData(produtos, kpis);
   const { toasts, showToast, dismissToast } = useToast();
@@ -37,12 +44,24 @@ export default function Produtos() {
     isAdvancedOpen,
     setIsAdvancedOpen,
   } = useProdutoFilters(produtos);
-
+  
   const { sortedItems, sortConfig, requestSort } = useSortableData(filteredProdutos, 'codigo');
   const pagination = usePagination(sortedItems);
   const selection = useProdutoSelection(pagination.paginatedItems);
   const columnVisibility = useColumnVisibility();
-  const detail = useProdutoDetail();
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isNovoProdutoOpen, setIsNovoProdutoOpen] = useState(false);
+  const handleRefresh = async () => {
+    if (isRefreshing) return;
+
+    setIsRefreshing(true);
+
+    try {
+      await refetch();
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
 
   const bulkActions = useBulkActions({
     selectedIds: selection.selectedIds,
@@ -64,9 +83,9 @@ export default function Produtos() {
         onImport={() => showToast('Importação de produtos iniciada.', 'info')}
         onExport={() => showToast('Exportando produtos...', 'info')}
         onPrint={() => window.print()}
-        onRefresh={refetch}
-        onNovoProduto={() => showToast('Abrir formulário de novo produto.', 'info')}
-        isRefreshing={isLoading}
+        onRefresh={handleRefresh}
+        onNovoProduto={() => setIsNovoProdutoOpen(true)}
+        isRefreshing={isRefreshing}
       />
 
       <KpiCards kpis={kpis} />
@@ -88,7 +107,7 @@ export default function Produtos() {
         columnVisibility={columnVisibility}
         sorting={{ sortConfig, requestSort }}
         pagination={pagination}
-        onOpenDetail={detail.openDetail}
+        onOpenDetail={(produto) => navigate(`/produtos/${produto.id}`)}
         onRunBulkAction={bulkActions.runAction}
         onToggleMoreFilters={() => setIsAdvancedOpen(!isAdvancedOpen)}
         rowActions={rowActions}
@@ -102,13 +121,19 @@ export default function Produtos() {
         onVerRelatorioEstoque={() => showToast('Abrir relatório completo de estoque.', 'info')}
       />
 
-      <ProductDetailPanel
-        isOpen={detail.isOpen}
-        produto={detail.produtoSelecionado}
-        activeTab={detail.activeTab}
-        setActiveTab={detail.setActiveTab}
-        onClose={detail.closeDetail}
-        onQuickAction={(action) => showToast(`Ação rápida: ${action}`, 'info')}
+      <NovoProdutoModal
+        isOpen={isNovoProdutoOpen}
+        onClose={() => setIsNovoProdutoOpen(false)}
+        onSave={(produto) => {
+          const novoProduto = addProduto(produto);
+
+          setIsNovoProdutoOpen(false);
+
+          showToast(
+            `${novoProduto.nome} cadastrado com sucesso.`,
+            "success"
+          );
+        }}
       />
 
       <ToastContainer toasts={toasts} onDismiss={dismissToast} />

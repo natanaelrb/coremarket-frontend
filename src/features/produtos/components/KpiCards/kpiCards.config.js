@@ -1,5 +1,14 @@
-// Mapeamento dos KPIs -> ícone/cor. Mantém KpiCards.jsx livre de detalhes visuais.
-import { Package, PackageCheck, PackageX, PackageMinus, DollarSign, Tags, PackageOpen } from 'lucide-react';
+﻿// Mapeamento dos KPIs -> ícone/cor. Mantém KpiCards.jsx livre de detalhes visuais.
+import {
+  Package,
+  PackageCheck,
+  PackageX,
+  PackageMinus,
+  DollarSign,
+  Tags,
+  PackageOpen,
+  ChartNoAxesCombined,
+} from 'lucide-react';
 import { formatCurrency, formatNumber, formatPercent } from '../../utils/formatters';
 
 export function buildKpiItems(kpis) {
@@ -7,10 +16,11 @@ export function buildKpiItems(kpis) {
     {
       key: 'total',
       icon: Package,
-      iconBgClass: 'bg-violet-50 dark:bg-violet-500/10',
-      iconColorClass: 'text-violet-600 dark:text-violet-400',
+      iconBgClass: 'bg-emerald-50 dark:bg-emerald-500/10',
+      iconColorClass: 'text-emerald-600 dark:text-emerald-400',
       label: 'Total de Produtos',
       value: formatNumber(kpis.totalProdutos),
+      helperTextClass: 'text-emerald-600 dark:text-emerald-400',
       helperText: '100% do catálogo',
     },
     {
@@ -20,7 +30,8 @@ export function buildKpiItems(kpis) {
       iconColorClass: 'text-emerald-600 dark:text-emerald-400',
       label: 'Produtos Ativos',
       value: formatNumber(kpis.ativos),
-      helperText: `${formatPercent(kpis.percentualAtivos, 2)} do total`,
+      helperText: `${formatPercent(kpis.percentualAtivos)} do total`,
+      helperTextClass: 'text-emerald-600 dark:text-emerald-400',
     },
     {
       key: 'sem_estoque',
@@ -29,6 +40,7 @@ export function buildKpiItems(kpis) {
       iconColorClass: 'text-orange-600 dark:text-orange-400',
       label: 'Sem Estoque',
       value: formatNumber(kpis.semEstoque),
+      helperTextClass: 'text-red-500 dark:text-red-400',
       helperText: `${formatPercent(kpis.percentualSemEstoque, 2)} do total`,
     },
     {
@@ -38,6 +50,7 @@ export function buildKpiItems(kpis) {
       iconColorClass: 'text-amber-600 dark:text-amber-400',
       label: 'Estoque Baixo',
       value: formatNumber(kpis.estoqueBaixo),
+      helperTextClass: 'text-amber-600 dark:text-amber-400',
       helperText: `${formatPercent(kpis.percentualEstoqueBaixo, 2)} do total`,
     },
     {
@@ -47,15 +60,27 @@ export function buildKpiItems(kpis) {
       iconColorClass: 'text-blue-600 dark:text-blue-400',
       label: 'Valor Total em Estoque',
       value: formatCurrency(kpis.valorTotalEstoque),
+      helperTextClass: 'text-blue-600 dark:text-blue-400',
       helperText: 'Custo de aquisição',
+    },
+    {
+      key: 'potencial_venda',
+      icon: ChartNoAxesCombined,
+      iconBgClass: 'bg-emerald-50 dark:bg-emerald-500/10',
+      iconColorClass: 'text-emerald-600 dark:text-emerald-400',
+      label: 'Potencial de Venda',
+      value: formatCurrency(kpis.potencialVenda),
+      helperTextClass: 'text-emerald-600 dark:text-emerald-400',
+      helperText: 'Valor estimado de venda',
     },
     {
       key: 'categorias',
       icon: Tags,
-      iconBgClass: 'bg-purple-50 dark:bg-purple-500/10',
-      iconColorClass: 'text-purple-600 dark:text-purple-400',
+      iconBgClass: 'bg-emerald-50 dark:bg-emerald-500/10',
+      iconColorClass: 'text-emerald-600 dark:text-emerald-400',
       label: 'Categorias',
       value: formatNumber(kpis.categoriasAtivas),
+      helperTextClass: 'text-indigo-600 dark:text-indigo-400',
       helperText: 'Cadastradas',
     },
     {
@@ -65,6 +90,7 @@ export function buildKpiItems(kpis) {
       iconColorClass: 'text-gray-500 dark:text-gray-400',
       label: 'Produtos Inativos',
       value: formatNumber(kpis.inativos),
+      helperTextClass: 'text-slate-500 dark:text-slate-400',
       helperText: `${formatPercent(kpis.percentualInativos, 2)} do total`,
     },
   ];

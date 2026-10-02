@@ -1,4 +1,4 @@
-// Mock: marcas de produto.
+﻿// Mock: marcas de produto.
 // Endpoint real sugerido: GET /api/marcas
 
 export const MARCAS_MOCK = [
@@ -11,3 +11,5 @@ export const MARCAS_MOCK = [
   { id: 'nestle', nome: 'Nestlé' },
   { id: 'sadia', nome: 'Sadia' },
 ];
+
+

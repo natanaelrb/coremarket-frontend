@@ -1,4 +1,4 @@
-// Hook responsável exclusivamente pela ordenação da tabela (coluna + direção).
+﻿// Hook responsável exclusivamente pela ordenação da tabela (coluna + direção).
 import { useMemo, useState, useCallback } from 'react';
 
 export function useSortableData(items, defaultKey = 'codigo') {
@@ -34,3 +34,5 @@ export function useSortableData(items, defaultKey = 'codigo') {
 
   return { sortedItems, sortConfig, requestSort };
 }
+
+

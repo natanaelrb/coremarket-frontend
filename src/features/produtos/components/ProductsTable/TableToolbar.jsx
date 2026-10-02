@@ -1,38 +1,79 @@
-// Barra utilitária acima da tabela: ações em massa (quando há seleção) + colunas/ordenar/filtros.
-import { SlidersHorizontal } from 'lucide-react';
-import { BulkActionsBar } from '../Toolbar/BulkActionsBar';
-import { ColumnsMenu } from './ColumnsMenu';
-import { SortMenu } from './SortMenu';
+﻿/**
+ * Barra utilitária acima da tabela:
+ * ações em massa + colunas + ordenação.
+ */
+
+import { BulkActionsBar } from "../Toolbar/BulkActionsBar";
+import { ColumnsMenu } from "./ColumnsMenu";
+import { SortMenu } from "./SortMenu";
 
 export function TableToolbar({
-  selectedCount,
+  selectedCount = 0,
   onRunBulkAction,
   isVisible,
   toggleColumn,
   requestSort,
-  onToggleMoreFilters,
 }) {
+  const hasSelection = selectedCount > 0;
+
   return (
-    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 px-4 py-3 dark:border-gray-800">
-      <div>
-        {selectedCount > 0 ? (
-          <BulkActionsBar selectedCount={selectedCount} onRunAction={onRunBulkAction} />
+    <div
+      className="
+        flex flex-col gap-3
+        border-b border-slate-200/80
+        bg-slate-50/70 px-4 py-3
+        sm:flex-row sm:items-center sm:justify-between
+        dark:border-white/[0.06]
+        dark:bg-white/[0.015]
+      "
+      aria-label="Ferramentas da tabela de produtos"
+    >
+      {/* Ações em massa / estado da seleção */}
+      <div className="flex min-h-8 min-w-0 items-center">
+        {hasSelection ? (
+          <BulkActionsBar
+            selectedCount={selectedCount}
+            onRunAction={onRunBulkAction}
+          />
         ) : (
-          <span className="text-sm text-gray-400 dark:text-gray-500">Nenhum item selecionado</span>
+          <div className="flex items-center gap-2">
+            <span
+              className="
+                h-1.5 w-1.5 shrink-0 rounded-full
+                bg-slate-300
+                dark:bg-slate-600
+              "
+              aria-hidden="true"
+            />
+
+            <span
+              className="
+                text-xs font-medium
+                text-slate-500
+                dark:text-slate-400
+              "
+            >
+              Selecione produtos para ações em massa
+            </span>
+          </div>
         )}
       </div>
 
-      <div className="flex items-center gap-2">
-        <ColumnsMenu isVisible={isVisible} toggleColumn={toggleColumn} />
+      {/* Ferramentas da tabela */}
+      <div
+        className="
+          flex w-full flex-wrap items-center gap-2
+          sm:w-auto sm:justify-end
+        "
+      >
+        <ColumnsMenu
+          isVisible={isVisible}
+          toggleColumn={toggleColumn}
+        />
+
         <SortMenu requestSort={requestSort} />
-        <button
-          onClick={onToggleMoreFilters}
-          className="flex items-center gap-1.5 rounded-lg border border-gray-200 px-3 py-1.5 text-sm text-gray-600 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-white/5"
-        >
-          <SlidersHorizontal size={14} />
-          Mais filtros
-        </button>
       </div>
     </div>
   );
 }
+

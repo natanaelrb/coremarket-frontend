@@ -1,4 +1,4 @@
-// Hook responsável exclusivamente por controlar quais colunas da tabela estão visíveis.
+﻿// Hook responsável exclusivamente por controlar quais colunas da tabela estão visíveis.
 import { useState, useCallback } from 'react';
 import { DEFAULT_VISIBLE_COLUMNS } from '../constants/tableColumns';
 
@@ -20,3 +20,5 @@ export function useColumnVisibility() {
 
   return { visibleColumns, toggleColumn, isVisible, resetColumns };
 }
+
+

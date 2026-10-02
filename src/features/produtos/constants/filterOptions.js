@@ -1,4 +1,4 @@
-// Opções estáticas usadas nos filtros da FilterBar.
+﻿// Opções estáticas usadas nos filtros da FilterBar.
 // As listas de categoria/fornecedor/marca vêm dos mocks (substituir por endpoints reais).
 
 export const DATA_CADASTRO_OPTIONS = [
@@ -15,3 +15,5 @@ export const BULK_ACTIONS = [
   { value: 'exportar', label: 'Exportar selecionados' },
   { value: 'excluir', label: 'Excluir selecionados', danger: true },
 ];
+
+

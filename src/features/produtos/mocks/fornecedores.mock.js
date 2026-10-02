@@ -1,4 +1,4 @@
-// Mock: fornecedores vinculados aos produtos (referência à feature Fornecedores).
+﻿// Mock: fornecedores vinculados aos produtos (referência à feature Fornecedores).
 // Endpoint real sugerido: GET /api/fornecedores
 
 export const FORNECEDORES_MOCK = [
@@ -9,3 +9,5 @@ export const FORNECEDORES_MOCK = [
   { id: 'ype-quimica', nome: 'Ypê Química' },
   { id: 'polenghi-alimentos', nome: 'Polenghi Alimentos' },
 ];
+
+

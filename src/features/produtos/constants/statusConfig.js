@@ -1,4 +1,4 @@
-// Configuração central dos status de produto.
+﻿// Configuração central dos status de produto.
 // Usado por StatusBadge, filtros e KPIs para manter cores/labels consistentes.
 
 export const PRODUCT_STATUS = {
@@ -64,3 +64,5 @@ export const PRODUCT_TYPE_OPTIONS = [
   { value: 'uso_consumo', label: 'Uso e consumo' },
   { value: 'servico', label: 'Serviço' },
 ];
+
+

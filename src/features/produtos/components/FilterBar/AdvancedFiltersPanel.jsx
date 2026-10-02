@@ -1,37 +1,102 @@
-// Painel de filtros avançados (faixa de preço + data de cadastro), expansível.
+﻿// Painel de filtros avançados (faixa de preço + data de cadastro), expansível.
 import { DATA_CADASTRO_OPTIONS } from '../../constants/filterOptions';
 import { Select } from '../../../../shared/components/ui/Select';
 
+const inputClassName = `
+  h-10 w-full rounded-lg
+  border border-slate-200
+  bg-white
+  px-3 py-2
+  text-sm text-slate-700
+  outline-none
+  transition-all duration-200
+  placeholder:text-slate-400
+  hover:border-slate-300
+  focus:border-green-500
+  focus:ring-4 focus:ring-green-500/10
+  dark:border-white/[0.10]
+  dark:bg-[#151c2b]
+  dark:text-slate-200
+  dark:placeholder:text-slate-500
+  dark:hover:border-white/[0.18]
+  dark:focus:border-green-400
+  dark:focus:ring-green-500/10
+`;
+
 export function AdvancedFiltersPanel({ filters, setFilter }) {
   return (
-    <div className="mt-3 flex flex-wrap items-end gap-3 border-t border-gray-100 pt-3 dark:border-gray-800 animate-in fade-in slide-in-from-top-1 duration-200">
-      <div>
-        <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">Preço:</label>
+    <div
+      className="
+        mt-3 flex flex-wrap items-end gap-4
+        border-t border-slate-100 pt-4
+        animate-in fade-in slide-in-from-top-2
+        duration-300
+        motion-reduce:animate-none
+        dark:border-white/[0.06]
+      "
+    >
+      {/* Faixa de preço */}
+      <div className="min-w-0 flex-1">
+        <label
+          className="
+            mb-1.5 block
+            text-[11px] font-semibold uppercase
+            tracking-[0.03em]
+            text-slate-500 dark:text-slate-400
+          "
+        >
+          Faixa de preço
+        </label>
+
         <div className="flex items-center gap-2">
-          <span className="text-xs text-gray-400">R$</span>
+          <span className="shrink-0 text-xs font-medium text-slate-400 dark:text-slate-500">
+            R$
+          </span>
+
           <input
             type="number"
+            min="0"
+            step="0.01"
             value={filters.precoMin}
-            onChange={(e) => setFilter('precoMin', e.target.value)}
-            placeholder="0,00"
-            className="w-24 rounded-lg border border-gray-200 bg-white px-2.5 py-2 text-sm outline-none transition-colors focus:border-violet-500 focus:ring-2 focus:ring-violet-100 dark:border-gray-700 dark:bg-[#151936] dark:text-gray-200"
+            onChange={(event) => setFilter('precoMin', event.target.value)}
+            placeholder="Mínimo"
+            aria-label="Preço mínimo"
+            className={`${inputClassName} min-w-0`}
           />
-          <span className="text-xs text-gray-400">até</span>
+
+          <span className="shrink-0 text-xs text-slate-400 dark:text-slate-500">
+            até
+          </span>
+
           <input
             type="number"
+            min="0"
+            step="0.01"
             value={filters.precoMax}
-            onChange={(e) => setFilter('precoMax', e.target.value)}
-            placeholder="R$"
-            className="w-24 rounded-lg border border-gray-200 bg-white px-2.5 py-2 text-sm outline-none transition-colors focus:border-violet-500 focus:ring-2 focus:ring-violet-100 dark:border-gray-700 dark:bg-[#151936] dark:text-gray-200"
+            onChange={(event) => setFilter('precoMax', event.target.value)}
+            placeholder="Máximo"
+            aria-label="Preço máximo"
+            className={`${inputClassName} min-w-0`}
           />
         </div>
       </div>
 
-      <div className="min-w-[160px]">
-        <label className="mb-1 block text-xs text-gray-500 dark:text-gray-400">Data cadastro</label>
+      {/* Data de cadastro */}
+      <div className="w-full sm:w-56">
+        <label
+          className="
+            mb-1.5 block
+            text-[11px] font-semibold uppercase
+            tracking-[0.03em]
+            text-slate-500 dark:text-slate-400
+          "
+        >
+          Data de cadastro
+        </label>
+
         <Select
           value={filters.dataCadastro}
-          onChange={(v) => setFilter('dataCadastro', v)}
+          onChange={(value) => setFilter('dataCadastro', value)}
           options={DATA_CADASTRO_OPTIONS}
           ariaLabel="Data de cadastro"
         />

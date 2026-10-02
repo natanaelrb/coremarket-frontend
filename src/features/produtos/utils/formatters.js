@@ -1,4 +1,4 @@
-// Funções puras de formatação (moeda, data, percentual, números).
+﻿// Funções puras de formatação (moeda, data, percentual, números).
 // Nenhuma função aqui depende de estado ou de React.
 
 export function formatCurrency(value) {
@@ -35,3 +35,5 @@ export function formatVolumeL(value) {
   if (value === null || value === undefined) return '—';
   return `${value.toFixed(2).replace('.', ',')} L`;
 }
+
+

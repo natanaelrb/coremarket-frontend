@@ -1,4 +1,4 @@
-// Hook simples de notificações (toast) locais à feature Produtos.
+﻿// Hook simples de notificações (toast) locais à feature Produtos.
 // Pode ser substituído pelo sistema de toast compartilhado do projeto, se existir.
 import { useState, useCallback, useRef } from 'react';
 
@@ -22,3 +22,5 @@ export function useToast() {
 
   return { toasts, showToast, dismissToast };
 }
+
+

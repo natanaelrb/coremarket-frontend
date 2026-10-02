@@ -1,4 +1,4 @@
-// Mock: lotes de produtos (granularidade abaixo do produto, usado nos widgets do rodapé).
+﻿// Mock: lotes de produtos (granularidade abaixo do produto, usado nos widgets do rodapé).
 // Endpoint real sugerido: GET /api/produtos/lotes?situacao=vencendo|vencido
 
 export const LOTES_PROXIMOS_VENCIMENTO_MOCK = [
@@ -24,3 +24,5 @@ export const VALOR_EM_RISCO_MOCK = {
     { key: 'vence_30', label: 'Vence em 30 dias', valor: 360.0, percentual: 10.5, color: '#3B82F6' },
   ],
 };
+
+

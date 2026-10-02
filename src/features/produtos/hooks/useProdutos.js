@@ -1,8 +1,9 @@
-// Hook responsável por carregar a lista de produtos (fonte de dados).
-// Troca simples: substituir a leitura do mock por uma chamada axios em /api/produtos.
-import { useEffect, useMemo, useState } from 'react';
-import { PRODUTOS_MOCK } from '../mocks/produtos.mock';
-import { resolveProductStatus } from '../utils/validadeUtils';
+﻿// Hook responsável por carregar e manipular a lista de produtos.
+// Troca simples: substituir a leitura do mock por chamadas à API.
+
+import { useEffect, useMemo, useState } from "react";
+import { PRODUTOS_MOCK } from "../mocks/produtos.mock";
+import { resolveProductStatus } from "../utils/validadeUtils";
 
 export function useProdutos() {
   const [produtos, setProdutos] = useState([]);
@@ -11,13 +12,19 @@ export function useProdutos() {
 
   useEffect(() => {
     let ativo = true;
+
     setIsLoading(true);
 
     // TODO: substituir por `api.get('/produtos')`
     const timeout = setTimeout(() => {
       if (!ativo) return;
+
       try {
-        const comStatus = PRODUTOS_MOCK.map((p) => ({ ...p, status: resolveProductStatus(p) }));
+        const comStatus = PRODUTOS_MOCK.map((p) => ({
+          ...p,
+          status: resolveProductStatus(p),
+        }));
+
         setProdutos(comStatus);
         setError(null);
       } catch (err) {
@@ -33,17 +40,66 @@ export function useProdutos() {
     };
   }, []);
 
+  // Atualização manual da lista
   const refetch = () => {
     setIsLoading(true);
-    setTimeout(() => {
-      const comStatus = PRODUTOS_MOCK.map((p) => ({ ...p, status: resolveProductStatus(p) }));
-      setProdutos(comStatus);
-      setIsLoading(false);
-    }, 400);
+
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        try {
+          const comStatus = PRODUTOS_MOCK.map((p) => ({
+            ...p,
+            status: resolveProductStatus(p),
+          }));
+
+          setProdutos(comStatus);
+          setError(null);
+
+          resolve(comStatus);
+        } catch (err) {
+          setError(err);
+          resolve(null);
+        } finally {
+          setIsLoading(false);
+        }
+      }, 400);
+    });
+  };
+
+  // Adiciona um novo produto à lista local.
+  // Futuramente será substituído por `POST /api/produtos`.
+  const addProduto = (produto) => {
+    const novoProduto = {
+      ...produto,
+      id: `PROD-${Date.now()}`,
+      codigo: produto.codigo || `PROD-${Date.now()}`,
+      ativo: true,
+      estoqueReservado: 0,
+      lotesCount: 0,
+      validadeMaisProxima: null,
+      status: resolveProductStatus({
+        ...produto,
+        ativo: true,
+        estoqueReservado: 0,
+        lotesCount: 0,
+        validadeMaisProxima: null,
+      }),
+    };
+
+    setProdutos((current) => [novoProduto, ...current]);
+
+    return novoProduto;
   };
 
   return useMemo(
-    () => ({ produtos, isLoading, error, refetch }),
+    () => ({
+      produtos,
+      isLoading,
+      error,
+      refetch,
+      addProduto,
+    }),
     [produtos, isLoading, error]
   );
 }
+

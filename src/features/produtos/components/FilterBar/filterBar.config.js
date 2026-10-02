@@ -1,4 +1,4 @@
-// Monta as opções (com "Todos" prefixado) para cada select simples da FilterBar,
+﻿// Monta as opções (com "Todos" prefixado) para cada select simples da FilterBar,
 // a partir dos mocks de categoria/fornecedor/marca e das constantes de status/tipo.
 import { CATEGORIAS_MOCK } from '../../mocks/categorias.mock';
 import { FORNECEDORES_MOCK } from '../../mocks/fornecedores.mock';

@@ -1,4 +1,4 @@
-// Cálculos financeiros e de estoque derivados dos dados do produto.
+﻿// Cálculos financeiros e de estoque derivados dos dados do produto.
 
 export function calcMargemPercent(precoCompra, precoVenda) {
   if (!precoCompra || precoCompra <= 0) return 0;
@@ -21,3 +21,5 @@ export function calcPercentualDoTotal(parte, total) {
   if (!total) return 0;
   return (parte / total) * 100;
 }
+
+

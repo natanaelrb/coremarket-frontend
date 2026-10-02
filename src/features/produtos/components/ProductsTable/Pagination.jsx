@@ -1,4 +1,4 @@
-// Paginação da tabela: navegação por páginas + seletor de itens por página.
+﻿// Paginação da tabela: navegação por páginas + seletor de itens por página.
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ITEMS_PER_PAGE_OPTIONS } from '../../constants/tableColumns';
 import { formatNumber } from '../../utils/formatters';
@@ -42,7 +42,7 @@ export function Pagination({ page, totalPages, totalItems, itemsPerPage, goToPag
                   className={[
                     'flex h-7 w-7 items-center justify-center rounded-md text-sm transition-colors duration-150',
                     p === page
-                      ? 'bg-violet-600 text-white shadow-sm shadow-violet-600/30'
+                      ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-600/30'
                       : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/5',
                   ].join(' ')}
                 >
@@ -77,3 +77,5 @@ export function Pagination({ page, totalPages, totalItems, itemsPerPage, goToPag
     </div>
   );
 }
+
+

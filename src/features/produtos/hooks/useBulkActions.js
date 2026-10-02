@@ -1,4 +1,4 @@
-// Hook responsável exclusivamente por executar ações em massa sobre os produtos selecionados.
+﻿// Hook responsável exclusivamente por executar ações em massa sobre os produtos selecionados.
 // Endpoint real sugerido: POST /api/produtos/bulk-actions
 import { useCallback, useState } from 'react';
 
@@ -19,3 +19,5 @@ export function useBulkActions({ selectedIds, clearSelection, onCompleted }) {
 
   return { runAction, isProcessing };
 }
+
+
