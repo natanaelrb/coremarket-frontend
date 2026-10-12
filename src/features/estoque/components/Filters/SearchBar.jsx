@@ -1,20 +1,75 @@
 import { Search } from 'lucide-react'
 
 /**
- * Free-text search input for name/SKU/barcode. Controlled by
- * useEstoqueFilters; kept dumb/presentational on purpose.
+ * Campo de busca por nome, SKU ou código de barras.
+ * Controlado pelo useEstoqueFilters.
  */
 export default function SearchBar({ value, onChange }) {
   return (
-    <div className="relative flex-1 min-w-[220px]">
-      <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={16} />
-      <input
-        type="text"
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        placeholder="Pesquisar por nome, SKU, código..."
-        className="w-full rounded-lg border border-gray-200 dark:border-[#2A2E4A] bg-white dark:bg-[#171A38] py-2 pl-9 pr-3 text-sm text-gray-700 dark:text-gray-200 placeholder:text-gray-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 transition-colors"
-      />
+    <div className="flex min-w-[240px] flex-1 flex-col gap-1.5">
+      <label
+        className="
+          text-[11px]
+          font-semibold
+          uppercase
+          tracking-wide
+          text-slate-500
+          dark:text-slate-400
+        "
+      >
+        Pesquisar
+      </label>
+
+      <div className="relative">
+        <Search
+          size={17}
+          strokeWidth={2}
+          className="
+            pointer-events-none
+            absolute
+            left-3
+            top-1/2
+            -translate-y-1/2
+            text-slate-400
+            dark:text-slate-500
+          "
+        />
+
+        <input
+          type="text"
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          placeholder="Buscar produto, SKU ou código..."
+          className="
+            h-10
+            w-full
+            rounded-lg
+            border
+            border-slate-200
+            bg-white
+            pl-9
+            pr-3
+            text-sm
+            font-medium
+            text-slate-700
+            outline-none
+            transition-all
+            duration-150
+            placeholder:text-slate-400
+            hover:border-slate-300
+            focus:border-emerald-500
+            focus:ring-2
+            focus:ring-emerald-500/15
+            dark:border-white/10
+            dark:bg-[#171A38]
+            dark:text-slate-200
+            dark:placeholder:text-slate-500
+            dark:hover:border-white/20
+            dark:focus:border-emerald-500
+            dark:focus:ring-emerald-500/15
+          "
+        />
+      </div>
     </div>
   )
 }

@@ -2,35 +2,129 @@ import { DETAIL_TABS } from './detailTabsConfig.js'
 import { cn } from '../../../../shared/utils/classNames.js'
 
 /**
- * Horizontal tab nav for the detail panel (Geral / Lotes / Movimentações /
- * Histórico / Observações). Purely controlled: active tab + onChange come
- * from the page-level useState.
+ * Navegação horizontal das abas do detalhe do estoque.
+ * Controlada pelo estado da página: activeTab + onChange.
  */
 export default function DetailTabs({ activeTab, onChange }) {
   return (
-    <div className="flex gap-4 border-b border-gray-100 dark:border-[#22254A] px-5 text-sm">
-      {DETAIL_TABS.map((tab) => (
-        <button
-          key={tab.key}
-          onClick={() => onChange(tab.key)}
-          className={cn(
-            'relative flex items-center gap-1 pb-2.5 pt-1 font-medium transition-colors',
-            activeTab === tab.key
-              ? 'text-violet-600 dark:text-violet-400'
-              : 'text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300',
-          )}
-        >
-          {tab.label}
-          {tab.badge != null && (
-            <span className="rounded-full bg-gray-100 dark:bg-[#1E2142] px-1.5 text-[10px] text-gray-500 dark:text-gray-400">
-              {tab.badge}
-            </span>
-          )}
-          {activeTab === tab.key && (
-            <span className="absolute -bottom-px left-0 right-0 h-0.5 rounded-full bg-violet-600 animate-fade-in" />
-          )}
-        </button>
-      ))}
+    <div
+      className="
+        border-b border-gray-100
+        bg-white
+        px-5
+        dark:border-white/10
+        dark:bg-[#151936]
+      "
+    >
+      <div className="flex gap-1 overflow-x-auto scrollbar-none">
+        {DETAIL_TABS.map((tab) => {
+          const isActive = activeTab === tab.key
+
+          return (
+            <button
+              key={tab.key}
+              type="button"
+              onClick={() => onChange(tab.key)}
+              className={cn(
+                `
+                  group
+                  relative
+                  flex
+                  shrink-0
+                  items-center
+                  gap-2
+                  rounded-t-lg
+                  px-3.5
+                  pb-3
+                  pt-3
+                  text-sm
+                  font-medium
+                  transition-all
+                  duration-200
+                  ease-out
+                  focus:outline-none
+                  focus-visible:ring-2
+                  focus-visible:ring-emerald-500/40
+                `,
+                isActive
+                  ? `
+                    text-emerald-600
+                    dark:text-emerald-400
+                  `
+                  : `
+                    text-gray-400
+                    hover:bg-gray-50
+                    hover:text-gray-700
+                    dark:text-gray-500
+                    dark:hover:bg-white/5
+                    dark:hover:text-gray-200
+                  `,
+              )}
+            >
+              <span className="relative z-10">
+                {tab.label}
+              </span>
+
+              {tab.badge != null && (
+                <span
+                  className={cn(
+                    `
+                      min-w-[20px]
+                      rounded-full
+                      px-1.5
+                      py-0.5
+                      text-center
+                      text-[10px]
+                      font-semibold
+                      leading-none
+                      transition-all
+                      duration-200
+                    `,
+                    isActive
+                      ? `
+                        bg-emerald-50
+                        text-emerald-600
+                        dark:bg-emerald-500/10
+                        dark:text-emerald-400
+                      `
+                      : `
+                        bg-gray-100
+                        text-gray-500
+                        dark:bg-white/5
+                        dark:text-gray-400
+                      `,
+                  )}
+                >
+                  {tab.badge}
+                </span>
+              )}
+
+              {/* Indicador ativo */}
+              <span
+                className={cn(
+                  `
+                    absolute
+                    bottom-0
+                    left-2
+                    right-2
+                    h-0.5
+                    origin-center
+                    rounded-full
+                    bg-emerald-500
+                    transition-all
+                    duration-300
+                    ease-out
+                    dark:bg-emerald-400
+                  `,
+                  isActive
+                    ? 'scale-x-100 opacity-100'
+                    : 'scale-x-0 opacity-0',
+                )}
+              />
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 }

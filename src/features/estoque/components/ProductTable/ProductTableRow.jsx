@@ -1,18 +1,17 @@
 import ProductImage from "./ProductImage.jsx";
 import StatusBadge from "./StatusBadge.jsx";
 import ActionsMenu from "./ActionsMenu.jsx";
+
 import { formatCurrency } from "../../../../shared/utils/formatCurrency.js";
 import { formatDate } from "../../../movimentacoes/utils/formatDate.js";
+
 import {
   formatValidadeLabel,
   calculateDiasValidade,
 } from "../../utils/calculateDiasValidade.js";
+
 import { cn } from "../../../../shared/utils/classNames.js";
 
-/**
- * A single stock row. Clicking anywhere (except checkbox/actions) opens the
- * product in the detail panel via onOpenDetail.
- */
 export default function ProductTableRow({
   produto,
   isSelected,
@@ -22,95 +21,154 @@ export default function ProductTableRow({
   isActive,
 }) {
   const dias = calculateDiasValidade(produto.validade);
+
   const validadeTone =
-    produto.status === "vencido"
-      ? "text-rose-600 dark:text-rose-400 font-medium"
-      : produto.status === "vence_hoje"
-        ? "text-rose-600 dark:text-rose-400 font-medium"
-        : produto.status === "proximo_validade"
-          ? "text-amber-600 dark:text-amber-400 font-medium"
-          : "text-gray-500 dark:text-gray-400";
+    produto.status === "vencido" || produto.status === "vence_hoje"
+      ? "text-rose-600 dark:text-rose-400"
+      : produto.status === "proximo_validade"
+        ? "text-amber-600 dark:text-amber-400"
+        : "text-gray-400 dark:text-gray-500";
 
   return (
     <tr
       onClick={() => onOpenDetail(produto)}
       className={cn(
-        "cursor-pointer border-b border-gray-50 dark:border-[#1B1E3D] text-sm transition-colors",
+        "group cursor-pointer border-b border-gray-100 text-sm transition-colors dark:border-[#1B1E3D]",
         isActive
           ? "bg-violet-50/60 dark:bg-violet-500/5"
-          : "hover:bg-gray-50 dark:hover:bg-[#171A38]",
+          : isSelected
+            ? "bg-emerald-50/40 dark:bg-emerald-500/5"
+            : "hover:bg-gray-50 dark:hover:bg-[#171A38]",
       )}
     >
-      <td className="py-3 pl-4" onClick={(e) => e.stopPropagation()}>
+      {/* Seleção */}
+      <td
+        className="py-3.5 pl-4"
+        onClick={(e) => e.stopPropagation()}
+      >
         <input
           type="checkbox"
           checked={isSelected}
           onChange={() => onToggleSelect(produto.id)}
-          className="h-4 w-4 rounded border-gray-300 text-violet-600 focus:ring-violet-500 cursor-pointer"
+          className="h-4 w-4 cursor-pointer rounded border-gray-300 text-emerald-600 focus:ring-emerald-500 dark:border-gray-600"
         />
       </td>
-      <td className="px-3 py-3">
-        <div className="flex items-center gap-2.5">
-          <ProductImage src={produto.imagem} alt={produto.nome} />
+
+      {/* Produto */}
+      <td className="px-3 py-3.5">
+        <div className="flex min-w-0 items-center gap-3">
+          <ProductImage
+            src={produto.imagem}
+            alt={produto.nome}
+          />
+
           <div className="min-w-0">
-            <p className="truncate font-medium text-gray-900 dark:text-white">
+            <p className="truncate font-semibold text-gray-900 transition-colors group-hover:text-emerald-600 dark:text-white dark:group-hover:text-emerald-400">
               {produto.nome}
             </p>
-            <p className="truncate text-xs text-gray-400 dark:text-gray-500">
+
+            <p className="mt-0.5 truncate text-xs text-gray-400 dark:text-gray-500">
               {produto.marca}
             </p>
           </div>
         </div>
       </td>
-      <td className="px-3 py-3 text-gray-600 dark:text-gray-300">
-        {produto.sku}
+
+      {/* SKU */}
+      <td className="px-3 py-3.5">
+        <span className="font-medium text-gray-600 dark:text-gray-300">
+          {produto.sku}
+        </span>
       </td>
-      <td className="px-3 py-3 text-gray-600 dark:text-gray-300">
+
+      {/* Código */}
+      <td className="px-3 py-3.5 text-gray-500 dark:text-gray-400">
         {produto.codigoBarras}
       </td>
-      <td className="px-3 py-3 text-gray-600 dark:text-gray-300">
-        {produto.categoria}
+
+      {/* Categoria */}
+      <td className="px-3 py-3.5">
+        <span className="inline-flex rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-600 dark:bg-white/5 dark:text-gray-300">
+          {produto.categoria}
+        </span>
       </td>
-      <td className="px-3 py-3 text-gray-600 dark:text-gray-300">
-        {produto.localizacao}
+
+      {/* Localização */}
+      <td className="px-3 py-3.5">
+        <span className="text-gray-600 dark:text-gray-300">
+          {produto.localizacao}
+        </span>
       </td>
-      <td className="px-3 py-3 font-medium text-gray-900 dark:text-white">
-        {produto.quantidade}
+
+      {/* Quantidade */}
+      <td className="px-3 py-3.5">
+        <span className="font-semibold text-gray-900 dark:text-white">
+          {produto.quantidade}
+        </span>
       </td>
-      <td
-        className={cn(
-          "px-3 py-3 font-medium",
-          produto.disponivel === 0
-            ? "text-rose-600 dark:text-rose-400"
-            : "text-emerald-600 dark:text-emerald-400",
-        )}
-      >
-        {produto.disponivel}
+
+      {/* Disponível */}
+      <td className="px-3 py-3.5">
+        <span
+          className={cn(
+            "font-semibold",
+            produto.disponivel === 0
+              ? "text-rose-600 dark:text-rose-400"
+              : produto.disponivel <= produto.estMinimo
+                ? "text-amber-600 dark:text-amber-400"
+                : "text-emerald-600 dark:text-emerald-400",
+          )}
+        >
+          {produto.disponivel}
+        </span>
       </td>
-      <td className="px-3 py-3 text-gray-600 dark:text-gray-300">
+
+      {/* Estoque mínimo */}
+      <td className="px-3 py-3.5 text-gray-500 dark:text-gray-400">
         {produto.estMinimo}
       </td>
-      <td className="px-3 py-3">
+
+      {/* Validade */}
+      <td className="px-3 py-3.5">
         <p className="text-gray-600 dark:text-gray-300">
-          {produto.validade ? formatDate(produto.validade) : "-"}
+          {produto.validade
+            ? formatDate(produto.validade)
+            : "-"}
         </p>
+
         {produto.validade && dias != null && (
-          <p className={`text-xs ${validadeTone}`}>
+          <p
+            className={cn(
+              "mt-0.5 text-xs font-medium",
+              validadeTone,
+            )}
+          >
             {formatValidadeLabel(produto.validade)}
           </p>
         )}
       </td>
-      <td className="px-3 py-3">
+
+      {/* Status */}
+      <td className="px-3 py-3.5">
         <StatusBadge status={produto.status} />
       </td>
-      <td className="px-3 py-3 font-medium text-gray-900 dark:text-white">
-        {formatCurrency(produto.valorEmEstoque)}
+
+      {/* Valor */}
+      <td className="px-3 py-3.5">
+        <span className="font-semibold text-gray-900 dark:text-white">
+          {formatCurrency(produto.valorEmEstoque)}
+        </span>
       </td>
+
+      {/* Ações */}
       <td
-        className="px-3 py-3 text-center"
+        className="px-3 py-3.5 text-center"
         onClick={(e) => e.stopPropagation()}
       >
-        <ActionsMenu produto={produto} onSelect={onActionSelect} />
+        <ActionsMenu
+          produto={produto}
+          onSelect={onActionSelect}
+        />
       </td>
     </tr>
   );

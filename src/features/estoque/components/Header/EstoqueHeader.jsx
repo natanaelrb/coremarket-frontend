@@ -1,25 +1,85 @@
+// Cabeçalho da página: breadcrumb, título, descrição e ações principais.
 import { Boxes } from 'lucide-react'
 import HeaderActions from './HeaderActions.jsx'
 
-/**
- * Page title block + primary/secondary action buttons. Purely presentational;
- * receives its click handler from the page via useEstoqueActions.
- */
 export default function EstoqueHeader({ onAction }) {
   return (
-    <div className="flex flex-wrap items-start justify-between gap-4 animate-fade-in">
-      <div className="flex items-start gap-3">
-        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-50 dark:bg-violet-500/10 text-violet-600 dark:text-violet-400">
-          <Boxes size={24} strokeWidth={2} />
-        </div>
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Estoque</h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
-            Gerencie produtos, movimentações, inventários e níveis de estoque.
+    <header className="animate-fade-in-up">
+      <div className="-mt-4 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        {/* Informações da página */}
+        <div className="min-w-0">
+          <nav
+            aria-label="Navegação estrutural"
+            className="mb-2.5"
+          >
+            <ol className="flex items-center gap-1.5 text-sm">
+              <li className="text-sm text-slate-400">
+                Home
+              </li>
+
+              <li
+                className="text-base font-medium text-slate-300"
+                aria-hidden="true"
+              >
+                ›
+              </li>
+
+              <li
+                className="text-sm font-medium text-emerald-600"
+                aria-current="page"
+              >
+                Estoque
+              </li>
+            </ol>
+          </nav>
+
+          <div className="flex items-center gap-2.5">
+            <div
+              className="
+                flex h-9 w-9 shrink-0 items-center justify-center
+                rounded-lg
+                bg-emerald-50
+                text-emerald-600
+                ring-1 ring-emerald-100
+                dark:bg-emerald-500/10
+                dark:text-emerald-400
+                dark:ring-emerald-500/20
+              "
+            >
+              <Boxes size={18} strokeWidth={2.2} />
+            </div>
+
+            <h1
+              className="
+                truncate
+                text-2xl
+                font-bold
+                tracking-tight
+                text-slate-900
+                dark:text-white
+              "
+            >
+              Gestão de Estoque
+            </h1>
+          </div>
+
+          <p
+            className="
+              mt-2
+              max-w-2xl
+              text-sm
+              leading-5
+              text-slate-500
+              dark:text-slate-400
+            "
+          >
+            Controle produtos, movimentações, inventários e níveis de estoque.
           </p>
         </div>
+
+        {/* Ações */}
+        <HeaderActions onAction={onAction} />
       </div>
-      <HeaderActions onAction={onAction} />
-    </div>
+    </header>
   )
 }

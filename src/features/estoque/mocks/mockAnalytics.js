@@ -5,6 +5,7 @@
  *  - GET /api/estoque/analytics/valor-historico
  *  - GET /api/estoque/analytics/por-categoria
  *  - GET /api/estoque/analytics/situacao
+ *  - GET /api/estoque/analytics/por-localizacao
  *  - GET /api/estoque/analytics/top-giro
  */
 export const MOCK_ENTRADAS_SAIDAS = [
@@ -49,4 +50,12 @@ export const MOCK_TOP_GIRO = [
   { produto: 'Arroz Tio João', dias: 7.3 },
   { produto: 'Detergente Ypê', dias: 8.5 },
   { produto: 'Pão de Forma', dias: 9.2 },
+]
+
+export const MOCK_ESTOQUE_POR_LOCALIZACAO = [
+  { localizacao: 'Depósito 01', quantidade: 1240, percentual: 38.2 },
+  { localizacao: 'Depósito 02', quantidade: 920, percentual: 28.4 },
+  { localizacao: 'Câmara Fria 01', quantidade: 580, percentual: 17.9 },
+  { localizacao: 'Corredor A', quantidade: 320, percentual: 9.9 },
+  { localizacao: 'Corredor B', quantidade: 185, percentual: 5.6 },
 ]

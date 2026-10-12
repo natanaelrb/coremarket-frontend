@@ -9,15 +9,15 @@ import DetailTabs from "./DetailTabs.jsx";
 import GeralTabContent from "./GeralTabContent.jsx";
 import MovimentacoesRecentes from "./MovimentacoesRecentes.jsx";
 
-/**
- * Right-hand product detail sidebar. Composes header, quick-stat grids,
- * tab nav + tab content, and the recent-movements feed. Owns only its
- * local "which tab is active" state; the active product itself comes
- * from useProductDetail at the page level.
- */
+const TAB_LABELS = {
+  geral: "Geral",
+  movimentacoes: "Movimentações",
+  historico: "Histórico",
+};
+
 export default function ProductDetailPanel({
   produto,
-  movimentacoes,
+  movimentacoes = [],
   onClose,
   onViewAllMovimentacoes,
 }) {
@@ -26,20 +26,70 @@ export default function ProductDetailPanel({
   if (!produto) return null;
 
   return (
-    <Card className="animate-slide-in-right overflow-hidden">
-      <ProductDetailHeader produto={produto} onClose={onClose} />
-      <ProductInfoList produto={produto} />
-      <QuantityStats produto={produto} />
-      <EstoqueMinMaxStats produto={produto} />
-      <PriceStats produto={produto} />
-      <DetailTabs activeTab={activeTab} onChange={setActiveTab} />
-      {activeTab === "geral" && <GeralTabContent produto={produto} />}
-      {activeTab !== "geral" && (
-        <p className="p-5 text-sm text-gray-400 dark:text-gray-500 animate-fade-in">
-          Conteúdo de "{activeTab}" será exibido aqui assim que a API
-          correspondente estiver conectada.
-        </p>
-      )}
+    <Card
+      className="
+        overflow-hidden
+        animate-slide-in-right
+        divide-y
+        divide-gray-100
+        dark:divide-white/10
+      "
+    >
+      {/* Cabeçalho */}
+      <ProductDetailHeader
+        produto={produto}
+        onClose={onClose}
+      />
+
+      {/* Informações do produto */}
+      <div className="py-1">
+        <ProductInfoList produto={produto} />
+      </div>
+
+      {/* Indicadores rápidos */}
+      <div className="space-y-1 py-4">
+        <div className="px-5 pb-2">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.07em] text-gray-400 dark:text-gray-500">
+            Indicadores do estoque
+          </p>
+        </div>
+
+        <QuantityStats produto={produto} />
+        <EstoqueMinMaxStats produto={produto} />
+        <PriceStats produto={produto} />
+      </div>
+
+      {/* Abas */}
+      <DetailTabs
+        activeTab={activeTab}
+        onChange={setActiveTab}
+      />
+
+      {/* Conteúdo da aba */}
+      <div className="min-h-[220px]">
+        {activeTab === "geral" ? (
+          <GeralTabContent produto={produto} />
+        ) : (
+          <div className="flex min-h-[220px] items-center justify-center px-5 py-10 animate-fade-in">
+            <div className="max-w-sm text-center">
+              <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100 text-gray-400 dark:bg-white/5 dark:text-gray-500">
+                <span className="text-sm font-semibold">—</span>
+              </div>
+
+              <p className="mt-3 text-sm font-semibold text-gray-700 dark:text-gray-200">
+                {TAB_LABELS[activeTab] ?? activeTab}
+              </p>
+
+              <p className="mt-1 text-xs leading-5 text-gray-400 dark:text-gray-500">
+                Esta seção será disponibilizada quando os dados
+                correspondentes estiverem integrados ao sistema.
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Movimentações recentes */}
       <MovimentacoesRecentes
         movimentacoes={movimentacoes}
         onViewAll={onViewAllMovimentacoes}

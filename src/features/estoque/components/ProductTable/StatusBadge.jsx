@@ -1,11 +1,21 @@
 import { Badge } from "../../../../shared/components/ui/Badge.jsx";
-import { getStatusConfig } from '../../constants/statusConfig.js'
+import { getStatusConfig } from "../../constants/statusConfig.js";
 
-/**
- * Translates a product's raw status key (e.g. "baixo_estoque") into the
- * correctly toned Badge label, using the shared statusConfig map.
- */
+const TONE_MAP = {
+  success: "green",
+  danger: "red",
+  warning: "amber",
+  info: "blue",
+  accent: "violet",
+  neutral: "neutral",
+};
+
 export default function StatusBadge({ status }) {
-  const { label, tone } = getStatusConfig(status)
-  return <Badge tone={tone}>{label}</Badge>
+  const { label, tone } = getStatusConfig(status);
+
+  return (
+    <Badge tone={TONE_MAP[tone] ?? "neutral"}>
+      {label}
+    </Badge>
+  );
 }
