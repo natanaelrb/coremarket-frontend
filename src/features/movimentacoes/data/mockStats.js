@@ -19,6 +19,7 @@ export const MOCK_STATS = {
   ajustes: {
     total: 14,
     variacaoAbsoluta: 2,
+    serie: [2, 4, 3, 5, 2, 6, 4, 7],
   },
   perdas: {
     total: 32,
