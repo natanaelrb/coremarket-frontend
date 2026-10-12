@@ -14,6 +14,8 @@ import Pagamentos from "../pages/Pagamentos";
 import ClienteDetalhe from "../pages/ClienteDetalhe";
 import FornecedorDetalhe from "../pages/FornecedorDetalhe";
 import ProdutoDetalhe from "../pages/ProdutoDetalhe";
+import EstoqueDetalhe from "../pages/EstoqueDetalhe";
+import MovimentacaoDetalhe from "../pages/MovimentacaoDetalhe";
 
 import PageTransition from "../shared/components/transitions/PageTransition.jsx";
 
@@ -45,6 +47,16 @@ export default function AppRoutes() {
         <Route
           path="/fornecedores/:id"
           element={<FornecedorDetalhe />}
+        />
+
+        <Route 
+          path="/estoque/:id" 
+          element={<EstoqueDetalhe />}
+        />
+
+        <Route
+          path="/movimentacoes/:id"
+          element={<MovimentacaoDetalhe />}
         />
 
         <Route
