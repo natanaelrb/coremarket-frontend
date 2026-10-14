@@ -1,35 +1,40 @@
 // Hook responsável exclusivamente por buscar os dados brutos de compras.
 // TODO(api): substituir o import mock por uma chamada real, ex:
 //   const { data } = await api.get("/api/compras", { params: filtros });
-import { useEffect, useState } from "react";
-import { mockCompras } from "../data/mockCompras";
+
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
+import {
+  getComprasSnapshot,
+  subscribeCompras,
+} from "../data/comprasStore";
 
 export function useComprasData() {
-  const [compras, setCompras] = useState([]);
+  const compras = useSyncExternalStore(
+    subscribeCompras,
+    getComprasSnapshot,
+    getComprasSnapshot
+  );
+
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let active = true;
-    setIsLoading(true);
-
-    const timeout = setTimeout(() => {
-      if (!active) return;
-      try {
-        setCompras(mockCompras);
-        setError(null);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setIsLoading(false);
-      }
-    }, 350);
-
-    return () => {
-      active = false;
-      clearTimeout(timeout);
-    };
+    const timeout = setTimeout(() => setIsLoading(false), 350);
+    return () => clearTimeout(timeout);
   }, []);
 
-  return { compras, isLoading, error };
+  const atualizar = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 350));
+    } catch (err) {
+      setError(err);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  return { compras, isLoading, error, atualizar };
 }
