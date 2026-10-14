@@ -1,41 +1,99 @@
 import { TrendingUp, TrendingDown } from "lucide-react";
 
 const COLOR_STYLES = {
-  violet: "bg-violet-50 text-violet-600 dark:bg-violet-500/10 dark:text-violet-400",
-  blue: "bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400",
-  amber: "bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400",
-  emerald: "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400",
-  slate: "bg-slate-100 text-slate-600 dark:bg-white/5 dark:text-slate-300",
-  red: "bg-red-50 text-red-600 dark:bg-red-500/10 dark:text-red-400",
+  green:
+    "bg-green-50 text-green-700 dark:bg-green-500/10 dark:text-green-400",
+  violet:
+    "bg-green-50 text-green-700 dark:bg-green-500/10 dark:text-green-400",
+  blue:
+    "bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400",
+  amber:
+    "bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400",
+  emerald:
+    "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400",
+  slate:
+    "bg-slate-100 text-slate-600 dark:bg-white/5 dark:text-slate-300",
+  red:
+    "bg-red-50 text-red-700 dark:bg-red-500/10 dark:text-red-400",
 };
 
-export function KpiCard({ icon: Icon, label, value, helper, trend, color = "violet", delay = 0 }) {
-  const isPositive = trend !== undefined && trend >= 0;
+export function KpiCard({
+  icon: Icon,
+  label,
+  value,
+  helper,
+  trend,
+  color = "green",
+  delay = 0,
+}) {
+  const hasTrend = typeof trend === "number" && Number.isFinite(trend);
+  const isPositive = hasTrend && trend >= 0;
 
   return (
-    <div
-      className="bg-white dark:bg-[#131736] border border-slate-200 dark:border-white/5 rounded-2xl p-4 flex items-start gap-3 min-w-[210px] flex-1 animate-fade-in-up hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+    <article
+      className="group min-w-0 rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm transition-all duration-300 ease-out hover:-translate-y-1 hover:border-green-200 hover:shadow-lg hover:shadow-green-900/5 motion-reduce:transform-none motion-reduce:transition-none dark:border-white/10 dark:bg-[#151b28] dark:hover:border-green-500/30"
       style={{ animationDelay: `${delay}ms` }}
     >
-      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 ${COLOR_STYLES[color]}`}>
-        <Icon className="w-5 h-5" />
+      <div className="flex items-start gap-3">
+        <div
+          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl transition-transform duration-300 group-hover:scale-105 motion-reduce:transform-none ${COLOR_STYLES[color] || COLOR_STYLES.green}`}
+        >
+          <Icon className="h-5 w-5" aria-hidden="true" />
+        </div>
+
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-xs font-medium text-slate-900 dark:text-slate-900">
+            {label}
+          </p>
+
+          <p
+            className="mt-1 break-words text-lg font-bold leading-tight tracking-tight text-slate-900 dark:text-white"
+            title={String(value)}
+          >
+            {value}
+          </p>
+
+          {(helper || hasTrend) && (
+            <div className="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1">
+              {hasTrend && (
+                <span
+                  className={`inline-flex items-center gap-1 text-xs font-semibold ${
+                    isPositive
+                      ? "text-emerald-600 dark:text-emerald-400"
+                      : "text-red-600 dark:text-red-400"
+                  }`}
+                >
+                  {isPositive ? (
+                    <TrendingUp className="h-3.5 w-3.5" />
+                  ) : (
+                    <TrendingDown className="h-3.5 w-3.5" />
+                  )}
+                  {isPositive ? "+" : ""}
+                  {trend.toFixed(1)}%
+                </span>
+              )}
+
+              {helper && (
+                <span
+                  className={`text-xs font-medium leading-relaxed ${
+                    color === "red"
+                      ? "text-red-900 dark:text-red-400"
+                      : color === "amber"
+                        ? "text-amber-900 dark:text-amber-400"
+                        : color === "blue"
+                          ? "text-blue-900 dark:text-blue-400"
+                          : color === "slate"
+                            ? "text-slate-900 dark:text-slate-400"
+                            : "text-green-900 dark:text-green-400"
+                  }`}
+                >
+                  {helper}
+                </span>
+              )}
+            </div>
+          )}
+        </div>
       </div>
-      <div className="min-w-0">
-        <p className="text-xs text-slate-500 dark:text-slate-400 truncate">{label}</p>
-        <p className="text-lg font-bold text-slate-900 dark:text-white leading-tight mt-0.5 truncate">{value}</p>
-        {(helper || trend !== undefined) && (
-          <div className="flex items-center gap-1 mt-1">
-            {trend !== undefined && (
-              <span className={`inline-flex items-center gap-0.5 text-xs font-medium ${isPositive ? "text-emerald-500" : "text-red-500"}`}>
-                {isPositive ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
-                {isPositive ? "+" : ""}
-                {trend.toFixed(1)}%
-              </span>
-            )}
-            {helper && <span className="text-xs text-slate-400 dark:text-slate-500">{helper}</span>}
-          </div>
-        )}
-      </div>
-    </div>
+    </article>
   );
 }

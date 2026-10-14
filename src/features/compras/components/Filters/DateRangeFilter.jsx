@@ -1,29 +1,47 @@
-import { Calendar } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 
-export function DateRangeFilter({ dataInicio, dataFim, onChangeInicio, onChangeFim }) {
+export function DateRangeFilter({
+  dataInicio,
+  dataFim,
+  onChangeInicio,
+  onChangeFim,
+}) {
+  const inputClassName =
+    "h-11 w-full min-w-0 rounded-xl border border-slate-200 bg-slate-50/70 px-3 text-sm font-medium text-slate-700 shadow-sm outline-none transition-all duration-200 hover:border-green-300 hover:bg-white focus:border-green-500 focus:bg-white focus:ring-4 focus:ring-green-500/10 motion-reduce:transition-none dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200 dark:hover:border-green-500/30 dark:hover:bg-white/[0.06] dark:focus:border-green-500 dark:focus:bg-[#151b28] dark:focus:ring-green-500/10";
+
   return (
-    <div>
-      <label className="block text-xs text-slate-500 dark:text-slate-400 mb-1.5">Período</label>
-      <div className="flex items-center gap-2">
-        <div className="relative">
-          <Calendar className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-          <input
-            type="date"
-            value={dataInicio}
-            onChange={(e) => onChangeInicio(e.target.value)}
-            className="pl-7 pr-2 py-2 text-sm rounded-lg border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition-shadow"
-          />
-        </div>
-        <span className="text-slate-400 text-sm">-</span>
-        <div className="relative">
-          <Calendar className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
-          <input
-            type="date"
-            value={dataFim}
-            onChange={(e) => onChangeFim(e.target.value)}
-            className="pl-7 pr-2 py-2 text-sm rounded-lg border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-slate-700 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-violet-500/40 transition-shadow"
-          />
-        </div>
+    <div className="flex min-w-0 items-center gap-3">
+      <div className="flex shrink-0 items-center gap-1.5">
+        <Calendar
+          className="h-4 w-4 text-green-600 dark:text-green-400"
+          aria-hidden="true"
+        />
+        <span className="whitespace-nowrap text-xs font-semibold text-slate-600 dark:text-slate-300">
+          Período
+        </span>
+      </div>
+
+      <div className="flex min-w-0 flex-1 items-center gap-2">
+        <input
+          type="date"
+          aria-label="Data inicial"
+          value={dataInicio}
+          onChange={(event) => onChangeInicio(event.target.value)}
+          className={inputClassName}
+        />
+
+        <ArrowRight
+          className="h-4 w-4 shrink-0 text-slate-400"
+          aria-hidden="true"
+        />
+
+        <input
+          type="date"
+          aria-label="Data final"
+          value={dataFim}
+          onChange={(event) => onChangeFim(event.target.value)}
+          className={inputClassName}
+        />
       </div>
     </div>
   );
