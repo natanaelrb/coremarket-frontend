@@ -3,9 +3,17 @@ import { getStatusConfig } from "../../utils/statusHelpers";
 
 export function StatusBadge({ status }) {
   const config = getStatusConfig(status);
+
   return (
-    <Badge textClass={config.textClass} bgClass={config.bgClass} borderClass={config.borderClass} dotClass={config.dotClass}>
-      {config.label}
-    </Badge>
+    <span className="inline-flex items-center">
+      <Badge
+        textClass={config.textClass}
+        bgClass={config.bgClass}
+        borderClass={config.borderClass}
+        dotClass={config.dotClass}
+      >
+        {config.label}
+      </Badge>
+    </span>
   );
 }
