@@ -1,28 +1,58 @@
-// Aba "Resumo": reproduz fielmente o layout de referência com duas colunas
-// (Informações gerais / Resumo financeiro), seguidas de Condições de
-// pagamento, Recebimento e Integrações em largura total.
+
 import { InformacoesGerais } from "../sections/InformacoesGerais";
 import { ResumoFinanceiro } from "../sections/ResumoFinanceiro";
 import { CondicoesPagamento } from "../sections/CondicoesPagamento";
 import { Recebimento } from "../sections/Recebimento";
 import { Integracoes } from "../sections/Integracoes";
 
-export function ResumoTab({ detalhe }) {
+function SectionCard({ children, className = "" }) {
   return (
-    <div className="space-y-5 animate-fade-in">
-      <div className="grid grid-cols-2 gap-4">
-        <InformacoesGerais detalhe={detalhe} />
-        <ResumoFinanceiro detalhe={detalhe} />
+    <section
+      className={`min-w-0 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm transition-colors duration-200 dark:border-white/[0.07] dark:bg-[#151b28] sm:p-6 ${className}`}
+    >
+      {children}
+    </section>
+  );
+}
+
+export function ResumoTab({
+  detalhe,
+  onVerConferencia,
+  onVerEstoque,
+  onVerContasAPagar,
+  onVerNotaFiscal,
+}) {
+  return (
+    <div className="min-w-0 space-y-6 animate-fade-in">
+      <div className="grid grid-cols-1 items-stretch gap-5 xl:grid-cols-2">
+        <SectionCard>
+          <InformacoesGerais detalhe={detalhe} />
+        </SectionCard>
+
+        <SectionCard>
+          <ResumoFinanceiro detalhe={detalhe} />
+        </SectionCard>
       </div>
-      <div className="pt-4 border-t border-slate-100 dark:border-white/5">
+
+      <SectionCard>
         <CondicoesPagamento detalhe={detalhe} />
-      </div>
-      <div className="pt-4 border-t border-slate-100 dark:border-white/5">
-        <Recebimento detalhe={detalhe} />
-      </div>
-      <div className="pt-4 border-t border-slate-100 dark:border-white/5">
-        <Integracoes detalhe={detalhe} />
-      </div>
+      </SectionCard>
+
+      <SectionCard>
+        <Recebimento
+          detalhe={detalhe}
+          onVerConferencia={onVerConferencia}
+        />
+      </SectionCard>
+
+      <SectionCard>
+        <Integracoes
+          detalhe={detalhe}
+          onVerEstoque={onVerEstoque}
+          onVerContasAPagar={onVerContasAPagar}
+          onVerNotaFiscal={onVerNotaFiscal}
+        />
+      </SectionCard>
     </div>
   );
 }

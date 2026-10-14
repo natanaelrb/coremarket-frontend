@@ -1,12 +1,27 @@
 import { Recebimento } from "../sections/Recebimento";
 import { Integracoes } from "../sections/Integracoes";
 
-export function RecebimentoTab({ detalhe }) {
+export function RecebimentoTab({
+  detalhe,
+  onVerConferencia,
+  onVerEstoque,
+  onVerContasAPagar,
+  onVerNotaFiscal,
+}) {
   return (
-    <div className="space-y-5 animate-fade-in">
-      <Recebimento detalhe={detalhe} />
-      <div className="pt-4 border-t border-slate-100 dark:border-white/5">
-        <Integracoes detalhe={detalhe} />
+    <div className="animate-fade-in space-y-6">
+      <Recebimento
+        detalhe={detalhe}
+        onVerConferencia={onVerConferencia}
+      />
+
+      <div className="border-t border-slate-200 pt-6 dark:border-slate-700/70">
+        <Integracoes
+          detalhe={detalhe}
+          onVerEstoque={onVerEstoque}
+          onVerContasAPagar={onVerContasAPagar}
+          onVerNotaFiscal={onVerNotaFiscal}
+        />
       </div>
     </div>
   );

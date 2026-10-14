@@ -1,39 +1,92 @@
 import { formatCurrency } from "../../../utils/formatters";
 
+function FinancialRow({ label, value, tone = "default" }) {
+  const isNegative = tone === "negative";
+  const isPositive = tone === "positive";
+  const amount = Number(value ?? 0);
+  const formattedAmount = formatCurrency(Math.abs(amount));
+
+  return (
+    <div className="flex items-start justify-between gap-4 border-b border-slate-100 py-3 last:border-b-0 dark:border-white/[0.06]">
+      <dt className="min-w-0 text-xs font-medium leading-relaxed text-slate-500 dark:text-slate-400 sm:text-sm">
+        {label}
+      </dt>
+
+      <dd
+        className={`shrink-0 text-right text-sm font-semibold tabular-nums ${
+          isNegative
+            ? "text-red-600 dark:text-red-400"
+            : isPositive
+              ? "text-emerald-600 dark:text-emerald-400"
+              : "text-slate-700 dark:text-slate-200"
+        }`}
+      >
+        {isPositive && amount > 0 && "+ "}
+        {isNegative && amount > 0 && "- "}
+        {formattedAmount}
+      </dd>
+    </div>
+  );
+}
+
 export function ResumoFinanceiro({ detalhe }) {
   const rows = [
-    { label: "Subtotal dos produtos", value: detalhe.subtotal, tone: "default" },
-    { label: "Desconto", value: -detalhe.desconto, tone: "negative" },
-    { label: "Frete", value: detalhe.frete, tone: "positive" },
-    { label: "Outras despesas", value: detalhe.outrasDespesas, tone: "positive" },
-    { label: "Impostos", value: detalhe.impostos, tone: "default" },
+    {
+      label: "Subtotal dos produtos",
+      value: detalhe.subtotal,
+    },
+    {
+      label: "Desconto",
+      value: detalhe.desconto,
+      tone: "negative",
+    },
+    {
+      label: "Frete",
+      value: detalhe.frete,
+      tone: "positive",
+    },
+    {
+      label: "Outras despesas",
+      value: detalhe.outrasDespesas,
+      tone: "positive",
+    },
+    {
+      label: "Impostos",
+      value: detalhe.impostos,
+    },
   ];
 
   return (
-    <div>
-      <h4 className="text-xs font-semibold text-slate-500 dark:text-slate-400 mb-3">Resumo financeiro</h4>
-      <dl className="space-y-2.5">
+    <div className="min-w-0">
+      <div className="-mb-1 flex items-start gap-3">
+      </div>
+
+      <dl className="min-w-0">
         {rows.map((row) => (
-          <div key={row.label} className="flex items-center justify-between text-xs">
-            <dt className="text-slate-400 dark:text-slate-500">{row.label}</dt>
-            <dd
-              className={`font-medium ${
-                row.tone === "negative"
-                  ? "text-red-500"
-                  : row.tone === "positive"
-                  ? "text-emerald-500"
-                  : "text-slate-700 dark:text-slate-200"
-              }`}
-            >
-              {row.tone === "positive" ? "+ " : ""}
-              {formatCurrency(Math.abs(row.value)) === "R$ 0,00" ? formatCurrency(row.value) : (row.value < 0 ? "- " : "") + formatCurrency(Math.abs(row.value))}
-            </dd>
-          </div>
+          <FinancialRow
+            key={row.label}
+            label={row.label}
+            value={row.value}
+            tone={row.tone}
+          />
         ))}
       </dl>
-      <div className="mt-3 pt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
-        <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Total da compra</span>
-        <span className="text-base font-bold text-slate-900 dark:text-white">{formatCurrency(detalhe.total)}</span>
+
+      <div className="mt-5 rounded-xl border border-emerald-200/80 bg-emerald-50/70 p-4 dark:border-emerald-400/20 dark:bg-emerald-400/[0.07]">
+        <div className="flex items-center justify-between gap-3">
+          <div className="min-w-0">
+            <p className="text-xs font-semibold text-slate-600 dark:text-slate-300">
+              Total da compra
+            </p>
+            <p className="mt-1 text-[11px] text-slate-500 dark:text-slate-400">
+              Valor final
+            </p>
+          </div>
+
+          <span className="shrink-0 text-lg font-bold tabular-nums text-emerald-700 dark:text-emerald-400 sm:text-xl">
+            {formatCurrency(Number(detalhe.total ?? 0))}
+          </span>
+        </div>
       </div>
     </div>
   );
