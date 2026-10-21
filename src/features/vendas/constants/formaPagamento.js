@@ -12,13 +12,35 @@ export const FORMA_PAGAMENTO = {
   DIVIDA: 'DIVIDA',
 };
 
+
 export const FORMA_PAGAMENTO_CONFIG = {
-  [FORMA_PAGAMENTO.PIX]: { label: 'PIX', icon: QrCode, color: 'text-cm-success' },
-  [FORMA_PAGAMENTO.DINHEIRO]: { label: 'Dinheiro', icon: Banknote, color: 'text-cm-warning' },
-  [FORMA_PAGAMENTO.DEBITO]: { label: 'Débito', icon: CreditCard, color: 'text-cm-info' },
-  [FORMA_PAGAMENTO.CREDITO]: { label: 'Crédito', icon: CreditCard, color: 'text-cm-accent' },
-  [FORMA_PAGAMENTO.DIVIDA]: { label: 'Dívida', icon: Wallet, color: 'text-cm-danger' },
+  [FORMA_PAGAMENTO.PIX]: {
+    label: 'PIX',
+    icon: QrCode,
+    color: 'text-green-600',
+  },
+  [FORMA_PAGAMENTO.DINHEIRO]: {
+    label: 'Dinheiro',
+    icon: Banknote,
+    color: 'text-amber-600',
+  },
+  [FORMA_PAGAMENTO.DEBITO]: {
+    label: 'Débito',
+    icon: CreditCard,
+    color: 'text-blue-600',
+  },
+  [FORMA_PAGAMENTO.CREDITO]: {
+    label: 'Crédito',
+    icon: CreditCard,
+    color: 'text-violet-600',
+  },
+  [FORMA_PAGAMENTO.DIVIDA]: {
+    label: 'Dívida',
+    icon: Wallet,
+    color: 'text-rose-600',
+  },
 };
+
 
 export const FORMA_PAGAMENTO_OPTIONS = [
   { value: 'TODOS', label: 'Todos' },
