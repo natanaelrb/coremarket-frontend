@@ -2,7 +2,6 @@ import { useSearchParams } from "react-router-dom";
 import { MOCK_CLIENTES } from "../features/vendas/data/mockClientes.js";
 
 import { VendasHeader } from "../features/vendas/components/Header/VendasHeader.jsx";
-import { ActionButtons } from "../features/vendas/components/Actions/ActionButtons.jsx";
 import { KPICardsRow } from "../features/vendas/components/KPIs/KPICardsRow.jsx";
 import { ProdutoSearchPanel } from "../features/vendas/components/ProdutoSearch/ProdutoSearchPanel.jsx";
 import { ItensVendaPanel } from "../features/vendas/components/ItensVenda/ItensVendaPanel.jsx";
@@ -12,6 +11,7 @@ import { DescontosPanel } from "../features/vendas/components/Descontos/Desconto
 import { ResumoVendaPanel } from "../features/vendas/components/ResumoVenda/ResumoVendaPanel.jsx";
 import { VendaDetalhePanel } from "../features/vendas/components/VendaDetalhe/VendaDetalhePanel.jsx";
 import { HistoricoVendasPanel } from "../features/vendas/components/Historico/HistoricoVendasPanel.jsx";
+import { AtalhosPDV } from "../features/vendas/components/Atalhos/AtalhosPDV.jsx";
 
 import { useProdutoSearch } from "../features/vendas/hooks/useProdutoSearch.js";
 import { useVendaAtual } from "../features/vendas/hooks/useVendaAtual.js";
@@ -23,13 +23,6 @@ import { useKeyboardShortcuts } from "../features/vendas/hooks/useKeyboardShortc
 
 import { useToast } from "../shared/contexts/ToastContext.jsx";
 
-/**
- * Página de Vendas (PDV) do CoreMarket.
- *
- * Esta página é intencionalmente uma camada pura de composição: toda a
- * lógica de negócio vive nos hooks (`./hooks`) e toda a apresentação vive
- * nos componentes (`./components`). A página apenas conecta os dois.
- */
 export function Vendas() {
   const { notify } = useToast();
 
@@ -44,8 +37,14 @@ export function Vendas() {
 
   const produtoSearch = useProdutoSearch();
   const vendaAtual = useVendaAtual(clienteInicial);
-  
-  const { kpis, carregando: carregandoKpis, caixa, operador } = useKPIsVendas();
+
+  const {
+    kpis,
+    carregando: carregandoKpis,
+    caixa,
+    operador,
+  } = useKPIsVendas();
+
   const historico = useHistoricoVendas();
   const { vendaSelecionada, visualizarVenda } = useVendaDetalhe();
 
@@ -58,55 +57,101 @@ export function Vendas() {
     onBuscarProduto: produtoSearch.focar,
     onBuscarCliente: vendaAtual.clienteState.focar,
     onDesconto: vendaAtual.descontosState.focar,
-    onAtualizar: () => notify('Dados atualizados.', 'info', 1800),
+    onAtualizar: () => notify("Dados atualizados.", "info", 1800),
     onFinalizarVenda: finalizarVenda,
     onRemoverItemSelecionado: () => {
       if (vendaAtual.carrinho.itemSelecionadoId) {
-        vendaAtual.carrinho.removerItem(vendaAtual.carrinho.itemSelecionadoId);
+        vendaAtual.carrinho.removerItem(
+          vendaAtual.carrinho.itemSelecionadoId
+        );
       }
     },
-    onCancelarOperacao: () => vendaAtual.carrinho.setItemSelecionadoId(null),
+    onCancelarOperacao: () =>
+      vendaAtual.carrinho.setItemSelecionadoId(null),
   });
 
   return (
-    <div className="min-h-screen space-y-6 bg-cm-bg p-6">
-      <VendasHeader caixa={caixa} operador={operador} onFocarBuscaProduto={produtoSearch.focar} />
+    <main className="-mt-10 -ml-8 -mr-8 min-h-screen bg-cm-bg p-6">
+      <div className="mx-auto w-full max-w-[1800px] space-y-5">
+        {/* Cabeçalho da operação */}
+        <VendasHeader
+          caixa={caixa}
+          operador={operador}
+          onFocarBuscaProduto={produtoSearch.focar}
+          onNovaVenda={vendaAtual.resetarVenda}
+          onConsultarVendas={() =>
+            notify(
+              'Role até "Histórico de vendas" para consultar.',
+              "info",
+              2500
+            )
+          }
+        />
 
-      <ActionButtons
-        onNovaVenda={vendaAtual.resetarVenda}
-        onConsultarVendas={() => notify('Role até "Histórico de vendas" para consultar.', 'info', 2500)}
-      />
+        {/* Indicadores resumidos */}
+        <KPICardsRow kpis={kpis} loading={carregandoKpis} />
 
-      <KPICardsRow kpis={kpis} loading={carregandoKpis} />
-
-      <div className="grid grid-cols-1 gap-5 lg:grid-cols-3">
-        <div className="space-y-5 lg:col-span-2">
-          <ProdutoSearchPanel produtoSearch={produtoSearch} onAdicionarProduto={vendaAtual.carrinho.adicionarProduto} />
-          <ItensVendaPanel carrinho={vendaAtual.carrinho} />
-        </div>
-
-        <div className="space-y-5">
-          <ClientePanel clienteState={vendaAtual.clienteState} />
-          <TipoVendaPanel tipoVendaState={vendaAtual.tipoVendaState} />
-          <DescontosPanel
-            descontosState={vendaAtual.descontosState}
-            descontosItens={vendaAtual.resumo.descontosItens}
-            subtotal={vendaAtual.resumo.subtotal}
+        {/* Busca: ponto de entrada da operação */}
+        <section aria-label="Buscar produtos" className="min-w-0">
+          <ProdutoSearchPanel
+            produtoSearch={produtoSearch}
+            onAdicionarProduto={vendaAtual.carrinho.adicionarProduto}
           />
-          <ResumoVendaPanel resumo={vendaAtual.resumo} onFinalizar={finalizarVenda} processando={processando} />
-          <VendaDetalhePanel
-            numeroVenda={vendaSelecionada?.numero ?? '#00018472'}
-            caixaNumero={caixa.numero}
-            operadorNome={operador.nome}
-            clienteNome={vendaAtual.clienteState.cliente?.nome}
-            itens={vendaAtual.carrinho.itens}
-            resumo={vendaAtual.resumo}
+        </section>
+
+        {/* Operação: carrinho em destaque e controles na lateral */}
+        <section
+          aria-label="Montagem da venda"
+          className="grid min-w-0 grid-cols-1 items-start gap-5 2xl:grid-cols-[minmax(0,1.8fr)_minmax(360px,0.85fr)]"
+        >
+          {/* Área principal: produtos adicionados */}
+          <div className="min-w-0 space-y-5">
+            <ItensVendaPanel carrinho={vendaAtual.carrinho} />
+
+            <VendaDetalhePanel
+              numeroVenda={vendaSelecionada?.numero ?? "#00018472"}
+              caixaNumero={caixa.numero}
+              operadorNome={operador.nome}
+              clienteNome={vendaAtual.clienteState.cliente?.nome}
+              itens={vendaAtual.carrinho.itens}
+              resumo={vendaAtual.resumo}
+            />
+          </div>
+
+          {/* Painel lateral: informações e ações da venda */}
+          <aside className="min-w-0 space-y-4">
+            <ClientePanel clienteState={vendaAtual.clienteState} />
+
+            <TipoVendaPanel
+              tipoVendaState={vendaAtual.tipoVendaState}
+            />
+
+            <DescontosPanel
+              descontosState={vendaAtual.descontosState}
+              descontosItens={vendaAtual.resumo.descontosItens}
+              subtotal={vendaAtual.resumo.subtotal}
+            />
+
+            <ResumoVendaPanel
+              resumo={vendaAtual.resumo}
+              onFinalizar={finalizarVenda}
+              processando={processando}
+            />
+
+            <AtalhosPDV />
+          </aside>
+        </section>
+
+        {/* Histórico fora da área de montagem */}
+        <section aria-label="Histórico de vendas" className="min-w-0">
+          <HistoricoVendasPanel
+            historico={historico}
+            onVisualizarVenda={visualizarVenda}
           />
-        </div>
+        </section>
       </div>
-
-      <HistoricoVendasPanel historico={historico} onVisualizarVenda={visualizarVenda} />
-    </div>
+    </main>
   );
 }
+
 export default Vendas;
