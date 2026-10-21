@@ -120,7 +120,7 @@ export default function ExportOptionButton({
               rounded-full
               border-2
               border-slate-200
-              border-t-emerald-500
+              border-t-green-500
             "
           />
         </span>

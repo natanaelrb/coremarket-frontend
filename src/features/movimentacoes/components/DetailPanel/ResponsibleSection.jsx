@@ -76,7 +76,7 @@ export default function ResponsibleSection({ usuario }) {
               rounded-full
               border-2
               border-white
-              bg-emerald-500
+              bg-green-500
             "
             title="Responsável pela movimentação"
           />

@@ -41,8 +41,8 @@ export default function Breadcrumb({ items = [] }) {
                   isLast
                     ? `
                       font-medium
-                      text-emerald-600
-                      dark:text-emerald-400
+                      text-green-600
+                      dark:text-green-400
                     `
                     : `
                       text-slate-400

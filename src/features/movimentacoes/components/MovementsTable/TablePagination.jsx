@@ -55,7 +55,7 @@ export default function TablePagination({
             disabled:opacity-30
             focus:outline-none
             focus-visible:ring-2
-            focus-visible:ring-emerald-500/30
+            focus-visible:ring-green-500/30
           "
         >
           <ChevronLeft
@@ -80,10 +80,10 @@ export default function TablePagination({
                 transition-all duration-200
                 focus:outline-none
                 focus-visible:ring-2
-                focus-visible:ring-emerald-500/30
+                focus-visible:ring-green-500/30
                 ${
                   page === currentPage
-                    ? 'bg-emerald-500 text-white shadow-sm shadow-emerald-500/20'
+                    ? 'bg-green-500 text-white shadow-sm shadow-green-500/20'
                     : 'text-slate-500 hover:bg-slate-100 hover:text-slate-800'
                 }
               `}
@@ -125,7 +125,7 @@ export default function TablePagination({
             disabled:opacity-30
             focus:outline-none
             focus-visible:ring-2
-            focus-visible:ring-emerald-500/30
+            focus-visible:ring-green-500/30
           "
         >
           <ChevronRight
@@ -158,9 +158,9 @@ export default function TablePagination({
             outline-none
             transition-all
             hover:border-slate-300
-            focus:border-emerald-500
+            focus:border-green-500
             focus:ring-2
-            focus:ring-emerald-500/10
+            focus:ring-green-500/10
           "
         >
           {[25, 50, 100].map((number) => (

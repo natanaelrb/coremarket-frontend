@@ -18,11 +18,11 @@ const EXPORT_OPTIONS = [
     icon: FileText,
     config: {
       iconBg:
-        'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400',
+        'bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400',
       border:
-        'border-emerald-200 hover:border-emerald-300 dark:border-emerald-500/20 dark:hover:border-emerald-500/30',
+        'border-green-200 hover:border-green-300 dark:border-green-500/20 dark:hover:border-green-500/30',
       arrow:
-        'bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400',
+        'bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400',
     },
   },
   {
@@ -86,8 +86,8 @@ export default function QuickExportPanel({
             className="
               flex h-10 w-10 shrink-0 items-center justify-center
               rounded-xl
-              bg-emerald-50 text-emerald-600
-              dark:bg-emerald-500/10 dark:text-emerald-400
+              bg-green-50 text-green-600
+              dark:bg-green-500/10 dark:text-green-400
             "
           >
             <FileDown className="h-5 w-5" strokeWidth={2} />
@@ -108,14 +108,14 @@ export default function QuickExportPanel({
           className="
             inline-flex w-fit shrink-0 items-center
             rounded-full
-            border border-emerald-200
-            bg-emerald-50
+            border border-green-200
+            bg-green-50
             px-2.5 py-1
             text-[10px] font-semibold
-            text-emerald-600
-            dark:border-emerald-500/20
-            dark:bg-emerald-500/10
-            dark:text-emerald-400
+            text-green-600
+            dark:border-green-500/20
+            dark:bg-green-500/10
+            dark:text-green-400
           "
         >
           Dados do período atual
@@ -172,8 +172,8 @@ export default function QuickExportPanel({
             className="
               flex h-9 w-9 shrink-0 items-center justify-center
               rounded-lg
-              bg-emerald-50 text-emerald-600
-              dark:bg-emerald-500/10 dark:text-emerald-400
+              bg-green-50 text-green-600
+              dark:bg-green-500/10 dark:text-green-400
             "
           >
             <ListFilter className="h-4 w-4" strokeWidth={2} />
@@ -234,25 +234,25 @@ export default function QuickExportPanel({
           className="
             mt-4 flex items-center gap-2.5
             rounded-xl
-            border border-emerald-200
-            bg-emerald-50
+            border border-green-200
+            bg-green-50
             px-3.5 py-2.5
-            dark:border-emerald-500/20
-            dark:bg-emerald-500/10
+            dark:border-green-500/20
+            dark:bg-green-500/10
           "
         >
           <span
             className="
               flex h-6 w-6 shrink-0 items-center justify-center
               rounded-full
-              bg-emerald-100 text-emerald-600
-              dark:bg-emerald-500/15 dark:text-emerald-400
+              bg-green-100 text-green-600
+              dark:bg-green-500/15 dark:text-green-400
             "
           >
             ✓
           </span>
 
-          <p className="min-w-0 truncate text-[10px] font-medium text-emerald-700 dark:text-emerald-400">
+          <p className="min-w-0 truncate text-[10px] font-medium text-green-700 dark:text-green-400">
             {lastExport.fileName} gerado com sucesso.
           </p>
         </motion.div>

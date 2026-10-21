@@ -63,8 +63,8 @@ export default function FiltersPanel({
               flex h-9 w-9 shrink-0
               items-center justify-center
               rounded-xl
-              bg-emerald-50
-              text-emerald-600
+              bg-green-50
+              text-green-600
             "
           >
             <Filter className="h-4 w-4" strokeWidth={2} />

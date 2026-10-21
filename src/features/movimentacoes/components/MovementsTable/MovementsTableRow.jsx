@@ -18,13 +18,13 @@ export default function MovementsTableRow({ movement, onOpenMovement }) {
   const isNegative = movement.quantidade < 0;
 
   const quantityColor = isPositive
-    ? "text-emerald-600"
+    ? "text-green-600"
     : isNegative
       ? "text-red-600"
       : "text-slate-500";
 
   const quantityBackground = isPositive
-    ? "bg-emerald-50"
+    ? "bg-green-50"
     : isNegative
       ? "bg-red-50"
       : "bg-slate-100";

@@ -47,7 +47,7 @@ export default function MovementsTable({ movements, onOpenMovement }) {
           <span
             className="
               flex h-9 w-9 shrink-0 items-center justify-center
-              rounded-xl bg-emerald-50 text-emerald-600
+              rounded-xl bg-green-50 text-green-600
             "
           >
             <ListFilter className="h-4 w-4" strokeWidth={2} />

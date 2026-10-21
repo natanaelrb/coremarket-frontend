@@ -9,11 +9,11 @@ export default function SummaryCard({
 }) {
   const tones = {
     green: {
-      iconBg: 'bg-emerald-50',
-      iconBorder: 'border-emerald-100',
-      iconText: 'text-emerald-600',
+      iconBg: 'bg-green-50',
+      iconBorder: 'border-green-100',
+      iconText: 'text-green-600',
       value: 'text-slate-800',
-      hover: 'hover:border-emerald-200',
+      hover: 'hover:border-green-200',
     },
 
     red: {

@@ -47,11 +47,11 @@ export default function DetailPanelHeader({
               text-slate-500
               transition-all
               duration-200
-              hover:bg-emerald-50
-              hover:text-emerald-600
+              hover:bg-green-50
+              hover:text-green-600
               focus:outline-none
               focus-visible:ring-2
-              focus-visible:ring-emerald-500/30
+              focus-visible:ring-green-500/30
             "
           >
             <ArrowLeft
@@ -115,14 +115,14 @@ export default function DetailPanelHeader({
                 justify-center
                 rounded-xl
                 border
-                border-emerald-200
-                bg-emerald-50
-                text-emerald-600
+                border-green-200
+                bg-green-50
+                text-green-600
                 shadow-[0_2px_8px_rgba(16,185,129,0.08)]
                 transition-all
                 duration-200
                 hover:scale-105
-                hover:bg-emerald-100
+                hover:bg-green-100
               "
             >
               <Package

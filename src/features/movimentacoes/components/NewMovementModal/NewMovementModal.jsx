@@ -59,7 +59,7 @@ export default function NewMovementModal({
                   animate={{ opacity: 1, scale: 1 }}
                   className="flex flex-col items-center gap-2 py-8 text-center"
                 >
-                  <CheckCircle2 className="h-10 w-10 text-emerald-400" />
+                  <CheckCircle2 className="h-10 w-10 text-green-400" />
                   <p className="text-sm font-medium text-white">Movimentação registrada com sucesso!</p>
                 </motion.div>
               ) : (

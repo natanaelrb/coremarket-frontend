@@ -17,15 +17,15 @@ export default function MovementInfoSection({ movement }) {
 
   const quantityConfig = isPositive
     ? {
-        color: "text-emerald-600",
-        valueColor: "text-emerald-700",
-        background: "bg-emerald-50/60",
-        border: "border-emerald-100",
-        hoverBorder: "hover:border-emerald-200",
-        hoverBackground: "hover:bg-emerald-50",
-        iconBackground: "bg-emerald-100",
-        iconBorder: "border-emerald-200",
-        dot: "bg-emerald-500",
+        color: "text-green-600",
+        valueColor: "text-green-700",
+        background: "bg-green-50/60",
+        border: "border-green-100",
+        hoverBorder: "hover:border-green-200",
+        hoverBackground: "hover:bg-green-50",
+        iconBackground: "bg-green-100",
+        iconBorder: "border-green-200",
+        dot: "bg-green-500",
         label: "Entrada no estoque",
         Icon: ArrowUpRight,
         shadow:

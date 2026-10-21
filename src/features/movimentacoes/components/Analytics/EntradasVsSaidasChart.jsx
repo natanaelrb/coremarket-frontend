@@ -55,11 +55,11 @@ export default function EntradasVsSaidasChart({
               items-center
               justify-center
               rounded-lg
-              bg-emerald-50
-              text-emerald-600
+              bg-green-50
+              text-green-600
 
-              dark:bg-emerald-500/10
-              dark:text-emerald-400
+              dark:bg-green-500/10
+              dark:text-green-400
             "
           >
             <CircleDollarSign
@@ -123,18 +123,18 @@ export default function EntradasVsSaidasChart({
           className="
             rounded-lg
             border
-            border-emerald-100
-            bg-emerald-50/70
+            border-green-100
+            bg-green-50/70
             px-3
             py-3
 
-            dark:border-emerald-500/10
-            dark:bg-emerald-500/[0.06]
+            dark:border-green-500/10
+            dark:bg-green-500/[0.06]
           "
         >
           <div className="flex items-center gap-1.5">
             <ArrowDownToLine
-              className="h-3.5 w-3.5 text-emerald-500"
+              className="h-3.5 w-3.5 text-green-500"
               strokeWidth={2.5}
             />
 
@@ -142,8 +142,8 @@ export default function EntradasVsSaidasChart({
               className="
                 text-[11px]
                 font-medium
-                text-emerald-700
-                dark:text-emerald-400
+                text-green-700
+                dark:text-green-400
               "
             >
               Entradas
@@ -156,8 +156,8 @@ export default function EntradasVsSaidasChart({
               text-xl
               font-bold
               tracking-tight
-              text-emerald-600
-              dark:text-emerald-400
+              text-green-600
+              dark:text-green-400
             "
           >
             {formatNumber(entradas)}
@@ -223,7 +223,7 @@ export default function EntradasVsSaidasChart({
             font-semibold
           "
         >
-          <span className="text-emerald-600 dark:text-emerald-400">
+          <span className="text-green-600 dark:text-green-400">
             {percentualEntradas.toFixed(1).replace('.', ',')}%
           </span>
 
@@ -248,7 +248,7 @@ export default function EntradasVsSaidasChart({
             className="
               h-full
               rounded-l-full
-              bg-emerald-500
+              bg-green-500
               transition-[width]
               duration-500
               ease-out
@@ -294,10 +294,10 @@ export default function EntradasVsSaidasChart({
             ${
               saldoPositivo
                 ? `
-                  border-emerald-100
-                  bg-emerald-50/60
-                  dark:border-emerald-500/10
-                  dark:bg-emerald-500/[0.05]
+                  border-green-100
+                  bg-green-50/60
+                  dark:border-green-500/10
+                  dark:bg-green-500/[0.05]
                 `
                 : `
                   border-red-100
@@ -320,7 +320,7 @@ export default function EntradasVsSaidasChart({
 
                 ${
                   saldoPositivo
-                    ? 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400'
+                    ? 'bg-green-100 text-green-600 dark:bg-green-500/10 dark:text-green-400'
                     : 'bg-red-100 text-red-600 dark:bg-red-500/10 dark:text-red-400'
                 }
               `}
@@ -350,7 +350,7 @@ export default function EntradasVsSaidasChart({
 
               ${
                 saldoPositivo
-                  ? 'text-emerald-600 dark:text-emerald-400'
+                  ? 'text-green-600 dark:text-green-400'
                   : 'text-red-600 dark:text-red-400'
               }
             `}

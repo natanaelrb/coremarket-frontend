@@ -42,11 +42,11 @@ export default function DetailSectionCard({
                 h-4
                 w-1
                 rounded-full
-                bg-emerald-500
+                bg-green-500
                 transition-all
                 duration-200
                 group-hover:h-5
-                group-hover:bg-emerald-600
+                group-hover:bg-green-600
               "
             />
 

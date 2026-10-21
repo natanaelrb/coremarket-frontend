@@ -60,12 +60,12 @@ export default function AnalyticsTabs({ activeView, onChange }) {
                 isActive
                   ? `
                     bg-white
-                    text-emerald-600
+                    text-green-600
                     shadow-sm
                     ring-1
                     ring-slate-200/80
                     dark:bg-[#1A223D]
-                    dark:text-emerald-400
+                    dark:text-green-400
                     dark:ring-white/[0.06]
                   `
                   : `
@@ -88,7 +88,7 @@ export default function AnalyticsTabs({ activeView, onChange }) {
                 duration-100
                 ${
                   isActive
-                    ? 'text-emerald-500 dark:text-emerald-400'
+                    ? 'text-green-500 dark:text-green-400'
                     : 'text-slate-400 dark:text-slate-500'
                 }
               `}
@@ -107,8 +107,8 @@ export default function AnalyticsTabs({ activeView, onChange }) {
                   w-5
                   -translate-x-1/2
                   rounded-full
-                  bg-emerald-500
-                  dark:bg-emerald-400
+                  bg-green-500
+                  dark:bg-green-400
                 "
               />
             )}

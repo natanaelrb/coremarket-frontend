@@ -9,9 +9,9 @@ export default function OriginCell({ label, isLink }) {
             h-3.5
             w-3.5
             shrink-0
-            text-emerald-600
+            text-green-600
             transition-colors
-            group-hover:text-emerald-700
+            group-hover:text-green-700
           "
           strokeWidth={2}
         />
@@ -29,8 +29,8 @@ export default function OriginCell({ label, isLink }) {
             isLink
               ? `
                 cursor-pointer
-                text-emerald-600
-                hover:text-emerald-700
+                text-green-600
+                hover:text-green-700
                 hover:underline
                 hover:underline-offset-2
               `

@@ -36,11 +36,11 @@ export default function RowActionsMenu({ onView, onPrint, onReverse }) {
           rounded-lg p-1.5
           text-slate-400
           transition-all duration-200
-          hover:bg-emerald-50
-          hover:text-emerald-600
+          hover:bg-green-50
+          hover:text-green-600
           focus:outline-none
           focus-visible:ring-2
-          focus-visible:ring-emerald-500/30
+          focus-visible:ring-green-500/30
         "
       >
         <Eye className="h-4 w-4" strokeWidth={2} />
@@ -58,7 +58,7 @@ export default function RowActionsMenu({ onView, onPrint, onReverse }) {
           transition-all duration-200
           focus:outline-none
           focus-visible:ring-2
-          focus-visible:ring-emerald-500/30
+          focus-visible:ring-green-500/30
           ${
             isOpen
               ? "bg-slate-100 text-slate-700"

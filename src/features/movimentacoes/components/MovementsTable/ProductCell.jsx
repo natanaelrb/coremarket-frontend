@@ -25,8 +25,8 @@ export default function ProductCell({ produto }) {
           text-lg
           transition-colors
           duration-200
-          group-hover:border-emerald-200
-          group-hover:bg-emerald-50
+          group-hover:border-green-200
+          group-hover:bg-green-50
         "
       >
         {produto?.imagem || (
@@ -46,7 +46,7 @@ export default function ProductCell({ produto }) {
             text-slate-700
             transition-colors
             duration-200
-            group-hover:text-emerald-700
+            group-hover:text-green-700
           "
         >
           {produto?.nome || 'Produto não informado'}

@@ -56,10 +56,10 @@ export default function AlertsPanel({
               items-center
               justify-center
               rounded-xl
-              bg-emerald-50
-              text-emerald-600
-              dark:bg-emerald-500/10
-              dark:text-emerald-400
+              bg-green-50
+              text-green-600
+              dark:bg-green-500/10
+              dark:text-green-400
             "
           >
             <Bell

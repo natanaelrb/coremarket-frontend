@@ -26,9 +26,9 @@ export default function SelectFilter({
           outline-none
           transition
           hover:border-slate-300
-          focus:border-emerald-500
+          focus:border-green-500
           focus:ring-2
-          focus:ring-emerald-500/10
+          focus:ring-green-500/10
         "
       >
         {options.map((option) => (

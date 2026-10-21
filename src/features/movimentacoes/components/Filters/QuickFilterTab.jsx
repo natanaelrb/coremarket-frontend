@@ -47,29 +47,29 @@ function QuickFilterTab({
     // Estado ativo
     isActive
       ? [
-          'border-emerald-500',
-          'bg-emerald-600',
+          'border-green-500',
+          'bg-green-600',
           'text-white',
-          'shadow-sm shadow-emerald-600/15',
+          'shadow-sm shadow-green-600/15',
         ].join(' ')
       : [
           'border-slate-200',
           'bg-white',
           'text-slate-600',
-          'hover:border-emerald-200',
-          'hover:bg-emerald-50/60',
+          'hover:border-green-200',
+          'hover:bg-green-50/60',
           'hover:text-slate-800',
           'dark:border-white/10',
           'dark:bg-white/[0.035]',
           'dark:text-slate-300',
-          'dark:hover:border-emerald-500/25',
-          'dark:hover:bg-emerald-500/[0.06]',
+          'dark:hover:border-green-500/25',
+          'dark:hover:bg-green-500/[0.06]',
           'dark:hover:text-white',
         ].join(' '),
 
     // Foco acessível
     'focus-visible:ring-2',
-    'focus-visible:ring-emerald-500/40',
+    'focus-visible:ring-green-500/40',
     'focus-visible:ring-offset-2',
     'focus-visible:ring-offset-white',
     'dark:focus-visible:ring-offset-[#0D1029]',
@@ -99,12 +99,12 @@ function QuickFilterTab({
       : [
           'bg-slate-100',
           'text-slate-500',
-          'group-hover:bg-emerald-100/70',
-          'group-hover:text-emerald-700',
+          'group-hover:bg-green-100/70',
+          'group-hover:text-green-700',
           'dark:bg-white/[0.08]',
           'dark:text-slate-400',
-          'dark:group-hover:bg-emerald-500/10',
-          'dark:group-hover:text-emerald-300',
+          'dark:group-hover:bg-green-500/10',
+          'dark:group-hover:text-green-300',
         ].join(' '),
   ].join(' ');
 

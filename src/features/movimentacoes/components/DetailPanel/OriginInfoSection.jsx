@@ -51,14 +51,14 @@ export default function OriginInfoSection({ movement }) {
 
   const colorMap = {
     green: {
-      iconBg: "bg-emerald-50",
-      iconBorder: "border-emerald-100",
-      iconText: "text-emerald-600",
-      hoverBorder: "hover:border-emerald-200",
-      hoverBg: "hover:bg-emerald-50/40",
-      hoverIcon: "group-hover/item:bg-emerald-100",
-      hoverIconText: "group-hover/item:text-emerald-700",
-      value: "text-emerald-600",
+      iconBg: "bg-green-50",
+      iconBorder: "border-green-100",
+      iconText: "text-green-600",
+      hoverBorder: "hover:border-green-200",
+      hoverBg: "hover:bg-green-50/40",
+      hoverIcon: "group-hover/item:bg-green-100",
+      hoverIconText: "group-hover/item:text-green-700",
+      value: "text-green-600",
     },
 
     blue: {

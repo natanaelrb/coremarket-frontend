@@ -207,7 +207,7 @@ export default function StatsCardsRow({ stats, isLoading }) {
           <div className="space-y-1 text-sm">
             <p className="text-slate-900 dark:text-slate-900">
               Entradas:{' '}
-              <span className="font-medium text-emerald-600 dark:text-emerald-400">
+              <span className="font-medium text-green-600 dark:text-green-400">
                 +{formatNumber(stats.saldo.entradas)}
               </span>
             </p>

@@ -18,8 +18,8 @@ export default function MovementStatusBanner() {
         gap-4
         rounded-xl
         border
-        border-emerald-200
-        bg-emerald-50
+        border-green-200
+        bg-green-50
         px-4
         py-3
       "
@@ -35,9 +35,9 @@ export default function MovementStatusBanner() {
             justify-center
             rounded-full
             border
-            border-emerald-200
-            bg-emerald-100
-            text-emerald-600
+            border-green-200
+            bg-green-100
+            text-green-600
           "
         >
           <Check
@@ -47,11 +47,11 @@ export default function MovementStatusBanner() {
         </div>
 
         <div className="min-w-0">
-          <p className="text-xs font-semibold text-emerald-800">
+          <p className="text-xs font-semibold text-green-800">
             Movimentação registrada com sucesso
           </p>
 
-          <p className="mt-0.5 truncate text-[10px] text-emerald-600">
+          <p className="mt-0.5 truncate text-[10px] text-green-600">
             Esta movimentação foi concluída e já está refletida no estoque.
           </p>
         </div>
@@ -65,11 +65,11 @@ export default function MovementStatusBanner() {
           gap-1.5
           text-[10px]
           font-semibold
-          text-emerald-600
+          text-green-600
           sm:flex
         "
       >
-        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+        <span className="h-1.5 w-1.5 rounded-full bg-green-500" />
         Verificado
       </div>
     </motion.div>

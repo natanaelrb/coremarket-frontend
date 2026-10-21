@@ -214,17 +214,17 @@ export default function ProductInfoSection({ produto }) {
                 items-center
                 rounded-lg
                 border
-                border-emerald-100
-                bg-emerald-50
+                border-green-100
+                bg-green-50
                 px-2
                 py-1
                 text-[11px]
                 font-semibold
-                text-emerald-700
+                text-green-700
                 transition-all
                 duration-200
-                group-hover:border-emerald-200
-                group-hover:bg-emerald-100
+                group-hover:border-green-200
+                group-hover:bg-green-100
               "
             >
               Ver detalhes do produto
@@ -251,9 +251,9 @@ export default function ProductInfoSection({ produto }) {
               shadow-sm
               transition-all
               duration-300
-              group-hover:border-emerald-200
-              group-hover:bg-emerald-50
-              group-hover:text-emerald-600
+              group-hover:border-green-200
+              group-hover:bg-green-50
+              group-hover:text-green-600
             "
           >
             <ChevronRight

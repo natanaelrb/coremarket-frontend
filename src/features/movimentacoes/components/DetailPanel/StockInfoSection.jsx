@@ -21,15 +21,15 @@ export default function StockInfoSection({ movement }) {
   const movementConfig = isPositive
     ? {
         label: 'Entrada',
-        color: 'text-emerald-600',
-        valueColor: 'text-emerald-700',
-        bg: 'bg-emerald-50/70',
-        hoverBg: 'hover:bg-emerald-50',
-        border: 'border-emerald-200',
-        hoverBorder: 'hover:border-emerald-300',
-        iconBg: 'bg-emerald-100',
-        iconBorder: 'border-emerald-200',
-        dot: 'bg-emerald-500',
+        color: 'text-green-600',
+        valueColor: 'text-green-700',
+        bg: 'bg-green-50/70',
+        hoverBg: 'hover:bg-green-50',
+        border: 'border-green-200',
+        hoverBorder: 'hover:border-green-300',
+        iconBg: 'bg-green-100',
+        iconBorder: 'border-green-200',
+        dot: 'bg-green-500',
         shadow: 'hover:shadow-[0_8px_24px_rgba(16,185,129,0.10)]',
         Icon: ArrowUpRight,
       }
@@ -327,7 +327,7 @@ export default function StockInfoSection({ movement }) {
             sm:justify-between
             ${
               isPositive
-                ? 'border-emerald-100 hover:border-emerald-200'
+                ? 'border-green-100 hover:border-green-200'
                 : isNegative
                   ? 'border-red-100 hover:border-red-200'
                   : 'border-slate-200 hover:border-slate-300'
@@ -371,7 +371,7 @@ export default function StockInfoSection({ movement }) {
                   font-bold
                   ${
                     isPositive
-                      ? 'bg-emerald-50 text-emerald-600'
+                      ? 'bg-green-50 text-green-600'
                       : 'bg-red-50 text-red-600'
                   }
                 `}

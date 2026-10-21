@@ -30,15 +30,15 @@ export default function PageHeader({
                 justify-center
                 rounded-xl
                 border
-                border-emerald-200
-                bg-emerald-50
-                text-emerald-600
+                border-green-200
+                bg-green-50
+                text-green-600
                 shadow-sm
                 transition-all
                 duration-200
-                dark:border-emerald-500/20
-                dark:bg-emerald-500/10
-                dark:text-emerald-400
+                dark:border-green-500/20
+                dark:bg-green-500/10
+                dark:text-green-400
               "
             >
               <ArrowLeftRight

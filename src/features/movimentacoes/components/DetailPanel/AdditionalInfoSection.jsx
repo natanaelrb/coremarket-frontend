@@ -38,11 +38,11 @@ export default function AdditionalInfoSection({ movement }) {
       value: formattedDate,
       icon: Clock3,
       type: 'date',
-      iconColor: 'text-emerald-600',
-      iconBg: 'bg-emerald-50',
-      iconBorder: 'border-emerald-100',
-      hoverBorder: 'group-hover/item:border-emerald-200',
-      hoverBg: 'group-hover/item:bg-emerald-50',
+      iconColor: 'text-green-600',
+      iconBg: 'bg-green-50',
+      iconBorder: 'border-green-100',
+      hoverBorder: 'group-hover/item:border-green-200',
+      hoverBg: 'group-hover/item:bg-green-50',
     },
   ];
 

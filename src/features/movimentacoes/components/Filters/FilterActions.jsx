@@ -44,17 +44,17 @@ export default function FilterActions({ onClear, onApply }) {
           items-center
           gap-1.5
           rounded-lg
-          bg-emerald-500
+          bg-green-500
           px-4
           text-sm
           font-semibold
           text-white
           shadow-sm
-          shadow-emerald-500/20
+          shadow-green-500/20
           transition
-          hover:bg-emerald-600
+          hover:bg-green-600
           hover:shadow-md
-          hover:shadow-emerald-500/20
+          hover:shadow-green-500/20
         "
       >
         <Filter className="h-4 w-4" strokeWidth={2} />

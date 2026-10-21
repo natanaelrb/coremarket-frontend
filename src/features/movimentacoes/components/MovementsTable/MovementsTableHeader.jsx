@@ -52,7 +52,7 @@ export default function MovementsTableHeader() {
                     dark:hover:text-slate-200
                     focus:outline-none
                     focus-visible:ring-2
-                    focus-visible:ring-emerald-500/30
+                    focus-visible:ring-green-500/30
                   "
                 >
                   <span>{column.label}</span>
