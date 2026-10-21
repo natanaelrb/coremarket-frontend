@@ -38,7 +38,7 @@ export function ProdutosTab({ detalhe }) {
       {/* Cabeçalho */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-start gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400">
             <Package size={21} />
           </div>
 
@@ -53,7 +53,7 @@ export function ProdutosTab({ detalhe }) {
           </div>
         </div>
 
-        <span className="inline-flex w-fit items-center gap-2 rounded-full bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-400">
+        <span className="inline-flex w-fit items-center gap-2 rounded-full bg-green-50 px-3 py-1.5 text-xs font-semibold text-green-700 dark:bg-green-400/10 dark:text-green-400">
           <Boxes size={14} />
           {produtos.length} {produtos.length === 1 ? "produto" : "produtos"}
         </span>
@@ -92,7 +92,7 @@ export function ProdutosTab({ detalhe }) {
 
           <Package
             size={19}
-            className="shrink-0 text-emerald-600 dark:text-emerald-400"
+            className="shrink-0 text-green-600 dark:text-green-400"
           />
         </div>
 
@@ -128,7 +128,7 @@ export function ProdutosTab({ detalhe }) {
                     return (
                       <tr
                         key={produto.id ?? `${produto.nome}-${index}`}
-                        className="transition-colors duration-150 hover:bg-emerald-50/40 dark:hover:bg-emerald-400/[0.035]"
+                        className="transition-colors duration-150 hover:bg-green-50/40 dark:hover:bg-green-400/[0.035]"
                       >
                         <td className="px-5 py-4">
                           <div className="flex min-w-0 items-center gap-3">
@@ -160,7 +160,7 @@ export function ProdutosTab({ detalhe }) {
                           {formatCurrency(valorUnitario)}
                         </td>
 
-                        <td className="whitespace-nowrap px-5 py-4 text-right font-semibold tabular-nums text-emerald-700 dark:text-emerald-400">
+                        <td className="whitespace-nowrap px-5 py-4 text-right font-semibold tabular-nums text-green-700 dark:text-green-400">
                           {formatCurrency(valorTotal)}
                         </td>
                       </tr>
@@ -182,7 +182,7 @@ export function ProdutosTab({ detalhe }) {
                   Total dos itens
                 </span>
 
-                <span className="text-lg font-bold tabular-nums text-emerald-700 dark:text-emerald-400">
+                <span className="text-lg font-bold tabular-nums text-green-700 dark:text-green-400">
                   {formatCurrency(resumo.valorTotal)}
                 </span>
               </div>
@@ -212,8 +212,8 @@ export function ProdutosTab({ detalhe }) {
 function ResumoCard({ icon: Icon, label, valor, descricao, cor }) {
   const cores = {
     emerald: {
-      icon: "bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400",
-      valor: "text-emerald-700 dark:text-emerald-400",
+      icon: "bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400",
+      valor: "text-green-700 dark:text-green-400",
     },
     sky: {
       icon: "bg-sky-50 text-sky-600 dark:bg-sky-400/10 dark:text-sky-400",

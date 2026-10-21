@@ -20,7 +20,7 @@ export function HighlightKpiCard({ value, delay = 0 }) {
   const corVariacao = aumentou
     ? "text-amber-600 dark:text-amber-400"
     : diminuiu
-      ? "text-emerald-600 dark:text-emerald-400"
+      ? "text-green-600 dark:text-green-400"
       : "text-slate-500 dark:text-slate-400";
 
   return (

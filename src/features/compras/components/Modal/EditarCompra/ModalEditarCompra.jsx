@@ -35,7 +35,7 @@ function formatarMoeda(valor) {
 }
 
 const inputClass =
-  "mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/15 dark:border-white/10 dark:bg-[#101426] dark:text-white";
+  "mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-green-500 focus:ring-2 focus:ring-green-500/15 dark:border-white/10 dark:bg-[#101426] dark:text-white";
 
 const labelClass =
   "block text-sm font-medium text-slate-700 dark:text-slate-300";
@@ -164,12 +164,12 @@ export function ModalEditarCompra({ compra, onClose, onSave }) {
       >
         <header className="flex items-start justify-between gap-4 border-b border-slate-200 px-5 py-4 dark:border-white/10 sm:px-6">
           <div className="flex items-start gap-3">
-            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
+            <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-700 dark:bg-green-500/10 dark:text-green-400">
               <Save size={20} />
             </div>
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+              <p className="text-xs font-semibold uppercase tracking-wider text-green-700 dark:text-green-400">
                 Compras / Edição
               </p>
               <h2
@@ -315,17 +315,17 @@ export function ModalEditarCompra({ compra, onClose, onSave }) {
                 ))}
               </div>
 
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-emerald-50 p-4 dark:bg-emerald-500/10">
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-xl bg-green-50 p-4 dark:bg-green-500/10">
                 <div>
-                  <p className="text-sm font-medium text-emerald-800 dark:text-emerald-300">
+                  <p className="text-sm font-medium text-green-800 dark:text-green-300">
                     Total calculado
                   </p>
-                  <p className="mt-1 text-2xl font-bold text-emerald-700 dark:text-emerald-400">
+                  <p className="mt-1 text-2xl font-bold text-green-700 dark:text-green-400">
                     {formatarMoeda(total)}
                   </p>
                 </div>
 
-                <ArrowDown className="text-emerald-600 dark:text-emerald-400" />
+                <ArrowDown className="text-green-600 dark:text-green-400" />
               </div>
             </section>
 
@@ -352,7 +352,7 @@ export function ModalEditarCompra({ compra, onClose, onSave }) {
             <button
               type="submit"
               disabled={salvando}
-              className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-60"
+              className="inline-flex items-center gap-2 rounded-xl bg-green-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-green-700 disabled:cursor-not-allowed disabled:opacity-60"
             >
               <Save size={17} />
               {salvando ? "Salvando..." : "Salvar alterações"}

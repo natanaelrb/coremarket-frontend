@@ -10,12 +10,12 @@ import {
 
 const INTEGRACAO_TEMA = {
   Estoque: {
-    icon: "bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400",
+    icon: "bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400",
     border:
-      "hover:border-emerald-300 dark:hover:border-emerald-400/30",
+      "hover:border-green-300 dark:hover:border-green-400/30",
     button:
-      "text-emerald-700 hover:text-emerald-800 dark:text-emerald-400 dark:hover:text-emerald-300",
-    glow: "hover:shadow-emerald-950/[0.05]",
+      "text-green-700 hover:text-green-800 dark:text-green-400 dark:hover:text-green-300",
+    glow: "hover:shadow-green-950/[0.05]",
   },
 
   "Contas a pagar": {
@@ -50,7 +50,7 @@ export function Integracoes({
   return (
     <section className="space-y-5">
       <div className="flex items-start gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400">
           <Link2 size={20} />
         </div>
 
@@ -150,7 +150,7 @@ function IntegracaoCard({
             "inline-flex shrink-0 items-center gap-1.5 rounded-full",
             "px-2.5 py-1 text-xs font-medium",
             ativa
-              ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-400"
+              ? "bg-green-50 text-green-700 dark:bg-green-400/10 dark:text-green-400"
               : "bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400",
           ].join(" ")}
         >
@@ -211,7 +211,7 @@ function IntegracaoCard({
             "inline-flex w-full items-center justify-between gap-2 rounded-xl",
             "border border-transparent px-3.5 py-2.5",
             "text-sm font-semibold transition-colors duration-200",
-            "focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500",
+            "focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500",
             tema.button,
             onAction
               ? "cursor-pointer hover:bg-slate-50 dark:hover:bg-slate-800/70"

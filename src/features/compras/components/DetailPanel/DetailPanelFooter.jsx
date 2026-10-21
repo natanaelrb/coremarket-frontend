@@ -56,7 +56,7 @@ export function DetailPanelFooter({
             text-xs font-semibold text-slate-700 transition-colors
             hover:border-slate-300 hover:bg-slate-50
             focus-visible:outline-none focus-visible:ring-2
-            focus-visible:ring-emerald-500
+            focus-visible:ring-green-500
             dark:border-slate-700 dark:bg-slate-800/50
             dark:text-slate-200 dark:hover:bg-slate-800
           "
@@ -73,12 +73,12 @@ export function DetailPanelFooter({
             aria-haspopup="menu"
             className="
               inline-flex min-h-10 w-full items-center justify-center gap-2
-              rounded-xl bg-emerald-600 px-3 py-2 text-xs font-semibold
-              text-white shadow-sm shadow-emerald-900/10 transition-colors
-              hover:bg-emerald-700
+              rounded-xl bg-green-600 px-3 py-2 text-xs font-semibold
+              text-white shadow-sm shadow-green-900/10 transition-colors
+              hover:bg-green-700
               focus-visible:outline-none focus-visible:ring-2
-              focus-visible:ring-emerald-500 focus-visible:ring-offset-2
-              dark:bg-emerald-500 dark:hover:bg-emerald-400
+              focus-visible:ring-green-500 focus-visible:ring-offset-2
+              dark:bg-green-500 dark:hover:bg-green-400
               dark:focus-visible:ring-offset-[#151b28]
             "
           >
@@ -119,7 +119,7 @@ export function DetailPanelFooter({
               >
                 <Printer
                   size={16}
-                  className="shrink-0 text-emerald-600 dark:text-emerald-400"
+                  className="shrink-0 text-green-600 dark:text-green-400"
                 />
                 Imprimir compra
               </button>

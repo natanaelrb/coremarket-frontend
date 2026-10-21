@@ -28,7 +28,7 @@ export function InformacoesGerais({ detalhe }) {
   return (
     <div className="min-w-0">
       <div className="mb-5 flex items-start gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400">
           <svg
             viewBox="0 0 24 24"
             fill="none"

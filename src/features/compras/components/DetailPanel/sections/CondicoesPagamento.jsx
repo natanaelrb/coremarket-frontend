@@ -9,7 +9,7 @@ const PARCELA_STATUS_TONE = {
   pendente:
     "border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-400/20 dark:bg-amber-400/10 dark:text-amber-400",
   paga:
-    "border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-400/20 dark:bg-emerald-400/10 dark:text-emerald-400",
+    "border-green-200 bg-green-50 text-green-700 dark:border-green-400/20 dark:bg-green-400/10 dark:text-green-400",
   atrasada:
     "border-red-200 bg-red-50 text-red-700 dark:border-red-400/20 dark:bg-red-400/10 dark:text-red-400",
 };
@@ -18,7 +18,7 @@ function PaymentInfo({ label, value, icon: Icon }) {
   return (
     <div className="flex min-w-0 items-start gap-3 rounded-xl border border-slate-200/70 bg-slate-50/70 p-4 dark:border-white/[0.06] dark:bg-white/[0.025]">
       {Icon && (
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400">
           <Icon size={17} strokeWidth={1.8} />
         </div>
       )}

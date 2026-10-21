@@ -17,7 +17,7 @@ function FinancialRow({ label, value, tone = "default" }) {
           isNegative
             ? "text-red-600 dark:text-red-400"
             : isPositive
-              ? "text-emerald-600 dark:text-emerald-400"
+              ? "text-green-600 dark:text-green-400"
               : "text-slate-700 dark:text-slate-200"
         }`}
       >
@@ -72,7 +72,7 @@ export function ResumoFinanceiro({ detalhe }) {
         ))}
       </dl>
 
-      <div className="mt-5 rounded-xl border border-emerald-200/80 bg-emerald-50/70 p-4 dark:border-emerald-400/20 dark:bg-emerald-400/[0.07]">
+      <div className="mt-5 rounded-xl border border-green-200/80 bg-green-50/70 p-4 dark:border-green-400/20 dark:bg-green-400/[0.07]">
         <div className="flex items-center justify-between gap-3">
           <div className="min-w-0">
             <p className="text-xs font-semibold text-slate-600 dark:text-slate-300">
@@ -83,7 +83,7 @@ export function ResumoFinanceiro({ detalhe }) {
             </p>
           </div>
 
-          <span className="shrink-0 text-lg font-bold tabular-nums text-emerald-700 dark:text-emerald-400 sm:text-xl">
+          <span className="shrink-0 text-lg font-bold tabular-nums text-green-700 dark:text-green-400 sm:text-xl">
             {formatCurrency(Number(detalhe.total ?? 0))}
           </span>
         </div>

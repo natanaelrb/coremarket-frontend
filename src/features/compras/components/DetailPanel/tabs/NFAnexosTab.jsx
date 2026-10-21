@@ -20,7 +20,7 @@ export function NFAnexosTab({ detalhe, onBaixarNotaFiscal, onVerNotaFiscal }) {
     <div className="animate-fade-in space-y-6">
       {/* Cabeçalho */}
       <div className="flex items-start gap-3">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400">
           <FileText size={21} />
         </div>
 
@@ -39,7 +39,7 @@ export function NFAnexosTab({ detalhe, onBaixarNotaFiscal, onVerNotaFiscal }) {
       <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm shadow-slate-950/[0.02] dark:border-slate-700/80 dark:bg-[#151b28]">
         <div className="flex items-center justify-between gap-3 border-b border-slate-200 px-5 py-4 dark:border-slate-700/80">
           <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400">
               <FileCheck2 size={18} />
             </div>
 
@@ -58,7 +58,7 @@ export function NFAnexosTab({ detalhe, onBaixarNotaFiscal, onVerNotaFiscal }) {
               "inline-flex shrink-0 items-center gap-1.5 rounded-full px-2.5 py-1",
               "text-xs font-medium",
               emitida
-                ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-400/10 dark:text-emerald-400"
+                ? "bg-green-50 text-green-700 dark:bg-green-400/10 dark:text-green-400"
                 : "bg-amber-50 text-amber-700 dark:bg-amber-400/10 dark:text-amber-400",
             ].join(" ")}
           >
@@ -75,7 +75,7 @@ export function NFAnexosTab({ detalhe, onBaixarNotaFiscal, onVerNotaFiscal }) {
           <>
             <div className="p-5">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400">
                   <FileCheck2 size={27} strokeWidth={1.7} />
                 </div>
 
@@ -126,7 +126,7 @@ export function NFAnexosTab({ detalhe, onBaixarNotaFiscal, onVerNotaFiscal }) {
                 <button
                   type="button"
                   onClick={onVerNotaFiscal}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700"
                 >
                   <ArrowUpRight size={16} />
                   Ver nota fiscal
@@ -145,11 +145,11 @@ export function NFAnexosTab({ detalhe, onBaixarNotaFiscal, onVerNotaFiscal }) {
                 className={[
                   "inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5",
                   "text-sm font-semibold text-white transition-colors",
-                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
+                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2",
                   "dark:focus-visible:ring-offset-[#151b28]",
                   onBaixarNotaFiscal
-                    ? "bg-emerald-600 hover:bg-emerald-700"
-                    : "cursor-not-allowed bg-emerald-600/50",
+                    ? "bg-green-600 hover:bg-green-700"
+                    : "cursor-not-allowed bg-green-600/50",
                 ].join(" ")}
               >
                 <Download size={16} />

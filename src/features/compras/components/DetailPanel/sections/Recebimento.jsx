@@ -37,7 +37,7 @@ export function Recebimento({ detalhe, onVerConferencia }) {
         label: "Recebimento concluído",
         description: "Todos os valores previstos foram recebidos.",
         className:
-          "bg-emerald-50 text-emerald-700 ring-emerald-600/15 dark:bg-emerald-400/10 dark:text-emerald-400 dark:ring-emerald-400/20",
+          "bg-green-50 text-green-700 ring-green-600/15 dark:bg-green-400/10 dark:text-green-400 dark:ring-green-400/20",
         icon: CheckCircle2,
       }
     : parcial
@@ -65,7 +65,7 @@ export function Recebimento({ detalhe, onVerConferencia }) {
       description: "Valor total previsto",
       icon: ClipboardCheck,
       iconClass:
-        "bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400",
+        "bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400",
       valueClass: "text-slate-900 dark:text-slate-100",
     },
     {
@@ -101,7 +101,7 @@ export function Recebimento({ detalhe, onVerConferencia }) {
       {/* Cabeçalho */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex items-start gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400">
             <PackageCheck size={21} />
           </div>
 
@@ -177,7 +177,7 @@ export function Recebimento({ detalhe, onVerConferencia }) {
       <article className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 dark:border-slate-700/80 dark:bg-[#151b28]">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400">
               <TrendingUp size={20} />
             </div>
 
@@ -193,7 +193,7 @@ export function Recebimento({ detalhe, onVerConferencia }) {
           </div>
 
           <div className="sm:text-right">
-            <p className="text-2xl font-bold tracking-tight text-emerald-600 dark:text-emerald-400">
+            <p className="text-2xl font-bold tracking-tight text-green-600 dark:text-green-400">
               {percentual.toLocaleString("pt-BR", {
                 maximumFractionDigits: 1,
               })}
@@ -215,7 +215,7 @@ export function Recebimento({ detalhe, onVerConferencia }) {
           aria-valuenow={Math.round(percentual)}
         >
           <div
-            className="h-full rounded-full bg-emerald-500 transition-all duration-500 ease-out"
+            className="h-full rounded-full bg-green-500 transition-all duration-500 ease-out"
             style={{ width: `${percentual}%` }}
           />
         </div>
@@ -223,7 +223,7 @@ export function Recebimento({ detalhe, onVerConferencia }) {
         <div className="mt-3 flex flex-col gap-2 text-sm sm:flex-row sm:items-center sm:justify-between">
           <span className="text-slate-600 dark:text-slate-300">
             Recebido:{" "}
-            <strong className="font-semibold text-emerald-700 dark:text-emerald-400">
+            <strong className="font-semibold text-green-700 dark:text-green-400">
               {formatCurrency(totalRecebido)}
             </strong>
           </span>
@@ -275,7 +275,7 @@ export function Recebimento({ detalhe, onVerConferencia }) {
               "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl",
               divergencias > 0
                 ? "bg-amber-100 text-amber-700 dark:bg-amber-400/10 dark:text-amber-400"
-                : "bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400",
+                : "bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400",
             ].join(" ")}
           >
             {divergencias > 0 ? (
@@ -306,7 +306,7 @@ export function Recebimento({ detalhe, onVerConferencia }) {
       </div>
 
       {/* Ação principal */}
-      <div className="flex flex-col gap-3 rounded-2xl border border-emerald-200/80 bg-emerald-50/60 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5 dark:border-emerald-400/15 dark:bg-emerald-400/[0.04]">
+      <div className="flex flex-col gap-3 rounded-2xl border border-green-200/80 bg-green-50/60 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5 dark:border-green-400/15 dark:bg-green-400/[0.04]">
         <div>
           <p className="text-sm font-semibold text-slate-900 dark:text-slate-100">
             Precisa consultar os itens recebidos?
@@ -324,12 +324,12 @@ export function Recebimento({ detalhe, onVerConferencia }) {
           disabled={!onVerConferencia}
           className={[
             "inline-flex shrink-0 items-center justify-center gap-2 rounded-xl",
-            "bg-emerald-600 px-4 py-2.5 text-sm font-semibold text-white",
-            "shadow-sm shadow-emerald-950/10 transition-all duration-200",
-            "focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2",
+            "bg-green-600 px-4 py-2.5 text-sm font-semibold text-white",
+            "shadow-sm shadow-green-950/10 transition-all duration-200",
+            "focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2",
             "dark:focus-visible:ring-offset-[#151b28]",
             onVerConferencia
-              ? "cursor-pointer hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-md"
+              ? "cursor-pointer hover:-translate-y-0.5 hover:bg-green-700 hover:shadow-md"
               : "cursor-not-allowed opacity-50",
           ].join(" ")}
         >

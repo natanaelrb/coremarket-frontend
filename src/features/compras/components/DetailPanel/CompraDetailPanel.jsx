@@ -89,14 +89,14 @@ export function CompraDetailPanel({
                   text-slate-500 transition-colors
                   hover:bg-slate-100 hover:text-slate-800
                   focus-visible:outline-none focus-visible:ring-2
-                  focus-visible:ring-emerald-500
+                  focus-visible:ring-green-500
                   dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white
                 "
               >
                 <ChevronLeft size={19} />
               </button>
 
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400">
                 <ShoppingCart size={19} />
               </div>
 
@@ -122,7 +122,7 @@ export function CompraDetailPanel({
                 text-slate-400 transition-colors
                 hover:bg-red-50 hover:text-red-600
                 focus-visible:outline-none focus-visible:ring-2
-                focus-visible:ring-emerald-500
+                focus-visible:ring-green-500
                 dark:hover:bg-red-400/10 dark:hover:text-red-400
               "
             >

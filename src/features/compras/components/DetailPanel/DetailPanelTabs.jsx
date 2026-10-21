@@ -45,10 +45,10 @@ export function DetailPanelTabs({ activeTab, setActiveTab }) {
                 focus-visible:z-10
                 focus-visible:ring-2
                 focus-visible:ring-inset
-                focus-visible:ring-emerald-500
+                focus-visible:ring-green-500
                 ${
                   isActive
-                    ? "text-emerald-700 dark:text-emerald-400"
+                    ? "text-green-700 dark:text-green-400"
                     : `
                       text-slate-500 hover:text-slate-800
                       dark:text-slate-400 dark:hover:text-slate-200
@@ -65,7 +65,7 @@ export function DetailPanelTabs({ activeTab, setActiveTab }) {
                   rounded-t-full transition-all duration-200
                   ${
                     isActive
-                      ? "scale-x-100 bg-emerald-500 opacity-100"
+                      ? "scale-x-100 bg-green-500 opacity-100"
                       : "scale-x-50 bg-transparent opacity-0"
                   }
                 `}

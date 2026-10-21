@@ -21,9 +21,9 @@ const EVENTO_TEMA = {
   },
   recebimento: {
     icon: PackageCheck,
-    cor: "bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400",
+    cor: "bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400",
     ponto:
-      "bg-emerald-500 ring-emerald-100 dark:bg-emerald-400 dark:ring-emerald-400/10",
+      "bg-green-500 ring-green-100 dark:bg-green-400 dark:ring-green-400/10",
   },
   pagamento: {
     icon: CreditCard,
@@ -38,9 +38,9 @@ const EVENTO_TEMA = {
   },
   conclusao: {
     icon: CheckCircle2,
-    cor: "bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400",
+    cor: "bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400",
     ponto:
-      "bg-emerald-500 ring-emerald-100 dark:bg-emerald-400 dark:ring-emerald-400/10",
+      "bg-green-500 ring-green-100 dark:bg-green-400 dark:ring-green-400/10",
   },
   padrao: {
     icon: CircleDot,
@@ -78,7 +78,7 @@ export function HistoricoTab({ detalhe }) {
       {/* Cabeçalho */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-start gap-3">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 dark:bg-emerald-400/10 dark:text-emerald-400">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-400/10 dark:text-green-400">
             <History size={21} />
           </div>
 

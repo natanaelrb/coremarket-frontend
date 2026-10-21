@@ -125,7 +125,7 @@ export function CancelCompraDialog({
                 text-sm font-semibold text-slate-700 transition-colors
                 hover:bg-slate-50
                 focus-visible:outline-none focus-visible:ring-2
-                focus-visible:ring-emerald-500
+                focus-visible:ring-green-500
                 disabled:cursor-not-allowed disabled:opacity-50
                 dark:border-slate-700 dark:bg-slate-800/50
                 dark:text-slate-200 dark:hover:bg-slate-800

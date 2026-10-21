@@ -10,7 +10,7 @@ const COLOR_STYLES = {
   amber:
     "bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400",
   emerald:
-    "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400",
+    "bg-green-50 text-green-700 dark:bg-green-500/10 dark:text-green-400",
   slate:
     "bg-slate-100 text-slate-600 dark:bg-white/5 dark:text-slate-300",
   red:
@@ -59,7 +59,7 @@ export function KpiCard({
                 <span
                   className={`inline-flex items-center gap-1 text-xs font-semibold ${
                     isPositive
-                      ? "text-emerald-600 dark:text-emerald-400"
+                      ? "text-green-600 dark:text-green-400"
                       : "text-red-600 dark:text-red-400"
                   }`}
                 >
