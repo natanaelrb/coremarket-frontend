@@ -9,7 +9,7 @@ export default function SidebarHeader() {
         <ShoppingCart
           size={24}
           strokeWidth={2}
-          className="text-emerald-400"
+          className="text-green-400"
         />
       </div>
 
@@ -17,7 +17,7 @@ export default function SidebarHeader() {
       <div className="flex flex-col leading-tight">
         <h1 className="text-[17px] font-bold tracking-tight">
           <span className="text-white">Core</span>
-          <span className="text-emerald-400">Market</span>
+          <span className="text-green-400">Market</span>
         </h1>
 
         <p className="text-[10px] text-slate-500">

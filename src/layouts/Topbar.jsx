@@ -1,11 +1,8 @@
 import { useLocation } from "react-router-dom";
 import {
   Search,
-  Moon,
-  Bell,
   CircleHelp,
   Menu,
-  ChevronDown,
 } from "lucide-react";
 
 import TopbarThemeButton from "./topbars/components/TopbarThemeButton";
@@ -70,9 +67,9 @@ export default function Topbar() {
                 outline-none
                 transition-all
                 placeholder:text-slate-400
-                focus:border-emerald-500/50
+                focus:border-green-500/50
                 focus:ring-2
-                focus:ring-emerald-500/10
+                focus:ring-green-500/10
                 dark:border-white/[0.08]
                 dark:bg-white/[0.03]
                 dark:text-white

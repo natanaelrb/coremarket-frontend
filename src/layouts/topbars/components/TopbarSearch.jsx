@@ -30,16 +30,16 @@ export default function TopbarSearch({
           transition-all duration-150
           placeholder:text-slate-400
           hover:border-slate-300
-          focus:border-emerald-500
+          focus:border-green-500
           focus:bg-white
           focus:ring-2
-          focus:ring-emerald-500/10
+          focus:ring-green-500/10
           dark:border-white/[0.08]
           dark:bg-white/[0.03]
           dark:text-slate-200
           dark:placeholder:text-slate-500
           dark:hover:border-white/[0.12]
-          dark:focus:border-emerald-500/60
+          dark:focus:border-green-500/60
           dark:focus:bg-white/[0.05]
         "
       />

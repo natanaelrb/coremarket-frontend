@@ -34,9 +34,9 @@ export default function TopbarPageInfo({
             className="
               flex h-8 w-8 shrink-0 items-center justify-center
               rounded-lg
-              bg-emerald-50
-              text-emerald-600
-              ring-1 ring-emerald-100
+              bg-green-50
+              text-green-600
+              ring-1 ring-green-100
             "
           >
             <Icon size={17} strokeWidth={2.2} />
