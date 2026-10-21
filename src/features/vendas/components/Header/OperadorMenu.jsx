@@ -1,53 +1,86 @@
-import { useState } from 'react';
-import { ChevronDown, LogOut, User } from 'lucide-react';
+import { useState } from "react";
+import { ChevronDown, LogOut, User } from "lucide-react";
 
-/**
- * Exibe o operador logado com avatar e um menu suspenso simples.
- * @param {{ operador: { nome: string, avatarUrl?: string | null } }} props
- */
 export function OperadorMenu({ operador }) {
   const [aberto, setAberto] = useState(false);
-  const iniciais = operador.nome
-    .split(' ')
+
+  const iniciais = (operador.nome || "Operador")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
     .slice(0, 2)
     .map((n) => n[0])
-    .join('')
+    .join("")
     .toUpperCase();
 
   return (
-    <div className="relative">
+    <div className="relative min-w-0 flex-1">
       <button
         type="button"
         onClick={() => setAberto((v) => !v)}
-        className="flex items-center gap-2.5 rounded-lg border border-cm-border bg-cm-surface px-3 py-2 transition-colors hover:bg-cm-surface-hover"
+        aria-expanded={aberto}
+        aria-haspopup="menu"
+        className="flex min-h-[56px] w-full min-w-0 items-center gap-3 rounded-lg px-2 py-2 text-left transition-colors duration-200 hover:bg-green-50/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-500/30 dark:hover:bg-green-950/20"
       >
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cm-accent-soft text-xs font-semibold text-cm-accent">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-50 text-xs font-bold text-green-700 ring-1 ring-green-100 dark:bg-green-950/40 dark:text-green-400 dark:ring-green-900/50">
           {iniciais}
         </span>
-        <div className="text-left">
-          <p className="text-[11px] text-cm-text-faint leading-tight">Operador</p>
-          <p className="text-sm font-medium text-cm-text leading-tight">{operador.nome}</p>
-        </div>
-        <ChevronDown className={`h-4 w-4 text-cm-text-faint transition-transform ${aberto ? 'rotate-180' : ''}`} />
+
+        <span className="min-w-0 flex-1">
+          <span className="block text-xs font-medium text-cm-text-muted">
+            Operador
+          </span>
+
+          <span className="mt-1 block truncate text-sm font-semibold leading-tight text-cm-text">
+            {operador.nome}
+          </span>
+        </span>
+
+        <ChevronDown
+          size={16}
+          className={`shrink-0 text-cm-text-muted transition-transform duration-200 ${
+            aberto ? "rotate-180" : ""
+          }`}
+        />
       </button>
 
       {aberto && (
-        <div className="absolute right-0 top-full z-20 mt-2 w-48 animate-scale-in rounded-lg border border-cm-border bg-cm-surface p-1.5 shadow-lg shadow-black/30">
+        <>
           <button
             type="button"
-            className="flex w-full items-center gap-2.5 rounded-md px-3 py-2 text-sm text-cm-text-muted transition-colors hover:bg-cm-surface-hover hover:text-cm-text"
+            aria-label="Fechar menu do operador"
+            className="fixed inset-0 z-20 cursor-default"
+            onClick={() => setAberto(false)}
+          />
+
+          <div
+            role="menu"
+            className="absolute right-0 top-full z-30 mt-2 w-52 origin-top-right animate-scale-in rounded-xl border border-cm-border bg-white p-1.5 shadow-xl shadow-black/10 dark:bg-cm-surface"
           >
-            <User className="h-4 w-4" /> Meu perfil
-          </button>
-          <button
-            type="button"
-            className="flex w-full items-center gap-2.5 rounded-md px-3 py-2 text-sm text-cm-danger transition-colors hover:bg-cm-danger-soft"
-          >
-            <LogOut className="h-4 w-4" /> Encerrar turno
-          </button>
-        </div>
+            <button
+              type="button"
+              role="menuitem"
+              onClick={() => setAberto(false)}
+              className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-cm-text-muted transition-colors hover:bg-green-50 hover:text-green-700 dark:hover:bg-green-950/30 dark:hover:text-green-400"
+            >
+              <User className="h-4 w-4 shrink-0" />
+              Meu perfil
+            </button>
+
+            <div className="my-1 border-t border-cm-border" />
+
+            <button
+              type="button"
+              role="menuitem"
+              onClick={() => setAberto(false)}
+              className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/30"
+            >
+              <LogOut className="h-4 w-4 shrink-0" />
+              Encerrar turno
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
 }
-

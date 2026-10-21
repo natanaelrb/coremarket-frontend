@@ -1,22 +1,30 @@
+import { Wallet } from "lucide-react";
 import { Badge } from "../../../../shared/components/ui/Badge.jsx";
 
-/**
- * Exibe o número do caixa atual e seu status (aberto/fechado).
- * @param {{ caixa: { numero: string, status: string } }} props
- */
 export function CaixaStatus({ caixa }) {
-  const aberto = caixa.status === 'ABERTO';
+  const aberto = caixa.status === "ABERTO";
 
   return (
-    <div className="flex flex-col rounded-lg border border-cm-border bg-cm-surface px-4 py-2">
-      <span className="text-[11px] text-cm-text-faint">Caixa</span>
-      <div className="flex items-center gap-2">
-        <span className="text-sm font-semibold text-cm-text">#{caixa.numero}</span>
-        <Badge variant={aberto ? 'success' : 'danger'} dot>
-          {aberto ? 'ABERTO' : 'FECHADO'}
-        </Badge>
+    <div className="flex min-w-0 flex-1 items-center gap-3">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-600 dark:bg-green-950/40 dark:text-green-400">
+        <Wallet size={19} strokeWidth={1.8} />
+      </div>
+
+      <div className="min-w-0 flex-1">
+        <span className="block text-xs font-medium text-cm-text-muted">
+          Caixa atual
+        </span>
+
+        <div className="mt-1 flex flex-wrap items-center gap-2">
+          <span className="text-sm font-bold text-cm-text">
+            #{caixa.numero}
+          </span>
+
+          <Badge variant={aberto ? "success" : "danger"} dot>
+            {aberto ? "Aberto" : "Fechado"}
+          </Badge>
+        </div>
       </div>
     </div>
   );
 }
-
