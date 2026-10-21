@@ -33,12 +33,12 @@ export function DadosPessoaisSection({
           className="
             flex h-9 w-9 shrink-0 items-center justify-center
             rounded-lg
-            bg-emerald-50
-            text-emerald-600
-            ring-1 ring-emerald-100
-            dark:bg-emerald-500/10
-            dark:text-emerald-400
-            dark:ring-emerald-500/20
+            bg-green-50
+            text-green-600
+            ring-1 ring-green-100
+            dark:bg-green-500/10
+            dark:text-green-400
+            dark:ring-green-500/20
           "
         >
           <UserRound size={18} strokeWidth={2} />

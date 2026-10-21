@@ -73,13 +73,13 @@ export function SelecionarArquivoStep({ arquivo, onSelecionar }) {
             px-4
             py-3
             animate-slide-up
-            dark:border-emerald-500/20
-            dark:bg-emerald-950/20
+            dark:border-green-500/20
+            dark:bg-green-950/20
           "
         >
           <FileSpreadsheet
             size={20}
-            className="shrink-0 text-[#16a34a] dark:text-emerald-400"
+            className="shrink-0 text-[#16a34a] dark:text-green-400"
           />
 
           <div className="min-w-0">

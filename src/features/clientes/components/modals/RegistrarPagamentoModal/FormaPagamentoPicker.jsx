@@ -68,9 +68,9 @@ export function FormaPagamentoPicker({
                       dark:border-white/10
                       dark:bg-zinc-900
                       dark:text-slate-300
-                      dark:hover:border-emerald-700
-                      dark:hover:bg-emerald-950/30
-                      dark:hover:text-emerald-400
+                      dark:hover:border-green-700
+                      dark:hover:bg-green-950/30
+                      dark:hover:text-green-400
                     `,
               )}
             >

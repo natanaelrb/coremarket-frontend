@@ -34,7 +34,7 @@ export function ClienteRow({
           dark:hover:bg-white/[0.025]
         `,
         selected &&
-          "bg-[#f0fdf4] hover:bg-[#f0fdf4] dark:bg-emerald-950/20 dark:hover:bg-emerald-950/20"
+          "bg-[#f0fdf4] hover:bg-[#f0fdf4] dark:bg-green-950/20 dark:hover:bg-green-950/20"
       )}
     >
       {/* Seleção */}

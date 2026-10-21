@@ -23,16 +23,16 @@ export function ValidarDadosStep({ resumo }) {
           border border-[#16a34a]/20
           bg-[#dcfce7]
           px-4 py-3
-          dark:border-emerald-500/20
-          dark:bg-emerald-950/20
+          dark:border-green-500/20
+          dark:bg-green-950/20
         "
       >
         <CheckCircle2
           size={18}
-          className="shrink-0 text-[#16a34a] dark:text-emerald-400"
+          className="shrink-0 text-[#16a34a] dark:text-green-400"
         />
 
-        <span className="text-sm font-medium text-[#15803d] dark:text-emerald-400">
+        <span className="text-sm font-medium text-[#15803d] dark:text-green-400">
           {resumo.validos} clientes válidos
         </span>
       </div>

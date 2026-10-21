@@ -27,7 +27,7 @@ export function ClientesHeader({ onNovoCliente }) {
             ›
           </span>
 
-          <span className="text-base font-medium text-emerald-600">
+          <span className="text-base font-medium text-green-600">
             Clientes
           </span>
         </div>
@@ -43,10 +43,10 @@ export function ClientesHeader({ onNovoCliente }) {
               items-center
               justify-center
               rounded-lg
-              bg-emerald-50
-              text-emerald-600
+              bg-green-50
+              text-green-600
               ring-1
-              ring-emerald-100
+              ring-green-100
             "
           >
             <UsersRound

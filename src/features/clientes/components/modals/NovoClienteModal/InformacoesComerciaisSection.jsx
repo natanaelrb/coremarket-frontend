@@ -148,10 +148,10 @@ export function InformacoesComerciaisSection({
                       ativo
                         ? isAtivo
                           ? `
-                              bg-emerald-500
+                              bg-green-500
                               text-white
                               shadow-sm
-                              shadow-emerald-500/20
+                              shadow-green-500/20
                             `
                           : `
                               bg-slate-600
