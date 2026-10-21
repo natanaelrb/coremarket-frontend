@@ -25,7 +25,7 @@ export default function FinanceiroTab({ detalhe }) {
     {
       label: "Maior Compra",
       value: indicadores.maiorCompra,
-      color: "text-emerald-600 dark:text-emerald-400",
+      color: "text-green-600 dark:text-green-400",
     },
   ];
 

@@ -24,12 +24,12 @@ export default function DetailTabs({ activeTab, onChangeTab }) {
               focus-visible:outline-none
               focus-visible:ring-2
               focus-visible:ring-inset
-              focus-visible:ring-emerald-500/50
+              focus-visible:ring-green-500/50
               ${
                 isActive
                   ? `
-                    text-emerald-700
-                    dark:text-emerald-400
+                    text-green-700
+                    dark:text-green-400
                   `
                   : `
                     text-slate-500
@@ -50,8 +50,8 @@ export default function DetailTabs({ activeTab, onChangeTab }) {
                   -bottom-px
                   h-0.5
                   rounded-full
-                  bg-emerald-600
-                  dark:bg-emerald-400
+                  bg-green-600
+                  dark:bg-green-400
                 "
                 aria-hidden="true"
               />

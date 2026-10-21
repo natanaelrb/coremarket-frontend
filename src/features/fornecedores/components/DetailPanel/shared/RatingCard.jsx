@@ -97,8 +97,8 @@ export default function RatingCard({ title, ratings = {}, notaGeral }) {
               text-lg
               font-bold
               tabular-nums
-              text-emerald-600
-              dark:text-emerald-400
+              text-green-600
+              dark:text-green-400
             "
           >
             {Number(notaGeral).toFixed(1)} / 5

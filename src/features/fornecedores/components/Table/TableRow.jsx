@@ -32,7 +32,7 @@ export default function TableRow({
         dark:border-[#1c2044]
         ${
           isActive
-            ? "bg-emerald-50/70 dark:bg-emerald-500/[0.08]"
+            ? "bg-green-50/70 dark:bg-green-500/[0.08]"
             : "hover:bg-slate-50 dark:hover:bg-[#181d3b]"
         }
       `}
@@ -52,11 +52,11 @@ export default function TableRow({
             cursor-pointer
             rounded
             border-slate-300
-            text-emerald-600
-            accent-emerald-600
+            text-green-600
+            accent-green-600
             focus:outline-none
             focus:ring-2
-            focus:ring-emerald-500/30
+            focus:ring-green-500/30
             dark:border-[#3a4168]
             dark:bg-[#0f1230]
           "
@@ -102,7 +102,7 @@ export default function TableRow({
             <MessageCircle
               size={14}
               strokeWidth={2}
-              className="text-emerald-500 dark:text-emerald-400"
+              className="text-green-500 dark:text-green-400"
               aria-label="Possui WhatsApp"
             />
           )}

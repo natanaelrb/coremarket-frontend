@@ -24,7 +24,7 @@ export default function Breadcrumb({ items = [] }) {
               <span
                 className={
                   isLastItem
-                    ? "text-base font-medium text-emerald-600"
+                    ? "text-base font-medium text-green-600"
                     : "text-base text-slate-500"
                 }
                 aria-current={isLastItem ? "page" : undefined}

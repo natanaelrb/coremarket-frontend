@@ -38,10 +38,10 @@ export default function FornecedoresHeader({
                 items-center
                 justify-center
                 rounded-lg
-                bg-emerald-50
-                text-emerald-600
+                bg-green-50
+                text-green-600
                 ring-1
-                ring-emerald-100
+                ring-green-100
               "
               aria-hidden="true"
             >
@@ -125,9 +125,9 @@ export default function FornecedoresHeader({
                 outline-none
                 transition-all
                 placeholder:text-slate-400
-                focus:border-emerald-500
+                focus:border-green-500
                 focus:ring-4
-                focus:ring-emerald-500/10
+                focus:ring-green-500/10
               "
             />
           </div>
@@ -157,7 +157,7 @@ export default function FornecedoresHeader({
               active:scale-[0.98]
               focus-visible:outline-none
               focus-visible:ring-2
-              focus-visible:ring-emerald-500/50
+              focus-visible:ring-green-500/50
             "
           >
             <SlidersHorizontal
@@ -194,7 +194,7 @@ export default function FornecedoresHeader({
               active:scale-[0.98]
               focus-visible:outline-none
               focus-visible:ring-2
-              focus-visible:ring-emerald-500/50
+              focus-visible:ring-green-500/50
             "
           >
             <Download
@@ -223,22 +223,22 @@ export default function FornecedoresHeader({
               justify-center
               gap-2
               rounded-xl
-              bg-emerald-600
+              bg-green-600
               px-4
               text-sm
               font-semibold
               text-white
               shadow-sm
-              shadow-emerald-200/60
+              shadow-green-200/60
               transition-all
               hover:-translate-y-0.5
-              hover:bg-emerald-700
+              hover:bg-green-700
               hover:shadow-md
-              hover:shadow-emerald-200
+              hover:shadow-green-200
               active:scale-[0.98]
               focus-visible:outline-none
               focus-visible:ring-2
-              focus-visible:ring-emerald-500/50
+              focus-visible:ring-green-500/50
               focus-visible:ring-offset-2
             "
           >

@@ -70,7 +70,7 @@ export default function TablePagination({ pagination }) {
               hover:bg-slate-100 hover:text-slate-700
               focus-visible:outline-none
               focus-visible:ring-2
-              focus-visible:ring-emerald-500/30
+              focus-visible:ring-green-500/30
               disabled:cursor-not-allowed
               disabled:opacity-40
               dark:text-slate-500
@@ -101,14 +101,14 @@ export default function TablePagination({ pagination }) {
                   transition-all duration-150
                   focus-visible:outline-none
                   focus-visible:ring-2
-                  focus-visible:ring-emerald-500/30
+                  focus-visible:ring-green-500/30
                   ${
                     page === currentPage
                       ? `
-                        bg-emerald-600
+                        bg-green-600
                         text-white
-                        shadow-sm shadow-emerald-600/20
-                        hover:bg-emerald-700
+                        shadow-sm shadow-green-600/20
+                        hover:bg-green-700
                       `
                       : `
                         text-slate-500
@@ -138,7 +138,7 @@ export default function TablePagination({ pagination }) {
               hover:bg-slate-100 hover:text-slate-700
               focus-visible:outline-none
               focus-visible:ring-2
-              focus-visible:ring-emerald-500/30
+              focus-visible:ring-green-500/30
               disabled:cursor-not-allowed
               disabled:opacity-40
               dark:text-slate-500
@@ -164,13 +164,13 @@ export default function TablePagination({ pagination }) {
               text-xs text-slate-600
               outline-none transition-colors
               hover:border-slate-300
-              focus:border-emerald-500
-              focus:ring-2 focus:ring-emerald-500/10
+              focus:border-green-500
+              focus:ring-2 focus:ring-green-500/10
               dark:border-[#252a4a]
               dark:bg-[#0f1230]
               dark:text-slate-300
               dark:hover:border-[#3a4168]
-              dark:focus:border-emerald-500
+              dark:focus:border-green-500
             "
           >
             {ITENS_POR_PAGINA_OPTIONS.map((n) => (

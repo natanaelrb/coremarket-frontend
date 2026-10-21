@@ -34,12 +34,12 @@ export default function StatsCardsGrid({ stats, isLoading }) {
     },
     {
       icon: UserCheck,
-      iconBg: "bg-emerald-50 dark:bg-emerald-500/10",
-      iconColor: "text-emerald-600 dark:text-emerald-400",
+      iconBg: "bg-green-50 dark:bg-green-500/10",
+      iconColor: "text-green-600 dark:text-green-400",
       label: "Fornecedores Ativos",
       value: stats.ativos ?? 0,
       caption: `${stats.ativosPercent ?? 0}% do total`,
-      captionColor: "text-emerald-600 dark:text-emerald-400",
+      captionColor: "text-green-600 dark:text-green-400",
     },
     {
       icon: UserX,
@@ -60,8 +60,8 @@ export default function StatsCardsGrid({ stats, isLoading }) {
     },
     {
       icon: Wallet,
-      iconBg: "bg-emerald-50 dark:bg-emerald-500/10",
-      iconColor: "text-emerald-600 dark:text-emerald-400",
+      iconBg: "bg-green-50 dark:bg-green-500/10",
+      iconColor: "text-green-600 dark:text-green-400",
       label: "Valor Comprado",
       value: formatCurrency(stats.valorCompradoAno ?? 0),
       caption: "Total no ano",

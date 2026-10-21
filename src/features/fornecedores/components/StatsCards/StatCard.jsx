@@ -25,11 +25,11 @@ export default function StatCard({
         shadow-sm
         transition-all 
         hover:-translate-y-1
-        hover:border-emerald-200
+        hover:border-green-200
         hover:shadow-lg
         dark:border-[#252a4a]
         dark:bg-[#141833]
-        dark:hover:border-emerald-500/20
+        dark:hover:border-green-500/20
         dark:hover:shadow-black/20
         
       `}

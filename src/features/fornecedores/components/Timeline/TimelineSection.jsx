@@ -124,7 +124,7 @@ function HistoricoFinanceiroContent({ historicoFinanceiro }) {
             </p>
 
             {item.valor && (
-              <span className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+              <span className="text-sm font-semibold text-green-600 dark:text-green-400">
                 {item.valor}
               </span>
             )}

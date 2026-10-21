@@ -102,9 +102,9 @@ export default function FiltersBar({
             text-sm font-medium
             text-slate-500
             transition-colors
-            hover:text-emerald-600
+            hover:text-green-600
             dark:text-slate-400
-            dark:hover:text-emerald-400
+            dark:hover:text-green-400
           "
         >
           Filtros avançados

@@ -52,11 +52,11 @@ export default function ActiveFilterChips({
               p-0.5
               text-slate-400
               transition-colors
-              hover:bg-emerald-100
-              hover:text-emerald-700
+              hover:bg-green-100
+              hover:text-green-700
               dark:text-slate-500
-              dark:hover:bg-emerald-500/20
-              dark:hover:text-emerald-400
+              dark:hover:bg-green-500/20
+              dark:hover:text-green-400
             "
           >
             <X size={12} strokeWidth={2.2} />

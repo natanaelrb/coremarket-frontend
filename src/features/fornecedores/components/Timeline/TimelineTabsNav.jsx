@@ -24,10 +24,10 @@ export default function TimelineTabsNav({
                 transition-colors duration-150
                 focus-visible:outline-none
                 focus-visible:ring-2 focus-visible:ring-inset
-                focus-visible:ring-emerald-500/50
+                focus-visible:ring-green-500/50
                 ${
                   isActive
-                    ? "text-emerald-700 dark:text-emerald-400"
+                    ? "text-green-700 dark:text-green-400"
                     : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
                 }
               `}
@@ -36,7 +36,7 @@ export default function TimelineTabsNav({
 
               {isActive && (
                 <span
-                  className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-emerald-600 dark:bg-emerald-400"
+                  className="absolute inset-x-2 -bottom-px h-0.5 rounded-full bg-green-600 dark:bg-green-400"
                   aria-hidden="true"
                 />
               )}

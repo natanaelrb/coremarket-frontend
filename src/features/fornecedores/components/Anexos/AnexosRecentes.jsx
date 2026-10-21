@@ -47,11 +47,11 @@ export default function AnexosRecentes({ anexos = [] }) {
         className="
           mt-4 w-full rounded-lg border border-slate-200 px-3 py-2.5
           text-sm font-semibold text-slate-600 transition-colors
-          hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700
+          hover:border-green-200 hover:bg-green-50 hover:text-green-700
           disabled:cursor-not-allowed disabled:opacity-50
           dark:border-[#3a4168] dark:text-slate-300
-          dark:hover:border-emerald-500/20 dark:hover:bg-emerald-500/10
-          dark:hover:text-emerald-400
+          dark:hover:border-green-500/20 dark:hover:bg-green-500/10
+          dark:hover:text-green-400
         "
       >
         Ver todos os anexos

@@ -6,14 +6,14 @@ export default function BulkActionsBar({ count, onClear }) {
       className="
         animate-fade-in-up
         flex flex-wrap items-center justify-between gap-3
-        border-b border-emerald-200/70
-        bg-emerald-50/70
+        border-b border-green-200/70
+        bg-green-50/70
         px-4 py-3
-        dark:border-emerald-500/20
-        dark:bg-emerald-500/[0.06]
+        dark:border-green-500/20
+        dark:bg-green-500/[0.06]
       "
     >
-      <div className="flex items-center gap-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400">
+      <div className="flex items-center gap-2 text-sm font-semibold text-green-700 dark:text-green-400">
         <button
           type="button"
           onClick={onClear}
@@ -21,11 +21,11 @@ export default function BulkActionsBar({ count, onClear }) {
           className="
             rounded-full p-1
             transition-colors
-            hover:bg-emerald-100
+            hover:bg-green-100
             focus-visible:outline-none
             focus-visible:ring-2
-            focus-visible:ring-emerald-500/40
-            dark:hover:bg-emerald-500/15
+            focus-visible:ring-green-500/40
+            dark:hover:bg-green-500/15
           "
         >
           <X size={14} aria-hidden="true" />
@@ -45,13 +45,13 @@ export default function BulkActionsBar({ count, onClear }) {
             text-xs font-semibold
             text-slate-600
             transition-colors
-            hover:bg-white hover:text-emerald-700
+            hover:bg-white hover:text-green-700
             focus-visible:outline-none
             focus-visible:ring-2
-            focus-visible:ring-emerald-500/40
+            focus-visible:ring-green-500/40
             dark:text-slate-300
             dark:hover:bg-[#252a4a]
-            dark:hover:text-emerald-400
+            dark:hover:text-green-400
           "
         >
           <Download size={13} aria-hidden="true" />
@@ -66,13 +66,13 @@ export default function BulkActionsBar({ count, onClear }) {
             text-xs font-semibold
             text-slate-600
             transition-colors
-            hover:bg-white hover:text-emerald-700
+            hover:bg-white hover:text-green-700
             focus-visible:outline-none
             focus-visible:ring-2
-            focus-visible:ring-emerald-500/40
+            focus-visible:ring-green-500/40
             dark:text-slate-300
             dark:hover:bg-[#252a4a]
-            dark:hover:text-emerald-400
+            dark:hover:text-green-400
           "
         >
           <Ban size={13} aria-hidden="true" />

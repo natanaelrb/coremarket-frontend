@@ -53,7 +53,7 @@ export default function RowActionsMenu({ fornecedor }) {
           transition-all duration-150
           hover:bg-slate-100 hover:text-slate-700
           focus-visible:outline-none
-          focus-visible:ring-2 focus-visible:ring-emerald-500/30
+          focus-visible:ring-2 focus-visible:ring-green-500/30
           dark:text-slate-500
           dark:hover:bg-[#252a4a]
           dark:hover:text-slate-200
@@ -95,7 +95,7 @@ export default function RowActionsMenu({ fornecedor }) {
                   focus-visible:outline-none
                   focus-visible:ring-2
                   focus-visible:ring-inset
-                  focus-visible:ring-emerald-500/40
+                  focus-visible:ring-green-500/40
                   ${
                     action.danger
                       ? `
@@ -106,11 +106,11 @@ export default function RowActionsMenu({ fornecedor }) {
                       `
                       : `
                         text-slate-600
-                        hover:bg-emerald-50
-                        hover:text-emerald-700
+                        hover:bg-green-50
+                        hover:text-green-700
                         dark:text-slate-300
-                        dark:hover:bg-emerald-500/10
-                        dark:hover:text-emerald-400
+                        dark:hover:bg-green-500/10
+                        dark:hover:text-green-400
                       `
                   }
                 `}

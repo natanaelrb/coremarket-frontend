@@ -27,13 +27,13 @@ function SortIcon({
     <ArrowUp
       size={12}
       strokeWidth={2.2}
-      className="text-emerald-600 dark:text-emerald-400"
+      className="text-green-600 dark:text-green-400"
     />
   ) : (
     <ArrowDown
       size={12}
       strokeWidth={2.2}
-      className="text-emerald-600 dark:text-emerald-400"
+      className="text-green-600 dark:text-green-400"
     />
   );
 }
@@ -60,9 +60,9 @@ export default function TableHeader({
               cursor-pointer
               rounded
               border-slate-300
-              text-emerald-600
-              accent-emerald-600
-              focus:ring-emerald-500/30
+              text-green-600
+              accent-green-600
+              focus:ring-green-500/30
               dark:border-[#3a4168]
               dark:bg-[#0f1230]
             "

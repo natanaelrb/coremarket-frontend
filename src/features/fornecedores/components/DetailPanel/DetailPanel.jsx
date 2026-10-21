@@ -130,7 +130,7 @@ export default function DetailPanel({
               hover:text-slate-700
               focus-visible:outline-none
               focus-visible:ring-2
-              focus-visible:ring-emerald-500/40
+              focus-visible:ring-green-500/40
               dark:text-slate-500
               dark:hover:bg-[#252a4a]
               dark:hover:text-slate-200

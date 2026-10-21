@@ -49,9 +49,9 @@ export default function AnexoItem({ anexo }) {
         className="
           flex-shrink-0 rounded-lg p-2 text-slate-400
           transition-colors
-          hover:bg-emerald-50 hover:text-emerald-600
+          hover:bg-green-50 hover:text-green-600
           disabled:cursor-not-allowed disabled:opacity-60
-          dark:hover:bg-emerald-500/10 dark:hover:text-emerald-400
+          dark:hover:bg-green-500/10 dark:hover:text-green-400
         "
       >
         <Download size={15} strokeWidth={1.8} aria-hidden="true" />
