@@ -1,30 +1,47 @@
-import { CheckCircle2, AlertTriangle } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, ShieldCheck } from 'lucide-react';
 
-/**
- * Alerta indicando se todos os itens do carrinho têm estoque disponível.
- * @param {{ disponivel: boolean }} props
- */
 export function EstoqueAlert({ disponivel }) {
   if (disponivel) {
     return (
-      <div className="flex items-center gap-2.5 rounded-lg border border-cm-success/30 bg-cm-success-soft px-3.5 py-2.5">
-        <CheckCircle2 className="h-4.5 w-4.5 shrink-0 text-cm-success" />
-        <div>
-          <p className="text-sm font-medium text-cm-success">Estoque</p>
-          <p className="text-xs text-cm-success/80">Todos os itens com estoque disponível.</p>
+      <div
+        role="status"
+        className="flex items-center gap-3 rounded-xl border border-green-200 bg-green-50 p-3 transition-colors duration-200"
+      >
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-green-100 text-[#16a34a]">
+          <ShieldCheck className="h-[18px] w-[18px]" />
         </div>
+
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-semibold text-green-700">
+            Estoque disponível
+          </p>
+          <p className="mt-0.5 text-xs leading-relaxed text-slate-600">
+            Quantidades verificadas para esta venda.
+          </p>
+        </div>
+
+        <CheckCircle2 className="h-5 w-5 shrink-0 text-[#22c55e]" />
       </div>
     );
   }
 
   return (
-    <div className="flex items-center gap-2.5 rounded-lg border border-cm-danger/30 bg-cm-danger-soft px-3.5 py-2.5">
-      <AlertTriangle className="h-4.5 w-4.5 shrink-0 text-cm-danger" />
-      <div>
-        <p className="text-sm font-medium text-cm-danger">Estoque insuficiente</p>
-        <p className="text-xs text-cm-danger/80">Ajuste a quantidade de algum item antes de finalizar.</p>
+    <div
+      role="alert"
+      className="flex items-center gap-3 rounded-xl border border-red-200 bg-red-50 p-3 transition-colors duration-200"
+    >
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-600">
+        <AlertTriangle className="h-[18px] w-[18px]" />
+      </div>
+
+      <div className="min-w-0 flex-1">
+        <p className="text-sm font-semibold text-red-700">
+          Estoque insuficiente
+        </p>
+        <p className="mt-0.5 text-xs leading-relaxed text-slate-600">
+          Confira as quantidades antes de finalizar.
+        </p>
       </div>
     </div>
   );
 }
-
