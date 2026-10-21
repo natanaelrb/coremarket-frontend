@@ -135,7 +135,7 @@ export function Modal({
             z-20
             h-1
             bg-gradient-to-r
-            from-emerald-500
+            from-green-500
             via-green-500
             to-amber-400
           "
@@ -172,13 +172,13 @@ export function Modal({
                 items-center
                 justify-center
                 rounded-lg
-                bg-emerald-50
-                text-emerald-600
+                bg-green-50
+                text-green-600
                 ring-1
-                ring-emerald-100
-                dark:bg-emerald-500/10
-                dark:text-emerald-400
-                dark:ring-emerald-500/20
+                ring-green-100
+                dark:bg-green-500/10
+                dark:text-green-400
+                dark:ring-green-500/20
               "
             >
               <span className="h-2 w-2 rounded-full bg-current" />

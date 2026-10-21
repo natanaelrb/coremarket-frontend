@@ -9,9 +9,9 @@ export default function Card({
   return (
     <Tag
       className={cn(
-        "rounded-2xl border border-gray-100 dark:border-[#22254A] bg-white dark:bg-[#12142E]",
+        "rounded-2xl border border-gray-100 bg-white dark:border-[#22254A] dark:bg-[#12142E]",
         "shadow-sm shadow-gray-200/40 dark:shadow-black/20",
-        className,
+        className
       )}
       {...props}
     >
@@ -27,15 +27,23 @@ export function CardStepHeader({
   children,
 }) {
   return (
-    <div className="flex items-start justify-between gap-4 mb-5">
-      <div className="flex items-start gap-3">
+    <div className="mb-5 flex items-start justify-between gap-4">
+      <div className="flex min-w-0 items-start gap-3">
         {step && (
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-violet-100 text-sm font-semibold text-violet-600 dark:bg-violet-500/10 dark:text-violet-400">
+          <span
+            className="
+              flex h-8 w-8 shrink-0 items-center justify-center
+              rounded-lg border border-green-500/20
+              bg-green-500/10 text-sm font-bold
+              text-green-700 transition-colors duration-200
+              dark:text-green-400
+            "
+          >
             {step}
           </span>
         )}
 
-        <div>
+        <div className="min-w-0">
           {title && (
             <h3 className="text-sm font-semibold text-slate-900 dark:text-white">
               {title}
@@ -43,14 +51,14 @@ export function CardStepHeader({
           )}
 
           {description && (
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
+            <p className="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
               {description}
             </p>
           )}
         </div>
       </div>
 
-      {children}
+      {children && <div className="shrink-0">{children}</div>}
     </div>
   );
 }

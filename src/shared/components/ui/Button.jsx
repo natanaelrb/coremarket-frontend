@@ -53,12 +53,14 @@ export function Button({
       {loading ? (
         <span
           className="
-            h-4 w-4
-            animate-spin
-            rounded-full
-            border-2
-            border-white/30
-            border-t-white
+            group min-h-12 text-base font-bold
+            shadow-md shadow-[#22c55e]/20
+            transition-all duration-200
+            hover:-translate-y-0.5 hover:shadow-lg
+            active:translate-y-0
+            disabled:translate-y-0
+            disabled:shadow-none
+            motion-reduce:transform-none
           "
           aria-hidden="true"
         />

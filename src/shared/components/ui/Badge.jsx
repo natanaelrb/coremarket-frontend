@@ -1,6 +1,6 @@
 const TONES = {
   green:
-    "bg-emerald-50 text-emerald-700 border-emerald-200/80 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20",
+    "bg-green-50 text-green-700 border-green-200/80 dark:bg-green-500/10 dark:text-green-400 dark:border-green-500/20",
 
   red:
     "bg-rose-50 text-rose-700 border-rose-200/80 dark:bg-rose-500/10 dark:text-rose-400 dark:border-rose-500/20",
@@ -22,7 +22,7 @@ const TONES = {
 };
 
 const DOTS = {
-  green: "bg-emerald-500",
+  green: "bg-green-500",
   red: "bg-rose-500",
   amber: "bg-amber-500",
   blue: "bg-blue-500",

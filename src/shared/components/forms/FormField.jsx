@@ -79,9 +79,9 @@ const baseInputClasses = `
 
   hover:border-slate-300
 
-  focus:border-emerald-500
+  focus:border-green-500
   focus:ring-4
-  focus:ring-emerald-500/10
+  focus:ring-green-500/10
   focus:shadow-[0_0_0_1px_rgba(16,185,129,0.08)]
 
   disabled:cursor-not-allowed
@@ -95,9 +95,9 @@ const baseInputClasses = `
 
   dark:hover:border-slate-600
 
-  dark:focus:border-emerald-400
+  dark:focus:border-green-400
   dark:focus:ring-4
-  dark:focus:ring-emerald-400/10
+  dark:focus:ring-green-400/10
 
   dark:disabled:bg-slate-950
 `;

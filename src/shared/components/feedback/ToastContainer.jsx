@@ -3,7 +3,7 @@ import { CheckCircle2, XCircle, Info } from 'lucide-react';
 
 const ICONS = { success: CheckCircle2, error: XCircle, info: Info };
 const COLORS = {
-  success: 'text-emerald-500',
+  success: 'text-green-500',
   error: 'text-red-500',
   info: 'text-blue-500',
 };

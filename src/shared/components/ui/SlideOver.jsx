@@ -95,7 +95,7 @@ export function SlideOverCloseButton({ onClose }) {
         hover:text-slate-700
         focus-visible:outline-none
         focus-visible:ring-2
-        focus-visible:ring-emerald-500/50
+        focus-visible:ring-green-500/50
         dark:hover:bg-white/5
         dark:hover:text-slate-200
       "
