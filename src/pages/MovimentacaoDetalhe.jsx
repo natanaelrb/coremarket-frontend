@@ -37,7 +37,7 @@ export default function MovimentacaoDetalhe() {
           <button
             type="button"
             onClick={() => navigate("/movimentacoes")}
-            className="mt-4 rounded-lg bg-emerald-500 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-600"
+            className="mt-4 rounded-lg bg-green-500 px-4 py-2 text-sm font-semibold text-white hover:bg-green-600"
           >
             Voltar para movimentações
           </button>

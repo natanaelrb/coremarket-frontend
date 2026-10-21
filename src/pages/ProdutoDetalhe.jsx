@@ -66,7 +66,7 @@ export default function ProdutoDetalhe() {
           <button
             type="button"
             onClick={() => navigate("/produtos")}
-            className="mt-4 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
+            className="mt-4 rounded-lg bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
           >
             Voltar para produtos
           </button>

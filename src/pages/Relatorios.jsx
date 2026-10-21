@@ -84,7 +84,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 function MetricCard({ title, value, change, up, icon, color }) {
   const colors = {
     violet: "bg-violet-50 text-violet-600",
-    green:  "bg-emerald-50 text-emerald-600",
+    green:  "bg-green-50 text-green-600",
     amber:  "bg-amber-50 text-amber-600",
     red:    "bg-red-50 text-red-600",
     blue:   "bg-blue-50 text-blue-600",
@@ -98,7 +98,7 @@ function MetricCard({ title, value, change, up, icon, color }) {
         </div>
       </div>
       <p className="text-2xl font-semibold text-slate-800 mb-1">{value}</p>
-      <div className={`flex items-center gap-1 text-xs ${up ? "text-emerald-600" : "text-red-500"}`}>
+      <div className={`flex items-center gap-1 text-xs ${up ? "text-green-600" : "text-red-500"}`}>
         {up ? <ArrowUpRight size={12} /> : <ArrowDownRight size={12} />}
         <span>{change}</span>
       </div>

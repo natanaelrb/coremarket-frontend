@@ -77,7 +77,7 @@ export default function CompraDetalhe() {
           <button
             type="button"
             onClick={() => navigate("/compras")}
-            className="mt-4 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-700"
+            className="mt-4 rounded-lg bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
           >
             Voltar para compras
           </button>
@@ -91,7 +91,7 @@ export default function CompraDetalhe() {
       <button
         type="button"
         onClick={() => navigate("/compras")}
-        className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-emerald-50 hover:text-emerald-700 dark:text-slate-300 dark:hover:bg-emerald-500/10 dark:hover:text-emerald-400"
+        className="inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-green-50 hover:text-green-700 dark:text-slate-300 dark:hover:bg-green-500/10 dark:hover:text-green-400"
       >
         <ArrowLeft className="-ml-6 h-4 w-4" />
         Voltar para compras
@@ -99,12 +99,12 @@ export default function CompraDetalhe() {
 
       <header className="flex flex-wrap items-start justify-between gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm dark:border-white/5 dark:bg-[#151936]">
         <div className="flex items-start gap-3">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-green-50 text-green-700 dark:bg-green-500/10 dark:text-green-400">
             <span className="text-lg font-bold">C</span>
           </div>
 
           <div>
-            <p className="text-xs font-medium uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+            <p className="text-xs font-medium uppercase tracking-wider text-green-700 dark:text-green-400">
               Compras / Detalhes
             </p>
 
@@ -125,7 +125,7 @@ export default function CompraDetalhe() {
         <button
           type="button"
           onClick={() => setModalEditarAberto(true)}
-          className="inline-flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-2.5 text-sm font-semibold text-emerald-700 transition hover:border-emerald-300 hover:bg-emerald-100 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400 dark:hover:bg-emerald-500/20"
+          className="inline-flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 px-4 py-2.5 text-sm font-semibold text-green-700 transition hover:border-green-300 hover:bg-green-100 dark:border-green-500/20 dark:bg-green-500/10 dark:text-green-400 dark:hover:bg-green-500/20"
         >
           <Pencil size={16} />
           Editar compra
