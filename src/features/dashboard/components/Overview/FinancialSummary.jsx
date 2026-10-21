@@ -38,7 +38,7 @@ export default function FinancialSummary({ data }) {
       label: "Lucro Líquido",
       sublabel: "Faturamento - Custos",
       icon: PiggyBank,
-      bg: "bg-[#ecfdf5]",
+      bg: "bg-[#f0fdf4]",
       iconBg: "#d9f7e8",
       iconColor: "#20a464",
     },

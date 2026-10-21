@@ -25,12 +25,12 @@ export default function DashboardTabs({ activeTab, onChange }) {
               relative pb-3 text-sm font-semibold transition-all duration-200
               focus-visible:outline-none
               focus-visible:ring-2
-              focus-visible:ring-emerald-500/30
+              focus-visible:ring-green-500/30
               rounded-t-md
               ${
                 isActive
-                  ? "text-emerald-600"
-                  : "text-[var(--text-secondary)] hover:text-emerald-600"
+                  ? "text-green-600"
+                  : "text-[var(--text-secondary)] hover:text-green-600"
               }
             `}
           >
@@ -41,7 +41,7 @@ export default function DashboardTabs({ activeTab, onChange }) {
               className={`
                 absolute -bottom-px left-0 h-[2px] w-full
                 origin-center rounded-full
-                bg-emerald-600
+                bg-green-600
                 transition-transform duration-300 ease-out
                 ${isActive ? "scale-x-100" : "scale-x-0"}
               `}

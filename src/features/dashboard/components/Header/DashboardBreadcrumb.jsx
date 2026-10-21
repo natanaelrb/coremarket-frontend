@@ -21,8 +21,8 @@ export default function DashboardBreadcrumb({ activeLabel }) {
           <span
             className={
               i === items.length - 1
-                ? "font-medium text-emerald-600"
-                : "transition-colors hover:text-emerald-600"
+                ? "font-medium text-green-600"
+                : "transition-colors hover:text-green-600"
             }
           >
             {item}

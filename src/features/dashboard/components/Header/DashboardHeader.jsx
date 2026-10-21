@@ -52,10 +52,10 @@ export default function DashboardHeader({
                 items-center
                 justify-center
                 rounded-lg
-                bg-emerald-50
-                text-emerald-600
+                bg-green-50
+                text-green-600
                 ring-1
-                ring-emerald-100
+                ring-green-100
               "
             >
               <LayoutDashboard

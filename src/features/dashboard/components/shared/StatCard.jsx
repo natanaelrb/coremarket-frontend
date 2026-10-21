@@ -18,7 +18,7 @@ export default function StatCard({
   comparisonLabel,
   variation,
   sparkline,
-  sparklineColor = "#059669",
+  sparklineColor = "#16a34a",
   tooltip,
   style,
 }) {
@@ -75,7 +75,7 @@ export default function StatCard({
         <div
           className={`mt-1 px-2 -ml-6 flex items-center gap-1 text-xs font-medium ${
             isPositive
-              ? "text-emerald-500"
+              ? "text-green-500"
               : "text-red-500"
           }`}
         >

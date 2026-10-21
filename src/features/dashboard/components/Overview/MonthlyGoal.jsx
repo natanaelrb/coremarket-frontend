@@ -13,7 +13,7 @@ export default function MonthlyGoal({ data }) {
 
       <div className="mt-5 flex items-start justify-between">
         {/* Percentual */}
-        <span className="text-[28px] font-bold leading-none text-[#059669]">
+        <span className="text-[28px] font-bold leading-none text-[#16a34a]">
           {percentual}%
         </span>
 
@@ -53,8 +53,8 @@ export default function MonthlyGoal({ data }) {
             h-full
             rounded-full
             bg-gradient-to-r
-            from-[#059669]
-            to-[#059669]
+            from-[#16a34a]
+            to-[#16a34a]
             transition-[width]
             duration-1000
             ease-out

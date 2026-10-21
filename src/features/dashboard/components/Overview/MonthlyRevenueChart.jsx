@@ -95,7 +95,7 @@ export default function MonthlyRevenueChart({ data }) {
                       transition-colors
                       ${
                         period === option
-                          ? "bg-emerald-50 text-emerald-600 dark:bg-emerald-950/40 dark:text-emerald-400"
+                          ? "bg-green-50 text-green-600 dark:bg-green-950/40 dark:text-green-400"
                           : "text-[var(--text-primary)] hover:bg-[var(--bg-hover)]"
                       }
                     `}

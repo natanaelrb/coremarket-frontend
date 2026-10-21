@@ -52,13 +52,13 @@ export default function PeriodPicker({
           ${
             isOpen
               ? `
-                border-emerald-200
-                bg-emerald-50
-                text-emerald-700
+                border-green-200
+                bg-green-50
+                text-green-700
                 shadow-sm
-                dark:border-emerald-500/30
-                dark:bg-emerald-500/10
-                dark:text-emerald-400
+                dark:border-green-500/30
+                dark:bg-green-500/10
+                dark:text-green-400
               `
               : `
                 border-[var(--border-subtle)]
@@ -77,7 +77,7 @@ export default function PeriodPicker({
             transition-colors duration-200
             ${
               isOpen
-                ? "text-emerald-600 dark:text-emerald-400"
+                ? "text-green-600 dark:text-green-400"
                 : "text-[var(--text-secondary)]"
             }
           `}
@@ -93,7 +93,7 @@ export default function PeriodPicker({
             duration-200
             ${
               isOpen
-                ? "rotate-180 text-emerald-600 dark:text-emerald-400"
+                ? "rotate-180 text-green-600 dark:text-green-400"
                 : "text-[var(--text-secondary)]"
             }
           `}
@@ -154,11 +154,11 @@ export default function PeriodPicker({
                   ${
                     isSelected
                       ? `
-                        bg-emerald-50
+                        bg-green-50
                         font-semibold
-                        text-emerald-700
-                        dark:bg-emerald-500/10
-                        dark:text-emerald-400
+                        text-green-700
+                        dark:bg-green-500/10
+                        dark:text-green-400
                       `
                       : `
                         font-medium
@@ -178,7 +178,7 @@ export default function PeriodPicker({
                   <Check
                     size={15}
                     strokeWidth={2.5}
-                    className="text-emerald-600 dark:text-emerald-400"
+                    className="text-green-600 dark:text-green-400"
                   />
                 )}
               </button>
