@@ -15,7 +15,7 @@ const SECTIONS = [
     description: "Situação atual das unidades disponíveis.",
     icon: Boxes,
     iconClass:
-      "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400",
+      "bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400",
   },
   {
     title: "Níveis de estoque",

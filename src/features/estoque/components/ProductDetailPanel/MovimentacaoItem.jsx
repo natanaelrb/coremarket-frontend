@@ -32,9 +32,9 @@ const TYPE_CONFIG = {
 
 const TONE_STYLES = {
   success: {
-    icon: "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400",
+    icon: "bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400",
     hover:
-      "hover:border-emerald-100 hover:bg-emerald-50/30 dark:hover:border-emerald-500/20 dark:hover:bg-emerald-500/[0.03]",
+      "hover:border-green-100 hover:bg-green-50/30 dark:hover:border-green-500/20 dark:hover:bg-green-500/[0.03]",
   },
   danger: {
     icon: "bg-rose-50 text-rose-600 dark:bg-rose-500/10 dark:text-rose-400",
@@ -139,7 +139,7 @@ export default function MovimentacaoItem({ movimentacao, index = 0 }) {
           className={cn(
             "text-sm font-bold tracking-tight",
             isPositive
-              ? "text-emerald-600 dark:text-emerald-400"
+              ? "text-green-600 dark:text-green-400"
               : quantidade < 0
                 ? "text-rose-600 dark:text-rose-400"
                 : "text-gray-500 dark:text-gray-400",

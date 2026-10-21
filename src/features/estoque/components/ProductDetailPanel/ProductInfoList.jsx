@@ -74,12 +74,12 @@ export default function ProductInfoList({ produto }) {
                 py-2.5
                 transition-all
                 duration-200
-                hover:border-emerald-100
-                hover:bg-emerald-50/30
+                hover:border-green-100
+                hover:bg-green-50/30
                 dark:border-white/10
                 dark:bg-white/[0.025]
-                dark:hover:border-emerald-500/20
-                dark:hover:bg-emerald-500/[0.03]
+                dark:hover:border-green-500/20
+                dark:hover:bg-green-500/[0.03]
                 animate-slide-up
               "
               style={{
@@ -100,12 +100,12 @@ export default function ProductInfoList({ produto }) {
                   shadow-sm
                   transition-colors
                   duration-200
-                  group-hover:bg-emerald-50
-                  group-hover:text-emerald-600
+                  group-hover:bg-green-50
+                  group-hover:text-green-600
                   dark:bg-white/5
                   dark:text-gray-500
-                  dark:group-hover:bg-emerald-500/10
-                  dark:group-hover:text-emerald-400
+                  dark:group-hover:bg-green-500/10
+                  dark:group-hover:text-green-400
                 "
               >
                 <Icon size={13} strokeWidth={2} />

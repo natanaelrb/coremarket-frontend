@@ -12,7 +12,7 @@ export default function ProductTableHeader({
             type="checkbox"
             checked={allSelected}
             onChange={onToggleAll}
-            className="h-4 w-4 cursor-pointer rounded border-gray-300 text-emerald-600 focus:ring-emerald-500 dark:border-gray-600"
+            className="h-4 w-4 cursor-pointer rounded border-gray-300 text-green-600 focus:ring-green-500 dark:border-gray-600"
           />
         </th>
 

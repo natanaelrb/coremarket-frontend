@@ -27,7 +27,7 @@ export default function ProductTable({
               Produtos em estoque
             </h2>
 
-            <span className="inline-flex min-w-7 items-center justify-center rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-semibold text-emerald-700 ring-1 ring-inset ring-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:ring-emerald-500/20">
+            <span className="inline-flex min-w-7 items-center justify-center rounded-full bg-green-50 px-2 py-0.5 text-xs font-semibold text-green-700 ring-1 ring-inset ring-green-100 dark:bg-green-500/10 dark:text-green-400 dark:ring-green-500/20">
               {totalCount.toLocaleString("pt-BR")}
             </span>
           </div>

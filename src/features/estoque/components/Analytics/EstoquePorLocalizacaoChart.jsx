@@ -21,7 +21,7 @@ export default function EstoquePorLocalizacaoChart({ data = [] }) {
 
             <div className="h-2 overflow-hidden rounded-full bg-gray-100 dark:bg-white/5">
               <div
-                className="h-full rounded-full bg-emerald-500 transition-all duration-500"
+                className="h-full rounded-full bg-green-500 transition-all duration-500"
                 style={{ width: `${item.percentual}%` }}
               />
             </div>

@@ -29,9 +29,9 @@ export default function MovimentacoesRecentes({
             className="
               group mt-3 w-full justify-center gap-2
               transition-all duration-200
-              hover:border-emerald-200 hover:bg-emerald-50 hover:text-emerald-600
-              dark:hover:border-emerald-500/20 dark:hover:bg-emerald-500/5
-              dark:hover:text-emerald-400
+              hover:border-green-200 hover:bg-green-50 hover:text-green-600
+              dark:hover:border-green-500/20 dark:hover:bg-green-500/5
+              dark:hover:text-green-400
             "
             onClick={onViewAll}
           >

@@ -29,7 +29,7 @@ export default function MovimentoFooter({
           hover:bg-gray-50
           focus:outline-none
           focus-visible:ring-2
-          focus-visible:ring-emerald-500/40
+          focus-visible:ring-green-500/40
           dark:border-white/10
           dark:bg-[#171A38]
           dark:text-gray-200
@@ -55,10 +55,10 @@ export default function MovimentoFooter({
           ${
             isEntrada
               ? `
-                bg-emerald-500
-                shadow-emerald-500/20
-                hover:bg-emerald-600
-                focus-visible:ring-emerald-500/40
+                bg-green-500
+                shadow-green-500/20
+                hover:bg-green-600
+                focus-visible:ring-green-500/40
               `
               : `
                 bg-rose-500

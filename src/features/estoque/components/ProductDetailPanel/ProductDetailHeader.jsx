@@ -29,8 +29,8 @@ export default function ProductDetailHeader({ produto, onClose }) {
           h-24
           w-24
           rounded-bl-full
-          bg-emerald-500/[0.04]
-          dark:bg-emerald-400/[0.04]
+          bg-green-500/[0.04]
+          dark:bg-green-400/[0.04]
         "
       />
 
@@ -61,7 +61,7 @@ export default function ProductDetailHeader({ produto, onClose }) {
           <div className="flex min-w-0 items-center gap-2 pr-8">
             <Package
               size={14}
-              className="shrink-0 text-emerald-500"
+              className="shrink-0 text-green-500"
               strokeWidth={2}
             />
 
@@ -114,7 +114,7 @@ export default function ProductDetailHeader({ produto, onClose }) {
             hover:text-gray-700
             focus:outline-none
             focus-visible:ring-2
-            focus-visible:ring-emerald-500/40
+            focus-visible:ring-green-500/40
             dark:hover:bg-white/5
             dark:hover:text-gray-200
           "

@@ -56,8 +56,8 @@ export default function MovimentoObservacao({
             text-sm text-gray-800
             outline-none transition-all duration-200
             placeholder:text-gray-300
-            focus:border-emerald-400
-            focus:ring-2 focus:ring-emerald-500/15
+            focus:border-green-400
+            focus:ring-2 focus:ring-green-500/15
             dark:border-white/10
             dark:bg-[#11142b]
             dark:text-gray-200

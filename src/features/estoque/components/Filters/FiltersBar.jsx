@@ -121,13 +121,13 @@ export default function FiltersBar({
                   flex h-5 min-w-5
                   items-center justify-center
                   rounded-full
-                  bg-emerald-100
+                  bg-green-100
                   px-1.5
                   text-[11px]
                   font-semibold
-                  text-emerald-700
-                  dark:bg-emerald-500/15
-                  dark:text-emerald-400
+                  text-green-700
+                  dark:bg-green-500/15
+                  dark:text-green-400
                 "
               >
                 {additionalFiltersCount}

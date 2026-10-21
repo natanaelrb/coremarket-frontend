@@ -3,10 +3,10 @@ import { cn } from '../../../../shared/utils/classNames.js'
 const TONE_STYLES = {
   success: {
     wrapper:
-      'border-emerald-100 bg-emerald-50/70 dark:border-emerald-500/15 dark:bg-emerald-500/5',
-    icon: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400',
-    value: 'text-emerald-700 dark:text-emerald-400',
-    indicator: 'bg-emerald-500',
+      'border-green-100 bg-green-50/70 dark:border-green-500/15 dark:bg-green-500/5',
+    icon: 'bg-green-100 text-green-600 dark:bg-green-500/10 dark:text-green-400',
+    value: 'text-green-700 dark:text-green-400',
+    indicator: 'bg-green-500',
   },
 
   warning: {
@@ -35,10 +35,10 @@ const TONE_STYLES = {
 
   accent: {
     wrapper:
-      'border-emerald-100 bg-emerald-50/70 dark:border-emerald-500/15 dark:bg-emerald-500/5',
-    icon: 'bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400',
-    value: 'text-emerald-700 dark:text-emerald-400',
-    indicator: 'bg-emerald-500',
+      'border-green-100 bg-green-50/70 dark:border-green-500/15 dark:bg-green-500/5',
+    icon: 'bg-green-100 text-green-600 dark:bg-green-500/10 dark:text-green-400',
+    value: 'text-green-700 dark:text-green-400',
+    indicator: 'bg-green-500',
   },
 
   neutral: {

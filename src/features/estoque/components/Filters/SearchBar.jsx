@@ -57,16 +57,16 @@ export default function SearchBar({ value, onChange }) {
             duration-150
             placeholder:text-slate-400
             hover:border-slate-300
-            focus:border-emerald-500
+            focus:border-green-500
             focus:ring-2
-            focus:ring-emerald-500/15
+            focus:ring-green-500/15
             dark:border-white/10
             dark:bg-[#171A38]
             dark:text-slate-200
             dark:placeholder:text-slate-500
             dark:hover:border-white/20
-            dark:focus:border-emerald-500
-            dark:focus:ring-emerald-500/15
+            dark:focus:border-green-500
+            dark:focus:ring-green-500/15
           "
         />
       </div>

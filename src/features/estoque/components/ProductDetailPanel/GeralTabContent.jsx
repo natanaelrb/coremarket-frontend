@@ -9,8 +9,8 @@ import { cn } from "../../../../shared/utils/classNames.js";
 
 const ROW_STYLES = {
   success: {
-    icon: "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400",
-    value: "text-emerald-700 dark:text-emerald-400",
+    icon: "bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400",
+    value: "text-green-700 dark:text-green-400",
   },
   info: {
     icon: "bg-sky-50 text-sky-600 dark:bg-sky-500/10 dark:text-sky-400",
@@ -143,12 +143,12 @@ export default function GeralTabContent({ produto }) {
             p-4
             transition-colors
             duration-200
-            hover:border-emerald-100
-            hover:bg-emerald-50/40
+            hover:border-green-100
+            hover:bg-green-50/40
             dark:border-white/10
             dark:bg-white/[0.03]
-            dark:hover:border-emerald-500/20
-            dark:hover:bg-emerald-500/[0.03]
+            dark:hover:border-green-500/20
+            dark:hover:bg-green-500/[0.03]
           "
         >
           <p className="text-sm leading-6 text-gray-600 dark:text-gray-300">

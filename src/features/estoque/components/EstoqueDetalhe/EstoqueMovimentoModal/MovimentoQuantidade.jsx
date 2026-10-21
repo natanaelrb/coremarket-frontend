@@ -58,8 +58,8 @@ export default function MovimentoQuantidade({
                 `
                 : `
                   border-gray-200
-                  focus:border-emerald-400
-                  focus:ring-emerald-500/15
+                  focus:border-green-400
+                  focus:ring-green-500/15
                   dark:border-white/10
                 `
             }

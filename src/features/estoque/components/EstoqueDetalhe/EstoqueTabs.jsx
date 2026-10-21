@@ -72,10 +72,10 @@ function TabPlaceholder({ activeTab }) {
         <div
           className="
             mx-auto flex h-11 w-11 items-center justify-center
-            rounded-xl border border-emerald-100
-            bg-emerald-50 text-emerald-600
-            dark:border-emerald-500/15
-            dark:bg-emerald-500/10 dark:text-emerald-400
+            rounded-xl border border-green-100
+            bg-green-50 text-green-600
+            dark:border-green-500/15
+            dark:bg-green-500/10 dark:text-green-400
           "
         >
           <Icon size={18} strokeWidth={2} />

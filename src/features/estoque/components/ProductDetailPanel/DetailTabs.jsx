@@ -44,12 +44,12 @@ export default function DetailTabs({ activeTab, onChange }) {
                   ease-out
                   focus:outline-none
                   focus-visible:ring-2
-                  focus-visible:ring-emerald-500/40
+                  focus-visible:ring-green-500/40
                 `,
                 isActive
                   ? `
-                    text-emerald-600
-                    dark:text-emerald-400
+                    text-green-600
+                    dark:text-green-400
                   `
                   : `
                     text-gray-400
@@ -82,10 +82,10 @@ export default function DetailTabs({ activeTab, onChange }) {
                     `,
                     isActive
                       ? `
-                        bg-emerald-50
-                        text-emerald-600
-                        dark:bg-emerald-500/10
-                        dark:text-emerald-400
+                        bg-green-50
+                        text-green-600
+                        dark:bg-green-500/10
+                        dark:text-green-400
                       `
                       : `
                         bg-gray-100
@@ -110,11 +110,11 @@ export default function DetailTabs({ activeTab, onChange }) {
                     h-0.5
                     origin-center
                     rounded-full
-                    bg-emerald-500
+                    bg-green-500
                     transition-all
                     duration-300
                     ease-out
-                    dark:bg-emerald-400
+                    dark:bg-green-400
                   `,
                   isActive
                     ? 'scale-x-100 opacity-100'

@@ -95,9 +95,9 @@ export default function EstoqueInformacoes({ produto }) {
               className="
                 rounded-xl border border-gray-100 bg-gray-50/70 p-4
                 transition-all duration-200
-                hover:border-emerald-100 hover:bg-emerald-50/30
+                hover:border-green-100 hover:bg-green-50/30
                 dark:border-white/10 dark:bg-white/[0.025]
-                dark:hover:border-emerald-500/20 dark:hover:bg-emerald-500/[0.03]
+                dark:hover:border-green-500/20 dark:hover:bg-green-500/[0.03]
               "
             >
               <p className="text-sm leading-6 text-gray-600 dark:text-gray-300">
@@ -119,7 +119,7 @@ function SectionHeader({
 }) {
   const toneStyles = {
     green: {
-      icon: "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400",
+      icon: "bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400",
     },
     blue: {
       icon: "bg-sky-50 text-sky-600 dark:bg-sky-500/10 dark:text-sky-400",
@@ -177,9 +177,9 @@ function InfoItem({
             `
             : `
               border-gray-100 bg-gray-50/60
-              hover:border-emerald-100 hover:bg-emerald-50/30
+              hover:border-green-100 hover:bg-green-50/30
               dark:border-white/10 dark:bg-white/[0.025]
-              dark:hover:border-emerald-500/20 dark:hover:bg-emerald-500/[0.03]
+              dark:hover:border-green-500/20 dark:hover:bg-green-500/[0.03]
             `
         }
       `}
@@ -198,10 +198,10 @@ function InfoItem({
                 `
                 : `
                   bg-white text-gray-400 shadow-sm
-                  group-hover/item:bg-emerald-50 group-hover/item:text-emerald-600
+                  group-hover/item:bg-green-50 group-hover/item:text-green-600
                   dark:bg-white/5 dark:text-gray-500
-                  dark:group-hover/item:bg-emerald-500/10
-                  dark:group-hover/item:text-emerald-400
+                  dark:group-hover/item:bg-green-500/10
+                  dark:group-hover/item:text-green-400
                 `
             }
           `}

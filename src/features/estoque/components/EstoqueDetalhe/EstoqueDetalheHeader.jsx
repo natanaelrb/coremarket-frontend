@@ -28,8 +28,8 @@ export default function EstoqueDetalheHeader({
             group inline-flex items-center gap-1.5
             text-sm font-medium text-gray-400
             transition-colors duration-200
-            hover:text-emerald-600
-            dark:text-gray-500 dark:hover:text-emerald-400
+            hover:text-green-600
+            dark:text-gray-500 dark:hover:text-green-400
           "
         >
           <ArrowLeft
@@ -70,8 +70,8 @@ export default function EstoqueDetalheHeader({
           className="
             pointer-events-none absolute right-0 top-0
             h-40 w-40 rounded-bl-full
-            bg-emerald-500/[0.035]
-            dark:bg-emerald-400/[0.035]
+            bg-green-500/[0.035]
+            dark:bg-green-400/[0.035]
           "
         />
 
@@ -202,9 +202,9 @@ function ActionButton({
 }) {
   const styles = {
     green: `
-      border-emerald-500 bg-emerald-500 text-white
-      shadow-sm shadow-emerald-500/20
-      hover:border-emerald-600 hover:bg-emerald-600
+      border-green-500 bg-green-500 text-white
+      shadow-sm shadow-green-500/20
+      hover:border-green-600 hover:bg-green-600
     `,
     red: `
       border-rose-500 bg-rose-500 text-white
@@ -225,7 +225,7 @@ function ActionButton({
         hover:-translate-y-px hover:shadow-md
         focus:outline-none
         focus-visible:ring-2
-        focus-visible:ring-emerald-500/40
+        focus-visible:ring-green-500/40
         ${styles[tone] ?? styles.green}
       `}
     >

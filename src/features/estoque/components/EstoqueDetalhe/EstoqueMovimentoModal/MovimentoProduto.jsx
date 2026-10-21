@@ -6,7 +6,7 @@ export default function MovimentoProduto({
 }) {
   return (
     <div className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50/70 p-3.5 dark:border-white/10 dark:bg-white/[0.025]">
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-emerald-600 shadow-sm dark:bg-white/5 dark:text-emerald-400">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white text-green-600 shadow-sm dark:bg-white/5 dark:text-green-400">
         <Package size={16} />
       </div>
 

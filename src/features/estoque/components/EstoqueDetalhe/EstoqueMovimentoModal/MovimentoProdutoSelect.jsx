@@ -55,9 +55,9 @@ export default function MovimentoProdutoSelect({
             rounded-lg border border-gray-200
             bg-white px-3
             transition-all duration-200
-            focus-within:border-emerald-400
+            focus-within:border-green-400
             focus-within:ring-2
-            focus-within:ring-emerald-500/15
+            focus-within:ring-green-500/15
             dark:border-white/10
             dark:bg-[#11142b]
           "
@@ -123,8 +123,8 @@ export default function MovimentoProdutoSelect({
                     rounded-lg px-3 py-2.5
                     text-left
                     transition-colors
-                    hover:bg-emerald-50
-                    dark:hover:bg-emerald-500/5
+                    hover:bg-green-50
+                    dark:hover:bg-green-500/5
                   "
                 >
                   <div
@@ -132,10 +132,10 @@ export default function MovimentoProdutoSelect({
                       flex h-8 w-8 shrink-0
                       items-center justify-center
                       rounded-lg
-                      bg-emerald-50
-                      text-emerald-600
-                      dark:bg-emerald-500/10
-                      dark:text-emerald-400
+                      bg-green-50
+                      text-green-600
+                      dark:bg-green-500/10
+                      dark:text-green-400
                     "
                   >
                     <Package size={15} />
@@ -155,7 +155,7 @@ export default function MovimentoProdutoSelect({
                   {value?.id === produto.id && (
                     <Check
                       size={15}
-                      className="text-emerald-500"
+                      className="text-green-500"
                     />
                   )}
                 </button>
@@ -177,15 +177,15 @@ export default function MovimentoProdutoSelect({
             className="
               flex items-center justify-between
               rounded-lg border
-              border-emerald-100
-              bg-emerald-50/60
+              border-green-100
+              bg-green-50/60
               px-3 py-2
-              dark:border-emerald-500/15
-              dark:bg-emerald-500/[0.04]
+              dark:border-green-500/15
+              dark:bg-green-500/[0.04]
             "
           >
             <div className="min-w-0">
-              <p className="truncate text-xs font-semibold text-emerald-700 dark:text-emerald-400">
+              <p className="truncate text-xs font-semibold text-green-700 dark:text-green-400">
                 {value.nome}
               </p>
 

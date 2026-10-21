@@ -29,10 +29,10 @@ export default function EstoqueMovimentacoes({
             <div
               className="
                 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl
-                bg-emerald-50 text-emerald-600
+                bg-green-50 text-green-600
                 transition-transform duration-200
                 group-hover:scale-105
-                dark:bg-emerald-500/10 dark:text-emerald-400
+                dark:bg-green-500/10 dark:text-green-400
               "
             >
               <History size={17} strokeWidth={2} />

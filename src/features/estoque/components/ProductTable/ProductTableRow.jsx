@@ -37,7 +37,7 @@ export default function ProductTableRow({
         isActive
           ? "bg-violet-50/60 dark:bg-violet-500/5"
           : isSelected
-            ? "bg-emerald-50/40 dark:bg-emerald-500/5"
+            ? "bg-green-50/40 dark:bg-green-500/5"
             : "hover:bg-gray-50 dark:hover:bg-[#171A38]",
       )}
     >
@@ -50,7 +50,7 @@ export default function ProductTableRow({
           type="checkbox"
           checked={isSelected}
           onChange={() => onToggleSelect(produto.id)}
-          className="h-4 w-4 cursor-pointer rounded border-gray-300 text-emerald-600 focus:ring-emerald-500 dark:border-gray-600"
+          className="h-4 w-4 cursor-pointer rounded border-gray-300 text-green-600 focus:ring-green-500 dark:border-gray-600"
         />
       </td>
 
@@ -63,7 +63,7 @@ export default function ProductTableRow({
           />
 
           <div className="min-w-0">
-            <p className="truncate font-semibold text-gray-900 transition-colors group-hover:text-emerald-600 dark:text-white dark:group-hover:text-emerald-400">
+            <p className="truncate font-semibold text-gray-900 transition-colors group-hover:text-green-600 dark:text-white dark:group-hover:text-green-400">
               {produto.nome}
             </p>
 
@@ -116,7 +116,7 @@ export default function ProductTableRow({
               ? "text-rose-600 dark:text-rose-400"
               : produto.disponivel <= produto.estMinimo
                 ? "text-amber-600 dark:text-amber-400"
-                : "text-emerald-600 dark:text-emerald-400",
+                : "text-green-600 dark:text-green-400",
           )}
         >
           {produto.disponivel}

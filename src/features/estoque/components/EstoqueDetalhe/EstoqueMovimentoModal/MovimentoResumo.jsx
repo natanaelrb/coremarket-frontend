@@ -38,9 +38,9 @@ export default function MovimentoResumo({
       ${
         isEntrada
           ? `
-            border-emerald-100 bg-emerald-50/60
-            dark:border-emerald-500/15
-            dark:bg-emerald-500/[0.04]
+            border-green-100 bg-green-50/60
+            dark:border-green-500/15
+            dark:bg-green-500/[0.04]
           `
           : `
             border-rose-100 bg-rose-50/60
@@ -70,7 +70,7 @@ export default function MovimentoResumo({
           text-lg font-bold
           ${
             isEntrada
-              ? "text-emerald-500"
+              ? "text-green-500"
               : "text-rose-500"
           }
         `}>
