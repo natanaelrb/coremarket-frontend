@@ -1,4 +1,4 @@
-﻿import { Eye, MoreHorizontal } from "lucide-react";
+import { Eye, MoreHorizontal } from "lucide-react";
 
 import {
   formatDate,
@@ -114,17 +114,17 @@ export function LotesTable({ produto }) {
                               className="
                                 rounded-full
                                 border
-                                border-emerald-200
-                                bg-emerald-50
+                                border-green-200
+                                bg-green-50
                                 px-1.5
                                 py-0.5
                                 text-[8px]
                                 font-semibold
-                                text-emerald-600
+                                text-green-600
 
-                                dark:border-emerald-500/20
-                                dark:bg-emerald-500/10
-                                dark:text-emerald-300
+                                dark:border-green-500/20
+                                dark:bg-green-500/10
+                                dark:text-green-300
                               "
                             >
                               Lote principal
@@ -160,7 +160,7 @@ export function LotesTable({ produto }) {
                                     ? "bg-red-500"
                                     : dias <= 30
                                       ? "bg-amber-500"
-                                      : "bg-emerald-500"
+                                      : "bg-green-500"
                               }
                             `}
                           />
@@ -318,7 +318,7 @@ export function LotesTable({ produto }) {
                 items-center
                 justify-center
                 rounded-lg
-                bg-emerald-500
+                bg-green-500
                 text-xs
                 font-bold
                 text-white

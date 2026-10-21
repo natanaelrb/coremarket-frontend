@@ -1,4 +1,4 @@
-﻿
+
 /**
  * Linha da tabela de produtos.
  * Puramente apresentacional; toda lógica vem via props/hooks do pai.
@@ -27,7 +27,7 @@ export function ProductRow({
       ? "text-red-500 dark:text-red-400"
       : estoque <= estoqueMinimo
         ? "text-amber-500 dark:text-amber-400"
-        : "text-emerald-600 dark:text-emerald-400";
+        : "text-green-600 dark:text-green-400";
 
   const detailLabel = `Abrir detalhes de ${produto.nome || "produto"}`;
 
@@ -51,7 +51,7 @@ export function ProductRow({
         dark:hover:bg-white/[0.035]
         ${
           isSelected
-            ? "bg-emerald-50/70 hover:bg-emerald-50 dark:bg-emerald-500/[0.08] dark:hover:bg-emerald-500/[0.11]"
+            ? "bg-green-50/70 hover:bg-green-50 dark:bg-green-500/[0.08] dark:hover:bg-green-500/[0.11]"
             : ""
         }
       `}
@@ -78,7 +78,7 @@ export function ProductRow({
               transition-transform duration-200
               hover:scale-105
               focus-visible:ring-2
-              focus-visible:ring-emerald-500/50
+              focus-visible:ring-green-500/50
               motion-reduce:transform-none
             "
           >
@@ -103,12 +103,12 @@ export function ProductRow({
             text-slate-500
             outline-none
             transition-colors duration-150
-            hover:text-emerald-600
+            hover:text-green-600
             focus-visible:rounded-sm
             focus-visible:ring-2
-            focus-visible:ring-emerald-500/40
+            focus-visible:ring-green-500/40
             dark:text-slate-400
-            dark:hover:text-emerald-400
+            dark:hover:text-green-400
           "
         >
           {produto.codigo || "—"}
@@ -144,12 +144,12 @@ export function ProductRow({
             text-slate-700
             outline-none
             transition-colors duration-150
-            hover:text-emerald-600
+            hover:text-green-600
             focus-visible:rounded-sm
             focus-visible:ring-2
-            focus-visible:ring-emerald-500/40
+            focus-visible:ring-green-500/40
             dark:text-slate-100
-            dark:hover:text-emerald-400
+            dark:hover:text-green-400
           "
         >
           {produto.nome || "Produto sem nome"}

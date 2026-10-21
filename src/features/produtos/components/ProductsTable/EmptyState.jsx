@@ -1,4 +1,4 @@
-﻿
+
 // Estado vazio exibido quando os filtros não retornam nenhum produto.
 import { PackageSearch, RotateCcw } from "lucide-react";
 
@@ -31,7 +31,7 @@ export function EmptyState({ onClearFilters }) {
           className="
             absolute inset-0
             rounded-2xl
-            bg-emerald-500/[0.04]
+            bg-green-500/[0.04]
             dark:bg-green-500/[0.06]
           "
           aria-hidden="true"

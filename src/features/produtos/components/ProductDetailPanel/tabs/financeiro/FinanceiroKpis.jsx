@@ -1,4 +1,4 @@
-﻿import {
+import {
   CircleDollarSign,
   Percent,
   TrendingUp,
@@ -36,17 +36,17 @@ export function FinanceiroKpis({
         value={formatPercent(margem)}
         helper="Margem sobre a venda"
         iconClassName="
-          border-emerald-200
-          bg-emerald-50
-          text-emerald-600
+          border-green-200
+          bg-green-50
+          text-green-600
 
-          dark:border-emerald-500/20
-          dark:bg-emerald-500/10
-          dark:text-emerald-400
+          dark:border-green-500/20
+          dark:bg-green-500/10
+          dark:text-green-400
         "
         valueClassName="
-          text-emerald-600
-          dark:text-emerald-400
+          text-green-600
+          dark:text-green-400
         "
       />
 
@@ -56,17 +56,17 @@ export function FinanceiroKpis({
         value={formatCurrency(lucro)}
         helper="Resultado por unidade"
         iconClassName="
-          border-emerald-200
-          bg-emerald-50
-          text-emerald-600
+          border-green-200
+          bg-green-50
+          text-green-600
 
-          dark:border-emerald-500/20
-          dark:bg-emerald-500/10
-          dark:text-emerald-400
+          dark:border-green-500/20
+          dark:bg-green-500/10
+          dark:text-green-400
         "
         valueClassName="
-          text-emerald-600
-          dark:text-emerald-400
+          text-green-600
+          dark:text-green-400
         "
       />
 

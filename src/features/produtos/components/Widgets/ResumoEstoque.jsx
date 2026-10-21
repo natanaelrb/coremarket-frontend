@@ -1,4 +1,4 @@
-﻿// Widget: resumo textual de indicadores de estoque (custo total, sem estoque, reservado, trânsito).
+// Widget: resumo textual de indicadores de estoque (custo total, sem estoque, reservado, trânsito).
 import { WidgetCard } from './WidgetCard';
 import { formatCurrency, formatNumber } from '../../utils/formatters';
 
@@ -7,7 +7,7 @@ export function ResumoEstoque({ resumo, onVerRelatorio }) {
     {
       label: 'Estoque total (custo)',
       value: formatCurrency(resumo.estoqueTotalCusto),
-      valueClassName: 'text-emerald-600 dark:text-emerald-400',
+      valueClassName: 'text-green-600 dark:text-green-400',
     },
     {
       label: 'Produtos sem estoque',

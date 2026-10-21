@@ -1,4 +1,4 @@
-﻿import {
+import {
   Barcode,
   Boxes,
   Building2,
@@ -12,10 +12,10 @@ import {
 } from "../../constants/novoProduto.constants";
 
 const INPUT =
-  "h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/10 dark:border-white/[0.08] dark:bg-[#111827] dark:text-white dark:placeholder:text-slate-500";
+  "h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-green-400 focus:ring-2 focus:ring-green-500/10 dark:border-white/[0.08] dark:bg-[#111827] dark:text-white dark:placeholder:text-slate-500";
 
 const INPUT_ICON =
-  "h-10 w-full rounded-lg border border-slate-200 bg-white pl-9 pr-3 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-emerald-400 focus:ring-2 focus:ring-emerald-500/10 dark:border-white/[0.08] dark:bg-[#111827] dark:text-white";
+  "h-10 w-full rounded-lg border border-slate-200 bg-white pl-9 pr-3 text-sm text-slate-800 outline-none transition-all placeholder:text-slate-400 focus:border-green-400 focus:ring-2 focus:ring-green-500/10 dark:border-white/[0.08] dark:bg-[#111827] dark:text-white";
 
 function Field({
   label,
@@ -35,7 +35,7 @@ function Field({
         {label}
 
         {required && (
-          <span className="ml-1 text-emerald-500">
+          <span className="ml-1 text-green-500">
             *
           </span>
         )}
@@ -80,7 +80,7 @@ function Select({
         {label}
 
         {required && (
-          <span className="ml-1 text-emerald-500">
+          <span className="ml-1 text-green-500">
             *
           </span>
         )}

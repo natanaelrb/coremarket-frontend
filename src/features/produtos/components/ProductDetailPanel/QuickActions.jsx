@@ -1,4 +1,4 @@
-﻿import {
+import {
   Edit3,
   Copy,
   Barcode,
@@ -130,17 +130,17 @@ export function QuickActions({
                 ${
                   action.primary
                     ? `
-                      border-emerald-500
-                      bg-emerald-500
+                      border-green-500
+                      bg-green-500
                       text-white
                       shadow-[0_4px_12px_rgba(16,185,129,0.12)]
-                      hover:bg-emerald-400
-                      hover:border-emerald-400
+                      hover:bg-green-400
+                      hover:border-green-400
 
-                      dark:border-emerald-500/40
-                      dark:bg-emerald-500
+                      dark:border-green-500/40
+                      dark:bg-green-500
                       dark:text-white
-                      dark:hover:bg-emerald-400
+                      dark:hover:bg-green-400
                     `
                     : `
                       border-slate-200

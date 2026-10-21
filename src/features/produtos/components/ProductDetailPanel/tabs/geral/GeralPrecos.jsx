@@ -1,4 +1,4 @@
-﻿import {
+import {
   CircleDollarSign,
   Tag,
 } from "lucide-react";
@@ -25,12 +25,12 @@ export function GeralPrecos({
         icon={CircleDollarSign}
         title="Preços"
         iconClassName="
-            border-emerald-200
-            bg-emerald-50
-            text-emerald-600
-            dark:border-emerald-500/20
-            dark:bg-emerald-500/10
-            dark:text-emerald-400
+            border-green-200
+            bg-green-50
+            text-green-600
+            dark:border-green-500/20
+            dark:bg-green-500/10
+            dark:text-green-400
         "
         />
 
@@ -40,12 +40,12 @@ export function GeralPrecos({
             label="Preço de compra"
             value={formatCurrency(produto.precoCompra)}
             iconClassName="
-                border-emerald-200
-                bg-emerald-50
-                text-emerald-600
-                dark:border-emerald-500/20
-                dark:bg-emerald-500/10
-                dark:text-emerald-400
+                border-green-200
+                bg-green-50
+                text-green-600
+                dark:border-green-500/20
+                dark:bg-green-500/10
+                dark:text-green-400
             "
             />
 
@@ -68,12 +68,12 @@ export function GeralPrecos({
             label="Margem"
             value={formatPercent(margem)}
             iconClassName="
-                border-emerald-200
-                bg-emerald-50
-                text-emerald-600
-                dark:border-emerald-500/20
-                dark:bg-emerald-500/10
-                dark:text-emerald-400
+                border-green-200
+                bg-green-50
+                text-green-600
+                dark:border-green-500/20
+                dark:bg-green-500/10
+                dark:text-green-400
             "
             />
 
@@ -82,16 +82,16 @@ export function GeralPrecos({
             label="Lucro"
             value={formatCurrency(lucro)}
             valueClassName="
-                text-emerald-600
-                dark:text-emerald-400
+                text-green-600
+                dark:text-green-400
             "
             iconClassName="
-                border-emerald-300
-                bg-emerald-50
-                text-emerald-700
-                dark:border-emerald-400/30
-                dark:bg-emerald-500/15
-                dark:text-emerald-300
+                border-green-300
+                bg-green-50
+                text-green-700
+                dark:border-green-400/30
+                dark:bg-green-500/15
+                dark:text-green-300
             "
             />
       </div>

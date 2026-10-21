@@ -1,4 +1,4 @@
-﻿import {
+import {
   CheckCircle2,
   Clock3,
   Package,
@@ -67,16 +67,16 @@ export function GeralEstoque({
           label="Disponível"
           value={disponivel}
           valueClassName="
-            text-emerald-600
-            dark:text-emerald-400
+            text-green-600
+            dark:text-green-400
           "
           iconClassName="
-            border-emerald-200
-            bg-emerald-50
-            text-emerald-600
-            dark:border-emerald-500/20
-            dark:bg-emerald-500/10
-            dark:text-emerald-400
+            border-green-200
+            bg-green-50
+            text-green-600
+            dark:border-green-500/20
+            dark:bg-green-500/10
+            dark:text-green-400
           "
         />
 

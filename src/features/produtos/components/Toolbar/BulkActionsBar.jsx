@@ -1,4 +1,4 @@
-﻿// Barra de ações em massa exibida acima da tabela quando há linhas selecionadas.
+// Barra de ações em massa exibida acima da tabela quando há linhas selecionadas.
 
 import { CheckCheck, ChevronDown } from "lucide-react";
 
@@ -33,31 +33,31 @@ export function BulkActionsBar({
         className="
           group inline-flex h-9 items-center gap-2
           rounded-xl
-          border border-emerald-200/80
-          bg-emerald-50
+          border border-green-200/80
+          bg-green-50
           px-3
-          text-xs font-semibold text-emerald-700
+          text-xs font-semibold text-green-700
           shadow-[0_1px_3px_rgba(16,185,129,0.05)]
           transition-all duration-200
-          hover:border-emerald-300
-          hover:bg-emerald-100/70
-          dark:border-emerald-400/20
-          dark:bg-emerald-500/[0.10]
-          dark:text-emerald-300
-          dark:hover:border-emerald-400/30
-          dark:hover:bg-emerald-500/[0.15]
+          hover:border-green-300
+          hover:bg-green-100/70
+          dark:border-green-400/20
+          dark:bg-green-500/[0.10]
+          dark:text-green-300
+          dark:hover:border-green-400/30
+          dark:hover:bg-green-500/[0.15]
         "
       >
         <span
           className="
             flex h-5 w-5 items-center justify-center
             rounded-md
-            bg-emerald-500/10
-            text-emerald-600
+            bg-green-500/10
+            text-green-600
             transition-transform duration-200
             group-hover:scale-110
-            dark:bg-emerald-400/10
-            dark:text-emerald-300
+            dark:bg-green-400/10
+            dark:text-green-300
           "
         >
           <CheckCheck
@@ -89,22 +89,22 @@ export function BulkActionsBar({
               outline-none
               transition-all duration-200
               hover:-translate-y-px
-              hover:border-emerald-300
-              hover:bg-emerald-50/60
-              hover:text-emerald-700
+              hover:border-green-300
+              hover:bg-green-50/60
+              hover:text-green-700
               hover:shadow-[0_4px_12px_rgba(16,185,129,0.08)]
-              focus-visible:border-emerald-500
+              focus-visible:border-green-500
               focus-visible:ring-4
-              focus-visible:ring-emerald-500/10
+              focus-visible:ring-green-500/10
               active:translate-y-0
               dark:border-white/[0.09]
               dark:bg-white/[0.035]
               dark:text-slate-300
-              dark:hover:border-emerald-400/30
-              dark:hover:bg-emerald-500/[0.08]
-              dark:hover:text-emerald-300
+              dark:hover:border-green-400/30
+              dark:hover:bg-green-500/[0.08]
+              dark:hover:text-green-300
               dark:hover:shadow-none
-              dark:focus-visible:border-emerald-400
+              dark:focus-visible:border-green-400
             "
             aria-label="Abrir ações em massa"
           >

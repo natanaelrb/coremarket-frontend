@@ -1,4 +1,4 @@
-﻿import {
+import {
   AlertTriangle,
   ArrowUpRight,
   CheckCircle2,
@@ -78,7 +78,7 @@ export function NiveisEstoque({ produto }) {
           icon={CheckCircle2}
           label="Disponível"
           value={`${disponivel} un`}
-          iconClassName="bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400"
+          iconClassName="bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400"
         />
 
         <StockRow
@@ -92,7 +92,7 @@ export function NiveisEstoque({ produto }) {
           icon={ArrowUpRight}
           label="Estoque máximo"
           value={`${estoqueMaximo} un`}
-          iconClassName="bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400"
+          iconClassName="bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-400"
         />
 
         <StockRow
@@ -116,7 +116,7 @@ export function NiveisEstoque({ produto }) {
 
         <div className="h-2 overflow-hidden rounded-full bg-slate-100 dark:bg-[#12365a]">
           <div
-            className="h-full rounded-full bg-emerald-500 transition-all duration-500 dark:bg-emerald-400"
+            className="h-full rounded-full bg-green-500 transition-all duration-500 dark:bg-green-400"
             style={{ width: `${ocupacao}%` }}
           />
         </div>

@@ -1,4 +1,4 @@
-﻿
+
 /**
  * Cabeçalho da tabela:
  * checkbox "selecionar tudo" + colunas ordenáveis.
@@ -140,7 +140,7 @@ export function ProductsTableHeader({
                   transition-colors duration-200
                   hover:text-slate-800
                   focus-visible:ring-2
-                  focus-visible:ring-emerald-500/40
+                  focus-visible:ring-green-500/40
                   dark:hover:text-white
                 "
               >

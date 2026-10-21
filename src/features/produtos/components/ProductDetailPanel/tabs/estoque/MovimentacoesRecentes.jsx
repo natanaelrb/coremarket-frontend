@@ -1,4 +1,4 @@
-﻿import {
+import {
   ArrowDownLeft,
   ArrowUpRight,
   Warehouse,
@@ -26,7 +26,7 @@ function MovementBadge({ type }) {
 
         ${
           isEntry
-            ? "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-300"
+            ? "bg-green-50 text-green-600 dark:bg-green-500/10 dark:text-green-300"
             : "bg-rose-50 text-rose-600 dark:bg-rose-500/10 dark:text-rose-300"
         }
       `}
@@ -72,10 +72,10 @@ export function MovimentacoesRecentes({ produto }) {
           className="
             text-[10px]
             font-semibold
-            text-emerald-600
-            hover:text-emerald-700
-            dark:text-emerald-400
-            dark:hover:text-emerald-300
+            text-green-600
+            hover:text-green-700
+            dark:text-green-400
+            dark:hover:text-green-300
           "
         >
           Ver histórico →

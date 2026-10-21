@@ -1,4 +1,4 @@
-﻿import { cn } from "../../../../shared/utils/classNames.js";
+import { cn } from "../../../../shared/utils/classNames.js";
 
 const tabs = [
   {
@@ -79,7 +79,7 @@ export function DetailTabs({
                   hover:border-[#bbf7d0]
                   hover:text-[#16a34a]
                   dark:text-slate-400
-                  dark:hover:border-emerald-900
+                  dark:hover:border-green-900
                   dark:hover:text-[#4ade80]
                 `,
           )}

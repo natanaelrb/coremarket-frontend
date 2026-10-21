@@ -1,4 +1,4 @@
-﻿export function LoteCard({
+export function LoteCard({
   icon: Icon,
   label,
   value,
@@ -87,10 +87,10 @@
 export function LoteStatusBadge({ status }) {
   const styles = {
     success: `
-      bg-emerald-50
-      text-emerald-600
-      dark:bg-emerald-500/10
-      dark:text-emerald-300
+      bg-green-50
+      text-green-600
+      dark:bg-green-500/10
+      dark:text-green-300
     `,
 
     warning: `

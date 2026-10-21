@@ -1,4 +1,4 @@
-﻿// Card individual de KPI. Puramente apresentacional — recebe todos os dados via props.
+// Card individual de KPI. Puramente apresentacional — recebe todos os dados via props.
 export function KpiCard({
   icon: Icon,
   iconBgClass,
@@ -107,7 +107,7 @@ export function KpiCard({
         className="
           pointer-events-none absolute inset-x-4 bottom-0
           h-px origin-left scale-x-0
-          bg-gradient-to-r from-emerald-500/60 to-transparent
+          bg-gradient-to-r from-green-500/60 to-transparent
           transition-transform duration-300
           group-hover:scale-x-100
         "

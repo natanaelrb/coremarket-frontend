@@ -1,4 +1,4 @@
-﻿
+
 /**
  * Menu "Colunas":
  * permite ligar/desligar a visibilidade de colunas opcionais da tabela.
@@ -39,9 +39,9 @@ export function ColumnsMenu({
             hover:border-slate-300
             hover:bg-slate-50
             hover:text-slate-800
-            focus-visible:border-emerald-400
+            focus-visible:border-green-400
             focus-visible:ring-4
-            focus-visible:ring-emerald-500/10
+            focus-visible:ring-green-500/10
             dark:border-white/[0.10]
             dark:bg-[#151c2b]
             dark:text-slate-300
@@ -86,10 +86,10 @@ export function ColumnsMenu({
                 outline-none
                 transition-colors duration-150
                 focus-visible:ring-2
-                focus-visible:ring-emerald-500/40
+                focus-visible:ring-green-500/40
                 ${
                   visible
-                    ? "bg-emerald-50/70 text-emerald-700 dark:bg-emerald-500/[0.08] dark:text-emerald-300"
+                    ? "bg-green-50/70 text-green-700 dark:bg-green-500/[0.08] dark:text-green-300"
                     : "text-slate-600 hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-white/[0.06]"
                 }
               `}
@@ -105,7 +105,7 @@ export function ColumnsMenu({
                   transition-colors duration-150
                   ${
                     visible
-                      ? "border-emerald-200 bg-emerald-100 text-emerald-600 dark:border-emerald-400/20 dark:bg-emerald-500/15 dark:text-emerald-300"
+                      ? "border-green-200 bg-green-100 text-green-600 dark:border-green-400/20 dark:bg-green-500/15 dark:text-green-300"
                       : "border-slate-200 text-transparent dark:border-white/[0.12]"
                   }
                 `}

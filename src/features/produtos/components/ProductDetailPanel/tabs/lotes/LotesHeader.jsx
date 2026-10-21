@@ -1,4 +1,4 @@
-﻿import { Boxes, Plus } from "lucide-react";
+import { Boxes, Plus } from "lucide-react";
 
 export function LotesHeader() {
   return (
@@ -74,8 +74,8 @@ export function LotesHeader() {
           gap-2
           rounded-lg
           border
-          border-emerald-500
-          bg-emerald-500
+          border-green-500
+          bg-green-500
           px-3.5
           text-xs
           font-semibold
@@ -83,13 +83,13 @@ export function LotesHeader() {
           shadow-sm
           transition-all
           duration-200
-          hover:bg-emerald-600
+          hover:bg-green-600
           hover:shadow-md
           active:scale-[0.98]
 
-          dark:border-emerald-400
-          dark:bg-emerald-500
-          dark:hover:bg-emerald-400
+          dark:border-green-400
+          dark:bg-green-500
+          dark:hover:bg-green-400
         "
       >
         <Plus size={15} strokeWidth={2.3} />

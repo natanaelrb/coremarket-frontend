@@ -1,4 +1,4 @@
-﻿import { CalendarDays } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 
 import { formatDate } from "../../../../utils/formatters";
 
@@ -29,7 +29,7 @@ function getStatus(dias) {
   return {
     label: "OK",
     className:
-      "bg-emerald-50 text-emerald-600 border border-emerald-200 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20",
+      "bg-green-50 text-green-600 border border-green-200 dark:bg-green-500/10 dark:text-green-400 dark:border-green-500/20",
   };
 }
 
@@ -100,11 +100,11 @@ export function GeralValidade({
             type="button"
             className="
               mt-4 text-[10px] font-semibold
-              text-emerald-600
+              text-green-600
               transition-colors
-              hover:text-emerald-700
-              dark:text-emerald-400
-              dark:hover:text-emerald-300
+              hover:text-green-700
+              dark:text-green-400
+              dark:hover:text-green-300
             "
           >
             Exibir todos os lotes →

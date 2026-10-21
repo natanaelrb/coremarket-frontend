@@ -1,4 +1,4 @@
-﻿
+
 /**
  * Menu "Ordenar":
  * atalhos para ordenar rapidamente por colunas comuns.
@@ -59,9 +59,9 @@ export function SortMenu({ requestSort }) {
             hover:border-slate-300
             hover:bg-slate-50
             hover:text-slate-800
-            focus-visible:border-emerald-400
+            focus-visible:border-green-400
             focus-visible:ring-4
-            focus-visible:ring-emerald-500/10
+            focus-visible:ring-green-500/10
             dark:border-white/[0.10]
             dark:bg-[#151c2b]
             dark:text-slate-300

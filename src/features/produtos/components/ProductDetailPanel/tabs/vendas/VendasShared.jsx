@@ -1,4 +1,4 @@
-﻿export function VendaKpi({
+export function VendaKpi({
   icon: Icon,
   label,
   value,
@@ -94,15 +94,15 @@ export function VendaStatusBadge() {
         items-center
         gap-1.5
         rounded-full
-        bg-emerald-50
+        bg-green-50
         px-2
         py-1
         text-[9px]
         font-bold
-        text-emerald-600
+        text-green-600
 
-        dark:bg-emerald-500/10
-        dark:text-emerald-300
+        dark:bg-green-500/10
+        dark:text-green-300
       "
     >
       <span className="h-1.5 w-1.5 rounded-full bg-current" />

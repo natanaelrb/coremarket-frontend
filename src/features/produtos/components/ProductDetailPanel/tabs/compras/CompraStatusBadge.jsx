@@ -1,4 +1,4 @@
-﻿export function CompraStatusBadge({ status }) {
+export function CompraStatusBadge({ status }) {
   const isPending = status === "Pendente";
 
   return (
@@ -8,7 +8,7 @@
         "text-xs font-semibold",
         isPending
           ? "bg-amber-50 text-amber-700"
-          : "bg-emerald-50 text-emerald-700",
+          : "bg-green-50 text-green-700",
       ].join(" ")}
     >
       {status}

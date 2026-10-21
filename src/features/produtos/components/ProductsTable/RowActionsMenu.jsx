@@ -1,4 +1,4 @@
-﻿// Menu de ações de uma linha da tabela (⋮):
+// Menu de ações de uma linha da tabela (⋮):
 // editar, duplicar, código de barras, etiqueta e excluir.
 
 import {
@@ -43,14 +43,14 @@ export function RowActionsMenu({
               hover:border-slate-200
               hover:bg-white
               hover:text-slate-700
-              focus-visible:border-emerald-400
+              focus-visible:border-green-400
               focus-visible:ring-4
-              focus-visible:ring-emerald-500/10
+              focus-visible:ring-green-500/10
               dark:text-slate-500
               dark:hover:border-white/[0.10]
               dark:hover:bg-white/[0.06]
               dark:hover:text-slate-200
-              dark:focus-visible:border-emerald-400
+              dark:focus-visible:border-green-400
             "
           >
             <MoreVertical size={16} strokeWidth={2} aria-hidden="true" />

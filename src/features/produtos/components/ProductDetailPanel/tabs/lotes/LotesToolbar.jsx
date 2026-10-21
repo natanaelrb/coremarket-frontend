@@ -1,4 +1,4 @@
-﻿import {
+import {
   ListFilter,
   Search,
   SlidersHorizontal,
@@ -94,7 +94,7 @@ export function LotesToolbar() {
 
           Filtros
 
-          <span className="text-emerald-500">→</span>
+          <span className="text-green-500">→</span>
         </button>
 
         <button

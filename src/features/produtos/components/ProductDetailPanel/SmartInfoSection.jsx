@@ -1,4 +1,4 @@
-﻿import {
+import {
   TrendingUp,
   Crown,
   RefreshCw,
@@ -83,16 +83,16 @@ function SmartMetric({
             shrink-0
             rounded-full
             border
-            border-emerald-200
-            bg-emerald-50
+            border-green-200
+            bg-green-50
             px-2 py-0.5
             text-[8px]
             font-bold
-            text-emerald-600
+            text-green-600
 
-            dark:border-emerald-400/10
-            dark:bg-emerald-500/10
-            dark:text-emerald-300
+            dark:border-green-400/10
+            dark:bg-green-500/10
+            dark:text-green-300
           "
         >
           ↑ {variation}
@@ -220,13 +220,13 @@ export function SmartInfoSection({
             label="Dias sem vender"
             value={diasSemVender}
             iconClassName="
-              border-emerald-200
-              bg-emerald-50
-              text-emerald-600
+              border-green-200
+              bg-green-50
+              text-green-600
 
-              dark:border-emerald-400/20
-              dark:bg-emerald-400/10
-              dark:text-emerald-300
+              dark:border-green-400/20
+              dark:bg-green-400/10
+              dark:text-green-300
             "
           />
         </div>

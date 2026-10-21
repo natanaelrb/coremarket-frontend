@@ -1,4 +1,4 @@
-﻿import { Eye, MoreHorizontal } from "lucide-react";
+import { Eye, MoreHorizontal } from "lucide-react";
 
 import {
   formatCurrency,
@@ -292,12 +292,12 @@ export function VendasTable({
             className="
               text-[9px]
               font-semibold
-              text-emerald-600
+              text-green-600
               transition-colors
-              hover:text-emerald-700
+              hover:text-green-700
 
-              dark:text-emerald-400
-              dark:hover:text-emerald-300
+              dark:text-green-400
+              dark:hover:text-green-300
             "
           >
             Ver histórico completo →

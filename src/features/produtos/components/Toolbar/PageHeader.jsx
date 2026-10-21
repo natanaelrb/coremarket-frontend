@@ -1,4 +1,4 @@
-﻿// Cabeçalho da página: título, descrição, breadcrumb e ações principais.
+// Cabeçalho da página: título, descrição, breadcrumb e ações principais.
 import {
   Upload,
   Download,
@@ -40,7 +40,7 @@ export function PageHeader({
               </li>
 
               <li
-                className="text-sm font-medium text-emerald-600"
+                className="text-sm font-medium text-green-600"
                 aria-current="page"
               >
                 Produtos
@@ -53,12 +53,12 @@ export function PageHeader({
               className="
                 flex h-9 w-9 shrink-0 items-center justify-center
                 rounded-lg
-                bg-emerald-50
-                text-emerald-600
-                ring-1 ring-emerald-100
-                dark:bg-emerald-500/10
-                dark:text-emerald-400
-                dark:ring-emerald-500/20
+                bg-green-50
+                text-green-600
+                ring-1 ring-green-100
+                dark:bg-green-500/10
+                dark:text-green-400
+                dark:ring-green-500/20
               "
             >
               <Package size={18} strokeWidth={2.2} />
