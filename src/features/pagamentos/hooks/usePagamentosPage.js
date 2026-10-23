@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { useCallback, useMemo } from 'react';
 import toast from 'react-hot-toast';
 import { usePeriodo } from './usePeriodo.js';
@@ -10,7 +11,6 @@ import { useChartsData } from './useChartsData.js';
 import { useAlertas } from './useAlertas.js';
 import { useProximosVencimentos } from './useProximosVencimentos.js';
 import { usePrevisaoFinanceira } from './usePrevisaoFinanceira.js';
-import { usePaymentDetail } from './usePaymentDetail.js';
 import { useRegistrarRecebimento } from './useRegistrarRecebimento.js';
 import { useRegistrarPagamento } from './useRegistrarPagamento.js';
 import { useResumoRapido } from './useResumoRapido.js';
@@ -23,6 +23,7 @@ import { pagamentoService } from '../services/pagamentoService.js';
  * a pure composition layer with zero business logic.
  */
 export function usePagamentosPage() {
+  const navigate = useNavigate();
   const periodo = usePeriodo('this-month');
   const { pagamentos, isLoading, error } = usePagamentos(periodo.range);
   const { tabs, activeTab, activeTabKey, setActiveTabKey } = usePagamentosTabs(pagamentos);
@@ -32,7 +33,6 @@ export function usePagamentosPage() {
   const { serieDiaria, distribuicaoForma } = useChartsData(periodo.range, pagamentos);
   const { alertas } = useAlertas(periodo.range);
   const { itens: proximosVencimentos } = useProximosVencimentos();
-  const detail = usePaymentDetail();
   const { resumo: resumoRapido } = useResumoRapido();
 
   const visiblePagamentos = useMemo(() => {
@@ -55,12 +55,10 @@ export function usePagamentosPage() {
       try {
         await pagamentoService.estornar(id);
         toast.success('Pagamento estornado.');
-        detail.closeDetail();
       } catch {
         toast.error('Não foi possível estornar o pagamento.');
       }
     },
-    [detail]
   );
 
   const handleBaixarComprovante = useCallback(async (id) => {
@@ -94,11 +92,10 @@ export function usePagamentosPage() {
     proximosVencimentos,
     previsao,
     pagination,
-    detail,
     resumoRapido,
     recebimentoModal,
     pagamentoModal,
-    onSelectPagamento: detail.openDetail,
+    onSelectPagamento: (id) => navigate(`/pagamentos/${id}`),
     onEstornar: handleEstornar,
     onBaixarComprovante: handleBaixarComprovante,
     onAlertaAction: handleAlertaAction,

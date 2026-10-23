@@ -17,6 +17,7 @@ import ProdutoDetalhe from "../pages/ProdutoDetalhe";
 import EstoqueDetalhe from "../pages/EstoqueDetalhe";
 import MovimentacaoDetalhe from "../pages/MovimentacaoDetalhe";
 import CompraDetalhe from "../pages/CompraDetalhe";
+import PagamentoDetalhe from "../pages/PagamentoDetalhe";
 
 import PageTransition from "../shared/components/transitions/PageTransition.jsx";
 
@@ -64,6 +65,10 @@ export default function AppRoutes() {
           path="/compras/:id" 
           element={<CompraDetalhe />} 
         />
+
+        <Route 
+          path="/pagamentos/:id" 
+          element={<PagamentoDetalhe />} />
 
         <Route
           path="/contas-pagar"
