@@ -1,22 +1,42 @@
 /**
- * Labeled section wrapper used throughout the detail panel
- * ("Informações gerais", "Origem", "Datas", "Dados da transação").
+ * Seção reutilizável para organizar informações na página de detalhes
+ * de pagamentos do CoreMarket.
  */
 export function DetailSection({ title, children }) {
   return (
-    <div className="border-b border-slate-100 py-4 first:pt-0 last:border-0 dark:border-slate-800">
-      <h4 className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-slate-400">{title}</h4>
-      <dl className="space-y-2">{children}</dl>
-    </div>
+    <section className="border-b border-slate-200/70 py-5 first:pt-0 last:border-0 last:pb-0 dark:border-white/[0.08]">
+      <h4 className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-slate-500 dark:text-slate-400">
+        <span
+          aria-hidden="true"
+          className="h-4 w-1 rounded-full bg-emerald-500"
+        />
+        {title}
+      </h4>
+
+      <dl className="space-y-3.5">{children}</dl>
+    </section>
   );
 }
 
-/** A single "label ... value" row inside a DetailSection. */
-export function DetailRow({ label, children, valueClassName = '' }) {
+/**
+ * Linha de informação com rótulo e valor.
+ */
+export function DetailRow({
+  label,
+  children,
+  valueClassName = '',
+}) {
   return (
-    <div className="flex items-center justify-between gap-4 text-sm">
-      <dt className="text-slate-500 dark:text-slate-400">{label}</dt>
-      <dd className={`text-right font-medium text-slate-800 dark:text-slate-100 ${valueClassName}`}>{children}</dd>
+    <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] items-start gap-4 text-sm">
+      <dt className="min-w-0 break-words leading-5 text-slate-500 dark:text-slate-400">
+        {label}
+      </dt>
+
+      <dd
+        className={`min-w-0 break-words text-right font-semibold leading-5 text-slate-800 dark:text-slate-100 ${valueClassName}`}
+      >
+        {children}
+      </dd>
     </div>
   );
 }
