@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { ThemeContext } from '../context/ThemeContext.jsx'
+import { ThemeContext } from "../contexts/ThemeContext.jsx";
 
 /** Reads the current theme + toggler from ThemeContext. */
 export function useTheme() {

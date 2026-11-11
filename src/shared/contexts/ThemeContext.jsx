@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+﻿import { createContext, useContext, useState, useEffect } from "react";
 
 const STORAGE_KEY = "coremarket-tema";
 
@@ -6,11 +6,11 @@ const STORAGE_KEY = "coremarket-tema";
 // Contexto & Provider
 // ==========================================
 
-const ThemeContext = createContext();
+export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
 
-  // Detecta a preferência inicial (localStorage > sistema > default)
+  // Detecta a preferÃªncia inicial (localStorage > sistema > default)
   const [tema, setTema] = useState(() => {
     if (typeof window === "undefined") return "light";
 
@@ -34,7 +34,7 @@ export function ThemeProvider({ children }) {
     try {
       window.localStorage?.setItem(STORAGE_KEY, tema);
     } catch {
-      // localStorage indisponível (ex: navegação anônima em alguns navegadores)
+      // localStorage indisponÃ­vel (ex: navegaÃ§Ã£o anÃ´nima em alguns navegadores)
     }
   }, [tema]);
 
