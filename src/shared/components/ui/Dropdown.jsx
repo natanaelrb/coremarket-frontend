@@ -145,7 +145,13 @@ export default function Dropdown({
         aria-expanded={open}
         aria-haspopup="menu"
       >
-        {trigger}
+        {typeof trigger === "function"
+        ? trigger({
+            toggle: toggleDropdown,
+            close: closeDropdown,
+            open,
+          })
+        : trigger}
       </div>
 
       {open && (
