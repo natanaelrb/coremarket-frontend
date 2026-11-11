@@ -1,0 +1,11 @@
+/** Paleta semântica reutilizável (classes completas para o Tailwind detectar). */
+export const TONES = {
+  blue:   { badge: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 ring-blue-500/20',     soft: 'bg-blue-500/10',    text: 'text-blue-600 dark:text-blue-400',       dot: 'bg-blue-500',    bar: 'bg-blue-500',    border: 'border-blue-500/30',    hex: '#3B82F6' },
+  red:    { badge: 'bg-red-500/10 text-red-600 dark:text-red-400 ring-red-500/20',         soft: 'bg-red-500/10',     text: 'text-red-600 dark:text-red-400',         dot: 'bg-red-500',     bar: 'bg-red-500',     border: 'border-red-500/30',     hex: '#EF4444' },
+  green:  { badge: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 ring-emerald-500/20', soft: 'bg-emerald-500/10', text: 'text-emerald-600 dark:text-emerald-400', dot: 'bg-emerald-500', bar: 'bg-emerald-500', border: 'border-emerald-500/30', hex: '#22C55E' },
+  amber:  { badge: 'bg-amber-400/20 text-amber-700 dark:text-amber-300 ring-amber-400/30', soft: 'bg-amber-400/15',   text: 'text-amber-600 dark:text-amber-400',     dot: 'bg-amber-400',   bar: 'bg-amber-400',   border: 'border-amber-400/40',   hex: '#F59E0B' },
+  orange: { badge: 'bg-orange-500/10 text-orange-600 dark:text-orange-400 ring-orange-500/20', soft: 'bg-orange-500/10', text: 'text-orange-600 dark:text-orange-400', dot: 'bg-orange-500',  bar: 'bg-orange-500',  border: 'border-orange-500/30',  hex: '#F97316' },
+  purple: { badge: 'bg-violet-500/10 text-violet-600 dark:text-violet-400 ring-violet-500/20', soft: 'bg-violet-500/10', text: 'text-violet-600 dark:text-violet-400', dot: 'bg-violet-500',  bar: 'bg-violet-500',  border: 'border-violet-500/30',  hex: '#8B5CF6' },
+  cyan:   { badge: 'bg-cyan-500/10 text-cyan-600 dark:text-cyan-400 ring-cyan-500/20',     soft: 'bg-cyan-500/10',    text: 'text-cyan-600 dark:text-cyan-400',       dot: 'bg-cyan-500',    bar: 'bg-cyan-500',    border: 'border-cyan-500/30',    hex: '#06B6D4' },
+  gray:   { badge: 'bg-slate-500/10 text-slate-600 dark:text-slate-300 ring-slate-500/20', soft: 'bg-slate-500/10',   text: 'text-slate-500 dark:text-slate-400',     dot: 'bg-slate-400',   bar: 'bg-slate-400',   border: 'border-slate-400/30',   hex: '#94A3B8' },
+};
