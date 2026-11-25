@@ -1,10 +1,17 @@
-import { FORMA_PAGAMENTO_CONFIG } from '../../constants/formaPagamento.js';
+import { FORMA_PAGAMENTO_CONFIG } from "../../constants/formaPagamento.js";
 
 /**
- * Exibe a forma de pagamento com ícone, incluindo número de parcelas quando houver.
- * @param {{ formaPagamento: string, parcelas?: number | null }} props
+ * Exibe a forma de pagamento da venda.
  */
 export function PaymentBadge({ formaPagamento, parcelas }) {
+  if (!formaPagamento) {
+    return (
+      <span className="inline-flex items-center rounded-lg border border-cm-border bg-cm-bg/60 px-2.5 py-1.5 text-xs font-medium text-cm-text-muted">
+        Não informado
+      </span>
+    );
+  }
+
   const config = FORMA_PAGAMENTO_CONFIG[formaPagamento];
 
   if (!config) {
