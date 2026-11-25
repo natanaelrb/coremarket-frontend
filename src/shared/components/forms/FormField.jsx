@@ -79,10 +79,8 @@ const baseInputClasses = `
 
   hover:border-slate-300
 
-  focus:border-green-500
-  focus:ring-4
-  focus:ring-green-500/10
-  focus:shadow-[0_0_0_1px_rgba(16,185,129,0.08)]
+  focus:border-[#1D4ED8] focus:ring-4 focus:ring-blue-600/10
+  focus:shadow-[0_0_0_1px_rgba(29,78,216,0.08)]
 
   disabled:cursor-not-allowed
   disabled:bg-slate-50
@@ -93,13 +91,8 @@ const baseInputClasses = `
   dark:text-white
   dark:placeholder:text-slate-500
 
-  dark:hover:border-slate-600
-
-  dark:focus:border-green-400
-  dark:focus:ring-4
-  dark:focus:ring-green-400/10
-
-  dark:disabled:bg-slate-950
+  dark:hover:border-slate-600 dark:focus:border-blue-400 dark:focus:ring-4
+  dark:focus:ring-blue-400/10 dark:disabled:bg-slate-950
 `;
 
 /**

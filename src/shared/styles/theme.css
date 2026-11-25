@@ -13,7 +13,7 @@
   --text-secondary: #64748b;
 
   /* Bordas modernas e sutis */
-  --border-subtle: rgba(15, 23, 42, 0.06);
+  --border-subtle: rgba(18, 15, 42, 0.06);
   --border-medium: rgba(15, 23, 42, 0.10);
 
   /* Borda */
@@ -26,16 +26,16 @@
   --sidebar-hover: #151f2d;
   --sidebar-border: #1c2938;
 
-  /* Item ativo */
-  --sidebar-active: #1d4936;
-  --sidebar-active-text: #e8fff2;
-  --sidebar-active-icon: #65d98a;
-  --sidebar-accent: #4ade80;
+  /* Item ativo — CoreMarket Blue */
+  --sidebar-active: #1e3a8a;
+  --sidebar-active-text: #eff6ff;
+  --sidebar-active-icon: #93c5fd;
+  --sidebar-accent: #3b82f6;
 
-  /* Brand — CoreMarket Green */
-  --color-brand-primary: #42c878;
-  --color-brand-primary-dark: #248f52;
-  --color-brand-primary-light: #79e6a0;
+  /* Brand — CoreMarket Blue */
+  --color-brand-primary: #1d4ed8;
+  --color-brand-primary-dark: #1e40af;
+  --color-brand-primary-light: #60a5fa;
 
 /* Legado — manter temporariamente */
   --color-brand-violet: #7c3aed;
@@ -137,15 +137,16 @@
   --sidebar-hover: #151f2d;
   --sidebar-border: #1c2938;
 
-  --sidebar-active: #1d4936;
-  --sidebar-active-text: #e8fff2;
-  --sidebar-active-icon: #65d98a;
-  --sidebar-accent: #4ade80;
+  /* Sidebar ativa — CoreMarket Blue */
+  --sidebar-active: #1e3a8a;
+  --sidebar-active-text: #eff6ff;
+  --sidebar-active-icon: #93c5fd;
+  --sidebar-accent: #3b82f6;
 
-  /* Brand verde */
-  --color-brand-primary: #10b981;
-  --color-brand-primary-dark: #059669;
-  --color-brand-primary-light: #34d399;
+  /* Brand — CoreMarket Blue */
+  --color-brand-primary: #1d4ed8;
+  --color-brand-primary-dark: #1e40af;
+  --color-brand-primary-light: #60a5fa;
 }
 
 /* Animações */

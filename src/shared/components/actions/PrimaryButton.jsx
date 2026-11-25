@@ -1,7 +1,7 @@
 import { Loader2 } from "lucide-react";
 
 /**
- * Botão primário violeta, usado para "Novo cliente" e "Salvar cliente".
+ * Botão primário do CoreMarket.
  */
 export default function PrimaryButton({
   icon: Icon,
@@ -17,13 +17,22 @@ export default function PrimaryButton({
       type={type}
       onClick={onClick}
       disabled={disabled || loading}
-      className={`flex items-center gap-1.5 rounded-lg bg-violet-600 hover:bg-violet-700 text-[var(--sidebar-text)] px-4 py-2.5 text-[13px] font-medium transition-colors shadow-sm shadow-violet-900/20 disabled:opacity-60 ${className}`}
+      className={`
+        inline-flex items-center justify-center gap-1.5
+        rounded-lg bg-[#1D4ED8] px-4 py-2.5
+        text-[13px] font-medium text-white
+        shadow-sm shadow-blue-900/20
+        transition-colors hover:bg-[#1E40AF]
+        disabled:cursor-not-allowed disabled:opacity-60
+        ${className}
+      `}
     >
       {loading ? (
         <Loader2 size={15} className="animate-spin" />
       ) : (
         Icon && <Icon size={16} />
       )}
+
       {children}
     </button>
   );

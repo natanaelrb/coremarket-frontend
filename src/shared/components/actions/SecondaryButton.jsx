@@ -6,6 +6,7 @@ export default function SecondaryButton({
   tone = "default",
   className = "",
 }) {
+  
   const toneClasses =
     tone === "danger"
       ? `
@@ -15,16 +16,16 @@ export default function SecondaryButton({
       `
       : active
         ? `
-        bg-violet-500/10
-        border-violet-500/40
-        text-violet-400
+        bg-blue-500/10
+        border-blue-500/40
+        text-blue-400
       `
         : `
         bg-[#161B36]
         border-slate-200 dark:border-white/10
         text-slate-300
         hover:bg-[#1B2144]
-        hover:border-violet-500/40
+        hover:border-blue-500/40
         hover:text-[var(--sidebar-text)]
       `;
 
