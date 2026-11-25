@@ -1,9 +1,7 @@
 ﻿import { useState } from "react";
-import { useProdutos } from "./useProdutos";
 import { INITIAL_FORM } from "../constants/novoProduto.constants";
 
 export function useNovoProduto({ onSuccess }) {
-  const { addProduto } = useProdutos();
 
   const [form, setForm] = useState(INITIAL_FORM);
   const [error, setError] = useState("");
@@ -67,9 +65,7 @@ export function useNovoProduto({ onSuccess }) {
       imagemEmoji: "📦",
     };
 
-    const novoProduto = addProduto(produto);
-
-    onSuccess(novoProduto);
+    onSuccess(produto);
   };
 
   return {
