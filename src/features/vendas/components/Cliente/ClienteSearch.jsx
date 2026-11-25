@@ -1,9 +1,12 @@
-import { Search, UserRound, Wallet, ArrowUpRight } from 'lucide-react';
-import { formatCurrency } from '../../../../shared/utils/formatters.js';
+import {
+  Search,
+  UserRound,
+  Wallet,
+  ArrowUpRight,
+} from "lucide-react";
 
-/**
- * Campo de busca de cliente (F3) com dropdown de sugestões.
- */
+import { formatCurrency } from "../../../../shared/utils/formatters.js";
+
 export function ClienteSearch({
   termo,
   onChangeTermo,
@@ -15,7 +18,7 @@ export function ClienteSearch({
     <div className="relative">
       <label
         htmlFor="venda-busca-cliente"
-        className="pl-1 mb-4 block text-xs font-semibold uppercase tracking-wider text-cm-text-muted"
+        className="mb-3 block pl-1 text-xs font-semibold uppercase tracking-wider text-cm-text-muted"
       >
         Pesquisar por nome ou documento
       </label>
@@ -25,12 +28,12 @@ export function ClienteSearch({
           group flex h-12 items-center gap-3 rounded-xl
           border border-cm-border bg-cm-bg/60 px-3.5
           transition-all duration-200
-          hover:border-green-500/40
-          focus-within:border-green-500
-          focus-within:ring-4 focus-within:ring-green-500/10
+          hover:border-blue-500/40
+          focus-within:border-blue-500
+          focus-within:ring-4 focus-within:ring-blue-500/10
         "
       >
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-500/10 text-green-600 transition-colors group-focus-within:bg-green-500/15 dark:text-green-400">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-500/10 text-blue-600 transition-colors group-focus-within:bg-blue-500/15 dark:text-blue-400">
           <Search className="h-4 w-4" />
         </div>
 
@@ -50,7 +53,7 @@ export function ClienteSearch({
       </div>
 
       {sugestoes.length > 0 && (
-        <div className="absolute left-0 right-0 top-full z-20 mt-2 overflow-hidden rounded-xl border border-cm-border bg-cm-surface shadow-xl shadow-black/10 animate-scale-in">
+        <div className="relative z-10 mt-2 w-full overflow-hidden rounded-xl border border-cm-border bg-cm-surface shadow-xl shadow-black/10 animate-scale-in">
           <div className="flex items-center justify-between border-b border-cm-border bg-cm-surface-hover/60 px-3.5 py-2.5">
             <span className="text-xs font-semibold text-cm-text-muted">
               Clientes encontrados
@@ -70,13 +73,13 @@ export function ClienteSearch({
                   className="
                     group/item flex w-full items-center gap-3 rounded-lg
                     border border-transparent px-3 py-3 text-left
-                    transition-all duration-150
-                    hover:border-green-500/15 hover:bg-green-500/[0.06]
+                    transition-all duration-200
+                    hover:border-blue-500/15 hover:bg-blue-500/[0.06]
                     focus-visible:outline-none focus-visible:ring-2
-                    focus-visible:ring-inset focus-visible:ring-green-500
+                    focus-visible:ring-inset focus-visible:ring-blue-500
                   "
                 >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-blue-600 transition-colors group-hover/item:bg-green-500/10 group-hover/item:text-green-600 dark:text-blue-400 dark:group-hover/item:text-green-400">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-500/10 text-blue-600 transition-colors group-hover/item:bg-blue-500/15 dark:text-blue-400">
                     <UserRound className="h-5 w-5" />
                   </span>
 
@@ -97,7 +100,7 @@ export function ClienteSearch({
                     </span>
                   )}
 
-                  <ArrowUpRight className="h-4 w-4 shrink-0 text-cm-text-faint transition-transform group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5 group-hover/item:text-green-600" />
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-cm-text-faint transition-all group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5 group-hover/item:text-blue-600" />
                 </button>
               </li>
             ))}
