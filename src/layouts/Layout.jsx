@@ -3,15 +3,7 @@ import Topbar from "./Topbar";
 
 export default function Layout({ children }) {
   return (
-    <div
-      className="
-        flex
-        h-screen
-        overflow-hidden
-        bg-[var(--bg-app)]
-        text-[var(--text-primary)]
-      "
-    >
+    <div className="flex h-screen overflow-hidden bg-[var(--bg-app)]">
       <Sidebar />
 
       <div className="flex flex-1 flex-col overflow-hidden">
