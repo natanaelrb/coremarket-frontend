@@ -1,154 +1,146 @@
-import { useSearchParams } from "react-router-dom";
-import { MOCK_CLIENTES } from "../features/vendas/data/mockClientes.js";
+import {
+  ArrowRight,
+  Plus,
+  History,
+  ShoppingCart,
+  BarChart3,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
-import { VendasHeader } from "../features/vendas/components/Header/VendasHeader.jsx";
-import { KPICardsRow } from "../features/vendas/components/KPIs/KPICardsRow.jsx";
-import { ProdutoSearchPanel } from "../features/vendas/components/ProdutoSearch/ProdutoSearchPanel.jsx";
-import { ItensVendaPanel } from "../features/vendas/components/ItensVenda/ItensVendaPanel.jsx";
-import { ClientePanel } from "../features/vendas/components/Cliente/ClientePanel.jsx";
-import { TipoVendaPanel } from "../features/vendas/components/TipoVenda/TipoVendaPanel.jsx";
-import { DescontosPanel } from "../features/vendas/components/Descontos/DescontosPanel.jsx";
-import { ResumoVendaPanel } from "../features/vendas/components/ResumoVenda/ResumoVendaPanel.jsx";
-import { VendaDetalhePanel } from "../features/vendas/components/VendaDetalhe/VendaDetalhePanel.jsx";
-import { HistoricoVendasPanel } from "../features/vendas/components/Historico/HistoricoVendasPanel.jsx";
-import { AtalhosPDV } from "../features/vendas/components/Atalhos/AtalhosPDV.jsx";
+import { Button } from "../shared/components/ui/Button.jsx";
 
-import { useProdutoSearch } from "../features/vendas/hooks/useProdutoSearch.js";
-import { useVendaAtual } from "../features/vendas/hooks/useVendaAtual.js";
-import { useFinalizarVenda } from "../features/vendas/hooks/useFinalizarVenda.js";
 import { useKPIsVendas } from "../features/vendas/hooks/useKPIsVendas.js";
-import { useHistoricoVendas } from "../features/vendas/hooks/useHistoricoVendas.js";
-import { useVendaDetalhe } from "../features/vendas/hooks/useVendaDetalhe.js";
-import { useKeyboardShortcuts } from "../features/vendas/hooks/useKeyboardShortcuts.js";
 
-import { useToast } from "../shared/contexts/ToastContext.jsx";
+import { VendasOverviewKPIs } from "../features/vendas/components/Overview/VendasOverviewKPIs.jsx";
+import { VendasRecentes } from "../features/vendas/components/Overview/VendasRecentes.jsx";
+
+import { useDesempenhoCategorias } from "../features/vendas/hooks/useDesempenhoCategorias.js";
+
+import { VendasDesempenhoCategorias } from "../features/vendas/components/Overview/VendasDesempenhoCategorias.jsx";
 
 export function Vendas() {
-  const { notify } = useToast();
-
-  const [searchParams] = useSearchParams();
-  const clienteId = searchParams.get("clienteId");
-
-  const clienteInicial = clienteId
-    ? MOCK_CLIENTES.find(
-        (cliente) => String(cliente.id) === String(clienteId)
-      ) ?? null
-    : null;
-
-  const produtoSearch = useProdutoSearch();
-  const vendaAtual = useVendaAtual(clienteInicial);
+  const { kpis, carregando } = useKPIsVendas();
 
   const {
-    kpis,
-    carregando: carregandoKpis,
-    caixa,
-    operador,
-  } = useKPIsVendas();
-
-  const historico = useHistoricoVendas();
-  const { vendaSelecionada, visualizarVenda } = useVendaDetalhe();
-
-  const { finalizarVenda, processando } = useFinalizarVenda({
-    vendaAtual,
-    onSucesso: () => produtoSearch.focar(),
-  });
-
-  useKeyboardShortcuts({
-    onBuscarProduto: produtoSearch.focar,
-    onBuscarCliente: vendaAtual.clienteState.focar,
-    onDesconto: vendaAtual.descontosState.focar,
-    onAtualizar: () => notify("Dados atualizados.", "info", 1800),
-    onFinalizarVenda: finalizarVenda,
-    onRemoverItemSelecionado: () => {
-      if (vendaAtual.carrinho.itemSelecionadoId) {
-        vendaAtual.carrinho.removerItem(
-          vendaAtual.carrinho.itemSelecionadoId
-        );
-      }
-    },
-    onCancelarOperacao: () =>
-      vendaAtual.carrinho.setItemSelecionadoId(null),
-  });
+    categorias,
+    carregando: carregandoCategorias,
+  } = useDesempenhoCategorias();
 
   return (
     <main className="-mt-10 -ml-8 -mr-8 min-h-screen bg-cm-bg p-6">
-      <div className="mx-auto w-full max-w-[1800px] space-y-5">
-        {/* Cabeçalho da operação */}
-        <VendasHeader
-          caixa={caixa}
-          operador={operador}
-          onFocarBuscaProduto={produtoSearch.focar}
-          onNovaVenda={vendaAtual.resetarVenda}
-          onConsultarVendas={() =>
-            notify(
-              'Role até "Histórico de vendas" para consultar.',
-              "info",
-              2500
-            )
-          }
-        />
+      <div className="mx-auto w-full max-w-[1800px] space-y-6">
 
-        {/* Indicadores resumidos */}
-        <KPICardsRow kpis={kpis} loading={carregandoKpis} />
+        {/* Cabeçalho */}
+        <header className="flex flex-col justify-between gap-5 lg:flex-row lg:items-center">
+          <div className="space-y-2">
+            <p className="text-sm text-cm-text-muted">
+              Home / Vendas
+            </p>
 
-        {/* Busca: ponto de entrada da operação */}
-        <section aria-label="Buscar produtos" className="min-w-0">
-          <ProdutoSearchPanel
-            produtoSearch={produtoSearch}
-            onAdicionarProduto={vendaAtual.carrinho.adicionarProduto}
-          />
-        </section>
+            <h1 className="text-2xl font-bold tracking-tight text-cm-text">
+              Visão geral de vendas
+            </h1>
 
-        {/* Operação: carrinho em destaque e controles na lateral */}
-        <section
-          aria-label="Montagem da venda"
-          className="grid min-w-0 grid-cols-1 items-start gap-5 2xl:grid-cols-[minmax(0,1.8fr)_minmax(360px,0.85fr)]"
-        >
-          {/* Área principal: produtos adicionados */}
-          <div className="min-w-0 space-y-5">
-            <ItensVendaPanel carrinho={vendaAtual.carrinho} />
-
-            <VendaDetalhePanel
-              numeroVenda={vendaSelecionada?.numero ?? "#00018472"}
-              caixaNumero={caixa.numero}
-              operadorNome={operador.nome}
-              clienteNome={vendaAtual.clienteState.cliente?.nome}
-              itens={vendaAtual.carrinho.itens}
-              resumo={vendaAtual.resumo}
-            />
+            <p className="max-w-2xl text-sm leading-relaxed text-cm-text-muted">
+              Acompanhe o desempenho comercial, consulte as movimentações
+              e acesse rapidamente as operações de venda.
+            </p>
           </div>
 
-          {/* Painel lateral: informações e ações da venda */}
-          <aside className="min-w-0 space-y-4">
-            <ClientePanel clienteState={vendaAtual.clienteState} />
+          <div className="flex flex-wrap items-center gap-3">
+            <Link to="/vendas/historico">
+              <Button variant="secondary" icon={History}>
+                Histórico
+              </Button>
+            </Link>
 
-            <TipoVendaPanel
-              tipoVendaState={vendaAtual.tipoVendaState}
-            />
+            <Link to="/vendas/nova">
+              <Button variant="primary" icon={Plus}>
+                Nova venda
+              </Button>
+            </Link>
+          </div>
+        </header>
 
-            <DescontosPanel
-              descontosState={vendaAtual.descontosState}
-              descontosItens={vendaAtual.resumo.descontosItens}
-              subtotal={vendaAtual.resumo.subtotal}
-            />
+        {/* Indicadores */}
+        <section aria-label="Indicadores de vendas" className="space-y-3">
+          <div>
+            <h2 className="text-base font-bold text-cm-text">
+              Desempenho do dia
+            </h2>
+            <p className="mt-1 text-sm text-cm-text-muted">
+              Resumo dos principais indicadores comerciais.
+            </p>
+          </div>
 
-            <ResumoVendaPanel
-              resumo={vendaAtual.resumo}
-              onFinalizar={finalizarVenda}
-              processando={processando}
-            />
-
-            <AtalhosPDV />
-          </aside>
-        </section>
-
-        {/* Histórico fora da área de montagem */}
-        <section aria-label="Histórico de vendas" className="min-w-0">
-          <HistoricoVendasPanel
-            historico={historico}
-            onVisualizarVenda={visualizarVenda}
+          <VendasOverviewKPIs
+            kpis={kpis}
+            loading={carregando}
           />
         </section>
+
+        {/* Atalhos */}
+        <section className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <Link
+            to="/vendas/nova"
+            className="group flex items-center justify-between gap-4 rounded-2xl border border-cm-border bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md dark:bg-cm-surface"
+          >
+            <div className="flex min-w-0 items-center gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 dark:bg-blue-950/40 dark:text-blue-400">
+                <ShoppingCart size={22} />
+              </span>
+
+              <div className="min-w-0">
+                <h3 className="font-bold text-cm-text">
+                  Iniciar nova venda
+                </h3>
+                <p className="mt-1 text-sm text-cm-text-muted">
+                  Acesse o PDV e registre uma operação.
+                </p>
+              </div>
+            </div>
+
+            <ArrowRight
+              size={19}
+              className="shrink-0 text-cm-text-muted transition-transform group-hover:translate-x-1"
+            />
+          </Link>
+
+          <Link
+            to="/vendas/historico"
+            className="group flex items-center justify-between gap-4 rounded-2xl border border-cm-border bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md dark:bg-cm-surface"
+          >
+            <div className="flex min-w-0 items-center gap-4">
+              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-600 dark:bg-violet-950/40 dark:text-violet-400">
+                <BarChart3 size={22} />
+              </span>
+
+              <div className="min-w-0">
+                <h3 className="font-bold text-cm-text">
+                  Consultar vendas
+                </h3>
+                <p className="mt-1 text-sm text-cm-text-muted">
+                  Pesquise operações e acompanhe seus registros.
+                </p>
+              </div>
+            </div>
+
+            <ArrowRight
+              size={19}
+              className="shrink-0 text-cm-text-muted transition-transform group-hover:translate-x-1"
+            />
+          </Link>
+        </section>
+
+        {/* Desempenho por categoria */}
+        <VendasDesempenhoCategorias
+          categorias={categorias}
+          carregando={carregandoCategorias}
+        />
+
+        {/* Vendas recentes */}
+        <VendasRecentes />
+
       </div>
     </main>
   );
