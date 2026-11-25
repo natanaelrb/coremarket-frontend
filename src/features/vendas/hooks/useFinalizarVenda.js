@@ -1,18 +1,25 @@
-import { useState } from 'react';
+import { useState } from "react";
+
 import { useToast } from "../../../shared/contexts/ToastContext.jsx";
-import { validarFinalizacaoVenda } from '../utils/validators.js';
+import { validarFinalizacaoVenda } from "../utils/validators.js";
+import { criarRegistroVenda } from "../utils/vendaFactory.js";
+import { salvarVenda } from "../services/vendaStorage.js";
 
 /**
- * Orquestra a finalização da venda: valida, simula envio ao backend,
- * exibe feedback via toast e limpa o carrinho em caso de sucesso.
- * TODO(api): substituir simulação por POST /api/vendas
- * Controller esperado: VendaController#registrar (body: VendaRequestDTO)
+ * Orquestra a finalização e o armazenamento local da venda.
  */
-export function useFinalizarVenda({ vendaAtual, onSucesso }) {
+export function useFinalizarVenda({
+  vendaAtual,
+  operador,
+  caixa,
+  onSucesso,
+}) {
   const { notify } = useToast();
   const [processando, setProcessando] = useState(false);
 
   async function finalizarVenda() {
+    if (processando) return;
+
     const { carrinho, clienteState, tipoVendaState } = vendaAtual;
 
     const validacao = validarFinalizacaoVenda({
@@ -22,20 +29,40 @@ export function useFinalizarVenda({ vendaAtual, onSucesso }) {
     });
 
     if (!validacao.valido) {
-      notify(validacao.motivo, 'error');
+      notify(validacao.motivo, "error");
       return;
     }
 
     setProcessando(true);
+
     try {
-      // Simula latência de rede da chamada ao backend.
+      // Mantém a simulação de latência enquanto não existe API.
       await new Promise((resolve) => setTimeout(resolve, 700));
 
-      notify(`Venda finalizada com sucesso! Total: ${vendaAtual.resumo.total.toFixed(2)}`, 'success');
+      // Monta o registro com os dados atuais do PDV.
+      const registro = criarRegistroVenda({
+        vendaAtual,
+        operador,
+        caixa,
+      });
+
+      // Salva antes de limpar o carrinho.
+      salvarVenda(registro);
+
+      notify(
+        `Venda finalizada com sucesso! Total: ${registro.total.toFixed(2)}`,
+        "success",
+      );
+
       vendaAtual.resetarVenda();
-      onSucesso?.();
+      onSucesso?.(registro);
     } catch (error) {
-      notify('Não foi possível finalizar a venda. Tente novamente.', 'error');
+      console.error("Erro ao finalizar venda:", error);
+
+      notify(
+        "Não foi possível finalizar a venda. Tente novamente.",
+        "error",
+      );
     } finally {
       setProcessando(false);
     }
@@ -43,4 +70,3 @@ export function useFinalizarVenda({ vendaAtual, onSucesso }) {
 
   return { finalizarVenda, processando };
 }
-

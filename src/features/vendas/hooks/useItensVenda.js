@@ -10,7 +10,9 @@ export function useItensVenda(itensIniciais = []) {
   const [observacao, setObservacao] = useState('');
 
   const adicionarProduto = useCallback((produto, quantidade = 1) => {
-    setItens((prev) => {
+  
+
+  setItens((prev) => {
       const existente = prev.find((item) => item.produtoId === produto.id);
       if (existente) {
         return prev.map((item) =>
@@ -25,6 +27,7 @@ export function useItensVenda(itensIniciais = []) {
           id: crypto.randomUUID(),
           produtoId: produto.id,
           nome: produto.nome,
+          categoria: produto.categoria ?? "Sem categoria",
           codigoBarras: produto.codigoBarras,
           quantidade,
           precoUnitario: produto.preco,

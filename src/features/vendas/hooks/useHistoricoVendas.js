@@ -1,27 +1,46 @@
-import { useEffect, useMemo, useState } from 'react';
-import { MOCK_VENDAS } from '../data/mockVendas.js';
-import { filtrarHistorico, filtrarPorPeriodo, paginar } from '../utils/historicoFilters.js';
-import { useHistoricoFiltros } from './useHistoricoFiltros.js';
-import { usePagination } from './usePagination.js';
+import { useEffect, useMemo, useState } from "react";
+
+import { listarVendas } from "../services/vendaStorage.js";
+
+import {
+  filtrarHistorico,
+  filtrarPorPeriodo,
+  paginar,
+} from "../utils/historicoFilters.js";
+
+import { useHistoricoFiltros } from "./useHistoricoFiltros.js";
+import { usePagination } from "./usePagination.js";
 
 /**
- * Orquestra a listagem de histórico de vendas: busca (mock), aplica filtros
- * e delega a paginação para usePagination.
- * TODO(api): substituir por GET /api/vendas (paginado, ver tableColumns.js)
+ * Gerencia o histórico de vendas:
+ * - carregamento das vendas persistidas;
+ * - aplicação dos filtros;
+ * - paginação dos resultados.
+ *
+ * TODO(api): substituir listarVendas por GET /api/vendas.
  */
 export function useHistoricoVendas() {
   const [vendas, setVendas] = useState([]);
   const [carregando, setCarregando] = useState(true);
-  const { filtros, atualizarFiltro, limparFiltros } = useHistoricoFiltros();
+
+  const {
+    filtros,
+    atualizarFiltro,
+    limparFiltros,
+  } = useHistoricoFiltros();
 
   useEffect(() => {
     let ativo = true;
-    setCarregando(true);
+
     const timer = setTimeout(() => {
       if (!ativo) return;
-      setVendas(MOCK_VENDAS);
+
+      const vendasSalvas = listarVendas();
+
+      setVendas(vendasSalvas);
       setCarregando(false);
-    }, 400);
+    }, 450);
+
     return () => {
       ativo = false;
       clearTimeout(timer);
@@ -30,14 +49,24 @@ export function useHistoricoVendas() {
 
   const vendasFiltradas = useMemo(() => {
     const porPeriodo = filtrarPorPeriodo(vendas, filtros.periodo);
+
     return filtrarHistorico(porPeriodo, filtros);
   }, [vendas, filtros]);
 
   const paginacao = usePagination(vendasFiltradas.length, 5);
 
   const vendasPaginadas = useMemo(
-    () => paginar(vendasFiltradas, paginacao.pagina, paginacao.tamanhoPagina),
-    [vendasFiltradas, paginacao.pagina, paginacao.tamanhoPagina],
+    () =>
+      paginar(
+        vendasFiltradas,
+        paginacao.pagina,
+        paginacao.tamanhoPagina,
+      ),
+    [
+      vendasFiltradas,
+      paginacao.pagina,
+      paginacao.tamanhoPagina,
+    ],
   );
 
   return {
@@ -51,4 +80,3 @@ export function useHistoricoVendas() {
     paginacao,
   };
 }
-
