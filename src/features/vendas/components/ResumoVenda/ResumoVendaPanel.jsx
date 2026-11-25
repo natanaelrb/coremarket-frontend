@@ -1,9 +1,9 @@
-import { ReceiptText, ShoppingCart, ShieldCheck } from 'lucide-react';
-import Card from '../../../../shared/components/layout/Card.jsx';
-import { ResumoLinha } from './ResumoLinha.jsx';
-import { TotalDisplay } from './TotalDisplay.jsx';
-import { FinalizarVendaButton } from './FinalizarVendaButton.jsx';
-import { EstoqueAlert } from './EstoqueAlert.jsx';
+import { ReceiptText, ShoppingCart, ShieldCheck } from "lucide-react";
+import Card from "../../../../shared/components/layout/Card.jsx";
+import { ResumoLinha } from "./ResumoLinha.jsx";
+import { TotalDisplay } from "./TotalDisplay.jsx";
+import { FinalizarVendaButton } from "./FinalizarVendaButton.jsx";
+import { EstoqueAlert } from "./EstoqueAlert.jsx";
 
 export function ResumoVendaPanel({
   resumo,
@@ -19,10 +19,9 @@ export function ResumoVendaPanel({
   return (
     <Card className="!overflow-hidden !border !border-slate-200 !bg-white !text-slate-800 !shadow-sm">
       <div className="p-4">
-        {/* Cabeçalho */}
         <div className="flex items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-2.5">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-green-50 text-[#22c55e]">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100">
               <ReceiptText className="h-[18px] w-[18px]" />
             </div>
 
@@ -36,18 +35,17 @@ export function ResumoVendaPanel({
             </div>
           </div>
 
-          <span className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-slate-200 bg-slate-50 px-2 py-1 text-xs font-semibold text-slate-600">
+          <span className="inline-flex shrink-0 items-center gap-1.5 rounded-lg border border-blue-100 bg-blue-50 px-2 py-1 text-xs font-semibold text-blue-700">
             <ShoppingCart className="h-3.5 w-3.5" />
             {resumo.quantidadeItens}
           </span>
         </div>
 
-        {/* Detalhamento dos valores */}
         <div className="mt-4 rounded-xl border border-slate-200 bg-slate-50/70 p-3">
           <div className="space-y-2.5">
             <ResumoLinha
               label={`Subtotal (${resumo.quantidadeItens} ${
-                resumo.quantidadeItens === 1 ? 'item' : 'itens'
+                resumo.quantidadeItens === 1 ? "item" : "itens"
               })`}
               valor={resumo.subtotal}
               tone="info"
@@ -72,7 +70,7 @@ export function ResumoVendaPanel({
             <ResumoLinha
               label="Acréscimos"
               valor={resumo.acrescimo}
-              tone={resumo.acrescimo > 0 ? 'warning' : 'default'}
+              tone={resumo.acrescimo > 0 ? "warning" : "default"}
             />
           </div>
 
@@ -84,12 +82,10 @@ export function ResumoVendaPanel({
           )}
         </div>
 
-        {/* Total a pagar */}
         <div className="my-4">
           <TotalDisplay total={resumo.total} />
         </div>
 
-        {/* Finalização */}
         <div className="space-y-2.5">
           <FinalizarVendaButton
             onFinalizar={onFinalizar}

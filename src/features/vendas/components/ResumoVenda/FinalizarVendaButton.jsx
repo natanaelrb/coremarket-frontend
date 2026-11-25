@@ -1,5 +1,5 @@
-import { CheckCircle2, ArrowRight, LoaderCircle } from 'lucide-react';
-import { Button } from '../../../../shared/components/ui/Button.jsx';
+import { CheckCircle2, ArrowRight, LoaderCircle } from "lucide-react";
+import { Button } from "../../../../shared/components/ui/Button.jsx";
 
 export function FinalizarVendaButton({
   onFinalizar,
@@ -8,22 +8,23 @@ export function FinalizarVendaButton({
 }) {
   return (
     <Button
-      variant="success"
+      variant="primary"
       size="md"
       fullWidth
       loading={loading}
       disabled={disabled || loading}
       icon={loading ? LoaderCircle : CheckCircle2}
       onClick={onFinalizar}
-      className="
-        group min-h-10 !rounded-lg !bg-[#22c55e]
-        text-sm font-semibold !text-white
-        !shadow-sm !shadow-green-600/15
+     className="
+        group min-h-10 !rounded-lg
+        !bg-[#1D4ED8] !text-white !opacity-100
+        !shadow-md !shadow-blue-900/20
         transition-all duration-200
-        hover:!-translate-y-0.5 hover:!bg-[#16a34a]
-        hover:!shadow-md hover:!shadow-green-600/20
+        hover:!-translate-y-0.5 hover:!bg-[#1E40AF]
+        hover:!shadow-lg hover:!shadow-blue-900/25
         active:!translate-y-0
         disabled:!translate-y-0 disabled:!shadow-none
+        disabled:!bg-[#1D4ED8] disabled:!opacity-100
         motion-reduce:transform-none
       "
     >
@@ -33,7 +34,7 @@ export function FinalizarVendaButton({
         </kbd>
 
         <span>
-          {loading ? 'Finalizando venda...' : 'Finalizar venda'}
+          {loading ? "Finalizando venda..." : "Finalizar venda"}
         </span>
       </span>
 
