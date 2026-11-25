@@ -2,7 +2,7 @@ export function DescontoVendaInput({ valor, onChange, inputRef, erro }) {
   return (
     <div className="flex items-start justify-between gap-4 py-1.5">
       <div className="flex min-w-0 items-center gap-2.5">
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-green-500/10 text-green-600 dark:text-green-400">
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 dark:bg-blue-950/40 dark:text-blue-400 dark:ring-blue-900/50">
           <span className="text-lg font-semibold">%</span>
         </span>
 
@@ -26,23 +26,25 @@ export function DescontoVendaInput({ valor, onChange, inputRef, erro }) {
             transition-all duration-200
             ${
               erro
-                ? 'border-cm-danger focus-within:ring-2 focus-within:ring-cm-danger/15'
-                : 'border-cm-border hover:border-green-500/40 focus-within:border-green-500 focus-within:ring-2 focus-within:ring-green-500/15'
+                ? "border-cm-danger focus-within:ring-2 focus-within:ring-cm-danger/15"
+                : "border-cm-border hover:border-blue-500/40 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-500/15"
             }
           `}
         >
-          <span className="text-xs font-semibold text-cm-text-muted">R$</span>
+          <span className="text-xs font-semibold text-cm-text-muted">
+            R$
+          </span>
 
           <input
             id="desconto-venda"
             ref={inputRef}
             value={valor}
             onChange={(e) =>
-              onChange(Number(e.target.value.replace(',', '.')) || 0)
+              onChange(Number(e.target.value.replace(",", ".")) || 0)
             }
             inputMode="decimal"
             aria-invalid={Boolean(erro)}
-            aria-describedby={erro ? 'desconto-venda-erro' : undefined}
+            aria-describedby={erro ? "desconto-venda-erro" : undefined}
             className="w-full min-w-0 bg-transparent text-right text-sm font-semibold tabular-nums text-cm-text outline-none"
           />
         </div>

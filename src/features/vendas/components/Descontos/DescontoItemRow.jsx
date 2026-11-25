@@ -1,15 +1,11 @@
-import { Tag } from 'lucide-react';
-import { formatCurrency } from '../../../../shared/utils/formatters.js';
+import { Tag } from "lucide-react";
+import { formatCurrency } from "../../../../shared/utils/formatters.js";
 
-/**
- * Linha somente leitura mostrando o total de desconto já aplicado item a item.
- * @param {{ valor: number }} props
- */
 export function DescontoItemRow({ valor }) {
   return (
     <div className="flex items-center justify-between gap-3 py-1.5">
       <div className="flex min-w-0 items-center gap-2.5">
-        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-red-500/10 text-red-600 dark:text-red-400">
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600 ring-1 ring-blue-100 dark:bg-blue-950/40 dark:text-blue-400 dark:ring-blue-900/50">
           <Tag size={17} strokeWidth={2} />
         </span>
 
