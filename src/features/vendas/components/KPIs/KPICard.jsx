@@ -38,12 +38,17 @@ export function KPICard({
   details = [],
   footer,
   loading = false,
+  compact = false,
 }) {
   const styles = TONE_CLASSES[tone] ?? TONE_CLASSES.accent;
 
   if (loading) {
     return (
-      <div className="flex min-h-[270px] min-w-0 flex-col rounded-2xl border border-cm-border bg-white p-5 shadow-sm dark:bg-cm-surface">
+      <div
+        className={`flex min-w-0 flex-col rounded-2xl border border-cm-border bg-white shadow-sm dark:bg-cm-surface ${
+          compact ? "min-h-[150px] p-4" : "min-h-[270px] p-5"
+        }`}
+      >
         <div className="flex items-center justify-between gap-3">
           <Skeleton className="h-4 w-32" />
           <Skeleton className="h-11 w-11 shrink-0 rounded-xl" />
@@ -64,7 +69,9 @@ export function KPICard({
 
   return (
     <article
-      className={`group flex h-full min-h-[270px] min-w-0 flex-col rounded-2xl border border-cm-border bg-white p-5 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md motion-reduce:transform-none motion-reduce:transition-none dark:bg-cm-surface ${styles.glow}`}
+      className={`group flex h-full min-w-0 flex-col rounded-2xl border border-cm-border bg-white shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md motion-reduce:transform-none motion-reduce:transition-none dark:bg-cm-surface ${
+        compact ? "min-h-[150px] p-4" : "min-h-[270px] p-5"
+      } ${styles.glow}`}
     >
       <div className="flex min-w-0 items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
@@ -111,32 +118,34 @@ export function KPICard({
         </p>
       )}
 
-      <div className="mt-5 border-t border-cm-border pt-4">
-        <div className="space-y-3">
-          {details.map((detail) => (
-            <div
-              key={detail.label}
-              className="flex min-w-0 items-center justify-between gap-3"
-            >
-              <div className="flex min-w-0 items-center gap-2">
-                <span className="shrink-0 text-cm-text-muted">
-                  {detail.icon}
-                </span>
-                <span className="min-w-0 text-xs leading-4 text-cm-text-muted">
-                  {detail.label}
+      {details.length > 0 && (
+        <div className="mt-5 border-t border-cm-border pt-4">
+          <div className="space-y-3">
+            {details.map((detail) => (
+              <div
+                key={detail.label}
+                className="flex min-w-0 items-center justify-between gap-3"
+              >
+                <div className="flex min-w-0 items-center gap-2">
+                  <span className="shrink-0 text-cm-text-muted">
+                    {detail.icon}
+                  </span>
+                  <span className="min-w-0 text-xs leading-4 text-cm-text-muted">
+                    {detail.label}
+                  </span>
+                </div>
+
+                <span
+                  className="shrink-0 text-right text-xs font-semibold text-cm-text"
+                  title={detail.value}
+                >
+                  {detail.value}
                 </span>
               </div>
-
-              <span
-                className="shrink-0 text-right text-xs font-semibold text-cm-text"
-                title={detail.value}
-              >
-                {detail.value}
-              </span>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {footer && (
         <div className="mt-auto flex items-start gap-2 border-t border-cm-border pt-3 mt-4">
