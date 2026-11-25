@@ -4,9 +4,6 @@ import IconButton from '../../../../shared/components/actions/IconButton.jsx';
 import { formatCurrency } from '../../../../shared/utils/formatters.js';
 import { calcularSubtotalLiquidoItem } from '../../utils/calculators.js';
 
-/**
- * Linha da tabela de itens da venda, com controles de quantidade e ações.
- */
 export function ItemRow({
   item,
   selecionado,
@@ -23,45 +20,44 @@ export function ItemRow({
       onClick={onSelecionar}
       aria-selected={selecionado}
       className={`
-        group cursor-pointer transition-colors duration-200
+        group cursor-pointer border-b border-cm-border/60
+        transition-colors duration-200 last:border-b-0
         ${selecionado
-          ? 'bg-cm-accent-soft/70'
-          : 'hover:bg-cm-surface-hover'
+          ? 'bg-blue-50/80 dark:bg-blue-500/[0.08]'
+          : 'hover:bg-blue-50/40 dark:hover:bg-blue-500/[0.04]'
         }
       `}
     >
-      {/* Produto */}
-      <td className="py-3 pl-4 pr-3">
+      <td className="py-3.5 pl-4 pr-3">
         <div className="flex min-w-0 items-center gap-3">
-          <div
-            className={`
-              relative flex h-10 w-10 shrink-0 items-center justify-center
-              rounded-xl border transition-colors duration-200
-              ${selecionado
-                ? 'border-cm-accent/30 bg-cm-accent-soft text-cm-accent'
-                : 'border-cm-border bg-cm-surface-hover text-cm-text-muted'
-              }
-            `}
-          >
+          <div className={`
+            relative flex h-11 w-11 shrink-0 items-center justify-center
+            rounded-xl border transition-colors duration-200
+            ${selecionado
+              ? 'border-blue-200 bg-blue-100 text-blue-700 dark:border-blue-500/30 dark:bg-blue-500/15 dark:text-blue-400'
+              : 'border-blue-100 bg-blue-50 text-blue-600 dark:border-blue-500/20 dark:bg-blue-500/10 dark:text-blue-400'
+            }
+          `}>
             <Package className="h-5 w-5" />
 
             {selecionado && (
-              <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full border-2 border-cm-surface bg-cm-accent" />
+              <span className="absolute -right-1 -top-1 h-2.5 w-2.5 rounded-full border-2 border-cm-surface bg-blue-600" />
             )}
           </div>
 
           <div className="min-w-0">
             <p
-              className={`
-                truncate font-semibold transition-colors
-                ${selecionado ? 'text-cm-accent' : 'text-cm-text'}
-              `}
+              className={`truncate text-sm font-semibold transition-colors ${
+                selecionado
+                  ? 'text-blue-700 dark:text-blue-400'
+                  : 'text-cm-text'
+              }`}
               title={item.nome}
             >
               {item.nome}
             </p>
 
-            <p className="mt-1 flex items-center gap-1 truncate text-xs text-cm-text-faint">
+            <p className="mt-1 flex items-center gap-1.5 truncate text-xs text-cm-text-faint">
               <Barcode className="h-3 w-3 shrink-0" />
               <span>{item.codigoBarras || 'Sem código de barras'}</span>
             </p>
@@ -69,8 +65,7 @@ export function ItemRow({
         </div>
       </td>
 
-      {/* Quantidade */}
-      <td className="px-3 py-3 text-center">
+      <td className="px-3 py-3.5 text-center">
         <div className="flex justify-center">
           <QuantityControl
             quantidade={item.quantidade}
@@ -80,51 +75,41 @@ export function ItemRow({
         </div>
       </td>
 
-      {/* Preço unitário */}
-      <td className="whitespace-nowrap px-3 py-3 text-right tabular-nums text-cm-text-muted">
+      <td className="whitespace-nowrap px-3 py-3.5 text-right text-sm tabular-nums text-cm-text-muted">
         {formatCurrency(item.precoUnitario)}
       </td>
 
-      {/* Desconto */}
-      <td className="whitespace-nowrap px-3 py-3 text-right tabular-nums">
+      <td className="whitespace-nowrap px-3 py-3.5 text-right tabular-nums">
         {item.descontoItem > 0 ? (
-          <span className="inline-flex items-center rounded-lg bg-cm-success-soft px-2 py-1 text-xs font-semibold text-cm-success">
+          <span className="inline-flex items-center rounded-lg bg-emerald-50 px-2.5 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
             −{formatCurrency(item.descontoItem)}
           </span>
         ) : (
-          <span className="text-cm-text-faint">
+          <span className="text-sm text-cm-text-faint">
             {formatCurrency(0)}
           </span>
         )}
       </td>
 
-      {/* Subtotal */}
-      <td className="whitespace-nowrap px-3 py-3 text-right tabular-nums">
-        <span className="font-bold text-cm-text">
+      <td className="whitespace-nowrap px-3 py-3.5 text-right tabular-nums">
+        <span className="text-sm font-bold text-cm-text">
           {formatCurrency(subtotal)}
         </span>
       </td>
 
-      {/* Ações */}
-      <td className="py-3 pl-3 pr-4">
+      <td className="py-3.5 pl-3 pr-4">
         <div className="flex items-center justify-end gap-1">
-          <div
-            className={`
-              rounded-lg transition-colors
-              ${selecionado ? 'bg-cm-surface/70' : ''}
-            `}
+          <IconButton
+            size="sm"
+            label={`Editar desconto de ${item.nome}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              onEditarDesconto();
+            }}
+            className="text-blue-600 hover:bg-blue-50 hover:text-blue-700 dark:text-blue-400 dark:hover:bg-blue-500/10"
           >
-            <IconButton
-              size="sm"
-              label={`Editar desconto de ${item.nome}`}
-              onClick={(e) => {
-                e.stopPropagation();
-                onEditarDesconto();
-              }}
-            >
-              <Pencil className="h-4 w-4" />
-            </IconButton>
-          </div>
+            <Pencil className="h-4 w-4" />
+          </IconButton>
 
           <IconButton
             size="sm"

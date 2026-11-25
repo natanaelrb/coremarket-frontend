@@ -10,16 +10,19 @@ export function LimparVendaButton({ onConfirmar, disabled = false }) {
       <div
         className="
           flex flex-wrap items-center gap-2.5 rounded-xl
-          border border-red-500/25 bg-red-500/[0.06]
+          border border-red-200 bg-red-50/80
           px-3.5 py-2.5
           animate-scale-in
+          dark:border-red-500/20 dark:bg-red-500/[0.07]
         "
         role="group"
         aria-label="Confirmar limpeza da venda"
       >
-        <AlertTriangle className="h-4 w-4 shrink-0 text-red-500" />
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-red-100 text-red-600 dark:bg-red-500/15 dark:text-red-400">
+          <AlertTriangle className="h-4 w-4" />
+        </div>
 
-        <span className="text-xs font-medium text-red-600 dark:text-red-400">
+        <span className="text-xs font-semibold text-red-700 dark:text-red-400">
           Remover todos os itens?
         </span>
 
@@ -30,9 +33,9 @@ export function LimparVendaButton({ onConfirmar, disabled = false }) {
             setConfirmando(false);
           }}
           className="
-            rounded-lg bg-red-500 px-3 py-1.5
-            text-xs font-semibold text-white
-            transition-colors hover:bg-red-600
+            rounded-lg bg-red-600 px-3.5 py-2
+            text-xs font-semibold text-white shadow-sm
+            transition-all hover:bg-red-700
             focus-visible:outline-none focus-visible:ring-2
             focus-visible:ring-red-500 focus-visible:ring-offset-2
           "
@@ -44,12 +47,13 @@ export function LimparVendaButton({ onConfirmar, disabled = false }) {
           type="button"
           onClick={() => setConfirmando(false)}
           className="
-            inline-flex items-center gap-1 rounded-lg
-            px-2 py-1.5 text-xs font-medium
+            inline-flex items-center gap-1.5 rounded-lg
+            border border-cm-border bg-cm-surface
+            px-3 py-2 text-xs font-semibold
             text-cm-text-muted transition-colors
             hover:bg-cm-surface-hover hover:text-cm-text
             focus-visible:outline-none focus-visible:ring-2
-            focus-visible:ring-cm-accent
+            focus-visible:ring-blue-500
           "
         >
           <X className="h-3.5 w-3.5" />
@@ -66,10 +70,15 @@ export function LimparVendaButton({ onConfirmar, disabled = false }) {
       icon={Trash2}
       disabled={disabled}
       onClick={() => setConfirmando(true)}
-      className="!border-0 !bg-transparent !text-[#dc2626]
-                !opacity-100 !shadow-none
-                hover:!bg-red-50 hover:!text-[#b91c1c]
-                disabled:!text-red-300"
+      className="
+        !border !border-transparent !bg-transparent
+        !text-red-600 !opacity-100 !shadow-none
+        hover:!border-red-100 hover:!bg-red-50
+        hover:!text-red-700
+        disabled:!cursor-not-allowed disabled:!text-red-300
+        dark:!text-red-400 dark:hover:!border-red-500/20
+        dark:hover:!bg-red-500/10
+      "
     >
       Limpar venda
     </Button>
